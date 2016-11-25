@@ -6,6 +6,6 @@ then
  exit 2
 fi
 mdbook build
-git add docs
+git add book
 git commit -m'publishing docs'
 git push
