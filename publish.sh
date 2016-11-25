@@ -5,7 +5,7 @@ then
  git status
  exit 2
 fi
-mdbook build docs
+mdbook build
 git add docs
 git commit -m'publishing docs'
 git push
