@@ -7,7 +7,7 @@ The first generation of the metagener experiment was generally
 successful in producing a working prototype, with a direct
 generator specification language, fluent DSL and built-in examples.
 
-However, it had one major failing. It was still not easy to use.
+However, it had at least one major failing: It was still not easy to use.
 
 The current generation of metagen exists as a reboot of the original
 ideas, but with a less ambitious set of goals and a focus providing
