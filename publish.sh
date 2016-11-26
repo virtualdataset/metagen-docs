@@ -5,8 +5,10 @@ then
  git status
  exit 2
 fi
+rm -rf docs
 mdbook build
-cp -pR book/ docs/
+mv book docs
+echo "docs.virtdata.io" > docs/CNAME
 git add docs
 git commit -m'publishing docs'
 git push
