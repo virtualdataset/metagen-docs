@@ -1,6 +1,6 @@
 # Summary
 
 [Introduction](./introduction.md)
-- [Why Metagen?](./why_metagen.md)
-- [Metagen History](./history.md)
+- [Why Virtual Data?](./why_virtdata.md)
+- [VirtData History](./history.md)
 
