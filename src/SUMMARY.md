@@ -5,7 +5,7 @@
 - [Why Virtual Data?](./why_virtdata.md)
     - [VirtData History](./history.md)
 - [VirtData Concepts](concepts/concepts.md)
-    - [Data Mapping](./concepts/datamapping.md)
+    - [Data Mapping](concepts/data_mapping.md)
     - [Input Domain](./concepts/input_domain.md)
     - [Relative Cardinality](./concepts/relative_cardinality.md)
     - [Set Relationships](./concepts/set_relatinships.md)

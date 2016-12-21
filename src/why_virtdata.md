@@ -80,7 +80,9 @@ Virtual data can be as realistic as you need it to be, up to and including being
 based on samples of real data. If you want to capture a real data set and access 
 it as such through a virtual interface, then the data is, in fact, real data. 
 Virtual data methods can be used as a sliding scale between accessing real data and 
-just making it all up according to statistical recipes.
+just making it all up according to statistical recipes. With a small amount of
+real data, you can create a very high volume of simulated data. The small sample
+is almost always easy to fit in memory, keeping the data generators fast.
 
 For accessing realistic data, **why not both?** If you have an example data set,
 nothing prevents you from using it as raw data through the virtual data interface.
