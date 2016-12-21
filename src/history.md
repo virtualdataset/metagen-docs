@@ -13,11 +13,12 @@ something useful.
 
 The design priorities of this phase of the virtual dataset tools are:
 
-1. Java-idiomatic library support
-2. Late-binding and easy integration for runtime extensions
-3. Consumer-friendly APIs for easy client integration
-4. A set of common recipe examples for users top copy and paste
-5. Useful documentation
+1. Late-binding and easy integration for runtime library extensions
+2. Idiomatic Java-8 functional reflection
+3. Efficient lambda construction and composition of higher-order data mappers
+4. Consumer-friendly APIs for easy client integration
+5. A set of common recipe examples for users top copy and paste
+6. Useful documentation
 
 Once these basic goals are met, some of the more interesting features of the original project may be added in.
 
