@@ -1,24 +1,5 @@
 # Why Virtual Data?
 
-First, let us define what virtual data is.
-
-Virtual data can be described by a recipe. It can be created at the time of access.
-Virtual Data is a lens into a set of data that may not exist yet, but which, once observed, is as
-tangible as data from a data set from storage. Virtual data is what results when you
-apply a sophisticated mapping function to a simple input.
-
-For example, the procedurally generated worlds of some your favorite video games may start
-out as a completely virtual data set. The mapping function can be thought of as the code
-that we often call the "procedural generation algorithm".
-
-In the purest sense of functional mapping, aka a [pure function](http://wikipedia.com/pure_function),
-
-
-Virtual data can be accessed like real data. It can be read. It can be written in some ways.
-
-It does not exist as persistent state. It is entirely defined by the recipes that describe 
-its creation. Essentially, virtual data is data that is generated from procedural recipes 
-on-demand.
 
 If it is not real data, then what is the value of it? Virtual data a thing that, when you
 need it, has no substitute. To explain why, let us consider the trade-offs in some basic
@@ -90,6 +71,11 @@ Doing so gives you useful choices for tackling some of the challenges above.
 
 ### In Summary
 
-It is possible to have realistic samples, statistical shaping, high throughput, immediately adaptivity, 
-and repeatability at the same time. These are the essential goals of the virtual dataset projects.
+It is possible to have realistic samples, statistical shaping, high throughput, 
+immediately adaptivity, and repeatability at the same time.
+
+The examples above are only the tip of the iceberg in terms of what is possible. We
+simply do not have great tools for experimentation. Virtual DataSet aims to make 
+it easier to explore and use new dataset simulation methods.
+
 

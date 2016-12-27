@@ -1,11 +1,11 @@
 # Summary
 
-[Introduction](./introduction.md)
+[Introduction](intro/introduction.md)
 
-- [Why Virtual Data?](./why_virtdata.md)
-    - [VirtData History](./history.md)
+- [Why Virtual Data?](./intro/why_virtdata.md)
+    - [VirtData History](intro/history.md)
 - [VirtData Concepts](concepts/concepts.md)
-    - [Data Mapping](concepts/data_mapping.md)
+    - [Data Mapping Functions](concepts/data_mapping.md)
     - [Input Domain](./concepts/input_domain.md)
     - [Relative Cardinality](./concepts/relative_cardinality.md)
     - [Set Relationships](./concepts/set_relatinships.md)
