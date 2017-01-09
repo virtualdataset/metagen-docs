@@ -1,11 +1,14 @@
 Virtual Dataset Concepts
 ========================
 
-VirtData provides more than jus a library of generation functions.
-The concepts that are used to build the virtdata tools are the
-the building blocks for everything that follows. The explanations
-below will give you the basics. There are more detailed conceptual
-primers in this chapter as well.
+VirtData provides more than just a set of libraries and APIs.
+The concepts are the starting point and foundation. The software
+tools are built directly from the concepts. Having a strong
+understanding of the concepts will enable you to get the
+most out of virtual dataset.
+
+This section contains some of the basic. As you go through the
+chapter, more detailed explanations are given where appropriate.
 
 ### Procedural Generation
 
