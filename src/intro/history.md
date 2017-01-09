@@ -1,11 +1,13 @@
-# A Brief History of VirtualDataSet
+# VirtualDataSet Origin Story
 
 VirtualDataSet began as an experiment to see if a DSL could be used
-to make generation of rich and nuanced test data easy.
+to create interesting and reusable recipe-driven data streams.
 
 The first generation of the experiment, named **Metagener**, was
 generally successful in producing a working prototype, with a direct
-generator specification language, fluent DSL and built-in examples. However, it had at least one major failing: It was still not easy to use.
+generator specification language, fluent API and built-in examples. 
+However, it had at least one major failing: It was still
+not easy to use.
 
 The current version of the toolkit exists as a reboot of the original
 ideas, but with a less ambitious set of goals and a focus providing
