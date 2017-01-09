@@ -1,6 +1,7 @@
 # Introducing VirtData
 
-*Please stand by while we bring things online....*
+## STATUS
+This book is currently a work in progress. **Please stand by while we bring things online....**
 
 This book serves as the primary documentation for the
 Virtual DataSet projects, namely 

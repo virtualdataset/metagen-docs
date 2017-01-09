@@ -10,5 +10,5 @@ Identity()
 
 ##### random longs
 ~~~
-
+Hash()
 ~~~
