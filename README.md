@@ -9,5 +9,7 @@ For now, the forked version of mdbook is simply a quick-n-dirty
 set of mods that allow for diagrams, etc.
 
 The fork lives at: https://github.com/jshook/mdbook.
-The docs are hosted from the gh-pages branch.
+The gh-pages are hosted from the docs subdirectory, and published
+via the publish.sh script. Make sure that the forked mdbook
+is in your bin path.
 
