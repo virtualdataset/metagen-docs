@@ -103,7 +103,7 @@
         </script>
 
         <div id="sidebar" class="sidebar">
-            <ul class="chapter"><li class="affix"><a href="intro/introduction.html">Introduction</a></li><li><a href="./intro/why_virtdata.html"><strong>1.</strong> Why Virtual Data?</a></li><li><ul class="section"><li><a href="./rendercheck/typography.html"><strong>1.1.</strong> Typography</a></li><li><a href="intro/history.html"><strong>1.2.</strong> VirtData History</a></li></ul></li><li><a href="concepts/concepts.html"><strong>2.</strong> VirtData Concepts</a></li><li><ul class="section"><li><a href="concepts/data_mapping_functions.html"><strong>2.1.</strong> Data Mapping Functions</a></li><li><a href="./concepts/modeling_cardinality.html" class="active"><strong>2.2.</strong> Modeling Cardinality</a></li><li><a href="./concepts/set_relatinships.html"><strong>2.3.</strong> Set Relationships</a></li></ul></li><li><a href="./intro/coming_soon.html"><strong>3.</strong> ComingSoon</a></li><li class="affix"><a href="./matter/glossary.html">Glossary</a></li></ul>
+            <ul class="chapter"><li class="affix"><a href="intro/introduction.html">Introduction</a></li><li><a href="./intro/why_virtdata.html"><strong>1.</strong> Why Virtual Data?</a></li><li><ul class="section"><li><a href="./rendercheck/typography.html"><strong>1.1.</strong> Typography</a></li><li><a href="intro/history.html"><strong>1.2.</strong> VirtData History</a></li></ul></li><li><a href="concepts/concepts.html"><strong>2.</strong> VirtData Concepts</a></li><li><ul class="section"><li><a href="concepts/data_mapping_functions.html"><strong>2.1.</strong> Data Mapping Functions</a></li><li><a href="./concepts/modeling_cardinality.html" class="active"><strong>2.2.</strong> Modeling Cardinality</a></li><li><a href="./concepts/set_relationships.html"><strong>2.3.</strong> Set Relationships</a></li></ul></li><li><a href="./intro/coming_soon.html"><strong>3.</strong> ComingSoon</a></li><li class="affix"><a href="./matter/glossary.html">Glossary</a></li></ul>
         </div>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -125,16 +125,14 @@
                 <div id="content" class="content">
                     <h1>Modeling Cardinality</h1>
 <h3>Data Types and Values</h3>
-<p>Given that our values are all <em>bits</em> on some level, there is no
-basic <em>fixed size</em> data type that has an unlimited range of values.
-Even the floating point types have finite range, although it is
-represented and handled differently than that of the whole number
-types.</p>
+<p>Given that our values are all <em>bits</em> on some level, there is no basic <em>fixed
+size</em> data type that has an unlimited range of values. Even the floating point
+types have finite range, although it is represented and handled differently than
+that of the whole number types.</p>
 <h3>Standard Types</h3>
-<p>For a 64-bit data type, there are \( 64^2 \) different distinct values
-that can be represented. With the usual twos-complement representation
-for signed numbers, this ends up being every value between
-[-9223372036854775808,
+<p>For a 64-bit data type, there are \( 64^2 \) different distinct values that
+can be represented. With the usual twos-complement representation for signed
+numbers, this ends up being every value between [-9223372036854775808,
 <a href="https://en.wikipedia.org/wiki/9223372036854775807">9223372036854775807</a>],
 inclusive.</p>
 <p>The signed 64-bit integer is in focus here for a couple of reasons:</p>
@@ -144,30 +142,28 @@ inclusive.</p>
 modern architectures from the memory bus all the way to the registers
 in the CPU.</li>
 </ul>
-<p>These two go hand-in-hand of course. It means that there is much to
-draw from in terms of inspiration and examples for building efficient
-functions.</p>
+<p>These two go hand-in-hand of course. It means that there is much to draw from in
+terms of inspiration and examples for building efficient functions.</p>
 <p>There will be other
 <a href="https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html">types</a>
-in use.  It is possible to use objects in addition to basic types,
-but for now we will focus on the signed long type for the purposes of
-explanation.</p>
+in use.  It is possible to use objects in addition to basic types, but for now
+we will focus on the signed long type for the purposes of explanation.</p>
 <h3>Simulating Cardinality</h3>
 <p>We assume that whether you are using a 64-bit <em>or</em> 32-bit signed number, that
 you can represent a high enough cardinality of values to have a useful dataset,
-<em>in most cases</em>. There are ways of having higher cardinality when needed, but
-they are less efficient at runtime.</p>
+in most cases. There are ways of having higher cardinality when needed, but they
+are less efficient at runtime.</p>
 <p>When applying a hash function to counting numbers, the results will generally
 vary within the total range of values that you can represent.</p>
-<p>In other words, applying the murmur3 hash to the long values 0..3 will yield
-values ranging from -8048510690352527683 to 6292367497774912474. Such high
-values are not immediately useful for enumerating or simulating identifiers
-in realistically bounded datasets. However, the wide dispersion achieved such
-a hash function <em>is</em> useful to us, so how do we use it at a more reasonable
-range of values for typical datasets?</p>
-<p>Enter modulus arithmetic. With such wide range in values, it is reasonable to
-downsample the hashed value into the range simply by dividing the value by
-the range size we want, taking only the remainder.</p>
+<p>For example, applying the murmur3f hash to the long values 0..3 will yield
+values ranging from -8048510690352527683 to 6292367497774912474. Such large
+values are not immediately useful for enumerating or simulating identifiers in
+realistically bounded datasets. However, the wide dispersion achieved such a
+hash function <em>is</em> useful to us, so how do we use it at a more reasonable range
+of values for typical datasets?</p>
+<p>Enter modulus arithmetic. With such wide ranges in values, it is reasonable to
+down-sample the hashed value into the range simply by dividing the value by the
+range size we want, taking only the remainder.</p>
 <p>For example, the first 5 values produced by such a method with a modulo of
 50 and absolute value are:</p>
 <script class="nomnoml-text" type="text/plain">
@@ -198,22 +194,23 @@ the range size we want, taking only the remainder.</p>
 [<input> 21] -> [<function>Abs(21)]
 [<function>Abs(21)] -> [<firstname>result: 21]
 </script>
-<p>We use absolute value in addition to modulo, because signed results allow our range
-to span twice as many unique values as our intended output range.</p>
+<p>We use absolute value in addition to modulo, because signed results allow our
+range to span twice as many unique values as our intended output range.</p>
 <p>The next five values are 0, 6, 22, 6, and 2.</p>
 <p>This shows that we have a single duplicate (6), which is quite expected,
-according to the odds. In fact, the probability of seeing a single
-duplicate goes over 50% as you go to 9 samples. Over very large numbers of
-samples, the effect evens out quite well. In fact, it is easy to
-show that the quality of samples produced in this way is directly
-dependent upon the quality of the underlying hash.</p>
-<p>Using this method, we are able to simulate very large ranges and very large numbers of
-data samples. Furthermore, since the function pipeline is purely functional with no
-mutable state, we know that we can use the mapping from the input value to the output as
-a map that does not change. In other words, if we take the input value as an enumeration
-of samples, or <em>coordinates</em> of the output data, we have a fixed dataset with respect to
-the samples we choose to observe. In this sense, applying the function is akin to taking
-samples of data from a fixed coordinate space.</p>
+according to the odds. In fact, the probability of seeing a single duplicate
+goes over 50% as you go to 9 samples. Over very large numbers of samples, the
+effect evens out quite well. In fact, it is easy to show that the quality of
+samples produced in this way is directly dependent upon the quality of the
+underlying hash function as one would expect.</p>
+<p>Using this method, we are able to simulate very large ranges and very large
+numbers of data samples. Furthermore, since the function pipeline is purely
+functional with no mutable state, we know that we can use the mapping from the
+input value to the output as a map that does not change. In other words, if we
+take the input value as an enumeration of samples, or <em>coordinates</em> of the
+output data, we have a fixed dataset with respect to the samples we choose to
+observe. In this sense, applying the function is akin to taking samples of data
+from a fixed coordinate space.</p>
 <h3>To Be Continued...</h3>
 <p>There is more to come on this section in the future. Stay tuned.</p>
 
@@ -227,7 +224,7 @@ samples of data from a fixed coordinate space.</p>
                 
 
                 
-                    <a href="./concepts/set_relatinships.html" class="mobile-nav-chapters next">
+                    <a href="./concepts/set_relationships.html" class="mobile-nav-chapters next">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
@@ -241,7 +238,7 @@ samples of data from a fixed coordinate space.</p>
             
 
             
-                <a href="./concepts/set_relatinships.html" class="nav-chapters next" title="You can navigate through the chapters using the arrow keys">
+                <a href="./concepts/set_relationships.html" class="nav-chapters next" title="You can navigate through the chapters using the arrow keys">
                     <i class="fa fa-angle-right"></i>
                 </a>
             

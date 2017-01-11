@@ -103,7 +103,7 @@
         </script>
 
         <div id="sidebar" class="sidebar">
-            <ul class="chapter"><li class="affix"><a href="intro/introduction.html">Introduction</a></li><li><a href="./intro/why_virtdata.html"><strong>1.</strong> Why Virtual Data?</a></li><li><ul class="section"><li><a href="./rendercheck/typography.html"><strong>1.1.</strong> Typography</a></li><li><a href="intro/history.html"><strong>1.2.</strong> VirtData History</a></li></ul></li><li><a href="concepts/concepts.html"><strong>2.</strong> VirtData Concepts</a></li><li><ul class="section"><li><a href="concepts/data_mapping_functions.html" class="active"><strong>2.1.</strong> Data Mapping Functions</a></li><li><a href="./concepts/modeling_cardinality.html"><strong>2.2.</strong> Modeling Cardinality</a></li><li><a href="./concepts/set_relatinships.html"><strong>2.3.</strong> Set Relationships</a></li></ul></li><li><a href="./intro/coming_soon.html"><strong>3.</strong> ComingSoon</a></li><li class="affix"><a href="./matter/glossary.html">Glossary</a></li></ul>
+            <ul class="chapter"><li class="affix"><a href="intro/introduction.html">Introduction</a></li><li><a href="./intro/why_virtdata.html"><strong>1.</strong> Why Virtual Data?</a></li><li><ul class="section"><li><a href="./rendercheck/typography.html"><strong>1.1.</strong> Typography</a></li><li><a href="intro/history.html"><strong>1.2.</strong> VirtData History</a></li></ul></li><li><a href="concepts/concepts.html"><strong>2.</strong> VirtData Concepts</a></li><li><ul class="section"><li><a href="concepts/data_mapping_functions.html" class="active"><strong>2.1.</strong> Data Mapping Functions</a></li><li><a href="./concepts/modeling_cardinality.html"><strong>2.2.</strong> Modeling Cardinality</a></li><li><a href="./concepts/set_relationships.html"><strong>2.3.</strong> Set Relationships</a></li></ul></li><li><a href="./intro/coming_soon.html"><strong>3.</strong> ComingSoon</a></li><li class="affix"><a href="./matter/glossary.html">Glossary</a></li></ul>
         </div>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -125,80 +125,81 @@
                 <div id="content" class="content">
                     <h1>Data Mapping Functions</h1>
 <h3>Audience</h3>
-<p>This section should be useful to new users as well as experienced
-developers. Here, we explain how and why we use functions for
-building data mapping recipes. If you are planning to build your
-own data mapping recipes, this section is essential reading.</p>
+<p>This section should be useful to new users as well as experienced developers.
+Here, we explain how and why we use functions for building data mapping recipes.
+If you are planning to do so, this section is essential reading.</p>
 <h3>Input -&gt; Function -&gt; Output</h3>
-<p>A function represents a mapping between one set of values and another.
-Consider a basic example in which the function N(i) maps an input
-number to text form.</p>
+<p>A function represents a mapping between one set of values and another. Consider
+a basic example in which the function N(i) maps an input number to text form.</p>
 <script class="nomnoml-text" type="text/plain">
 #zoom:1.0
 #direction:right
 #.value: fill=#D0FFD0 visual=frame
 #.function: fill=#E0FFE0 visual=sender
 [example 1|
-[<value> input: 1] ->[<function> F(1)]
-[<function>F(1)] -> [<value>output: "one"]
-[<value> input: 2] ->[<function>F(2)]
-[<function>F(2)] -> [<value>output: "two"]
-[<value> input: 3] ->[<function>F(3)]
-[<function>F(3)] -> [<value>output: "three"]
+[<value> input: 1] ->[<function> N(1)]
+[<function> N(1)] -> [<value>output: "one"]
+[<value> input: 2] ->[<function> N(2)]
+[<function> N(2)] -> [<value>output: "two"]
+[<value> input: 3] ->[<function> N(3)]
+[<function> N(3)] -> [<value>output: "three"]
 ]
 </script>
-<p>In this example, as will often be the case, the type of input is different
-than that of the output. The input could be a <em>long</em>, and the output type
-a <em>String</em>, for example. This example also shows data flowing through the
-function. This is a common representation in flow-based programming.</p>
+<p>In this example, as will often be the case, the type of input is different than
+that of the output. The input could be a <em>long</em>, and the output type a <em>String</em>,
+for example. This example also shows data flowing through the function. This is
+a common representation in flow-based programming.</p>
 <h3>Value Semantics</h3>
-<p>If we consider the words above to be the names of users in a population, it is easy to
-see how we could think of <strong><em>F</em></strong> as simply enumerating their names. In this case,
-the word values are semantically <em>properties</em> -- the names of some
-arbitrary members of a population. We say that it is arbitrary in this case
-simply because a property does not uniquely identify a member of a population.
-We are not yet speaking about identity semantics.
-So far we have chosen only to asign the semantic of property to the output values.</p>
-<p>If we take it a step further and say that the words are unique identifiers for users,
-then we can say that we are indeed identifying <em>specific</em> instances of a population.
-This would be the case, for example, if you had a system in which each unique
-number name represented a unique user. Depending on your system, this may or may not
-be the case (I would hope it is not). The most important point here is that it is up to you
-how uniqueness in your particular system is represented -- and hence how you should
-model it. So long as the semantic relationships in your data mapping functions
-mirror the identity and property semantics of your application, it will work.</p>
-<p>Both properties and instances are important in a dataset. How do we have both together
-in a way that is meaningful? How do we make it so that we can deal with instances
-of things as well as the properties so that we actually get stable properties for
-specific instances?</p>
-<p>For this, we need to combine functions. To model the relationship between the identity
-of a thing at one level and an associated property, we simply mirror the relationship
-in terms of functions. We combine functions. In formal terms, we create a
-<em>composed</em> function.</p>
-<p>As a starting point, we must have a basic model of how the identities and properties
-relate to each other:</p>
+<p>If we consider the words above to be the names of users in a population, it is
+easy to see how we could think of function <strong><em>N</em></strong> as simply enumerating their
+names. In this case, the word values are semantically <em>properties</em> -- the names
+of some arbitrary members of a population. We say that it is arbitrary in this
+case simply because a property does not uniquely identify a member of a
+population. We are not yet speaking about identity semantics. So far we have
+chosen only to assign the meaning of property to the output values.</p>
+<p>If we take it a step further and say that the words are unique identifiers for
+users, then we can say that we are indeed identifying <em>specific</em> instances of a
+population. This would be the case, for example, if you had a system in which
+each unique number name represented a unique user. The most important point here
+is that it is up to you how uniqueness in your particular system is represented
+and thus how you should model it. So long as the data mapping functions mirror
+the identity and property semantics of your application, the results will make
+sense.</p>
+<p>Both properties and instances are important in a dataset. How do we have both
+together in a way that is meaningful? How do we make it so that we can deal with
+instances of things as well as the properties so that we actually get stable
+properties for specific instances?</p>
+<p>For this, we need to combine functions. To model the relationship between the
+identity of an instance at one level and one of its associated properties, we
+simply mirror the relationship in terms of functions. We combine functions. In
+formal terms, we create a <em>composed</em> function.</p>
+<p>As a starting point, we must have a basic model of how the identities and
+properties relate to each other:</p>
 <script class="nomnoml-text" type="text/plain">
 #direction:down
 #zoom:1.0
 [identity: user_id] --> [property: first name]
 [identity: user_id] --> [property: last name]
 </script>
-<p>For the first time, we see a graph structure that represents the association between
-instances and properties of those instances in a data set. It is not unlike an
-entity-relationship diagram. We will call this type of graph an <em>entity-property</em> graph.</p>
-<p>Although basic, we see three values and how they are related. <em>first_name</em> depends on
-<em>user_id</em>, as does <em>last_name</em>. This is the same as saying that you must have the
-value for user_id before you can calculate the values for first and last name. It also
-shows why we draw the lines in this direction when modeling data flow.</p>
-<p>It illustrates cardinal relationships but does not capture <em>how</em> the data corresponds
-from one value to another. For this, we need to fill in the blanks. First, let's talk
-about where everything begins in our data flow.</p>
+<p>For the first time, we see a graph structure that represents the association
+between instances and properties of those instances in a data set. It is not
+unlike an entity-relationship diagram. We will call this type of diagram an
+<em>entity-property</em> graph.</p>
+<p>Although basic, we see three values and how they are related. <em>first_name</em>
+depends on <em>user_id</em>, as does <em>last_name</em>. This is the same as saying that you
+must have the value for user_id before you can calculate the values for first
+and last name. It also shows why we draw the lines in this direction when
+modeling data flow.</p>
+<p>It illustrates cardinal relationships but does not describe <em>how</em> the data
+corresponds from one value to another. For this, we need to fill in the blanks.
+First, let's talk about where everything begins in our data flow.</p>
 <h3>Input Coordinates</h3>
-<p>When mapping data via functions we have to have an original input value. For the sake
-of simplicity, we will stick to whole numbers in sequence. Knowing that our original
-input data is simply the counting numbers allows us to do interesting things later
-with cardinality. For now, the most important thing to remember is that we have
-a primary input that we call the <em>coordinate</em> -- an integer from a sequence.</p>
+<p>When mapping data via functions we have to have an original input value. For the
+sake of simplicity, we will stick to whole numbers in sequence. Knowing that our
+original input data is simply the counting numbers allows us to do interesting
+things later with cardinality. For now, the most important thing to remember is
+that we have a primary input that we call the <em>coordinate</em> -- an integer from a
+sequence.</p>
 <h3>Composition and Dataflow</h3>
 <p>Assume that you have two functions:</p>
 <p><em>one that maps numbers to user ids</em>:</p>
@@ -234,18 +235,19 @@ a primary input that we call the <em>coordinate</em> -- an integer from a sequen
 [<userid> user_id] ->[<function>F]
 [<function>F] -> [<firstname>output: first_name]
 </script>
-<p>The value of user id is the output of U and the input of F in this configuration.
-If we compose these functions <em>U(i)</em> and <em>F(i)</em> together, they become a single
-function that maps a number to an instance to a first name. Somewhat formally,
-we would call this F(U(i)). In other words, we would apply F to the result of
-applying U to the original input. This wording can get out of hand for larger
-compositions, so we will emphasize flow-based descriptions moving forward.</p>
+<p>The value of user id is the output of U and the input of F in this
+configuration. If we compose these functions <em>U(i)</em> and <em>F(i)</em> together, they
+become a single function that maps a number to an instance to a first name.
+Somewhat formally, we would call this F(U(i)). In other words, we would apply F
+to the result of applying U to the original input. This wording can get out of
+hand for larger compositions, so we will emphasize flow-based descriptions
+moving forward.</p>
 <h3>Function Graphs</h3>
 <p>Given an entity-property graph, we can build a new kind of picture with more
-detail: the <em>function graph</em>. You can think of the function graph
-as a symbolic encoding of the relationships in a data set. We simply add
-the coordinate input value at the front, and then drop in a place-holder for
-each required mapping function:</p>
+detail: the <em>function graph</em>. You can think of the function graph as a symbolic
+encoding of the value relationships in a data set. We simply add the coordinate
+input value at the front, and then drop in a place-holder for each required
+mapping function:</p>
 <script class="nomnoml-text" type="text/plain">
 #zoom:1.0
 #direction:down
@@ -261,23 +263,24 @@ each required mapping function:</p>
 [<function>L] -> [<lastname>property: last_name]
 </script>
 <p>This function graph is merely a template. The functions <em>U</em>, <em>F</em>, and <em>L</em> are
-presently symbolic. We haven't picked anything concrete to put in their
-places. However, we can see the function semantics and signatures that must
-be fulfilled.</p>
-<p>The key insight here is that <strong>each complete path of this graph represents a composed
-function</strong> that can render self-consistent data. This is the basic building block for
-modeling virtual datasets with interesting data relationships.</p>
+still symbolic. We haven't picked anything concrete to put in their places.
+However, we can see the function semantics and signatures that must be
+fulfilled.</p>
+<p>The key insight here is that <strong>each complete path of this graph represents a
+composed function</strong> that can render self-consistent data. This is the basic
+building block for modeling virtual datasets with interesting data
+relationships.</p>
 <h3>Type Signatures</h3>
-<p>No matter what type system is used, the input and output
-types determine what kind of functions may be plugged in. This is called the
-<em>signature</em> of the function. In terms of data flow between pure functions,
-we are really only  concerned about the types of inputs and outputs. Our
-examples above mostly called out semantics and labels, ignoring data types mostly.</p>
-<p>There are actual concrete types at every stage of function composition. It is also true
-that more than one data type can fulfill the need for a counting number, etc. At some
-point we have to start being particular about the data types needed in our data set.
-Here, we remove the explanatory &quot;identity and property&quot; markers, and go to concrete
-data types and labels:</p>
+<p>No matter what type system is used, the input and output types determine what
+kind of functions may be plugged in. This is called the signature* of the
+function. In terms of data flow between pure functions, we are really only
+concerned about the types of inputs and outputs. Our examples above glossed
+over data types at the concrete level.</p>
+<p>There are concrete data types at every stage of function composition. It is also
+true that more than one data type can fulfill the need for a counting number,
+etc. At some point we have to start being particular about the data types needed
+in our data set. Here, we remove the explanatory &quot;identity and property&quot;
+markers, and go to concrete data types and labels:</p>
 <script class="nomnoml-text" type="text/plain">
 #zoom:1.0
 #direction:down
@@ -296,7 +299,8 @@ data types and labels:</p>
 Function graphs of this type can be referred to as <em>function graph template</em>.</p>
 <p>From this function graph template, we have two distinct paths -- two different
 composed functions to be created. If we traverse each path from the coordinate,
-we see two <em>composed function template</em>s.</p>
+we see two <em>composed function template</em>s. They are, in pseudo-code form,
+long-&gt;U-&gt;long-&gt;F-&gt;String, and long-&gt;U-&gt;long-&gt;L-&gt;String.</p>
 <h2>Data Mapping vs Data Generation</h2>
 <p>Virtual dataset emphasizes the idea of &quot;data mapping&quot; over &quot;data generation&quot;,
 but allows for users to break these rules when necessary. Data mapping

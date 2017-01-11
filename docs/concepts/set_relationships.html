@@ -103,7 +103,7 @@
         </script>
 
         <div id="sidebar" class="sidebar">
-            <ul class="chapter"><li class="affix"><a href="intro/introduction.html">Introduction</a></li><li><a href="./intro/why_virtdata.html" class="active"><strong>1.</strong> Why Virtual Data?</a></li><li><ul class="section"><li><a href="./rendercheck/typography.html"><strong>1.1.</strong> Typography</a></li><li><a href="intro/history.html"><strong>1.2.</strong> VirtData History</a></li></ul></li><li><a href="concepts/concepts.html"><strong>2.</strong> VirtData Concepts</a></li><li><ul class="section"><li><a href="concepts/data_mapping_functions.html"><strong>2.1.</strong> Data Mapping Functions</a></li><li><a href="./concepts/modeling_cardinality.html"><strong>2.2.</strong> Modeling Cardinality</a></li><li><a href="./concepts/set_relationships.html"><strong>2.3.</strong> Set Relationships</a></li></ul></li><li><a href="./intro/coming_soon.html"><strong>3.</strong> ComingSoon</a></li><li class="affix"><a href="./matter/glossary.html">Glossary</a></li></ul>
+            <ul class="chapter"><li class="affix"><a href="intro/introduction.html">Introduction</a></li><li><a href="./intro/why_virtdata.html"><strong>1.</strong> Why Virtual Data?</a></li><li><ul class="section"><li><a href="./rendercheck/typography.html"><strong>1.1.</strong> Typography</a></li><li><a href="intro/history.html"><strong>1.2.</strong> VirtData History</a></li></ul></li><li><a href="concepts/concepts.html"><strong>2.</strong> VirtData Concepts</a></li><li><ul class="section"><li><a href="concepts/data_mapping_functions.html"><strong>2.1.</strong> Data Mapping Functions</a></li><li><a href="./concepts/modeling_cardinality.html"><strong>2.2.</strong> Modeling Cardinality</a></li><li><a href="./concepts/set_relationships.html" class="active"><strong>2.3.</strong> Set Relationships</a></li></ul></li><li><a href="./intro/coming_soon.html"><strong>3.</strong> ComingSoon</a></li><li class="affix"><a href="./matter/glossary.html">Glossary</a></li></ul>
         </div>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -123,120 +123,150 @@
                 </div>
 
                 <div id="content" class="content">
-                    <h1>Why Virtual Data?</h1>
-<p>If it is not real data, then what is the value of it? Virtual
-data is something that, when you need it, has no substitute.</p>
-<p>To explain why, let us consider the trade-offs in some basic
-simulation and testing challenges and what they mean.</p>
-<h3>Challenge: access large amounts of bulk data</h3>
-<p>Actual Data</p>
-<ul>
-<li>depends primarily on speed and efficiency of storage system</li>
-<li>limited to size of storage system</li>
-</ul>
-<p>Virtual Data</p>
-<ul>
-<li>depends on speed of generation functions and CPU</li>
-<li>not effectively limited to size of storage</li>
-</ul>
-<p>In this case, virtual data is strongly favored for testing
-systems that need to be faster than the things that they
-are targeting. This is an essential requirement for any
-system that must provide high-fidelity results in timing,
-loading levels, etc. Essentially, load testing is a primary
-reason for having procedurally generated data. You can
-not easily get high fidelity results if the testing
-apparatus is saturated with load as easily as the test target.</p>
-<h3>Challenge: modify basic properties of test data</h3>
-<p>Actual Data</p>
-<ul>
-<li>requires recapture of test data, regardless of origin</li>
-</ul>
-<p>Virtual Data</p>
-<ul>
-<li>has no moving mass, instantly changes according to recipe</li>
-</ul>
-<p>The ability to change your data set instantly is also a boon for testing
-systems. Not only can you modify the conditions of a test by changing out
-your virtual data set, you can create multiple variations that can elicit
-interesting contrasts and outcomes, ad-infinitum. The size of a virtual
-data set is paltry, often smaller than testing logic.</p>
-<h3>Challenge: create nuanced interplay between data</h3>
-<p>Actual Data</p>
-<ul>
-<li>same design burden as virtual data, but still with moving mass</li>
-<li>significant effort is spent on managing bulk of data</li>
-</ul>
-<p>Virtual Data</p>
-<ul>
-<li>is able to create statistically shaped data without bulk transfer</li>
-<li>is able to provide determinism in addition to statistical shaping</li>
-<li>is able to simulate superset/subset relationships</li>
-</ul>
-<p>Because virtual data is dependent on the generation methods, and
-generation methods can be chosen themselves to have interesting
-mathematical relationships, many things are possible that we don't
-even consider when raw data is handed to us.</p>
-<h3>Challenge: access real data</h3>
-<p>Real data wins this one, obviously. Virtual data is <em>not</em> strictly real
-data, but it <em>can</em> be. Read further for why.</p>
-<h3>Challenge: access realistic data</h3>
-<p>Virtual data can be as realistic as you need it to be, up to and including
-being based on samples of real data. If you want to capture a real data set
-and access it as such through a virtual interface, then the data is, in fact,
-real data.</p>
-<p>Virtual data methods can be used as a sliding scale between accessing real data
-and just making it all up according to statistical recipes. With a small
-amount of real data, you can create a very high volume of simulated data. The small
-sample is almost always easy to fit in memory, keeping the data generators fast.
-Still, the data generated can be extrapolated to data set sizes that can be
-useful for testing even the largest systems.</p>
-<p>For accessing realistic data, <strong>why not both?</strong> If you have an example data
-set, nothing prevents you from using it as raw data through the virtual data
-interface. Doing so gives you useful choices for tackling some of the
-challenges above.</p>
-<h3>Challenge: partition a dataset for distributed testing</h3>
-<p>Real Data</p>
-<ul>
-<li>Requires a bulk processing step to do any reconfiguration or (re)partitioning</li>
-</ul>
-<p>Virtual Data</p>
-<ul>
-<li>Subset groupings of virtual data are easily described by common recipes.</li>
-</ul>
-<p>When you need to be able to identify or control, or vary how data is distributed in
-a testing scenario, there is no comparison.</p>
-<h3>Challenge: canonically identify detailed test data parameters</h3>
-<p>Real Data</p>
-<ul>
-<li>In order to canonically capture and represent the testing parameters with a
-real bulk dataset, you have to have and retain the whole dataset.</li>
-</ul>
-<p>Virtual Data</p>
-<ul>
-<li>Virtual data can be described concisely and completely in a recipe. Whether
-you are needing <em>book end</em> scenarios that identify corner cases, or more
-<em>normal</em> data, the recipes are compact. For data that is based on real
-samples, you get to pick how much is too much.</li>
-</ul>
-<h3>In Summary</h3>
-<p>It is possible to have realistic samples, statistical shaping, high throughput,
-immediately adaptivity, and repeatability at the same time.</p>
-<p>The examples above are only the tip of the iceberg in terms of what is possible.
-Virtual DataSet aims to make it easier to explore and use new dataset simulation
-methods.</p>
+                    <h1>Set Relationships</h1>
+<p>This section will talk about how to model relative cardinality between
+different types of entities. Before reading this, you should already
+be familiar with <a href="/concepts/data_mapping_functions.html">data mapping</a>
+and <a href="modeling_cardinality.html">cardinality functions</a>.</p>
+<p>Suppose you have two different sets of things in your virtual dataset:</p>
+<script class="nomnoml-text" type="text/plain">
+#zoom:0.75
+#direction:right
+#.data: fill=#FFFFFF visual=frame
+[entity type A|
+[<data> "foo"]
+[<data> "bar"]
+[<data> "baz"]
+]
+</script>
+<script class="nomnoml-text" type="text/plain">
+#zoom:0.75
+#direction:right
+#.data: fill=#FFFFFF visual=frame
+[entity type B|
+[<data> "X"]
+[<data> "Y"]
+[<data> "Z"]
+]
+</script>
+<p>It may be the case that there is no association between elements of the first set to
+the second set, as illustrated above.</p>
+<p>You could have a many-to-many association from set A to set B, like this:</p>
+<script class="nomnoml-text" type="text/plain">
+#zoom:1.0
+#direction:down
+#.data: fill=#FFFFFF visual=frame
+[<data> foo]
+[<data> bar]
+[<data> baz]
+[<data> X]
+[<data> Y]
+[<data> Z]
+[foo] -> [X]
+[foo] -> [Y]
+[foo] -> [Z]
+[bar] -> [X]
+[bar] -> [Y]
+[bar] -> [Z]
+[baz] -> [X]
+[baz] -> [Y]
+[baz] -> [Z]
+</script>
+<p>In any case, the associations are themselves part of the data set. They must be
+modeled as such. The way that we do this in virtual dataset is to group our
+functions in the same way that data should be grouped.</p>
+<p>Isolating the values that we use for for uniqueness is a key step.
+Assume for now, that you are using a simple long value to identify each
+unique entity or instance of your virtual dataset. For example, <em>foo</em>
+is entity 0, <em>bar</em> is entity 1, and <em>baz</em> is entity 2. The same applies
+for X, Y and Z: X is 0, Y is 1, and Z is 2.</p>
+<p>Let's make this clear in terms of the value groupings that we would need to simulate
+for a full association between all type-A entities and all type-B entities. Here are
+the tuples: (0,0), (0,1), (0,2), (1,0), (1,1), (1,2), (2,0), (2,1), (2,2).</p>
+<p>Another way to say this is that &quot;All members of set A are associated with
+All members of Set B&quot;.</p>
+<p>A simple modulo function that does only range adjustment for the sizes of these two
+populations is simply &quot;mod 3&quot;. You could draw many many samples via a mapping function,
+but as long as the mapping functions are the <em>same</em>, you would get the same identifier
+value for each entity in the tuple. You could only ever get (0,0), (1,1), and (2,2).
+This does not suffice for our nine different associations above.</p>
+<p>Let us look at the associations directly, and work backwards to find the appropriate
+functions that will maintain the correspondence.</p>
+<p>Here are the associations, enumerated by sample number (coordinate value). The discrete
+correspondence is captured for A and B in a more visually obvious way in the columns
+to the right.</p>
+<pre><code>sample=#  association  A map   B map
+
+sample=0  (0,0)        0-&gt;0    0-&gt;0
+sample=1  (0,1)        1-&gt;0    1-&gt;1
+sample=2  (0,2)        2-&gt;0    2-&gt;2
+sample=3  (1,0)        3-&gt;1    3-&gt;0
+sample=4  (1,1)        4-&gt;1    4-&gt;1
+sample=5  (1,2)        5-&gt;1    5-&gt;2
+sample=6  (2,0)        6-&gt;2    6-&gt;0
+sample=7  (2,1)        7-&gt;2    7-&gt;1
+sample=8  (2,2)        8-&gt;2    8-&gt;2
+
+sample=9  (0,0)        9-&gt;0    9-&gt;0
+sample=10 (0,1)       10-&gt;0   10-&gt;1
+sample=11 (0,2)       11-&gt;0   11-&gt;2
+...       ...         ...     ...
+</code></pre>
+<p>In this case, we can see that the functions must do more than simply correct for the
+possible number of unique identifiers in each population. They must also have
+some type of relationship that adjust for the relative rates of progression through
+the possible values. For every A value, we need to see one each of B. In other words,
+we need to see a new A value about 1/3 as frequently as we see a new B value.</p>
+<p>For A, we need a function like &quot;divide by 3, then modulo by 3&quot;.
+For B, simply &quot;modulo by 3&quot;. By dividing the sampling input by a number, we reduce
+its rate of progression.</p>
+<p>Although we are looking at correspondence between discrete values (the counting numbers),
+it is easy to demonstrate on a coordinate plane as well using standard plotting tools.</p>
+<p>First, by using a floor function to visually illustrate the discrete mapping:</p>
+<div id="fpthrees1" style="width: 400px; height: 200px;"></div> 
+<script type="text/javascript">
+brd = JXG.JSXGraph.initBoard('fpthrees1', {boundingbox: [-1, 4, 20, -1], axis:true, showCopyright: false});
+ brd.suspendUpdate();
+ var c1 = brd.create('functiongraph', [function(x){ return (Math.floor(x) % 3); }],
+                       {strokeWidth:2,strokeColor:'black'});
+ var c2 = brd.create('functiongraph', [function(x){ return (Math.floor(x/3.0) % 3); }],
+                       {strokeWidth:5,strokeColor:'blue',strokeOpacity:'0.25'});  
+ brd.unsuspendUpdate();
+</script>
+<p>And second, the continuous analog, to show the relative slope
+and repeating patterns at every 9th interval:</p>
+<div id="fpthrees2" style="width: 400px; height: 200px;"></div> 
+<script type="text/javascript">
+brd = JXG.JSXGraph.initBoard('fpthrees2', {boundingbox: [-1, 4, 20, -1], axis:true, showCopyright: false});
+ brd.suspendUpdate();
+ var c3 = brd.create('functiongraph', [function(x){ return (x % 3); }],
+                       {strokeWidth:2,strokeColor:'black'});
+ var c4 = brd.create('functiongraph', [function(x){ return ((x/3.0) % 3); }],
+                       {strokeWidth:5,strokeColor:'blue',strokeOpacity:'0.25'});  
+ brd.unsuspendUpdate();
+</script>
+<h3>So What?</h3>
+<p>From all this we can see one of the most basic strategies for establishing a one-to-many
+relationship. The basic rule is that the <em>many</em> side of the relationship must
+have exactly <em>that many</em> more values per coordinate range than the <em>one</em> side. It is
+usually just a matter of adjusting the relative rates of progression along the
+coordinate line, as illustrated above.</p>
+<p>Also, the example above is very basic. It shows a regular repeating pattern with
+a full one-to-many association. How do we extrapolate this to other more advanced examples?
+This is a more advanced topic that will be explored in the future. For now, refer
+to the recipes section for some ideas.</p>
 
                 </div>
 
                 <!-- Mobile navigation buttons -->
                 
-                    <a href="intro/introduction.html" class="mobile-nav-chapters previous">
+                    <a href="./concepts/modeling_cardinality.html" class="mobile-nav-chapters previous">
                         <i class="fa fa-angle-left"></i>
                     </a>
                 
 
                 
-                    <a href="./rendercheck/typography.html" class="mobile-nav-chapters next">
+                    <a href="./intro/coming_soon.html" class="mobile-nav-chapters next">
                         <i class="fa fa-angle-right"></i>
                     </a>
                 
@@ -244,13 +274,13 @@ methods.</p>
             </div>
 
             
-                <a href="intro/introduction.html" class="nav-chapters previous" title="You can navigate through the chapters using the arrow keys">
+                <a href="./concepts/modeling_cardinality.html" class="nav-chapters previous" title="You can navigate through the chapters using the arrow keys">
                     <i class="fa fa-angle-left"></i>
                 </a>
             
 
             
-                <a href="./rendercheck/typography.html" class="nav-chapters next" title="You can navigate through the chapters using the arrow keys">
+                <a href="./intro/coming_soon.html" class="nav-chapters next" title="You can navigate through the chapters using the arrow keys">
                     <i class="fa fa-angle-right"></i>
                 </a>
             
