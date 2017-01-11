@@ -1,24 +1,24 @@
 Data Mapping Functions
 ======================
 
-## Audience
+### Audience
 
 This section should be useful to new users as well as experienced 
 developers. Here, we explain how and why we use functions for
 building data mapping recipes. If you are planning to build your
 own data mapping recipes, this section is essential reading.
 
-## Input -> Function -> Output
+### Input -> Function -> Output
 
 A function represents a mapping between one set of values and another.
 Consider a basic example in which the function N(i) maps an input
 number to text form.
 
 {{#nomnoml
-#zoom:0.75
+#zoom:1.0
 #direction:right
-#.value: fill=#D0FFD0 visual=sender
-#.function: fill=#E0FFE0 visual=frame
+#.value: fill=#D0FFD0 visual=frame
+#.function: fill=#E0FFE0 visual=sender
 [example 1|
 [<value> input: 1] ->[<function> F(1)]
 [<function>F(1)] -> [<value>output: "one"]
@@ -31,229 +31,217 @@ number to text form.
 
 In this example, as will often be the case, the type of input is different
 than that of the output. The input could be a *long*, and the output type
-a *String*, for example. This example also shows data flowing through the function,
-an approach used with flow-based programming.
+a *String*, for example. This example also shows data flowing through the
+function. This is a common representation in flow-based programming.
 
-## Value Semantics
+### Value Semantics
 
 If we consider the words above to be the names of users in a population, it is easy to
-see how we could think of ***N*** as simply enumerating their names. In this case,
-the word values are semantically *properties* -- name properties of some
-arbitrary member of a population. We say that it is arbitrary in this case
-simply because we are not yet speaking about identity semantics.
-So far we have chosen only to assin the semantic of property to the output values.
+see how we could think of ***F*** as simply enumerating their names. In this case,
+the word values are semantically *properties* -- the names of some
+arbitrary members of a population. We say that it is arbitrary in this case
+simply because a property does not uniquely identify a member of a population.
+We are not yet speaking about identity semantics.
+So far we have chosen only to asign the semantic of property to the output values.
 
-If we take it a step further and say that the words are actually 
-unique identifiers for users,
+If we take it a step further and say that the words are unique identifiers for users,
 then we can say that we are indeed identifying *specific* instances of a population.
 This would be the case, for example, if you had a system in which each unique
 number name represented a unique user. Depending on your system, this may or may not 
-be the case (I would hope it is not). The most imporant point here is that it is up to you
+be the case (I would hope it is not). The most important point here is that it is up to you
 how uniqueness in your particular system is represented -- and hence how you should 
-model it in data mapping functions to yield a facsimile representation in a virtual dataset.
+model it. So long as the semantic relationships in your data mapping functions
+mirror the identity and property semantics of your application, it will work.
 
-Both properties and instances are important in a dataset. How do we have both? How do
-we make it so that we can deal with instances of things as well as the properties
-of any given identity?
+Both properties and instances are important in a dataset. How do we have both together
+in a way that is meaningful? How do we make it so that we can deal with instances 
+of things as well as the properties so that we actually get stable properties for
+specific instances?
 
-For this, we need to combine functions. To model the relationship between a thing
-at one level and a associated with it, we simply mirror the relationship in terms
-of functions. We combine functions. In formal terms, we create a *composed* function.
+For this, we need to combine functions. To model the relationship between the identity
+of a thing at one level and an associated property, we simply mirror the relationship 
+in terms of functions. We combine functions. In formal terms, we create a 
+*composed* function.
 
-This is best illustrated visually, using flow-based notation. Take, for 
-example, a basic model of users in a population:
-
-{{#nomnoml
-#direction:down
-#zoom:0.75
-[value associations|
-[user_id] --> [first name]
-[user_id] --> [last name]
-]
-}}
-
-For the first time, we see a graph structure that represents the semantics of a data set.
-This specific type of graph is called a *value graph*, and will be one off the first
-steps in figuring out how to model data in vitual dataset. The value graph illustraties
-cardinal relationships but it does not capture *how* the data corresponds from one
-value to another. For this, we need to fill in the blanks:
+As a starting point, we must have a basic model of how the identities and properties
+relate to each other:
 
 {{#nomnoml
 #direction:down
-#zoom:0.75
-[value associations|
-[user_id] --> [function: F]
-[function: F] --> [first_name]
-[user_id] --> [function: L]
-[function: L] --> [last_name]
-]
-}}
+#zoom:1.0
+[identity: user_id] --> [property: first name]
+[identity: user_id] --> [property: last name]
+}} 
 
+For the first time, we see a graph structure that represents the association between
+instances and properties of those instances in a data set. It is not unlike an
+entity-relationship diagram. We will call this type of graph an *entity-property* graph.
 
 Although basic, we see three values and how they are related. *first_name* depends on 
 *user_id*, as does *last_name*. This is the same as saying that you must have the
 value for user_id before you can calculate the values for first and last name. It also
-shows why we draw the lines in this directionn when modeling data flow.
+shows why we draw the lines in this direction when modeling data flow.
 
-Assume that you have a function that maps numbers to user ids, like this:
+It illustrates cardinal relationships but does not capture *how* the data corresponds
+from one value to another. For this, we need to fill in the blanks. First, let's talk
+about where everything begins in our data flow.
 
-{{#nomnoml
-#direction:right
+### Input Coordinates
+
+When mapping data via functions we have to have an original input value. For the sake
+of simplicity, we will stick to whole numbers in sequence. Knowing that our original
+input data is simply the counting numbers allows us to do interesting things later
+with cardinality. For now, the most important thing to remember is that we have
+a primary input that we call the *coordinate* -- an integer from a sequence.
+
+### Composition and Dataflow
+
+Assume that you have two functions:
+
+*one that maps numbers to user ids*: {{#nomnoml
 #zoom:0.75
-[input: number] --> [function: U]
-[function: U] --> [output: user_id]
-}}
+#direction:right
+#.input: fill=#FFFFFF visual=frame
+#.function: fill=#FFFFFF visual=sender
+#.userid: fill=#E2D58B visual=frame
+[<input> input: number] ->[<function>U]
+[<function>U] -> [<userid>output: user_id]
+}} 
+
+*and another that maps user ids to first names*:
+ 
+{{#nomnoml
+#zoom:0.75
+#direction:right
+#.userid: fill=#E2D58B visual=frame
+#.function: fill=#FFFFFF visual=sender
+#.firstname: fill=#44BBA4 visual=frame
+[<userid> input: user_id] ->[<function>F]
+[<function>F] -> [<firstname>output: first_name] 
+}}          
 
 If you combine them together in data-flow form, the results looks like this:
 
 {{#nomnoml
-#direction:right
 #zoom:0.75
-[input: user_id] --> [function: F]
-[function: F] --> [output: first_name]
-[input: user_id] --> [function: L]
-[function: L] --> [output: last_name]
-}}
+#direction:right
+#.input: fill=#FFFFFF visual=frame
+#.function: fill=#FFFFFF visual=sender
+#.userid: fill=#E2D58B visual=frame
+#.firstname: fill=#44BBA4 visual=frame
+[<input> input: number] ->[<function>U]
+[<function>U] -> [<userid> user_id]
+[<userid> user_id] ->[<function>F]
+[<function>F] -> [<firstname>output: first_name]
+}}  
 
-One of the key insights that you need to model a dataset with this approach is that **each
-complete path of this graph represents a composed function.** Let's make a more concrete example.
 
-The above view is called a *function graph*. It will be one of the best ways to understand
-and elaborate your data mapping model going forward. The fact that the two name functions
-are attached to the same upstream identity function is no accident. It is exactly how we
-establish a correspondence between entities and their properties.
+The value of user id is the output of U and the input of F in this configuration.
+If we compose these functions *U(i)* and *F(i)* together, they become a single
+function that maps a number to an instance to a first name. Somewhat formally,
+we would call this F(U(i)). In other words, we would apply F to the result of
+applying U to the original input. This wording can get out of hand for larger
+compositions, so we will emphasize flow-based descriptions moving forward.
 
-## Type Signatures
+### Function Graphs
 
-The types are high-level here. No matter what type system is used, the input and output
-types determine where the function may be plugged in. This is called the *signature*
-of the function. In terms of data flow between pure functions, we are really only 
-concerned about the types of inputs and outputs.
-
-## Combining and Simplifying
-
-The input types of downstream functions must match the output type of upstream functions
-in order for them to be composed together. A pure function has no other arguments besides
-its input.
-
-We can combine the functions ***U*** and ***F*** into another *composed function* ***F(U)***,
-which takes the input for U and provides the output for F. We can do the same with ***U***
-and ***L***, as function ***L(U)***.
-
-Combined, the above function definitions look like this:
+Given an entity-property graph, we can build a new kind of picture with more
+detail: the *function graph*. You can think of the function graph
+as a symbolic encoding of the relationships in a data set. We simply add
+the coordinate input value at the front, and then drop in a place-holder for
+each required mapping function: 
 
 {{#nomnoml
-#direction:right
-#zoom:0.75
-[input: number] --> [function: U]
-[function: U] --> [output: user_id]
-[input: user_id] --> [function: F]
-[function: F] --> [output: first_name]
-[input: user_id] --> [function: L]
-[function: L] --> [output: last_name]
-[output: user_id] --> [input: user_id]
-}}
+#zoom:1.0
+#direction:down
+#.function: fill=#FFFFFF visual=sender
+#.userid: visual=frame
+#.firstname: visual=frame
+#.lastname: visual=frame
+[<input>coordinate] ->[<function>U]
+[<function>U] -> [<userid>identity: user_id]
+[<userid>identity: user_id] ->[<function>F]
+[<function>F] -> [<firstname>property: first_name]
+[<userid>identity: user_id] ->[<function>L]
+[<function>L] -> [<lastname>property: last_name]
+}}       
 
-This representation is verbose, but explicit. We can collapse down the representation quite
-a bit:
-
-{{#nomnoml
-#zoom:0.75
-[simplifed|
-[number] --> [U]
-[U] --> [F]
-[F] --> [first_name]
-[U] --> [L]
-[L] --> [last_name]
-]
-}} {{#nomnoml
-#zoom:0.75
-[simplified  output type|
-[number] --> [U -> number]
-[U -> number] --> [F -> word]
-[F -> word] --> [first_name]
-[U -> number] --> [L -> word]
-[L -> word] --> [last_name]
-]
-}}
-
-However, we have lost the type signatures between the functions. 
-
-Data Mapping Functions
-======================
-
-VirtData leans heavily on the utility and efficiency of pure functions.
-You could say that the data generation techniques in VirtData are
-[FP](https://en.wikipedia.org/wiki/Functional_programming)-friendly,
-but not strictly limited to FP techniques.
+This function graph is merely a template. The functions *U*, *F*, and *L* are 
+presently symbolic. We haven't picked anything concrete to put in their 
+places. However, we can see the function semantics and signatures that must 
+be fulfilled.
  
-VirtData emphasizes the idea of "data mapping" over "data generation",
-but allows for users to break these rules when necessary. To explain why,
-it is useful to contrast the different approaches for creating 
-synthetic data.
+The key insight here is that **each complete path of this graph represents a composed 
+function** that can render self-consistent data. This is the basic building block for 
+modeling virtual datasets with interesting data relationships.
 
-### Function Has Mutable State?
+### Type Signatures
 
-This is one of the most important aspects of a data generation method.
-A method that depends on changing state will not yield the same 
-result for a given input. This type of method is more properly called
-a **data generator**, as there is no way to predict the output from
-the input without knowing the internal state, just as for an RNG.
+No matter what type system is used, the input and output
+types determine what kind of functions may be plugged in. This is called the 
+*signature* of the function. In terms of data flow between pure functions, 
+we are really only  concerned about the types of inputs and outputs. Our 
+examples above mostly called out semantics and labels, ignoring data types mostly.
 
-Because generators may have hidden mutable state, they are able to
-create streams of data that are deterministic, but **state dependent.**
-This can be useful if you want to prevent the output from being
-easily predicted for a given input. However, for creating virtual
-data sets, this property is not useful. It is often more important to
-be able to get the same result for a given coordinate, regardless
-of how many times the function has been iterated internally. For
-example, if you want to send a dataset into a database, then read
-it out and verify that the content matches, you need the guarantee
-of a *static virtual dataset*.
+There are actual concrete types at every stage of function composition. It is also true
+that more than one data type can fulfill the need for a counting number, etc. At some
+point we have to start being particular about the data types needed in our data set.
+Here, we remove the explanatory "identity and property" markers, and go to concrete
+data types and labels:
 
-### Function Has Immutable Data?
+{{#nomnoml
+#zoom:1.0
+#direction:down
+#.function: fill=#FFFFFF visual=sender
+#.userid: visual=frame
+#.firstname: visual=frame
+#.lastname: visual=frame
+[<input>coordinate: long] ->[<function>U]
+[<function>U] -> [<userid>user_id: long]
+[<userid>user_id: long] ->[<function>F]
+[<function>F] -> [<firstname>first_name: String]
+[<userid>user_id: long] ->[<function>L]
+[<function>L] -> [<lastname>last_name: String]
+}}
 
-A data generation method that does not depend on changing state is
+Even though the function graph above is not realizable yet, it is useful as is.
+Function graphs of this type can be referred to as *function graph template*.
+
+From this function graph template, we have two distinct paths -- two different
+composed functions to be created. If we traverse each path from the coordinate,
+we see two *composed function template*s.
+
+## Data Mapping vs Data Generation
+
+Virtual dataset emphasizes the idea of "data mapping" over "data generation",
+but allows for users to break these rules when necessary. Data mapping
+implies that pure functions are being used. Data generation implies
+that deterministic output is not expected. The choice between these
+is simply a matter of whether you use mutable state in your mapping.
+
+### Mutable State?
+
+A functions that depends on mutable state in addition to the input
+value will not yield the same result for a given input. Such functions
+may produce the same sequence of outputs given the same sequence
+of inputs, but this is not sufficient for simulating sampling from
+a population with stable properties.
+
+### Immutable State?
+
+A mapping function that does not depend on changing state is
 effectively a pure function. This includes functions that depend
 on data, as long as that data itself doesn't change.
 
-Pure functions generally perform better for data generation,
-especially in parallel architectures, where much of the code and
-volatile state can be cached or kept on the stack. Code that doesn't
-have to access changing state is generally much easier to optimize.
+Parameters to a function that can initialize it are simply another
+form of immutable state -- so long as these parameters do not change
+for the life of the function.
 
-### Function Has Parameters?
+### Choosing Mapping Functions
 
-Parameters are simply a form of immutable data. Some -- but not all
--- functions have parameters.
-
-## Distinctions
-
-*Data Generator, Data Mapping Function, What's the difference?*
-
-A data generation method that must be accessed in sequence is called
-a [generator](https://en.wikipedia.org/wiki/Generator_(computer_programming)).
-RNGs are generators.
-
-A data generator that has no mutable state is called a **data mapping function**.
-In VirtData, these are simply called "data mappers" for short. The phrase
-"data mapping" is used to distinguish functions which are pure functions,
-as opposed to "[data] generators", which may depend on mutable state.
-
-
-## Notation Ideas
-
-{{#nomnoml
-#direction: right
-#.itype: visual=sender
-#.fname: visual=frame
-#.arg: visual=roundrect
-#.otype: visual=sender
-[f2|
-[<fname> func2]
-[<arg> arg2] --> [func2]
-]
-[<itype> itype2] -> [f2] 
-[<itype> itype3] -> [f2] 
-[f2] -> [<otype> otype2]
-}
+The function placeholders in the examples above can be satisfied by
+any function instance that fits the type signatures. Further, how
+these functions are realized at runtime are left to the individual
+data mapping libraries. Each library supports a set of loadable
+functions that can be asked for by name. The details of this are
+left for later in the usage section. 

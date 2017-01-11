@@ -26,7 +26,7 @@ The recipes used with virtual dataset are simply called *virtdata recipes*.
 They can vary in complexity from the mundane to the sophisticated.
 
 Some recipes -- those depending only on 
-[pure functions](http://wikipedia.com/pure_function) -- will generate a 
+[pure functions](https://en.wikipedia.org/wiki/Pure_function) -- will generate a 
 *static virtual dataset*. Recipes that rely mutable state will generate
 a *dynamic virtual dataset*.
 
@@ -46,4 +46,4 @@ If you have requests, please submit them at the
 The book is structured to give you a useful entry point regardless of your 
 experience with the concepts and tools. You can choose to go directly to 
 the [Recipes](using_virtdata/common_recipes.html) section, or
-you can start with [Concepts](concepts/concepts.htmls).
+you can start with [Concepts](concepts/concepts.html). 

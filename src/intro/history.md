@@ -1,7 +1,7 @@
-# VirtualDataSet Origin Story
+# Virtual DataSet Origin
 
 VirtualDataSet began as an experiment to see if a DSL could be used
-to create interesting and reusable recipe-driven data streams.
+to create interesting and reusable recipe-driven synthetic data streams.
 
 The first generation of the experiment, named **Metagener**, was
 generally successful in producing a working prototype, with a direct
@@ -19,7 +19,7 @@ The design priorities of this phase of the virtual dataset tools are:
 2. Idiomatic Java-8 functional reflection
 3. Efficient lambda construction and composition of higher-order data mappers
 4. Consumer-friendly APIs for easy client integration
-5. A set of common recipe examples for users top copy and paste
+5. A set of common recipe examples for users to copy and paste
 6. Useful documentation
 
 Once these basic goals are met, some of the more interesting features of the original project may be added in.

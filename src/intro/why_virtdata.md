@@ -79,8 +79,8 @@ Doing so gives you useful choices for tackling some of the challenges above.
 It is possible to have realistic samples, statistical shaping, high throughput, 
 immediately adaptivity, and repeatability at the same time.
 
-The examples above are only the tip of the iceberg in terms of what is possible. We
-simply do not have great tools for experimentation. Virtual DataSet aims to make 
-it easier to explore and use new dataset simulation methods.
+The examples above are only the tip of the iceberg in terms of what is possible.
+Virtual DataSet aims to make it easier to explore and use new dataset simulation
+methods.
 
 
