@@ -2,7 +2,7 @@
 
 This section will talk about how to model relative cardinality between
 different types of entities. Before reading this, you should already
-be familiar with [data mapping](data_mapping_functions.html)
+be familiar with [data mapping](/concepts/data_mapping_functions.html)
 and [cardinality functions](modeling_cardinality.html).
 
 Suppose you have two different sets of things in your virtual dataset:

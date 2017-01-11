@@ -1,11 +1,12 @@
 # Typography
 
-This book includes some diagrams that are rendered from graphical markup.
+This book includes some diagrams that are rendered 
+on the client side from various graphical markup systems.
 
-This page lets you verify that you can read the glyphs and diagrams correctly.
-If you do not see two of everything, then you will not be able to see some 
-of the diagrams in the book. If you do not see rendering as you expect,
-please report the [issue](https://github.com/virtualdataset/virtdata-docs/issues).
+This page lets you verify that you can read the glyph and diagrams correctly. If
+you do not see two of everything, then you will not be able to see some of the
+diagrams in the book. In that case, please report the
+[issue](https://github.com/virtualdataset/virtdata-docs/issues).
 
 In each of the rendering checks below, the dynamically rendered element is shown
 first, followed by a reference image.
@@ -77,6 +78,7 @@ courtesy of [nomnoml.com](http://nomnoml.com/)
 <div title="reference image" align="middle">
 <div><img src="rendercheck/nomnoml_abc.png"></img> 
 </div>
+
 ### mathjax rendering
 
 courtesy of [mathjax.org](https://mathjax.org)

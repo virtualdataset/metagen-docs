@@ -8,7 +8,7 @@
 - [VirtData Concepts](concepts/concepts.md)
     - [Data Mapping Functions](concepts/data_mapping_functions.md)
     - [Modeling Cardinality](./concepts/modeling_cardinality.md)
-    - [Set Relationships](./concepts/set_relatinships.md) 
+    - [Set Relationships](./concepts/set_relationships.md) 
 - [ComingSoon](./intro/coming_soon.md)
 
 [Glossary](./matter/glossary.md)
