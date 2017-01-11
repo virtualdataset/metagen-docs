@@ -15,22 +15,72 @@
         <link rel="shortcut icon" href="favicon.png">
 
         <!-- Font Awesome -->
-        <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
+        <link rel="stylesheet" href="fontawesome/css/font-awesome.min.css">
 
         <link rel="stylesheet" href="highlight.css">
         <link rel="stylesheet" href="tomorrow-night.css">
 
         <!-- Mermaid -->
-        <link rel="stylesheet" href="https://cdn.rawgit.com/knsv/mermaid/6.0.0/dist/mermaid.css">
+        <link rel="stylesheet" href="mermaid/mermaid.css">
+        <script type="text/javascript" src="mermaid/mermaid.min.js"></script>
+        <script>mermaid.initialize({startOnLoad:true,useMaxWidth:false});</script>
 
-        <script type="text/javascript" src="https://cdn.rawgit.com/knsv/mermaid/6.0.0/dist/mermaid.min.js"></script>
-        <script>mermaid.initialize({startOnLoad:true});</script>
+        <!-- functionplot -->
+        <!-- <script type="text/javascript" src="functionplot/d3.v3.min.js"></script> -->
+        <!-- <script type="text/javascript" src="functionplot/math.min.js"></script> -->
+        <!-- <script type="text/javascript" src="functionplot/function-plot.js"></script> -->
+
+        <!-- jsxgraph -->
+        <script type="text/javascript" src="jsxgraph/jsxgraphcore.js"></script>
+        <link rel="stylesheet" type="text/css" href="jsxgraph/jsxgraph.css" />
 
         <!-- MathJax -->
-        <script type="text/javascript" src="https://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+        <script type="text/x-mathjax-config">
+          MathJax.Hub.Config({
+            extensions: ["tex2jax.js"],
+            jax: ["input/TeX", "output/HTML-CSS"],
+            tex2jax: {
+              inlineMath: [ ['$','$'], ["\\(","\\)"] ],
+              displayMath: [ ['$$','$$'], ["\\[","\\]"] ],
+              processEscapes: false,
+              balanceBraces: true,
+              skipTags: ["script","noscript","style","textarea","pre","code","annotation","annotation-xml"],
+              ignoreClass: "tex2jax_ignore"
+            },
+            asciimath2jax: {
+             delimiters: [
+                   ['`','`']
+                 ],
+             skipTags: ["script","noscript","style","textarea","pre","code","annotation","annotation-xml"],
+             preview: "AsciiMath"
+            },
+            showProcessingMessages: true,
+            messageStyle: "normal",
+            displayAlign: "center",
+            displayIndent: "0",
+            showMathMenu: true,
+            "HTML-CSS": { availableFonts: ["TeX"] }
+          });
+        </script>
+        <script type="text/javascript" src="mathjax/MathJax.js"></script>
+
+
+        <!-- nomnoml -->
+        <!--<script src="nomnoml/zepto.min.js"></script>-->
+        <script src="nomnoml/lodash.min.js"></script>
+        <script src="nomnoml/dagre.min.js"></script>
+        <script src="nomnoml/skanaar.util.js"></script>
+        <script src="nomnoml/skanaar.svg.js"></script>
+        <script src="nomnoml/skanaar.vector.js"></script>
+        <script src="nomnoml/skanaar.canvas.js"></script>
+        <script src="nomnoml/nomnoml.jison.js"></script>
+        <script src="nomnoml/nomnoml.parser.js"></script>
+        <script src="nomnoml/nomnoml.layouter.js"></script>
+        <script src="nomnoml/nomnoml.renderer.js"></script>
+        <script src="nomnoml/nomnoml.js"></script>
 
         <!-- Fetch JQuery from CDN but have a local fallback -->
-        <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+        <!--<script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>-->
         <script>
             if (typeof jQuery == 'undefined') {
                 document.write(unescape("%3Cscript src='jquery.js'%3E%3C/script%3E"));
@@ -53,7 +103,7 @@
         </script>
 
         <div id="sidebar" class="sidebar">
-            <ul class="chapter"><li class="affix"><a href="./introduction.html">Introduction</a></li><li><a href="./why_virtdata.html"><strong>1.</strong> Why Virtual Data?</a></li><li><a href="./history.html"><strong>2.</strong> VirtData History</a></li></ul>
+            <ul class="chapter"><li class="affix"><a href="intro/introduction.html">Introduction</a></li><li><a href="./intro/why_virtdata.html"><strong>1.</strong> Why Virtual Data?</a></li><li><ul class="section"><li><a href="./rendercheck/typography.html"><strong>1.1.</strong> Typography</a></li><li><a href="intro/history.html"><strong>1.2.</strong> VirtData History</a></li></ul></li><li><a href="concepts/concepts.html"><strong>2.</strong> VirtData Concepts</a></li><li><ul class="section"><li><a href="concepts/data_mapping_functions.html"><strong>2.1.</strong> Data Mapping Functions</a></li><li><a href="./concepts/modeling_cardinality.html"><strong>2.2.</strong> Modeling Cardinality</a></li><li><a href="./concepts/set_relatinships.html"><strong>2.3.</strong> Set Relationships</a></li></ul></li><li><a href="./intro/coming_soon.html"><strong>3.</strong> ComingSoon</a></li><li class="affix"><a href="./matter/glossary.html">Glossary</a></li></ul>
         </div>
 
         <div id="page-wrapper" class="page-wrapper">
@@ -73,24 +123,727 @@
                 </div>
 
                 <div id="content" class="content">
-                    <h1>Metagen</h1>
-<p>This book serves as the primary documentation for the
-Virtual Data Set projects.</p>
-<p>If you have requests, please submit them at the
+                    <h1>Introducing VirtData</h1>
+<p><strong>Please stand by while we bring the docs online...</strong></p>
+<p>This book serves as the primary documentation for VirtualDataSet projects.</p>
+<h2>What is a Virtual DataSet?</h2>
+<p>Virtual data can be described by a recipe. It can be created when you attempt
+to access it. Virtual Data is a lens into a set of data that may not exist yet,
+but which, once observed, is as tangible as stored data. Virtual data is what
+results when you apply a mapping function to a coordinate.</p>
+<p>The procedurally generated worlds of some video
+games start out as a virtual data set. A <em>procedural generation algorithm</em>
+can be thought of as a mapping function between a set of specific coordinates
+and a set of observable details. The data is virtual because it
+is synthesized as you observe it, according to a recipe.</p>
+<p>The coordinates can be in any useful form, such as a time on a timeline, a
+set of cartesian coordinates, something even more rudimentary like a count of
+iterations. The details can represent any tangible idea that is called for.</p>
+<p>The recipes used with virtual dataset are simply called <em>virtdata recipes</em>.
+They can vary in complexity from the mundane to the sophisticated.</p>
+<p>Some recipes -- those depending only on
+<a href="https://en.wikipedia.org/wiki/Pure_function">pure functions</a> -- will generate a
+<em>static virtual dataset</em>. Recipes that rely mutable state will generate
+a <em>dynamic virtual dataset</em>.</p>
+<h2>Requests</h2>
+<p>If you have requests for topics to include in this book, please submit them at the
 <a href="https://github.com/virtualdataset/metagen-docs/issues">Issue Tracker</a>.</p>
-<p>Otherwise, please stand by while we bring things online....</p>
-<h1>Why VirtData?</h1>
-<h1>The Brief History of Metagen</h1>
-<p>Metagen began as an experiment to see if a DSL could be used
-to make generation of rich and nuanced test data easy.</p>
-<p>The first generation of the metagener experiment was generally
-successful in producing a working prototype, with a direct
-generator specification language, fluent DSL and built-in examples.</p>
-<p>However, it had at least one major failing: It was still not easy to use.</p>
-<p>The current generation of metagen exists as a reboot of the original
+<h2>Next Steps</h2>
+<p>This book serves as the primary documentation for the
+Virtual DataSet projects, namely
+<a href="https://github.com/virtualdataset/metagen-java">Metagen-Java</a>
+If you have requests, please submit them at the
+<a href="https://github.com/virtualdataset/virtdata-docs/issues">Issue Tracker</a>.</p>
+<p>The book is structured to give you a useful entry point regardless of your
+experience with the concepts and tools. You can choose to go directly to
+the <a href="using_virtdata/common_recipes.html">Recipes</a> section, or
+you can start with <a href="concepts/concepts.html">Concepts</a>.</p>
+<h1>Why Virtual Data?</h1>
+<p>If it is not real data, then what is the value of it? Virtual
+data a thing that, when you need it, has no substitute.</p>
+<p>To explain why, let us consider the trade-offs in some basic
+data processing challenges and what they mean.</p>
+<p><strong>Challenge: access large amounts of bulk data</strong></p>
+<p>Actual Data</p>
+<ul>
+<li>depends primarily on speed and efficiency of storage system</li>
+<li>limited to size of storage system</li>
+</ul>
+<p>Virtual Data</p>
+<ul>
+<li>depends on speed of generation functions and CPU</li>
+<li>not effectively limited to size of storage</li>
+</ul>
+<p>In this case, virtual data is strongly favored for testing
+systems that need to be faster than the things that they
+are targeting. This is an essential requirement for any
+system that must provide high-fidelity results in timing,
+loading levels, etc. Essentially, load testing is a primary
+reason for having procedurally generated data.</p>
+<p><strong>Challenge: modify basic properties of test data</strong></p>
+<p>Actual Data</p>
+<ul>
+<li>requires recapture of test data, regardless of origin</li>
+</ul>
+<p>Virtual Data</p>
+<ul>
+<li>has no moving mass, instantly changes according to recipe</li>
+</ul>
+<p>The ability to change your data set instantly is also a boon for testing
+systems. Not only can you modify the conditions of a test by changing out
+your virtual data set, you can create multiple variations that can elicit
+interesting contrasts and outcomes, ad-infinitum. The size of a virtual
+data set is paltry, often smaller than testing logic.</p>
+<p><strong>Challenge: create nuanced data stream interplay</strong></p>
+<p>Actual Data</p>
+<ul>
+<li>same design burden as virtual data, but still with moving mass</li>
+<li>significant effort is spent on managing bulk of data</li>
+</ul>
+<p>Virtual Data</p>
+<ul>
+<li>is able to create statistically shaped data without bulk transfer</li>
+<li>is able to provide determinism in addition to statistical shaping</li>
+<li>is able to simulate superset/subset relationships</li>
+</ul>
+<p>Because virtual data is dependent on the generation methods, and
+generation methods can be chosen themselves to have interesting
+mathematical relationships, many things are possible that we don't
+even consider when raw data is handed to us.</p>
+<p><strong>Challenge: access real data</strong></p>
+<p>Real data wins this one, obviously. Virtual data is <em>not</em> strictly real
+data, but it <em>can</em> be. Read further for why.</p>
+<p><strong>Challenge: access realistic data</strong></p>
+<p>Virtual data can be as realistic as you need it to be, up to and including
+being based on samples of real data. If you want to capture a real data set
+and access it as such through a virtual interface, then the data is, in fact,
+real data.</p>
+<p>Virtual data methods can be used as a sliding scale between accessing real data
+and just making it all up according to statistical recipes. With a small
+amount of real data, you can create a very high volume of simulated data. The small
+sample is almost always easy to fit in memory, keeping the data generators fast.</p>
+<p>For accessing realistic data, <strong>why not both?</strong> If you have an example data
+set, nothing prevents you from using it as raw data through the virtual data interface.
+Doing so gives you useful choices for tackling some of the challenges above.</p>
+<h3>In Summary</h3>
+<p>It is possible to have realistic samples, statistical shaping, high throughput,
+immediately adaptivity, and repeatability at the same time.</p>
+<p>The examples above are only the tip of the iceberg in terms of what is possible.
+Virtual DataSet aims to make it easier to explore and use new dataset simulation
+methods.</p>
+<h1>Typography</h1>
+<p>This book includes some diagrams that are rendered from graphical markup.</p>
+<p>This page lets you verify that you can read the glyphs and diagrams correctly.
+If you do not see two of everything, then you will not be able to see some
+of the diagrams in the book. If you do not see rendering as you expect,
+please report the <a href="https://github.com/virtualdataset/virtdata-docs/issues">issue</a>.</p>
+<p>In each of the rendering checks below, the dynamically rendered element is shown
+first, followed by a reference image.</p>
+<h3>jsxgraph rendering</h3>
+<p>courtesy of <a href="http://jsxgraph.uni-bayreuth.de/wp/index.html">jsxgraph</a></p>
+<div title="dynamically rendered" align="middle">
+<div id="jsxtest" class="jxgbox" style="width:250px; height:250px;"><br> </div> 
+<script type="text/javascript">
+var brd = JXG.JSXGraph.initBoard('jsxtest', 
+   {
+    boundingbox:[-10,10,10,-10], 
+    keepaspectratio: true, 
+    axis:true,
+    showCopyright: false
+   }
+  ); 
+  var axisx = brd.create('axis', [[0,0], [1,0]],    
+  {
+    firstArrow: true,
+    lastArrow: true, 
+    ticks: {
+      drawZero: true,
+      ticksDistance: 1,
+      majorHeight: 30,
+      tickEndings: [1,1],
+      minorTicks: 0
+    }  
+  });
+  var p = brd.create('glider', [2.2, 0, axisx], {});    
+</script>
+</div>
+<div title="reference image" align="middle">  
+<img src="rendercheck/jsxgraph.png"></img> 
+</div>
+<h3>Mermaid.js rendering</h3>
+<p>courtesy of <a href="https://knsv.github.io/mermaid/">mermaid.js</a></p>
+<div title="rendered dynamically" align="middle">
+<div class="mermaid" style="display:inline;">
+graph LR
+A-->B
+B-->C
+C-->A
+</div>
+</div>
+<div title="reference image" align="middle">
+<img src="rendercheck/mermaid_abc.png"></img>
+</div>
+<h3>nomnoml rendering</h3>
+<p>courtesy of <a href="http://nomnoml.com/">nomnoml.com</a></p>
+<div title="rendered dynamically" align="middle">
+<script class="nomnoml-text" type="text/plain">
+#direction: right
+ [A] -> [B]
+ [B] ->  [C]
+ [C] -> [A]
+</script>
+</div>
+<div title="reference image" align="middle">
+<div><img src="rendercheck/nomnoml_abc.png"></img> 
+</div>
+### mathjax rendering
+<p>courtesy of <a href="https://mathjax.org">mathjax.org</a></p>
+<p>An inline \( \int x = \frac{x^2}{2} \) equation, with a reference image:
+<img src="rendercheck/mathjax_inline.png"></img>. The images should match.</p>
+<p>A block equation:</p>
+<p>\[ \mu = \frac{1}{N} \sum_{i=0} x_i \]</p>
+<p>The above equation should look like the reference image below:</p>
+<div align="middle">
+<img src="rendercheck/mathjax_block.png"></img> 
+</div> <h1>Virtual DataSet Origin</h1>
+<p>VirtualDataSet began as an experiment to see if a DSL could be used
+to create interesting and reusable recipe-driven synthetic data streams.</p>
+<p>The first generation of the experiment, named <strong>Metagener</strong>, was
+generally successful in producing a working prototype, with a direct
+generator specification language, fluent API and built-in examples.
+However, it had at least one major failing: It was still
+not easy to use.</p>
+<p>The current version of the toolkit exists as a reboot of the original
 ideas, but with a less ambitious set of goals and a focus providing
-something useful. If it is successful, then some of the more
-interesting features of the original idea may be added in.</p>
+something useful.</p>
+<p>The design priorities of this phase of the virtual dataset tools are:</p>
+<ol>
+<li>Late-binding and easy integration for runtime library extensions</li>
+<li>Idiomatic Java-8 functional reflection</li>
+<li>Efficient lambda construction and composition of higher-order data mappers</li>
+<li>Consumer-friendly APIs for easy client integration</li>
+<li>A set of common recipe examples for users to copy and paste</li>
+<li>Useful documentation</li>
+</ol>
+<p>Once these basic goals are met, some of the more interesting features of the original project may be added in.</p>
+<h1>Virtual Dataset Concepts</h1>
+<p>VirtData provides more than just a set of libraries and APIs.
+The concepts are the starting point and foundation. The software
+tools are built directly from the concepts. Having a strong
+understanding of the concepts will enable you to get the
+most out of virtual dataset.</p>
+<p>This section contains some of the basic. As you go through the
+chapter, more detailed explanations are given where appropriate.</p>
+<h3>Procedural Generation</h3>
+<p>Procedural generation is a method of generating data by feeding
+a stream of <em>random</em> or <em>pseudo-random</em> data into an algorithm.
+Usually, procedural generation aims to produce content which appears
+original, not generated by an algorithm -- believable by some standard.</p>
+<p>In VirtData, this takes the form of applying a layer of
+data mapping functions to a set of inputs called coordinates.</p>
+<h3>Input Coordinates</h3>
+<p>In input coordinate is simply the logical address of a set
+of data that a data mapping functioni can render.
+Input coordinate are often single scalar values. However,
+for some functions, multiple values may be supported.</p>
+<p>A single-valued input coordinate can be used, for example, to
+describe a point on a time line. A coordinate pair may be used
+to represent latitude and longitude.</p>
+<h3>(Pseudo) Random Number Generators</h3>
+<p>Sequences of values produced by random number generators
+(more properly called Pseudo-RNGs) are not actually random, even
+though they may pass certain tests for randomness. Useful (P)RNGs
+produce <em>apparently</em> random data that is completely deterministic. In
+practice, the combination of these two properties is quite valuable
+for testing and data synthesis. Apparent randomness and determinism
+(AKA repeatability in this context) are not mutually exclusive.</p>
+<p>There <em>are</em> truely (effectively) random number generators available.
+Assume that the term RNG in VirtData always refers to the common
+<em>Pseudo</em>-RNG.</p>
+<h3>Virtual Samples</h3>
+<p>Just as RNGs can appear random when the are not truly, statistical
+distributions which take them as inputs work in the same way. By
+feeding a uniform RNG over the unit interval [0,1.0] into a density
+function, we can simulate random sampling (with replacement) over
+an imagined population of entities, events, times, etc. This is a
+common building block of realistic simulations, for video games
+as well as database tests, and everything in between.</p>
+<h3>Data Mapping Functions</h3>
+<p>The primary tool in the VirtData toolbox is the data mapping function.
+It is simply a function that knows how to take an input and produce
+a result that is meaningful to the user. VirtData makes it easy to
+reuse data mapping functions in pre-assembled ways, thus acting as
+a &quot;recipe&quot; for a virtual dataset.</p>
+<p>The term <em>Data Mapping</em> is contrasted with the term <em>Data Generation</em>
+, as explained further in
+<a href="./concepts/data_mapping.html">Data Mapping Functions in Detail</a>.</p>
+<h1>Data Mapping Functions</h1>
+<h3>Audience</h3>
+<p>This section should be useful to new users as well as experienced
+developers. Here, we explain how and why we use functions for
+building data mapping recipes. If you are planning to build your
+own data mapping recipes, this section is essential reading.</p>
+<h3>Input -&gt; Function -&gt; Output</h3>
+<p>A function represents a mapping between one set of values and another.
+Consider a basic example in which the function N(i) maps an input
+number to text form.</p>
+<script class="nomnoml-text" type="text/plain">
+#zoom:1.0
+#direction:right
+#.value: fill=#D0FFD0 visual=frame
+#.function: fill=#E0FFE0 visual=sender
+[example 1|
+[<value> input: 1] ->[<function> F(1)]
+[<function>F(1)] -> [<value>output: "one"]
+[<value> input: 2] ->[<function>F(2)]
+[<function>F(2)] -> [<value>output: "two"]
+[<value> input: 3] ->[<function>F(3)]
+[<function>F(3)] -> [<value>output: "three"]
+]
+</script>
+<p>In this example, as will often be the case, the type of input is different
+than that of the output. The input could be a <em>long</em>, and the output type
+a <em>String</em>, for example. This example also shows data flowing through the
+function. This is a common representation in flow-based programming.</p>
+<h3>Value Semantics</h3>
+<p>If we consider the words above to be the names of users in a population, it is easy to
+see how we could think of <strong><em>F</em></strong> as simply enumerating their names. In this case,
+the word values are semantically <em>properties</em> -- the names of some
+arbitrary members of a population. We say that it is arbitrary in this case
+simply because a property does not uniquely identify a member of a population.
+We are not yet speaking about identity semantics.
+So far we have chosen only to asign the semantic of property to the output values.</p>
+<p>If we take it a step further and say that the words are unique identifiers for users,
+then we can say that we are indeed identifying <em>specific</em> instances of a population.
+This would be the case, for example, if you had a system in which each unique
+number name represented a unique user. Depending on your system, this may or may not
+be the case (I would hope it is not). The most important point here is that it is up to you
+how uniqueness in your particular system is represented -- and hence how you should
+model it. So long as the semantic relationships in your data mapping functions
+mirror the identity and property semantics of your application, it will work.</p>
+<p>Both properties and instances are important in a dataset. How do we have both together
+in a way that is meaningful? How do we make it so that we can deal with instances
+of things as well as the properties so that we actually get stable properties for
+specific instances?</p>
+<p>For this, we need to combine functions. To model the relationship between the identity
+of a thing at one level and an associated property, we simply mirror the relationship
+in terms of functions. We combine functions. In formal terms, we create a
+<em>composed</em> function.</p>
+<p>As a starting point, we must have a basic model of how the identities and properties
+relate to each other:</p>
+<script class="nomnoml-text" type="text/plain">
+#direction:down
+#zoom:1.0
+[identity: user_id] --> [property: first name]
+[identity: user_id] --> [property: last name]
+</script>
+<p>For the first time, we see a graph structure that represents the association between
+instances and properties of those instances in a data set. It is not unlike an
+entity-relationship diagram. We will call this type of graph an <em>entity-property</em> graph.</p>
+<p>Although basic, we see three values and how they are related. <em>first_name</em> depends on
+<em>user_id</em>, as does <em>last_name</em>. This is the same as saying that you must have the
+value for user_id before you can calculate the values for first and last name. It also
+shows why we draw the lines in this direction when modeling data flow.</p>
+<p>It illustrates cardinal relationships but does not capture <em>how</em> the data corresponds
+from one value to another. For this, we need to fill in the blanks. First, let's talk
+about where everything begins in our data flow.</p>
+<h3>Input Coordinates</h3>
+<p>When mapping data via functions we have to have an original input value. For the sake
+of simplicity, we will stick to whole numbers in sequence. Knowing that our original
+input data is simply the counting numbers allows us to do interesting things later
+with cardinality. For now, the most important thing to remember is that we have
+a primary input that we call the <em>coordinate</em> -- an integer from a sequence.</p>
+<h3>Composition and Dataflow</h3>
+<p>Assume that you have two functions:</p>
+<p><em>one that maps numbers to user ids</em>:</p>
+<script class="nomnoml-text" type="text/plain">
+#zoom:0.75
+#direction:right
+#.input: fill=#FFFFFF visual=frame
+#.function: fill=#FFFFFF visual=sender
+#.userid: fill=#E2D58B visual=frame
+[<input> input: number] ->[<function>U]
+[<function>U] -> [<userid>output: user_id]
+</script>
+<p><em>and another that maps user ids to first names</em>:</p>
+<script class="nomnoml-text" type="text/plain">
+#zoom:0.75
+#direction:right
+#.userid: fill=#E2D58B visual=frame
+#.function: fill=#FFFFFF visual=sender
+#.firstname: fill=#44BBA4 visual=frame
+[<userid> input: user_id] ->[<function>F]
+[<function>F] -> [<firstname>output: first_name] 
+</script>
+<p>If you combine them together in data-flow form, the results looks like this:</p>
+<script class="nomnoml-text" type="text/plain">
+#zoom:0.75
+#direction:right
+#.input: fill=#FFFFFF visual=frame
+#.function: fill=#FFFFFF visual=sender
+#.userid: fill=#E2D58B visual=frame
+#.firstname: fill=#44BBA4 visual=frame
+[<input> input: number] ->[<function>U]
+[<function>U] -> [<userid> user_id]
+[<userid> user_id] ->[<function>F]
+[<function>F] -> [<firstname>output: first_name]
+</script>
+<p>The value of user id is the output of U and the input of F in this configuration.
+If we compose these functions <em>U(i)</em> and <em>F(i)</em> together, they become a single
+function that maps a number to an instance to a first name. Somewhat formally,
+we would call this F(U(i)). In other words, we would apply F to the result of
+applying U to the original input. This wording can get out of hand for larger
+compositions, so we will emphasize flow-based descriptions moving forward.</p>
+<h3>Function Graphs</h3>
+<p>Given an entity-property graph, we can build a new kind of picture with more
+detail: the <em>function graph</em>. You can think of the function graph
+as a symbolic encoding of the relationships in a data set. We simply add
+the coordinate input value at the front, and then drop in a place-holder for
+each required mapping function:</p>
+<script class="nomnoml-text" type="text/plain">
+#zoom:1.0
+#direction:down
+#.function: fill=#FFFFFF visual=sender
+#.userid: visual=frame
+#.firstname: visual=frame
+#.lastname: visual=frame
+[<input>coordinate] ->[<function>U]
+[<function>U] -> [<userid>identity: user_id]
+[<userid>identity: user_id] ->[<function>F]
+[<function>F] -> [<firstname>property: first_name]
+[<userid>identity: user_id] ->[<function>L]
+[<function>L] -> [<lastname>property: last_name]
+</script>
+<p>This function graph is merely a template. The functions <em>U</em>, <em>F</em>, and <em>L</em> are
+presently symbolic. We haven't picked anything concrete to put in their
+places. However, we can see the function semantics and signatures that must
+be fulfilled.</p>
+<p>The key insight here is that <strong>each complete path of this graph represents a composed
+function</strong> that can render self-consistent data. This is the basic building block for
+modeling virtual datasets with interesting data relationships.</p>
+<h3>Type Signatures</h3>
+<p>No matter what type system is used, the input and output
+types determine what kind of functions may be plugged in. This is called the
+<em>signature</em> of the function. In terms of data flow between pure functions,
+we are really only  concerned about the types of inputs and outputs. Our
+examples above mostly called out semantics and labels, ignoring data types mostly.</p>
+<p>There are actual concrete types at every stage of function composition. It is also true
+that more than one data type can fulfill the need for a counting number, etc. At some
+point we have to start being particular about the data types needed in our data set.
+Here, we remove the explanatory &quot;identity and property&quot; markers, and go to concrete
+data types and labels:</p>
+<script class="nomnoml-text" type="text/plain">
+#zoom:1.0
+#direction:down
+#.function: fill=#FFFFFF visual=sender
+#.userid: visual=frame
+#.firstname: visual=frame
+#.lastname: visual=frame
+[<input>coordinate: long] ->[<function>U]
+[<function>U] -> [<userid>user_id: long]
+[<userid>user_id: long] ->[<function>F]
+[<function>F] -> [<firstname>first_name: String]
+[<userid>user_id: long] ->[<function>L]
+[<function>L] -> [<lastname>last_name: String]
+</script>
+<p>Even though the function graph above is not realizable yet, it is useful as is.
+Function graphs of this type can be referred to as <em>function graph template</em>.</p>
+<p>From this function graph template, we have two distinct paths -- two different
+composed functions to be created. If we traverse each path from the coordinate,
+we see two <em>composed function template</em>s.</p>
+<h2>Data Mapping vs Data Generation</h2>
+<p>Virtual dataset emphasizes the idea of &quot;data mapping&quot; over &quot;data generation&quot;,
+but allows for users to break these rules when necessary. Data mapping
+implies that pure functions are being used. Data generation implies
+that deterministic output is not expected. The choice between these
+is simply a matter of whether you use mutable state in your mapping.</p>
+<h3>Mutable State?</h3>
+<p>A functions that depends on mutable state in addition to the input
+value will not yield the same result for a given input. Such functions
+may produce the same sequence of outputs given the same sequence
+of inputs, but this is not sufficient for simulating sampling from
+a population with stable properties.</p>
+<h3>Immutable State?</h3>
+<p>A mapping function that does not depend on changing state is
+effectively a pure function. This includes functions that depend
+on data, as long as that data itself doesn't change.</p>
+<p>Parameters to a function that can initialize it are simply another
+form of immutable state -- so long as these parameters do not change
+for the life of the function.</p>
+<h3>Choosing Mapping Functions</h3>
+<p>The function placeholders in the examples above can be satisfied by
+any function instance that fits the type signatures. Further, how
+these functions are realized at runtime are left to the individual
+data mapping libraries. Each library supports a set of loadable
+functions that can be asked for by name. The details of this are
+left for later in the usage section.</p>
+<h1>Modeling Cardinality</h1>
+<h3>Data Types and Values</h3>
+<p>Given that our values are all <em>bits</em> on some level, there is no
+basic <em>fixed size</em> data type that has an unlimited range of values.
+Even the floating point types have finite range, although it is
+represented and handled differently than that of the whole number
+types.</p>
+<h3>Standard Types</h3>
+<p>For a 64-bit data type, there are \( 64^2 \) different distinct values
+that can be represented. With the usual twos-complement representation
+for signed numbers, this ends up being every value between
+[-9223372036854775808,
+<a href="https://en.wikipedia.org/wiki/9223372036854775807">9223372036854775807</a>],
+inclusive.</p>
+<p>The signed 64-bit integer is in focus here for a couple of reasons:</p>
+<ul>
+<li>This is the most common machine type that is used in current RNGs</li>
+<li>This is the highest width type which is commonly supported throughout
+modern architectures from the memory bus all the way to the registers
+in the CPU.</li>
+</ul>
+<p>These two go hand-in-hand of course. It means that there is much to
+draw from in terms of inspiration and examples for building efficient
+functions.</p>
+<p>There will be other
+<a href="https://docs.oracle.com/javase/tutorial/java/nutsandbolts/datatypes.html">types</a>
+in use.  It is possible to use objects in addition to basic types,
+but for now we will focus on the signed long type for the purposes of
+explanation.</p>
+<h3>Simulating Cardinality</h3>
+<p>We assume that whether you are using a 64-bit <em>or</em> 32-bit signed number, that
+you can represent a high enough cardinality of values to have a useful dataset,
+<em>in most cases</em>. There are ways of having higher cardinality when needed, but
+they are less efficient at runtime.</p>
+<p>When applying a hash function to counting numbers, the results will generally
+vary within the total range of values that you can represent.</p>
+<p>In other words, applying the murmur3 hash to the long values 0..3 will yield
+values ranging from -8048510690352527683 to 6292367497774912474. Such high
+values are not immediately useful for enumerating or simulating identifiers
+in realistically bounded datasets. However, the wide dispersion achieved such
+a hash function <em>is</em> useful to us, so how do we use it at a more reasonable
+range of values for typical datasets?</p>
+<p>Enter modulus arithmetic. With such wide range in values, it is reasonable to
+downsample the hashed value into the range simply by dividing the value by
+the range size we want, taking only the remainder.</p>
+<p>For example, the first 5 values produced by such a method with a modulo of
+50 and absolute value are:</p>
+<script class="nomnoml-text" type="text/plain">
+#zoom:0.75
+#direction:right
+#.input: fill=#FFFFFF visual=frame
+#.function: fill=#FFFFFF visual=sender
+#.userid: fill=#E2D58B visual=frame
+#.firstname: fill=#44BBA4 visual=frame
+[<input> 0] ->[<function>Hash(0)]
+[<function>Hash(0)] -> [<input> 39]
+[<input> 39] -> [<function>Abs(39)]
+[<function>Abs(39)] -> [<firstname>result: 39]
+[<input> 1] ->[<function>Hash(1)]
+[<function>Hash(1)] -> [<input> 24]
+[<input> 24] -> [<function>Abs(24)]
+[<function>Abs(24)] -> [<firstname>result: 24]
+[<input> 2] ->[<function>Hash(2)]
+[<function>Hash(2)] -> [<input> -43]
+[<input> -43] -> [<function>Abs(-43)]
+[<function>Abs(-43)] -> [<firstname>result: 43]
+[<input> 3] ->[<function>Hash(3)]
+[<function>Hash(3)] -> [<input> -33]
+[<input> -33] -> [<function>Abs(-33)]
+[<function>Abs(-33)] -> [<firstname>result: 33]
+[<input> 4] ->[<function>Hash(4)]
+[<function>Hash(4)] -> [<input> 21]
+[<input> 21] -> [<function>Abs(21)]
+[<function>Abs(21)] -> [<firstname>result: 21]
+</script>
+<p>We use absolute value in addition to modulo, because signed results allow our range
+to span twice as many unique values as our intended output range.</p>
+<p>The next five values are 0, 6, 22, 6, and 2.</p>
+<p>This shows that we have a single duplicate (6), which is quite expected,
+according to the odds. In fact, the probability of seeing a single
+duplicate goes over 50% as you go to 9 samples. Over very large numbers of
+samples, the effect evens out quite well. In fact, it is easy to
+show that the quality of samples produced in this way is directly
+dependent upon the quality of the underlying hash.</p>
+<p>Using this method, we are able to simulate very large ranges and very large numbers of
+data samples. Furthermore, since the function pipeline is purely functional with no
+mutable state, we know that we can use the mapping from the input value to the output as
+a map that does not change. In other words, if we take the input value as an enumeration
+of samples, or <em>coordinates</em> of the output data, we have a fixed dataset with respect to
+the samples we choose to observe. In this sense, applying the function is akin to taking
+samples of data from a fixed coordinate space.</p>
+<h3>To Be Continued...</h3>
+<p>There is more to come on this section in the future. Stay tuned.</p>
+<h1>Set Relationships</h1>
+<p>This section will talk about how to model relative cardinality between
+different types of entities. Before reading this, you should already
+be familiar with <a href="data_mapping_functions.html">data mapping</a>
+and <a href="modeling_cardinality.html">cardinality functions</a>.</p>
+<p>Suppose you have two different sets of things in your virtual dataset:</p>
+<script class="nomnoml-text" type="text/plain">
+#zoom:0.75
+#direction:right
+#.data: fill=#FFFFFF visual=frame
+[entity type A|
+[<data> "foo"]
+[<data> "bar"]
+[<data> "baz"]
+]
+</script>
+<script class="nomnoml-text" type="text/plain">
+#zoom:0.75
+#direction:right
+#.data: fill=#FFFFFF visual=frame
+[entity type B|
+[<data> "X"]
+[<data> "Y"]
+[<data> "Z"]
+]
+</script>
+<p>It may be the case that there is no association between elements of the first set to
+the second set, as illustrated above.</p>
+<p>You could have a many-to-many association from set A to set B, like this:</p>
+<script class="nomnoml-text" type="text/plain">
+#zoom:1.0
+#direction:down
+#.data: fill=#FFFFFF visual=frame
+[<data> foo]
+[<data> bar]
+[<data> baz]
+[<data> X]
+[<data> Y]
+[<data> Z]
+[foo] -> [X]
+[foo] -> [Y]
+[foo] -> [Z]
+[bar] -> [X]
+[bar] -> [Y]
+[bar] -> [Z]
+[baz] -> [X]
+[baz] -> [Y]
+[baz] -> [Z]
+</script>
+<p>In any case, the associations are themselves part of the data set. They must be
+modeled as such. The way that we do this in virtual dataset is to group our
+functions in the same way that data should be grouped.</p>
+<p>Isolating the values that we use for for uniqueness is a key step.
+Assume for now, that you are using a simple long value to identify each
+unique entity or instance of your virtual dataset. For example, <em>foo</em>
+is entity 0, <em>bar</em> is entity 1, and <em>baz</em> is entity 2. The same applies
+for X, Y and Z: X is 0, Y is 1, and Z is 2.</p>
+<p>Let's make this clear in terms of the value groupings that we would need to simulate
+for a full association between all type-A entities and all type-B entities. Here are
+the tuples: (0,0), (0,1), (0,2), (1,0), (1,1), (1,2), (2,0), (2,1), (2,2).</p>
+<p>Another way to say this is that &quot;All members of set A are associated with
+All members of Set B&quot;.</p>
+<p>A simple modulo function that does only range adjustment for the sizes of these two
+populations is simply &quot;mod 3&quot;. You could draw many many samples via a mapping function,
+but as long as the mapping functions are the <em>same</em>, you would get the same identifier
+value for each entity in the tuple. You could only ever get (0,0), (1,1), and (2,2).
+This does not suffice for our nine different associations above.</p>
+<p>Let us look at the associations directly, and work backwards to find the appropriate
+functions that will maintain the correspondence.</p>
+<p>Here are the associations, enumerated by sample number (coordinate value). The discrete
+correspondence is captured for A and B in a more visually obvious way in the columns
+to the right.</p>
+<pre><code>sample=#  association  A map   B map
+
+sample=0  (0,0)        0-&gt;0    0-&gt;0
+sample=1  (0,1)        1-&gt;0    1-&gt;1
+sample=2  (0,2)        2-&gt;0    2-&gt;2
+sample=3  (1,0)        3-&gt;1    3-&gt;0
+sample=4  (1,1)        4-&gt;1    4-&gt;1
+sample=5  (1,2)        5-&gt;1    5-&gt;2
+sample=6  (2,0)        6-&gt;2    6-&gt;0
+sample=7  (2,1)        7-&gt;2    7-&gt;1
+sample=8  (2,2)        8-&gt;2    8-&gt;2
+
+sample=9  (0,0)        9-&gt;0    9-&gt;0
+sample=10 (0,1)       10-&gt;0   10-&gt;1
+sample=11 (0,2)       11-&gt;0   11-&gt;2
+...       ...         ...     ...
+</code></pre>
+<p>In this case, we can see that the functions must do more than simply correct for the
+possible number of unique identifiers in each population. They must also have
+some type of relationship that adjust for the relative rates of progression through
+the possible values. For every A value, we need to see one each of B. In other words,
+we need to see a new A value about 1/3 as frequently as we see a new B value.</p>
+<p>For A, we need a function like &quot;divide by 3, then modulo by 3&quot;.
+For B, simply &quot;modulo by 3&quot;. By dividing the sampling input by a number, we reduce
+its rate of progression.</p>
+<p>Although we are looking at correspondence between discrete values (the counting numbers),
+it is easy to demonstrate on a coordinate plane as well using standard plotting tools.</p>
+<p>First, by using a floor function to visually illustrate the discrete mapping:</p>
+<div id="fpthrees1" style="width: 400px; height: 200px;"></div> 
+<script type="text/javascript">
+brd = JXG.JSXGraph.initBoard('fpthrees1', {boundingbox: [-1, 4, 20, -1], axis:true, showCopyright: false});
+ brd.suspendUpdate();
+ var c1 = brd.create('functiongraph', [function(x){ return (Math.floor(x) % 3); }],
+                       {strokeWidth:2,strokeColor:'black'});
+ var c2 = brd.create('functiongraph', [function(x){ return (Math.floor(x/3.0) % 3); }],
+                       {strokeWidth:5,strokeColor:'blue',strokeOpacity:'0.25'});  
+ brd.unsuspendUpdate();
+</script>
+<p>And second, the continuous analog, to show the relative slope
+and repeating patterns at every 9th interval:</p>
+<div id="fpthrees2" style="width: 400px; height: 200px;"></div> 
+<script type="text/javascript">
+brd = JXG.JSXGraph.initBoard('fpthrees2', {boundingbox: [-1, 4, 20, -1], axis:true, showCopyright: false});
+ brd.suspendUpdate();
+ var c3 = brd.create('functiongraph', [function(x){ return (x % 3); }],
+                       {strokeWidth:2,strokeColor:'black'});
+ var c4 = brd.create('functiongraph', [function(x){ return ((x/3.0) % 3); }],
+                       {strokeWidth:5,strokeColor:'blue',strokeOpacity:'0.25'});  
+ brd.unsuspendUpdate();
+</script>
+<h3>So What?</h3>
+<p>From all this we can see one of the most basic strategies for establishing a one-to-many
+relationship. The basic rule is that the <em>many</em> side of the relationship must
+have exactly <em>that many</em> more values per coordinate range than the <em>one</em> side. It is
+usually just a matter of adjusting the relative rates of progression along the
+coordinate line, as illustrated above.</p>
+<p>Also, the example above is very basic. It shows a regular repeating pattern with
+a full one-to-many association. How do we extrapolate this to other more advanced examples?
+This is a more advanced topic that will be explored in the future. For now, refer
+to the recipes section for some ideas.</p>
+<h1>Coming Soon</h1>
+<p>This book is a work in progress. This is an outline of upcoming sections.</p>
+<ul>
+<li>Using VirtData
+<ul>
+<li>Specifiers</li>
+<li>Common Recipes</li>
+</ul>
+</li>
+<li>Extending VirtData
+<ul>
+<li>Library Structure</li>
+<li>Adding a Library</li>
+</ul>
+</li>
+</ul>
+<div style="display:none;">
+- [Using VirtData](./using_virtdata/using_virtdata.md)
+    - [Specifiers](./using_virtdata/specifiers.md)
+    - [Common Recipes](./using_virtdata/common_recipes.md)
+- [Extending VirtData](./extending_virtdata/extending_virtdata.md)
+    - [Library Structure](./extending_virtdata/library_structure.md)
+    - [Adding a Library](./extending_virtdata/adding_libraries.md)
+</div><h1>Glossary</h1>
+<dl>
+ <dt>Data Model</dt>
+ <dd>
+ A model that describes the types of data that may be stored in a data set, logical or physical. It includes the types, and in some cases, the implied set of operations which are valid for accessing and manipulationg the data.
+ </dd>
+ <dt>Dataset</dt>
+ <dd>
+ A dataset is simply a named set of content which can be consumed, and/or modified, generally for a particular purpose. A dataset can be described by a generative model
+  or it can be actual data that
+  has been simulated or captured
+  from a real world activity.
+ </dd>
+ <dt>Dataset Model</dt>
+ <dd>
+ A model that describes the content
+ of a dataset, including data types, relative cardinalites, and estimates or measurements of the distribution of the data.
+ </dd>
+</dl>
 
                 </div>
 
@@ -113,6 +866,53 @@ interesting features of the original idea may be added in.</p>
             if ($(".fa").css("font-family") !== "FontAwesome") {
                 $('<link rel="stylesheet" type="text/css" href="_FontAwesome/css/font-awesome.css">').prependTo('head');
             }
+        </script>
+
+        <script>
+//            var target = document.getElementById('nomnoml-view1');
+//            var noml = document.getElementById('nomnoml-text1').innerHTML;
+
+            function escapeHtml(str) {
+                var div = document.createElement('div');
+                div.appendChild(document.createTextNode(str));
+                return div.innerHTML;
+            }
+
+            function createElement(str) {
+                var div = document.createElement('div');
+                div.innerHTML = str;
+                var container = document.createDocumentFragment();
+                for (var i=0; i < div.childNodes.length; i++) {
+                    var node = div.childNodes[i].cloneNode(true);
+                    container.appendChild(node);
+                }
+                return container.childNodes[0];
+            }
+            var elems = document.getElementsByClassName("nomnoml-text");
+            while (elems.length>0) {
+                var elem = elems[0];
+                var noml = elem.innerHTML;
+
+                try {
+                    var canvas = createElement("<canvas></canvas>");
+                    elem.parentNode.insertBefore(canvas,elem.nextSibling);
+
+                    nomnoml.draw(canvas,noml);
+                    elem.setAttribute("class","nomnoml-rendered");
+                } catch (err) {
+                    var errdiv = createElement("<div></div>");
+                    var textDiv = createElement("<pre></pre>");
+                    textDiv.innerText=elem.innerText;
+                    var errnode = createElement("<div><pre>" + err + "</pre></div>");
+                    errdiv.appendChild(textDiv);
+                    errdiv.appendChild(errnode);
+                    errdiv.setAttribute("class", "nomnoml-error");
+                    elem.parentNode.replaceChild(errdiv,elem);
+                }
+                // refresh
+                var elems = document.getElementsByClassName("nomnoml-text");
+            }
+
         </script>
 
         <!-- Livereload script (if served using the cli tool) -->
