@@ -1,5 +1,9 @@
-Introducing VirtData
-====================
+---
+date: 2017-05-19T21:52:57
+title: Introducing VirtData
+type: index
+weight: 11
+---
 
 **Please stand by while we bring the docs online...**
 
@@ -41,6 +45,7 @@ This book serves as the primary documentation for the
 Virtual DataSet projects, namely 
 [Metagen-Java](https://github.com/virtualdataset/metagen-java)
 If you have requests, please submit them at the 
+
 [Issue Tracker](https://github.com/virtualdataset/virtdata-docs/issues).
 
 The book is structured to give you a useful entry point regardless of your 

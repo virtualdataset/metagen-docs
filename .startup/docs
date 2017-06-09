@@ -43,4 +43,5 @@ hugo serve \
 LPID=$!
 printf "hugo running as pid %s\n" "${LPID}"
 printf "%s\n" "${LPID}" > .hugo.pid
-) &
+#) &
+)
