@@ -16,7 +16,7 @@ canonifyurls = true
 	# repo_url = "https://github.com/virtdata/
 
 	# version = "1.0"
-	logo = "images/engineblock_128.png"
+	logo = "images/virtdata_128.png"
 	favicon = "/images/engineblock_32.png"
 
 	# permalink = "#"
@@ -39,14 +39,25 @@ canonifyurls = true
 	plainIDAnchors = true
 
 [[menu.main]]
-	name   = "VirtData.io"
+	name   = "Introduction"
 	url    = "/"
 	weight = 10
 
 [[menu.main]]
-	name   = "Introduction"
-	url    = "/intro"
-	weight = 20
+	name   = "Concepts"
+	url    = "/concepts"
+	weight = 30
+
+[[menu.main]]
+	name   = "Modeling Datasets"
+	url    = "/modeling_datasets"
+	weight = 40
+
+
+[[menu.main]]
+	name   = "Glossary"
+	url    = "/glossary"
+	weight = 50
 
 #[[menu.main]]
 #    name   = "Design Sketches"

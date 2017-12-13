@@ -1,4 +1,14 @@
-# Set Relationships
+---
+date: 2017-12-347
+title: Set Relationships
+weight: 51
+menu:
+  main:
+    parent: "Modeling Datasets" 
+    identifier: modeling-set-relationships
+    weight: 51
+---
+
 
 This section will talk about how to model relative cardinality between
 different types of entities. Before reading this, you should already

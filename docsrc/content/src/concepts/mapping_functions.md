@@ -1,5 +1,13 @@
-Virtual DataSet Concepts
-========================
+---
+date: 2017-11-327
+title: Mapping Functions
+weight: 31
+menu:
+  main:
+    parent: Concepts
+    identifier: mapping-functions
+    weight: 31
+---
 
 VirtData provides more than just a set of libraries and APIs.
 The concepts are the starting point and foundation. The software
@@ -7,10 +15,7 @@ tools are built directly from the concepts. Having a strong
 understanding of them will enable you to get the most out 
 of virtual dataset.
 
-This section contains some of the basics. More detailed explanations 
-are found in the subsections.
-
-### Procedural Generation
+## Procedural Generation
 
 Procedural generation is a method of generating data by feeding a stream of
 *random* or *pseudo-random* data into an algorithm. Usually, procedural
@@ -20,18 +25,27 @@ algorithm -- believably authentic by some standard.
 In VirtData, this takes the form of applying a layer of data mapping functions
 to a set of inputs called coordinates.
 
-### Input Coordinates
+## Data Mapping Functions
+
+The primary tool in the VirtData toolbox is the data mapping function. It is
+simply a function that knows how to take an input and produce a result that is
+meaningful to the user. VirtData makes it easy to reuse data mapping functions
+in pre-assembled ways, thus acting as a "recipe" for a virtual dataset.
+
+## Input Coordinates
 
 An input coordinate is simply the logical address of a set of data that a
 mapping function can render. Input coordinates are often single scalar values.
-However, for some functions, multiple values may be supported.
+However, for some functions, multiple values may be supported. At the most basic
+level, input coordinates can be thought of as the independent variables that
+determine all of the dependent output variables.
 
 A single-valued input coordinate can be used, for example, to describe a point
 on a time line. A coordinate pair may be used to represent latitude and
 longitude. A 4-tuple could describe a place and time with X, Y, Z, and T
 components.
 
-### (Pseudo) Random Number Generators
+## Random Number Generators
 
 Sequences of values produced by random number generators (more properly called
 Pseudo-RNGs) are not actually random, even though they may pass certain tests
@@ -44,7 +58,20 @@ There *are* ways of collecting random data that is effectively and truly random,
 although such methods are not generally useful for testing at speed. Assume that
 the term RNG in VirtData always refers to the common Pseudo*-RNG.
 
-### Virtual Samples
+## Hash Functions
+
+While RNGs do provide a repeatable stream upon which to build a virtual data set,
+this requires that you always iterate the RNG state in the same order. That is,
+you must iterate every cycle in the same exact order for each time you want
+to create a rendering of data. Ideally, we want to be able to observe
+a part of the virtual data set without having to iteratively advance the RNG
+states to the interesting part.
+
+For this, we use hashing instead of RNGs. By using a hash with relatively good
+apparent randomness and high dispersion, we can achieve much the same as with an
+RNG with the added benefit of random access to the data stream.
+
+## Density Sampling
 
 Just as RNGs can appear random when the are not truly, statistical distributions
 which take them as inputs work in the same way. By feeding a uniform RNG over
@@ -52,11 +79,4 @@ the unit interval [0,1.0] into a density function, we can simulate random
 sampling (with replacement) over an imagined population of entities, events,
 times, etc. This is a common building block of realistic simulations, for video
 games as well as database tests, and everything in between.
-
-### Data Mapping Functions
-
-The primary tool in the VirtData toolbox is the data mapping function. It is
-simply a function that knows how to take an input and produce a result that is
-meaningful to the user. VirtData makes it easy to reuse data mapping functions
-in pre-assembled ways, thus acting as a "recipe" for a virtual dataset.
-
+  

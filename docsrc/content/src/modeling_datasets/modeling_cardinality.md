@@ -1,5 +1,13 @@
-Modeling Cardinality
-====================
+---
+date: 2017-12-347
+title: Cardinality
+weight: 51
+menu:
+  main:
+    parent: "Modeling Datasets" 
+    identifier: modeling-cardinality
+    weight: 51
+---
 
 ### Data Types and Values
 

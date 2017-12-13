@@ -1,10 +1,21 @@
-# Why Virtual Data?
+---
+date: 2017-11-327
+title: Why VirtData?
+weight: 2
+menu:
+  main:
+    parent: Introduction
+    identifier: why_virtdata
+    weight: 2
+---
 
 If it is not real data, then what is the value of it? Virtual 
 data is something that, when you need it, has no substitute. 
 
 To explain why, let us consider the trade-offs in some basic
 simulation and testing challenges and what they mean.
+
+## Speed
 
 ### Challenge: access large amounts of bulk data
 
@@ -25,6 +36,8 @@ In this case, virtual data is strongly favored for testing
  not easily get high fidelity results if the testing
  apparatus is saturated with load as easily as the test target.
 
+## Agility 
+
 ### Challenge: modify basic properties of test data
 
 Actual Data
@@ -38,6 +51,8 @@ systems. Not only can you modify the conditions of a test by changing out
 your virtual data set, you can create multiple variations that can elicit 
 interesting contrasts and outcomes, ad-infinitum. The size of a virtual 
 data set is paltry, often smaller than testing logic.
+
+## Sophistication
 
 ### Challenge: create nuanced interplay between data
 
@@ -54,6 +69,8 @@ Because virtual data is dependent on the generation methods, and
 generation methods can be chosen themselves to have interesting
 mathematical relationships, many things are possible that we don't
 even consider when raw data is handed to us.
+
+## Realism
 
 ### Challenge: access real data
 
@@ -79,6 +96,8 @@ set, nothing prevents you from using it as raw data through the virtual data
 interface. Doing so gives you useful choices for tackling some of the 
 challenges above.
 
+## Distribution
+
 ### Challenge: partition a dataset for distributed testing
 
 Real Data
@@ -89,6 +108,8 @@ Virtual Data
 
 When you need to be able to identify or control, or vary how data is distributed in
 a testing scenario, there is no comparison. 
+
+## Specificity
 
 ### Challenge: canonically identify detailed test data parameters
 
@@ -102,7 +123,7 @@ Virtual Data
   *normal* data, the recipes are compact. For data that is based on real
   samples, you get to pick how much is too much.
    
-### In Summary
+## In Summary
 
 It is possible to have realistic samples, statistical shaping, high throughput, 
 immediately adaptivity, and repeatability at the same time.
