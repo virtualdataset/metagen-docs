@@ -52,7 +52,8 @@ Setting coordinates Whe a functional kernel is realized in your runtime, it will
       <description>Description This section elaborates on the function graph kernel design.
 Herein, the function graph kernel will be abbreviated as FGK, although it needs a better name. In essence, the function graph kernel is a runtime implementation of the Function Graph Kernel API.
 A function graph is a directed graph. No loops are currently supported.
-Let us start with an example function graph template; This means that a function graph can look like this:</description>
+Let us start with an example function graph template:
+ digraph function_graph { size=&amp;#34;4,4&amp;#34; f1[label=&amp;#34;f()&amp;#34;,shape=&amp;#34;ellipse&amp;#34;]; f2[label=&amp;#34;g()&amp;#34;,shape=&amp;#34;ellipse&amp;#34;]; f3[label=&amp;#34;h()&amp;#34;,shape=&amp;#34;ellipse&amp;#34;]; f4[label=&amp;#34;i()&amp;#34;,shape=&amp;#34;ellipse&amp;#34;]; node[shape=&amp;#34;box&amp;#34;]; var1,var2,var3,var4; var2 -&amp;gt; f1 -&amp;gt; f2 -&amp;gt; var4; var1 -&amp;gt; f1 -&amp;gt; var3; var2 -&amp;gt; f4 -&amp;gt; var6; f1 -&amp;gt; var5 -&amp;gt; f3 -&amp;gt; var3; subgraph cluster1 { label=&amp;#34;inputs&amp;#34;; var1,var2; } subgraph cluster2 { label=&amp;#34;outputs&amp;#34;; var3, var4, var6; } }   This is a basic model of a function graph without the usual data types and meaningful names.</description>
     </item>
     
   </channel>
