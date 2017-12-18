@@ -8,8 +8,14 @@ This section elaborates on the function graph kernel design.
 
 Consider the following function graph. For the sake of discussion, it is assumed that this
 is not merely a functiong graph template, but instad a fully realized function graph kernel.
+In practices, this simply means that all of the function names can be mapped to an actual
+implementation in a runtime library, and that there is enough detail in the graph to find
+an unambiguous mapping for such.
 
-Hereien, the function graph kernel will be abbrieviated as FGK, although it needs a better name.
+Herein, the function graph kernel will be abbreviated as FGK, although it needs
+a better name. In essence, the function graph kernel is a runtime implementation
+of the [Function Graph Kernel API](../function_graph_kernel_api).
+
 
 {{< nomnoml >}}
 #zoom:0.75
@@ -30,46 +36,75 @@ This graph clearly identifies the dependency relationships in the graph.
 
 However, there are limited ways to interact with the function graph. The
 designer of the function graph determines what the available inputs and outputs
-are, and gives them names to suit.
+are, and gives them names to suit. 
 
 All interactions with a user should be based on named inputs and outputs. These
 are referred to as **fields** in the FGK. In the naive implementation, all
 fields are simple state boxes which can be muted or observed via the named-based
 getter and setter API.
 
+In this example, we will assume that all
+named variables are meant to be interacted with. Any variable that does not have
+an inbound path on the graph will be deemed an independent variable, and thus a
+coordinate. Any other variable will be deemed visible, but also settable by the
+application.
+
 Further, the fields have strict types. This is necessary in order to make an
 efficient FGK implementation as well as to handle type-conversion robustly.
 
-## Dependency Tracking
+## Design Invariants
 
-One of the goals of the FGK design is to allow for surgical modification of
-values which are relatively high-use without incurring the cost of recomputing
-chains of functions. This means that it is necessary to identify, based on
-the data flow throught the graph, when an observable value has become stale
-with respect to all coordinate inputs. There are various ways to approach this:
+Certain behaviors will need to be encoded as standard for the purposes of API
+simplicity:
 
-As a design invariant, a given FGK should be initialized with all output fields
+- As a design invariant, a given FGK should be initialized with all output fields
 current with respect to the default coordinates.
-
-Further, when an input coordinate is set to the same value as it was previously set to,
+- When an input coordinate is set to the same value as it was previously set to,
 the FGK should disregard setting any flags for field invalidation.
 
-Elaboration of dependency tracking ideas below will assume this composed function:
+## Dependency Tracking
 
-{{< nomnoml >}}
-#zoom:0.75
-#direction:right
-#.function: fill=#FFFFFF visual=sender
-#.userid: visual=frame
-#.firstname: visual=frame
-#.lastname: visual=frame
-[<input>cycle: long] ->[<function>U]
-[<function>U] -> [<userid>user_id: long]
-[<userid>user_id: long] ->[<function>F]
-[<function>F] -> [<firstname>first_name: String]
-{{< /nomnoml >}}
+One of the goals of the FGK design is to allow for localized computation of
+subgraphs which are relatively high-use without incurring the cost of
+recomputing all predecessor values. This means that it is necessary to identify,
+based on the data flow through the graph, when an observable value has become
+stale with respect to its upstream inputs -- possibly back to the original
+coordinate inputs. There are various ways to approach this.
 
 ## Dependency Structure
+
+Each dependent variable in a graph has a distinct pathway of dependencies.
+Specifically, the set of dependencies is the directed graph that results from
+tracing a variable to its inputs, and so forth, until the independent variables
+are found. However, this is the full dependency graph. We are generally more
+interested in breaking this graph down to subgraphs which can be used to compute
+the specific graphs which have gone stale with respect to their inputs.
+
+Perhaps, counter-intuitively, the dependency graph must include the actual
+data-flow segments between the variable and function nodes. This means that each
+piece of dependency data is a proper graph in its own way.
+
+Consider the following function graph:
+
+{{< viz >}}
+digraph tracking {
+    size="4,4"
+    seed[label="seed: long"]
+    cycle[label="cycle: long"]
+    user_id[label="user_id: long"]
+    seed -> U -> user_id [color="grey", label="0",labelcolor="grey"];
+    cycle-> U -> user_id [color="blue",label="1",labelcolor="blue"];
+    user_id -> F -> first_name [color="red", label="2", labelcolor="red"];
+    user_id -> L -> last_name [color="green" label="3", labelcolor="green"];
+  tracker[shape="record", label="{tracking register|{0|1|2|3|...}}"]
+}
+{{< /viz >}}
+
+
+
+
+
+
 
 Each pathway between a depending field and the fields it depends on is distinct.
 That means that any tracking of state changes for the purposes of optimal
@@ -89,20 +124,6 @@ data flow, both first_name and last_name can be accuratelly updated only when ne
 
 Given each field-to-field data flow in a function graph, a simple tracking structure
 can be created that enumerates these paths in terms of a bitmask.
-
-{{< viz >}}
-digraph tracking {
-    size="4,4"
-    seed[label="seed: long"]
-    cycle[label="cycle: long"]
-    user_id[label="user_id: long"]
-    seed -> U -> user_id [color="grey", label="0",labelcolor="grey"];
-    cycle-> U -> user_id [color="blue",label="1",labelcolor="blue"];
-    user_id -> F -> first_name [color="red", label="2", labelcolor="red"];
-    user_id -> L -> last_name [color="green" label="3", labelcolor="green"];
-  tracker[shape="record", label="{tracking register|{0|1|2|3|...}}"]
-}
-{{< /viz >}}
 
 This graph shows both the effect of tracking change flow for unary functions as well
 as an implied bi-function. If either the *seed* or the *cycle* value are changed, then
