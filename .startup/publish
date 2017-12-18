@@ -27,7 +27,7 @@ hugo --source docsrc --config docsrc/config.toml --canonifyURLs
 
 
 rsync -av --delete --progress docsrc/public/ docs/
-echo "docs.engineblock.io" > docs/CNAME
+echo "docs.virtdata.io" > docs/CNAME
 
 git add docs
 git commit -m'publishing docs'
