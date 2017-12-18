@@ -79,4 +79,31 @@ the unit interval [0,1.0] into a density function, we can simulate random
 sampling (with replacement) over an imagined population of entities, events,
 times, etc. This is a common building block of realistic simulations, for video
 games as well as database tests, and everything in between.
+
+## Mapping vs Generation
+
+Virtual dataset emphasizes the idea of "data mapping" over "data generation",
+but allows for users to break these rules when necessary. Data mapping
+implies that pure functions are being used. Data generation implies
+that deterministic output is not expected. The choice between these
+is simply a matter of whether you use mutable state in your mapping.
+
+## Mutable State
+
+A functions that depends on mutable state in addition to the input
+value will not yield the same result for a given input. Such functions
+may produce the same sequence of outputs given the same sequence
+of inputs, but this is not sufficient for simulating sampling from
+a population with stable properties.
+
+## Immutable State  
+
+A mapping function that does not depend on changing state is
+effectively a pure function. This includes functions that depend
+on data, as long as that data itself doesn't change.
+
+Parameters to a function that can initialize it are simply another
+form of immutable state -- so long as these parameters do not change
+for the life of the function.
+
   

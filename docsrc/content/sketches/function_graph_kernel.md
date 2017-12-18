@@ -1,0 +1,221 @@
+---
+date: 2017-12-347
+title: FGK Sketch
+weight: 1000
+---
+
+This section elaborates on the function graph kernel design.
+
+Consider the following function graph. For the sake of discussion, it is assumed that this
+is not merely a functiong graph template, but instad a fully realized function graph kernel.
+
+Hereien, the function graph kernel will be abbrieviated as FGK, although it needs a better name.
+
+{{< nomnoml >}}
+#zoom:0.75
+#direction:down
+#.function: fill=#FFFFFF visual=sender
+#.userid: visual=frame
+#.firstname: visual=frame
+#.lastname: visual=frame
+[<input>cycle: long] ->[<function>U]
+[<function>U] -> [<userid>user_id: long]
+[<userid>user_id: long] ->[<function>F]
+[<function>F] -> [<firstname>first_name: String]
+[<userid>user_id: long] ->[<function>L]
+[<function>L] -> [<lastname>last_name: String]
+{{< /nomnoml >}}
+
+This graph clearly identifies the dependency relationships in the graph.
+
+However, there are limited ways to interact with the function graph. The
+designer of the function graph determines what the available inputs and outputs
+are, and gives them names to suit.
+
+All interactions with a user should be based on named inputs and outputs. These
+are referred to as **fields** in the FGK. In the naive implementation, all
+fields are simple state boxes which can be muted or observed via the named-based
+getter and setter API.
+
+Further, the fields have strict types. This is necessary in order to make an
+efficient FGK implementation as well as to handle type-conversion robustly.
+
+## Dependency Tracking
+
+One of the goals of the FGK design is to allow for surgical modification of
+values which are relatively high-use without incurring the cost of recomputing
+chains of functions. This means that it is necessary to identify, based on
+the data flow throught the graph, when an observable value has become stale
+with respect to all coordinate inputs. There are various ways to approach this:
+
+As a design invariant, a given FGK should be initialized with all output fields
+current with respect to the default coordinates.
+
+Further, when an input coordinate is set to the same value as it was previously set to,
+the FGK should disregard setting any flags for field invalidation.
+
+Elaboration of dependency tracking ideas below will assume this composed function:
+
+{{< nomnoml >}}
+#zoom:0.75
+#direction:right
+#.function: fill=#FFFFFF visual=sender
+#.userid: visual=frame
+#.firstname: visual=frame
+#.lastname: visual=frame
+[<input>cycle: long] ->[<function>U]
+[<function>U] -> [<userid>user_id: long]
+[<userid>user_id: long] ->[<function>F]
+[<function>F] -> [<firstname>first_name: String]
+{{< /nomnoml >}}
+
+## Dependency Structure
+
+Each pathway between a depending field and the fields it depends on is distinct.
+That means that any tracking of state changes for the purposes of optimal
+evaluation must be traversal-based, rather than node-based. To be more specific,
+it would not be sufficient to track whether user_id changed if you wanted to
+avoid unnecessary evaluations, of both first_name and last_name, as a change to
+user_id affects them both, and it isn't possible to know when each of them
+requires an update without knowing if they have been individually updated since
+a change to user_id.
+
+In simple terms, tracking upstream changes for an observable field requires tracking
+changes to each pathway up from that field. By tracking changes to pathways of
+data flow, both first_name and last_name can be accuratelly updated only when needed.
+
+
+## Dependency Tracking
+
+Given each field-to-field data flow in a function graph, a simple tracking structure
+can be created that enumerates these paths in terms of a bitmask.
+
+{{< viz >}}
+digraph tracking {
+    size="4,4"
+    seed[label="seed: long"]
+    cycle[label="cycle: long"]
+    user_id[label="user_id: long"]
+    seed -> U -> user_id [color="grey", label="0",labelcolor="grey"];
+    cycle-> U -> user_id [color="blue",label="1",labelcolor="blue"];
+    user_id -> F -> first_name [color="red", label="2", labelcolor="red"];
+    user_id -> L -> last_name [color="green" label="3", labelcolor="green"];
+  tracker[shape="record", label="{tracking register|{0|1|2|3|...}}"]
+}
+{{< /viz >}}
+
+This graph shows both the effect of tracking change flow for unary functions as well
+as an implied bi-function. If either the *seed* or the *cycle* value are changed, then
+one of the inbound paths to *user_id* is affected. Further, it is specific which one is
+affected.
+
+For fields which are the product of bifunctions, such as *user_id* and *U()*, any upstream
+changes require the bi-function to be re-computed. However, ...
+
+- The dependency mask for *last_name* is `1011`.
+- The dependency mask for *first_name* is `0111`.
+- The dependency mask for *user_id* is `0011`.
+
+The basic rules of state tracking using this dependency scheme are as follows:
+
+1. When a FGK is initialized, all observable values are computed with
+   respect to the default inputs (coordinats), and all tracked state is cleared.
+2. When a field is observed, it's 
+
+### Computed State and Function Unrolling
+
+For the above example, here are a specific and finite set of uncomputed
+states that are possible when the user attempts to observe thee *first_name* field.
+They are:
+
+1. <s>cycle and identity have both been changed</s>
+2. cycle has been changed
+3. user_id has been changed
+4. neither cycle nor user_id have been changed
+
+Of these, there are only three distict and actionable execution plans, owing to the
+fact that when cycle has been chaged, identity might as well have been changed in terms
+of how it affects the value of the *first_name* field. The last case with no changes *is*
+a specific execution plan, although it is effectively a NOOP.
+
+This provides a basic rationale for setting the required entry point for
+evaluation of the *first_name* field:
+
+- In case **2**, compute the new value of *user_id* from cycle, then compute the new value of *first_name* from *user_id*, then return the value of *first_name*.
+- In case **3**, compute the new value of *first_name* and then return the value of the curret *first_name* field.
+- In case **4**, do nothing, return the current value of the *first_name* field.
+
+This yields an interesting affinity to loop unrolling, and can be encoded in a kernel with the following pseudocode (with more optimal numbering):
+
+    switch predecessor_state:
+      case: 0: compute user_id
+      case: 1: compute first_name
+    
+    return first_name
+
+For a function graph which includes no bi-functions or other functions with higher arity,
+it would be possible to have a simple predecessor tracking bitmask by walkig backwards
+through the graph from a given field.
+
+For function graphs with bi-functions or other functions with higher arity, it
+is still possible to have a function tracking bitmask, although the mapping
+between predecessors would need to be established from a deterministic graph
+traversal method. This is the current approach to tracking that will be
+employed in the initial implementation.
+
+### Predecessor Change Tracking
+
+For a given functional kernel, a 64-bit register should be kept which is mapped
+to each of the named fields in the function graph, based on a breadth-first
+traversal. This register is called the **change tracker**.
+
+When a given field is set, its associated bit should be set in the change
+tracker. Further, each field should have its own field-dependency mask, which
+can be used to determine whether or not the current value is stale by looking
+for any bits in the change tracker are non-zero. This per-field mask is
+called the **dependency mask**.
+
+Naively, when a field is observed, it checks the binary AND of its dependency
+mask and thus determines whether to execute any upstream evaluations prior
+to returning the requested field value.
+
+### Evaluation Invariant
+
+Changing a field, whether or not via kernel API setters, or via recalculation
+fro upstream changes, should cause the currently observed fields change
+tracking bit to be set.
+
+Once all predecessor fields have been calculated, the change tracking for a
+given observable field should indicate that all upstream fields have been
+updated by setting their individual bits to 0. However, any calculation requied
+should automatically cause the field currently being observed to set its
+state tracking bit to 1.
+
+TODO: This is not consistent, and needs to be resolved. This is because change
+observation needs to occur with respect to both the depending field(s) and the
+referent field(s). This means that the pair-wise field associations and the
+functional paths between them are the real target of state tracking.
+
+
+### Downstream invalidation on modification
+
+If each downstream field is marked as invalid for any upstream changes, then it
+is simply a matter of having the observer walk up the function graph to the last
+valid node and continuing processing fro there.
+
+This has the undesirable trade-off of imposing an arbitrary cost of invalidation
+on any data modification without consideration of the relative value of doing so.
+
+### Upstream validation
+
+If each upstream field is checked for changes with respect to the observed field,
+then 
+
+### Dependency Analysis
+
+If the mutators and observers to a FGK are limited to a set of patterns, it is
+possible to build the minimal dependency-aware kernel that will support these
+patters. This is a more advanced approach which is likely out of scope for any
+initial implementation. SOme detail is provided here to capture the idea.
+
+

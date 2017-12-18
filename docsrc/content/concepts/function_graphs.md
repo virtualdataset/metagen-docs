@@ -18,7 +18,7 @@ If you are planning to do so, this section is essential reading.
 A function represents a mapping between one set of values and another. Consider
 a basic example in which the function N(i) maps an input number to text form.
 
-{{< nomnoml align="middle" >}}
+ {{< nomnoml align="middle" >}}
 #zoom:1.0
 #direction:right
 #.value: fill=#D0FFD0 visual=frame
@@ -188,7 +188,7 @@ relationships.
 ## Type Signatures
 
 No matter what type system is used, the input and output types determine what
-kind of functions may be plugged in. This is called the signature* of the
+kind of functions may be plugged in. This is called the *type signature* of the
 function. In terms of data flow between pure functions, we are really only 
 concerned about the types of inputs and outputs. Our examples above glossed
 over data types at the concrete level.
@@ -219,41 +219,42 @@ Function graphs of this type can be referred to as *function graph template*.
 
 From this function graph template, we have two distinct paths -- two different
 composed functions to be created. If we traverse each path from the coordinate,
-we see two *composed function template*s. They are, in pseudo-code form,
-long->U->long->F->String, and long->U->long->L->String.
+we see two *composed function template*s. They are, in pseudo-code form:
 
-## Data Mapping vs Data Generation
+- `long->U->long->F->String`
+- `long->U->long->L->String`
 
-Virtual dataset emphasizes the idea of "data mapping" over "data generation",
-but allows for users to break these rules when necessary. Data mapping
-implies that pure functions are being used. Data generation implies
-that deterministic output is not expected. The choice between these
-is simply a matter of whether you use mutable state in your mapping.
+When decomposed further, these composed function templates yeild a more specific
+function template for each function in the flow which must be individually assignable from 
+the available functions in the runtime.
 
-### Mutable State?
+- `long->U->long`
+- `long->F->String`
+- `long->L->String`
 
-A functions that depends on mutable state in addition to the input
-value will not yield the same result for a given input. Such functions
-may produce the same sequence of outputs given the same sequence
-of inputs, but this is not sufficient for simulating sampling from
-a population with stable properties.
+So long as the runtime library has a matching function available for the function name
+and type signature, it is possible to realize a FGK at runtime.
 
-### Immutable State?
+## Binding a Template
 
-A mapping function that does not depend on changing state is
-effectively a pure function. This includes functions that depend
-on data, as long as that data itself doesn't change.
+The explanations above avoided talking about function naming directly in order to focus on
+the data flow and type semantics of function graphs. However, you may have functions which are
+actually named **U**, **F**, and **L** in your library which have the same type signatures.
+In Java, these might look like
 
-Parameters to a function that can initialize it are simply another
-form of immutable state -- so long as these parameters do not change
-for the life of the function.
+    long U(long input) ...
+    String F(long input) ...
+    String L(long input) ...
+ 
+In this case, it would be possible to bind the example function graph template above using
+simple function name resolution to method (or static functions if you prefer) names. If
+the call to bind the function graph template was successful, the result would be called
+a FGK-NeedsAName, and would provide a runtime API for setting and getting values.
 
-## Choosing Mapping Functions
-
-The function placeholders in the examples above can be satisfied by
-any function instance that fits the type signatures. Further, how
-these functions are realized at runtime are left to the individual
-data mapping libraries. Each library supports a set of loadable
-functions that can be asked for by name. The details of this are
-left for later in the usage section. 
-   
+The function placeholders in the examples above can be satisfied by any function
+instance that fits the type signatures. Further, how these functions are
+realized at runtime are ultimately left to the individual data mapping libraries. Each
+library supports a set of loadable functions that can be asked for by name. How this
+name is resolved to an actual function is not limited to simple name-based lookup as
+described above.
+ 
