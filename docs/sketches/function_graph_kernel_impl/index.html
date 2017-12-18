@@ -9,16 +9,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
-    <title>Design Sketches - VirtualDataSet</title>
+    <title>FGK Implementation Ideas - VirtualDataSet</title>
     <meta name="generator" content="Hugo 0.30.2" />
 
     
     <meta name="description" content="VirtualDataSet Docs">
     
-    <link rel="canonical" href="http://docs.virtdata.io/sketches/">
+    <link rel="canonical" href="http://docs.virtdata.io/sketches/function_graph_kernel_impl/">
     
 
-    <meta property="og:url" content="http://docs.virtdata.io/sketches/">
+    <meta property="og:url" content="http://docs.virtdata.io/sketches/function_graph_kernel_impl/">
     <meta property="og:title" content="VirtualDataSet">
     <meta property="og:image" content="http://docs.virtdata.io/images/virtdata_128.png">
     <meta name="apple-mobile-web-app-title" content="VirtualDataSet">
@@ -139,7 +139,7 @@
     </div>
     <div class="stretch">
       <div class="title">
-        Design Sketches
+        FGK Implementation Ideas
       </div>
     </div>
 
@@ -326,13 +326,45 @@
 
 	<article class="article">
 		<div class="wrapper">
-			<h1>Design Sketches </h1>
+			<h1>FGK Implementation Ideas </h1>
 
-			<p>This section holds design sketches of some of the more esoteric design elements of EngineBlock.</p>
+			
+
+<h2 id="computed-state-and-function-unrolling">Computed State and Function Unrolling</h2>
+
+<p>For the above example, here are a specific and finite set of uncomputed
+states that are possible when the user attempts to observe thee <em>first_name</em> field.
+They are:</p>
+
+<ol>
+<li><s>cycle and identity have both been changed</s></li>
+<li>cycle has been changed</li>
+<li>user_id has been changed</li>
+<li>neither cycle nor user_id have been changed</li>
+</ol>
+
+<p>Of these, there are only three distict and actionable execution plans, owing to the
+fact that when cycle has been chaged, identity might as well have been changed in terms
+of how it affects the value of the <em>first_name</em> field. The last case with no changes <em>is</em>
+a specific execution plan, although it is effectively a NOOP.</p>
+
+<p>This provides a basic rationale for setting the required entry point for
+evaluation of the <em>first_name</em> field:</p>
 
 <ul>
-<li><a href="function_graph_kernel/">Function Graph Kernel</a></li>
+<li>In case <strong>2</strong>, compute the new value of <em>user_id</em> from cycle, then compute the new value of <em>first_name</em> from <em>user_id</em>, then return the value of <em>first_name</em>.</li>
+<li>In case <strong>3</strong>, compute the new value of <em>first_name</em> and then return the value of the curret <em>first_name</em> field.</li>
+<li>In case <strong>4</strong>, do nothing, return the current value of the <em>first_name</em> field.</li>
 </ul>
+
+<p>This yields an interesting affinity to loop unrolling, and can be encoded in a kernel with the following pseudocode (with more optimal numbering):</p>
+
+<pre><code>switch predecessor_state:
+  case: 0: compute user_id
+  case: 1: compute first_name
+
+return first_name
+</code></pre>
 
 
 			<aside class="copyright" role="note">
@@ -351,7 +383,7 @@
 <nav class="pagination" aria-label="Footer">
   <div class="previous">
   
-      <a href="http://docs.virtdata.io/modeling_datasets/set_relationships/" title="Set Relationships">
+      <a href="http://docs.virtdata.io/sketches/" title="Design Sketches">
         <span class="direction">
           Previous
         </span>
@@ -361,7 +393,7 @@
           </div>
           <div class="stretch">
             <div class="title">
-              Set Relationships
+              Design Sketches
             </div>
           </div>
         </div>
@@ -371,14 +403,14 @@
 
   <div class="next">
   
-      <a href="http://docs.virtdata.io/sketches/function_graph_kernel_impl/" title="FGK Implementation Ideas">
+      <a href="http://docs.virtdata.io/sketches/function_graph_kernel/" title="FGK Sketch">
         <span class="direction">
           Next
         </span>
         <div class="page">
           <div class="stretch">
             <div class="title">
-              FGK Implementation Ideas
+              FGK Sketch
             </div>
           </div>
           <div class="button button-next" role="button" aria-label="Next">
