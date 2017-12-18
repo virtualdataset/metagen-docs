@@ -73,16 +73,27 @@ coordinate inputs. There are various ways to approach this.
 
 ## Dependency Structure
 
+
+
 Each dependent variable in a graph has a distinct pathway of dependencies.
 Specifically, the set of dependencies is the directed graph that results from
-tracing a variable to its inputs, and so forth, until the independent variables
-are found. However, this is the full dependency graph. We are generally more
-interested in breaking this graph down to subgraphs which can be used to compute
-the specific graphs which have gone stale with respect to their inputs.
+tracing a variable to its inputs, repeating the process for each of them, and so
+forth, until the independent variables are found. However, this is the full
+dependency graph. Perhaps, counter-intuitively, the dependencies for a given
+variable must include the actual data-flow segments between the variable and any
+predecessor variable as well as the functions along the path between them. This
+means that each variable has a proper graph that describes its dependencies.
 
-Perhaps, counter-intuitively, the dependency graph must include the actual
-data-flow segments between the variable and function nodes. This means that each
-piece of dependency data is a proper graph in its own way.
+However, we are generally more interested in breaking the over-all function
+graph down to segments which can be used to determine when a variable's value
+goes stale with respect to its inputs.
+
+Further, the grain of data depends on the possible mutations within the graph.
+Since we are limiting user interactions only to the named variables, the
+possible mutations are mechanically the paths between the variables, including
+any function chains along the way. In combination with the above, this gives
+us a canonical recipe for the state tracking model for a function graph kernel:
+A simple deterministic ordering of all dependency segments for each variable.
 
 Consider the following function graph:
 
@@ -99,26 +110,6 @@ digraph tracking {
   tracker[shape="record", label="{tracking register|{0|1|2|3|...}}"]
 }
 {{< /viz >}}
-
-
-
-
-
-
-
-Each pathway between a depending field and the fields it depends on is distinct.
-That means that any tracking of state changes for the purposes of optimal
-evaluation must be traversal-based, rather than node-based. To be more specific,
-it would not be sufficient to track whether user_id changed if you wanted to
-avoid unnecessary evaluations, of both first_name and last_name, as a change to
-user_id affects them both, and it isn't possible to know when each of them
-requires an update without knowing if they have been individually updated since
-a change to user_id.
-
-In simple terms, tracking upstream changes for an observable field requires tracking
-changes to each pathway up from that field. By tracking changes to pathways of
-data flow, both first_name and last_name can be accuratelly updated only when needed.
-
 
 ## Dependency Tracking
 
@@ -142,6 +133,9 @@ The basic rules of state tracking using this dependency scheme are as follows:
 1. When a FGK is initialized, all observable values are computed with
    respect to the default inputs (coordinats), and all tracked state is cleared.
 2. When a field is observed, it's 
+
+
+## Other Ideas
 
 ### Computed State and Function Unrolling
 
@@ -183,60 +177,4 @@ is still possible to have a function tracking bitmask, although the mapping
 between predecessors would need to be established from a deterministic graph
 traversal method. This is the current approach to tracking that will be
 employed in the initial implementation.
-
-### Predecessor Change Tracking
-
-For a given functional kernel, a 64-bit register should be kept which is mapped
-to each of the named fields in the function graph, based on a breadth-first
-traversal. This register is called the **change tracker**.
-
-When a given field is set, its associated bit should be set in the change
-tracker. Further, each field should have its own field-dependency mask, which
-can be used to determine whether or not the current value is stale by looking
-for any bits in the change tracker are non-zero. This per-field mask is
-called the **dependency mask**.
-
-Naively, when a field is observed, it checks the binary AND of its dependency
-mask and thus determines whether to execute any upstream evaluations prior
-to returning the requested field value.
-
-### Evaluation Invariant
-
-Changing a field, whether or not via kernel API setters, or via recalculation
-fro upstream changes, should cause the currently observed fields change
-tracking bit to be set.
-
-Once all predecessor fields have been calculated, the change tracking for a
-given observable field should indicate that all upstream fields have been
-updated by setting their individual bits to 0. However, any calculation requied
-should automatically cause the field currently being observed to set its
-state tracking bit to 1.
-
-TODO: This is not consistent, and needs to be resolved. This is because change
-observation needs to occur with respect to both the depending field(s) and the
-referent field(s). This means that the pair-wise field associations and the
-functional paths between them are the real target of state tracking.
-
-
-### Downstream invalidation on modification
-
-If each downstream field is marked as invalid for any upstream changes, then it
-is simply a matter of having the observer walk up the function graph to the last
-valid node and continuing processing fro there.
-
-This has the undesirable trade-off of imposing an arbitrary cost of invalidation
-on any data modification without consideration of the relative value of doing so.
-
-### Upstream validation
-
-If each upstream field is checked for changes with respect to the observed field,
-then 
-
-### Dependency Analysis
-
-If the mutators and observers to a FGK are limited to a set of patterns, it is
-possible to build the minimal dependency-aware kernel that will support these
-patters. This is a more advanced approach which is likely out of scope for any
-initial implementation. SOme detail is provided here to capture the idea.
-
 
