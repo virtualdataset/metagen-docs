@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
     <title>Set Relationships - VirtualDataSet</title>
-    <meta name="generator" content="Hugo 0.20.7" />
+    <meta name="generator" content="Hugo 0.30.2" />
 
     
     <meta name="description" content="VirtualDataSet Docs">
@@ -85,11 +85,27 @@
 
     
     
-
+    <link href="http://docs.virtdata.io//modules/jsxgraph/jsxgraph.css" type="text/css" rel="stylesheet"/>
+    <script src="http://docs.virtdata.io//modules/jsxgraph//jsxgraphcore.js"></script>
     
     
 
     
+    
+
+    
+    
+    <script src="http://docs.virtdata.io//modules/nomnoml/lodash.min.js"></script>
+    <script src="http://docs.virtdata.io//modules/nomnoml/dagre.min.js"></script>
+    <script src="http://docs.virtdata.io//modules/nomnoml/skanaar.util.js"></script>
+    <script src="http://docs.virtdata.io//modules/nomnoml/skanaar.svg.js"></script>
+    <script src="http://docs.virtdata.io//modules/nomnoml/skanaar.vector.js"></script>
+    <script src="http://docs.virtdata.io//modules/nomnoml/skanaar.canvas.js"></script>
+    <script src="http://docs.virtdata.io//modules/nomnoml/nomnoml.jison.js"></script>
+    <script src="http://docs.virtdata.io//modules/nomnoml/nomnoml.parser.js"></script>
+    <script src="http://docs.virtdata.io//modules/nomnoml/nomnoml.layouter.js"></script>
+    <script src="http://docs.virtdata.io//modules/nomnoml/nomnoml.renderer.js"></script>
+    <script src="http://docs.virtdata.io//modules/nomnoml/nomnoml.js"></script>
     
     
     
@@ -340,43 +356,53 @@ and <a href="modeling_cardinality.html">cardinality functions</a>.</p>
 
 <p>Suppose you have two different sets of things in your virtual dataset:</p>
 
-<p>{{#nomnoml
+
+
+<div align="center" class="nomnoml-text"><div><pre>
 #zoom:0.75
 #direction:right
 #.data: fill=#FFFFFF visual=frame
 [entity type A|
-[<data> &ldquo;foo&rdquo;]
-[<data> &ldquo;bar&rdquo;]
-[<data> &ldquo;baz&rdquo;]
+[&lt;data&gt; &#34;foo&#34;]
+[&lt;data&gt; &#34;bar&#34;]
+[&lt;data&gt; &#34;baz&#34;]
 ]
-}}</p>
+</pre></div></div>
+<script type="text/javascript" src="http://docs.virtdata.io/modules/nomnoml/inithook-nomnoml.js"></script>
 
-<p>{{#nomnoml
+
+
+
+<div align="center" class="nomnoml-text"><div><pre>
 #zoom:0.75
 #direction:right
 #.data: fill=#FFFFFF visual=frame
 [entity type B|
-[<data> &ldquo;X&rdquo;]
-[<data> &ldquo;Y&rdquo;]
-[<data> &ldquo;Z&rdquo;]
+[&lt;data&gt; &#34;X&#34;]
+[&lt;data&gt; &#34;Y&#34;]
+[&lt;data&gt; &#34;Z&#34;]
 ]
-}}</p>
+</pre></div></div>
+<script type="text/javascript" src="http://docs.virtdata.io/modules/nomnoml/inithook-nomnoml.js"></script>
+
 
 <p>It may be the case that there is no association between elements of the first set to
 the second set, as illustrated above.</p>
 
 <p>You could have a many-to-many association from set A to set B, like this:</p>
 
-<p>{{#nomnoml
+
+
+<div align="center" class="nomnoml-text"><div><pre>
 #zoom:1.0
 #direction:down
 #.data: fill=#FFFFFF visual=frame
-[<data> foo]
-[<data> bar]
-[<data> baz]
-[<data> X]
-[<data> Y]
-[<data> Z]
+[&lt;data&gt; foo]
+[&lt;data&gt; bar]
+[&lt;data&gt; baz]
+[&lt;data&gt; X]
+[&lt;data&gt; Y]
+[&lt;data&gt; Z]
 [foo] -&gt; [X]
 [foo] -&gt; [Y]
 [foo] -&gt; [Z]
@@ -386,11 +412,14 @@ the second set, as illustrated above.</p>
 [baz] -&gt; [X]
 [baz] -&gt; [Y]
 [baz] -&gt; [Z]
-}}</p>
+</pre></div></div>
+<script type="text/javascript" src="http://docs.virtdata.io/modules/nomnoml/inithook-nomnoml.js"></script>
+
 
 <p>In any case, the associations are themselves part of the data set. They must be
 modeled as such. The way that we do this in virtual dataset is to group our
-functions in the same way that data should be grouped.</p>
+functions and thus their value relationships in the same way that data should
+be grouped.</p>
 
 <p>Isolating the values that we use for for uniqueness is a key step.
 Assume for now, that you are using a simple long value to identify each
@@ -451,30 +480,50 @@ it is easy to demonstrate on a coordinate plane as well using standard plotting 
 
 <p>First, by using a floor function to visually illustrate the discrete mapping:</p>
 
-<p><div id="fpthrees1" style="width: 400px; height: 200px;"></div>
-{{#jsxgraph
- brd = JXG.JSXGraph.initBoard(&lsquo;fpthrees1&rsquo;, {boundingbox: [-1, 4, 20, -1], axis:true, showCopyright: false});
+<div id="fpthrees1" style="width: 400px; height: 200px;"> 
+
+
+<div
+ id="jsxdiv"
+ class="jxgbox"
+ style="width:250px; height:250px;"
+><script type="text/javascript">
+
+ brd = JXG.JSXGraph.initBoard('fpthrees1', {boundingbox: [-1, 4, 20, -1], axis:true, showCopyright: false});
  brd.suspendUpdate();
- var c1 = brd.create(&lsquo;functiongraph&rsquo;, [function(x){ return (Math.floor(x) % 3); }],
-                       {strokeWidth:2,strokeColor:&lsquo;black&rsquo;});
- var c2 = brd.create(&lsquo;functiongraph&rsquo;, [function(x){ return (Math.floor(x/3.0) % 3); }],
-                       {strokeWidth:5,strokeColor:&lsquo;blue&rsquo;,strokeOpacity:&lsquo;0.25&rsquo;});<br />
+ var c1 = brd.create('functiongraph', [function(x){ return (Math.floor(x) % 3); }],
+                       {strokeWidth:2,strokeColor:'black'});
+ var c2 = brd.create('functiongraph', [function(x){ return (Math.floor(x/3.0) % 3); }],
+                       {strokeWidth:5,strokeColor:'blue',strokeOpacity:'0.25'});  
  brd.unsuspendUpdate();
-}}</p>
+
+</script>
+</div>
+</div>
 
 <p>And second, the continuous analog, to show the relative slope
 and repeating patterns at every 9th interval:</p>
 
-<p><div id="fpthrees2" style="width: 400px; height: 200px;"></div>
-{{#jsxgraph
- brd = JXG.JSXGraph.initBoard(&lsquo;fpthrees2&rsquo;, {boundingbox: [-1, 4, 20, -1], axis:true, showCopyright: false});
+<div id="fpthrees2" style="width: 400px; height: 200px;"> 
+
+
+<div
+ id="jsxdiv"
+ class="jxgbox"
+ style="width:250px; height:250px;"
+><script type="text/javascript">
+
+ brd = JXG.JSXGraph.initBoard('fpthrees2', {boundingbox: [-1, 4, 20, -1], axis:true, showCopyright: false});
  brd.suspendUpdate();
- var c3 = brd.create(&lsquo;functiongraph&rsquo;, [function(x){ return (x % 3); }],
-                       {strokeWidth:2,strokeColor:&lsquo;black&rsquo;});
- var c4 = brd.create(&lsquo;functiongraph&rsquo;, [function(x){ return ((x/3.0) % 3); }],
-                       {strokeWidth:5,strokeColor:&lsquo;blue&rsquo;,strokeOpacity:&lsquo;0.25&rsquo;});<br />
+ var c3 = brd.create('functiongraph', [function(x){ return (x % 3); }],
+                       {strokeWidth:2,strokeColor:'black'});
+ var c4 = brd.create('functiongraph', [function(x){ return ((x/3.0) % 3); }],
+                       {strokeWidth:5,strokeColor:'blue',strokeOpacity:'0.25'});  
  brd.unsuspendUpdate();
-}}</p>
+
+</script>
+</div>
+</div>
 
 <h3 id="so-what">So What?</h3>
 

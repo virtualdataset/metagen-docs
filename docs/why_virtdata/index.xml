@@ -7,6 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>APL 2.0</copyright>
+    <lastBuildDate>Mon, 27 Nov 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://docs.virtdata.io/why_virtdata/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +15,7 @@
     <item>
       <title>Why VirtData?</title>
       <link>http://docs.virtdata.io/why_virtdata/why_virtdata/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 27 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>http://docs.virtdata.io/why_virtdata/why_virtdata/</guid>
       <description>If it is not real data, then what is the value of it? Virtual data is something that, when you need it, has no substitute.

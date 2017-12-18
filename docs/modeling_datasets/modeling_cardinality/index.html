@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
     <title>Cardinality - VirtualDataSet</title>
-    <meta name="generator" content="Hugo 0.20.7" />
+    <meta name="generator" content="Hugo 0.30.2" />
 
     
     <meta name="description" content="VirtualDataSet Docs">
@@ -90,6 +90,18 @@
     
 
     
+    
+    <script src="http://docs.virtdata.io//modules/nomnoml/lodash.min.js"></script>
+    <script src="http://docs.virtdata.io//modules/nomnoml/dagre.min.js"></script>
+    <script src="http://docs.virtdata.io//modules/nomnoml/skanaar.util.js"></script>
+    <script src="http://docs.virtdata.io//modules/nomnoml/skanaar.svg.js"></script>
+    <script src="http://docs.virtdata.io//modules/nomnoml/skanaar.vector.js"></script>
+    <script src="http://docs.virtdata.io//modules/nomnoml/skanaar.canvas.js"></script>
+    <script src="http://docs.virtdata.io//modules/nomnoml/nomnoml.jison.js"></script>
+    <script src="http://docs.virtdata.io//modules/nomnoml/nomnoml.parser.js"></script>
+    <script src="http://docs.virtdata.io//modules/nomnoml/nomnoml.layouter.js"></script>
+    <script src="http://docs.virtdata.io//modules/nomnoml/nomnoml.renderer.js"></script>
+    <script src="http://docs.virtdata.io//modules/nomnoml/nomnoml.js"></script>
     
     
     
@@ -389,34 +401,38 @@ range size we want, taking only the remainder.</p>
 <p>For example, the first 5 values produced by such a method with a modulo of
 50 and absolute value are:</p>
 
-<p>{{#nomnoml
+
+
+<div align="center" class="nomnoml-text"><div><pre>
 #zoom:0.75
 #direction:right
 #.input: fill=#FFFFFF visual=frame
 #.function: fill=#FFFFFF visual=sender
 #.userid: fill=#E2D58B visual=frame
 #.firstname: fill=#44BBA4 visual=frame
-[<input> 0] -&gt;[<function>Hash(0)]
-[<function>Hash(0)] -&gt; [<input> 39]
-[<input> 39] -&gt; [<function>Abs(39)]
-[<function>Abs(39)] -&gt; [<firstname>result: 39]
-[<input> 1] -&gt;[<function>Hash(1)]
-[<function>Hash(1)] -&gt; [<input> 24]
-[<input> 24] -&gt; [<function>Abs(24)]
-[<function>Abs(24)] -&gt; [<firstname>result: 24]
-[<input> 2] -&gt;[<function>Hash(2)]
-[<function>Hash(2)] -&gt; [<input> -43]
-[<input> -43] -&gt; [<function>Abs(-43)]
-[<function>Abs(-43)] -&gt; [<firstname>result: 43]
-[<input> 3] -&gt;[<function>Hash(3)]
-[<function>Hash(3)] -&gt; [<input> -33]
-[<input> -33] -&gt; [<function>Abs(-33)]
-[<function>Abs(-33)] -&gt; [<firstname>result: 33]
-[<input> 4] -&gt;[<function>Hash(4)]
-[<function>Hash(4)] -&gt; [<input> 21]
-[<input> 21] -&gt; [<function>Abs(21)]
-[<function>Abs(21)] -&gt; [<firstname>result: 21]
-}}</p>
+[&lt;input&gt; 0] -&gt;[&lt;function&gt;Hash(0)]
+[&lt;function&gt;Hash(0)] -&gt; [&lt;input&gt; 39]
+[&lt;input&gt; 39] -&gt; [&lt;function&gt;Abs(39)]
+[&lt;function&gt;Abs(39)] -&gt; [&lt;firstname&gt;result: 39]
+[&lt;input&gt; 1] -&gt;[&lt;function&gt;Hash(1)]
+[&lt;function&gt;Hash(1)] -&gt; [&lt;input&gt; 24]
+[&lt;input&gt; 24] -&gt; [&lt;function&gt;Abs(24)]
+[&lt;function&gt;Abs(24)] -&gt; [&lt;firstname&gt;result: 24]
+[&lt;input&gt; 2] -&gt;[&lt;function&gt;Hash(2)]
+[&lt;function&gt;Hash(2)] -&gt; [&lt;input&gt; -43]
+[&lt;input&gt; -43] -&gt; [&lt;function&gt;Abs(-43)]
+[&lt;function&gt;Abs(-43)] -&gt; [&lt;firstname&gt;result: 43]
+[&lt;input&gt; 3] -&gt;[&lt;function&gt;Hash(3)]
+[&lt;function&gt;Hash(3)] -&gt; [&lt;input&gt; -33]
+[&lt;input&gt; -33] -&gt; [&lt;function&gt;Abs(-33)]
+[&lt;function&gt;Abs(-33)] -&gt; [&lt;firstname&gt;result: 33]
+[&lt;input&gt; 4] -&gt;[&lt;function&gt;Hash(4)]
+[&lt;function&gt;Hash(4)] -&gt; [&lt;input&gt; 21]
+[&lt;input&gt; 21] -&gt; [&lt;function&gt;Abs(21)]
+[&lt;function&gt;Abs(21)] -&gt; [&lt;firstname&gt;result: 21]
+</pre></div></div>
+<script type="text/javascript" src="http://docs.virtdata.io/modules/nomnoml/inithook-nomnoml.js"></script>
+
 
 <p>We use absolute value in addition to modulo, because signed results allow our
 range to span twice as many unique values as our intended output range.</p>
@@ -460,7 +476,7 @@ from a fixed coordinate space.</p>
 <nav class="pagination" aria-label="Footer">
   <div class="previous">
   
-      <a href="http://docs.virtdata.io/sketches/runtime_kernel/" title="FGK-NeedsAName">
+      <a href="http://docs.virtdata.io/sketches/function_graph_kernel_api/" title="Function Graph Kernel API">
         <span class="direction">
           Previous
         </span>
@@ -470,7 +486,7 @@ from a fixed coordinate space.</p>
           </div>
           <div class="stretch">
             <div class="title">
-              FGK-NeedsAName
+              Function Graph Kernel API
             </div>
           </div>
         </div>

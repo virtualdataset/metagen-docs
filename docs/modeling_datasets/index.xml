@@ -7,6 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>APL 2.0</copyright>
+    <lastBuildDate>Sat, 16 Dec 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://docs.virtdata.io/modeling_datasets/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +15,7 @@
     <item>
       <title>Cardinality</title>
       <link>http://docs.virtdata.io/modeling_datasets/modeling_cardinality/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 16 Dec 2017 00:00:00 +0000</pubDate>
       
       <guid>http://docs.virtdata.io/modeling_datasets/modeling_cardinality/</guid>
       <description>Data Types and Values Given that our values are all bits on some level, there is no basic fixed size data type that has an unlimited range of values. Even the floating point types have finite range, although it is represented and handled differently than that of the whole number types.
@@ -24,13 +25,12 @@ Standard Types For a 64-bit data type, there are \( 64^2 \) different distinct v
     <item>
       <title>Set Relationships</title>
       <link>http://docs.virtdata.io/modeling_datasets/set_relationships/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 16 Dec 2017 00:00:00 +0000</pubDate>
       
       <guid>http://docs.virtdata.io/modeling_datasets/set_relationships/</guid>
       <description>This section will talk about how to model relative cardinality between different types of entities. Before reading this, you should already be familiar with data mapping and cardinality functions.
 Suppose you have two different sets of things in your virtual dataset:
-{{#nomnoml #zoom:0.75 #direction:right #.data: fill=#FFFFFF visual=frame [entity type A| [ &amp;ldquo;foo&amp;rdquo;] [ &amp;ldquo;bar&amp;rdquo;] [ &amp;ldquo;baz&amp;rdquo;] ] }}
-{{#nomnoml #zoom:0.75 #direction:right #.data: fill=#FFFFFF visual=frame [entity type B| [ &amp;ldquo;X&amp;rdquo;] [ &amp;ldquo;Y&amp;rdquo;] [ &amp;ldquo;Z&amp;rdquo;] ] }}</description>
+ #zoom:0.75 #direction:right #.data: fill=#FFFFFF visual=frame [entity type A| [&amp;lt;data&amp;gt; &amp;#34;foo&amp;#34;] [&amp;lt;data&amp;gt; &amp;#34;bar&amp;#34;] [&amp;lt;data&amp;gt; &amp;#34;baz&amp;#34;] ]    #zoom:0.75 #direction:right #.data: fill=#FFFFFF visual=frame [entity type B| [&amp;lt;data&amp;gt; &amp;#34;X&amp;#34;] [&amp;lt;data&amp;gt; &amp;#34;Y&amp;#34;] [&amp;lt;data&amp;gt; &amp;#34;Z&amp;#34;] ]   It may be the case that there is no association between elements of the first set to the second set, as illustrated above.</description>
     </item>
     
   </channel>

@@ -7,6 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>APL 2.0</copyright>
+    <lastBuildDate>Mon, 27 Nov 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://docs.virtdata.io/concepts/index.xml" rel="self" type="application/rss+xml" />
     
@@ -14,7 +15,7 @@
     <item>
       <title>Mapping Functions</title>
       <link>http://docs.virtdata.io/concepts/mapping_functions/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 27 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>http://docs.virtdata.io/concepts/mapping_functions/</guid>
       <description>VirtData provides more than just a set of libraries and APIs. The concepts are the starting point and foundation. The software tools are built directly from the concepts. Having a strong understanding of them will enable you to get the most out of virtual dataset.
@@ -24,7 +25,7 @@ Procedural Generation Procedural generation is a method of generating data by fe
     <item>
       <title>Function Graphs</title>
       <link>http://docs.virtdata.io/concepts/function_graphs/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 27 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>http://docs.virtdata.io/concepts/function_graphs/</guid>
       <description>This section should be useful to new users as well as experienced developers. Here, we explain how and why we use functions for building data mapping recipes. If you are planning to do so, this section is essential reading.

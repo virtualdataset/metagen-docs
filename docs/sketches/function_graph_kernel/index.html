@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
     <title>FGK Sketch - VirtualDataSet</title>
-    <meta name="generator" content="Hugo 0.20.7" />
+    <meta name="generator" content="Hugo 0.30.2" />
 
     
     <meta name="description" content="VirtualDataSet Docs">
@@ -347,9 +347,14 @@
 <p>This section elaborates on the function graph kernel design.</p>
 
 <p>Consider the following function graph. For the sake of discussion, it is assumed that this
-is not merely a functiong graph template, but instad a fully realized function graph kernel.</p>
+is not merely a functiong graph template, but instad a fully realized function graph kernel.
+In practices, this simply means that all of the function names can be mapped to an actual
+implementation in a runtime library, and that there is enough detail in the graph to find
+an unambiguous mapping for such.</p>
 
-<p>Hereien, the function graph kernel will be abbrieviated as FGK, although it needs a better name.</p>
+<p>Herein, the function graph kernel will be abbreviated as FGK, although it needs
+a better name. In essence, the function graph kernel is a runtime implementation
+of the <a href="../function_graph_kernel_api">Function Graph Kernel API</a>.</p>
 
 
 
@@ -381,61 +386,50 @@ are referred to as <strong>fields</strong> in the FGK. In the naive implementati
 fields are simple state boxes which can be muted or observed via the named-based
 getter and setter API.</p>
 
+<p>In this example, we will assume that all
+named variables are meant to be interacted with. Any variable that does not have
+an inbound path on the graph will be deemed an independent variable, and thus a
+coordinate. Any other variable will be deemed visible, but also settable by the
+application.</p>
+
 <p>Further, the fields have strict types. This is necessary in order to make an
 efficient FGK implementation as well as to handle type-conversion robustly.</p>
 
+<h2 id="design-invariants">Design Invariants</h2>
+
+<p>Certain behaviors will need to be encoded as standard for the purposes of API
+simplicity:</p>
+
+<ul>
+<li>As a design invariant, a given FGK should be initialized with all output fields
+current with respect to the default coordinates.</li>
+<li>When an input coordinate is set to the same value as it was previously set to,
+the FGK should disregard setting any flags for field invalidation.</li>
+</ul>
+
 <h2 id="dependency-tracking">Dependency Tracking</h2>
 
-<p>One of the goals of the FGK design is to allow for surgical modification of
-values which are relatively high-use without incurring the cost of recomputing
-chains of functions. This means that it is necessary to identify, based on
-the data flow throught the graph, when an observable value has become stale
-with respect to all coordinate inputs. There are various ways to approach this:</p>
-
-<p>As a design invariant, a given FGK should be initialized with all output fields
-current with respect to the default coordinates.</p>
-
-<p>Further, when an input coordinate is set to the same value as it was previously set to,
-the FGK should disregard setting any flags for field invalidation.</p>
-
-<p>Elaboration of dependency tracking ideas below will assume this composed function:</p>
-
-
-
-<div align="center" class="nomnoml-text"><div><pre>
-#zoom:0.75
-#direction:right
-#.function: fill=#FFFFFF visual=sender
-#.userid: visual=frame
-#.firstname: visual=frame
-#.lastname: visual=frame
-[&lt;input&gt;cycle: long] -&gt;[&lt;function&gt;U]
-[&lt;function&gt;U] -&gt; [&lt;userid&gt;user_id: long]
-[&lt;userid&gt;user_id: long] -&gt;[&lt;function&gt;F]
-[&lt;function&gt;F] -&gt; [&lt;firstname&gt;first_name: String]
-</pre></div></div>
-<script type="text/javascript" src="http://docs.virtdata.io/modules/nomnoml/inithook-nomnoml.js"></script>
-
+<p>One of the goals of the FGK design is to allow for localized computation of
+subgraphs which are relatively high-use without incurring the cost of
+recomputing all predecessor values. This means that it is necessary to identify,
+based on the data flow through the graph, when an observable value has become
+stale with respect to its upstream inputs &ndash; possibly back to the original
+coordinate inputs. There are various ways to approach this.</p>
 
 <h2 id="dependency-structure">Dependency Structure</h2>
 
-<p>Each pathway between a depending field and the fields it depends on is distinct.
-That means that any tracking of state changes for the purposes of optimal
-evaluation must be traversal-based, rather than node-based. To be more specific,
-it would not be sufficient to track whether user_id changed if you wanted to
-avoid unnecessary evaluations, of both first_name and last_name, as a change to
-user_id affects them both, and it isn&rsquo;t possible to know when each of them
-requires an update without knowing if they have been individually updated since
-a change to user_id.</p>
+<p>Each dependent variable in a graph has a distinct pathway of dependencies.
+Specifically, the set of dependencies is the directed graph that results from
+tracing a variable to its inputs, and so forth, until the independent variables
+are found. However, this is the full dependency graph. We are generally more
+interested in breaking this graph down to subgraphs which can be used to compute
+the specific graphs which have gone stale with respect to their inputs.</p>
 
-<p>In simple terms, tracking upstream changes for an observable field requires tracking
-changes to each pathway up from that field. By tracking changes to pathways of
-data flow, both first_name and last_name can be accuratelly updated only when needed.</p>
+<p>Perhaps, counter-intuitively, the dependency graph must include the actual
+data-flow segments between the variable and function nodes. This means that each
+piece of dependency data is a proper graph in its own way.</p>
 
-<h2 id="dependency-tracking-1">Dependency Tracking</h2>
-
-<p>Given each field-to-field data flow in a function graph, a simple tracking structure
-can be created that enumerates these paths in terms of a bitmask.</p>
+<p>Consider the following function graph:</p>
 
 
 
@@ -454,6 +448,24 @@ digraph tracking {
 </pre></div>
 <script type="text/javascript" src="http://docs.virtdata.io/modules/viz/inithook-viz.js"></script>
 
+
+<p>Each pathway between a depending field and the fields it depends on is distinct.
+That means that any tracking of state changes for the purposes of optimal
+evaluation must be traversal-based, rather than node-based. To be more specific,
+it would not be sufficient to track whether user_id changed if you wanted to
+avoid unnecessary evaluations, of both first_name and last_name, as a change to
+user_id affects them both, and it isn&rsquo;t possible to know when each of them
+requires an update without knowing if they have been individually updated since
+a change to user_id.</p>
+
+<p>In simple terms, tracking upstream changes for an observable field requires tracking
+changes to each pathway up from that field. By tracking changes to pathways of
+data flow, both first_name and last_name can be accuratelly updated only when needed.</p>
+
+<h2 id="dependency-tracking-1">Dependency Tracking</h2>
+
+<p>Given each field-to-field data flow in a function graph, a simple tracking structure
+can be created that enumerates these paths in terms of a bitmask.</p>
 
 <p>This graph shows both the effect of tracking change flow for unary functions as well
 as an implied bi-function. If either the <em>seed</em> or the <em>cycle</em> value are changed, then

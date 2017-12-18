@@ -7,7 +7,7 @@
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <copyright>APL 2.0</copyright>
-    <lastBuildDate>Fri, 19 May 2017 21:52:39 +0000</lastBuildDate>
+    <lastBuildDate>Mon, 27 Nov 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://docs.virtdata.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -15,7 +15,7 @@
     <item>
       <title>Why VirtData?</title>
       <link>http://docs.virtdata.io/why_virtdata/why_virtdata/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 27 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>http://docs.virtdata.io/why_virtdata/why_virtdata/</guid>
       <description>If it is not real data, then what is the value of it? Virtual data is something that, when you need it, has no substitute.
@@ -37,7 +37,7 @@ What is a Virtual DataSet? Virtual data can be described by a recipe. It can be 
     <item>
       <title>Mapping Functions</title>
       <link>http://docs.virtdata.io/concepts/mapping_functions/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 27 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>http://docs.virtdata.io/concepts/mapping_functions/</guid>
       <description>VirtData provides more than just a set of libraries and APIs. The concepts are the starting point and foundation. The software tools are built directly from the concepts. Having a strong understanding of them will enable you to get the most out of virtual dataset.
@@ -47,7 +47,7 @@ Procedural Generation Procedural generation is a method of generating data by fe
     <item>
       <title>Function Graphs</title>
       <link>http://docs.virtdata.io/concepts/function_graphs/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Mon, 27 Nov 2017 00:00:00 +0000</pubDate>
       
       <guid>http://docs.virtdata.io/concepts/function_graphs/</guid>
       <description>This section should be useful to new users as well as experienced developers. Here, we explain how and why we use functions for building data mapping recipes. If you are planning to do so, this section is essential reading.
@@ -55,20 +55,20 @@ Mapping Functions A function represents a mapping between one set of values and 
     </item>
     
     <item>
-      <title>FGK-NeedsAName</title>
-      <link>http://docs.virtdata.io/sketches/runtime_kernel/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>Function Graph Kernel API</title>
+      <link>http://docs.virtdata.io/sketches/function_graph_kernel_api/</link>
+      <pubDate>Sat, 16 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://docs.virtdata.io/sketches/runtime_kernel/</guid>
-      <description>The functional kernel is simply the implementation of a function graph, as realized in your application. This is the result of binding a parsed function graph template to a set of functions within a graph.
-What makes the functional kernel useful are the various ways that you can interact with it.
+      <guid>http://docs.virtdata.io/sketches/function_graph_kernel_api/</guid>
+      <description>The functional graph kernel API is simply the implementation of a function graph, as realized in your application. This is the result of binding a parsed function graph template to a set of functions within a graph.
+What makes the functional kernel useful are the various ways that you can interact with it. This is defined by the API.
 Setting coordinates Whe a functional kernel is realized in your runtime, it will have a set of named inputs which we call coordinates.</description>
     </item>
     
     <item>
       <title>Cardinality</title>
       <link>http://docs.virtdata.io/modeling_datasets/modeling_cardinality/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 16 Dec 2017 00:00:00 +0000</pubDate>
       
       <guid>http://docs.virtdata.io/modeling_datasets/modeling_cardinality/</guid>
       <description>Data Types and Values Given that our values are all bits on some level, there is no basic fixed size data type that has an unlimited range of values. Even the floating point types have finite range, although it is represented and handled differently than that of the whole number types.
@@ -78,13 +78,12 @@ Standard Types For a 64-bit data type, there are \( 64^2 \) different distinct v
     <item>
       <title>Set Relationships</title>
       <link>http://docs.virtdata.io/modeling_datasets/set_relationships/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 16 Dec 2017 00:00:00 +0000</pubDate>
       
       <guid>http://docs.virtdata.io/modeling_datasets/set_relationships/</guid>
       <description>This section will talk about how to model relative cardinality between different types of entities. Before reading this, you should already be familiar with data mapping and cardinality functions.
 Suppose you have two different sets of things in your virtual dataset:
-{{#nomnoml #zoom:0.75 #direction:right #.data: fill=#FFFFFF visual=frame [entity type A| [ &amp;ldquo;foo&amp;rdquo;] [ &amp;ldquo;bar&amp;rdquo;] [ &amp;ldquo;baz&amp;rdquo;] ] }}
-{{#nomnoml #zoom:0.75 #direction:right #.data: fill=#FFFFFF visual=frame [entity type B| [ &amp;ldquo;X&amp;rdquo;] [ &amp;ldquo;Y&amp;rdquo;] [ &amp;ldquo;Z&amp;rdquo;] ] }}</description>
+ #zoom:0.75 #direction:right #.data: fill=#FFFFFF visual=frame [entity type A| [&amp;lt;data&amp;gt; &amp;#34;foo&amp;#34;] [&amp;lt;data&amp;gt; &amp;#34;bar&amp;#34;] [&amp;lt;data&amp;gt; &amp;#34;baz&amp;#34;] ]    #zoom:0.75 #direction:right #.data: fill=#FFFFFF visual=frame [entity type B| [&amp;lt;data&amp;gt; &amp;#34;X&amp;#34;] [&amp;lt;data&amp;gt; &amp;#34;Y&amp;#34;] [&amp;lt;data&amp;gt; &amp;#34;Z&amp;#34;] ]   It may be the case that there is no association between elements of the first set to the second set, as illustrated above.</description>
     </item>
     
     <item>
@@ -100,13 +99,11 @@ Suppose you have two different sets of things in your virtual dataset:
     <item>
       <title>FGK Sketch</title>
       <link>http://docs.virtdata.io/sketches/function_graph_kernel/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <pubDate>Sat, 16 Dec 2017 00:00:00 +0000</pubDate>
       
       <guid>http://docs.virtdata.io/sketches/function_graph_kernel/</guid>
       <description>This section elaborates on the function graph kernel design.
-Consider the following function graph. For the sake of discussion, it is assumed that this is not merely a functiong graph template, but instad a fully realized function graph kernel.
-Hereien, the function graph kernel will be abbrieviated as FGK, although it needs a better name.
- #zoom:0.75 #direction:down #.function: fill=#FFFFFF visual=sender #.userid: visual=frame #.firstname: visual=frame #.lastname: visual=frame [&amp;lt;input&amp;gt;cycle: long] -&amp;gt;[&amp;lt;function&amp;gt;U] [&amp;lt;function&amp;gt;U] -&amp;gt; [&amp;lt;userid&amp;gt;user_id: long] [&amp;lt;userid&amp;gt;user_id: long] -&amp;gt;[&amp;lt;function&amp;gt;F] [&amp;lt;function&amp;gt;F] -&amp;gt; [&amp;lt;firstname&amp;gt;first_name: String] [&amp;lt;userid&amp;gt;user_id: long] -&amp;gt;[&amp;lt;function&amp;gt;L] [&amp;lt;function&amp;gt;L] -&amp;gt; [&amp;lt;lastname&amp;gt;last_name: String]   This graph clearly identifies the dependency relationships in the graph.</description>
+Consider the following function graph. For the sake of discussion, it is assumed that this is not merely a functiong graph template, but instad a fully realized function graph kernel. In practices, this simply means that all of the function names can be mapped to an actual implementation in a runtime library, and that there is enough detail in the graph to find an unambiguous mapping for such.</description>
     </item>
     
     <item>

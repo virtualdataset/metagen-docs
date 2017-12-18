@@ -9,16 +9,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
-    <title>Why VirtData? - VirtualDataSet</title>
+    <title>Function Graph Kernel API - VirtualDataSet</title>
     <meta name="generator" content="Hugo 0.30.2" />
 
     
     <meta name="description" content="VirtualDataSet Docs">
     
-    <link rel="canonical" href="http://docs.virtdata.io/why_virtdata/why_virtdata/">
+    <link rel="canonical" href="http://docs.virtdata.io/sketches/function_graph_kernel_api/">
     
 
-    <meta property="og:url" content="http://docs.virtdata.io/why_virtdata/why_virtdata/">
+    <meta property="og:url" content="http://docs.virtdata.io/sketches/function_graph_kernel_api/">
     <meta property="og:title" content="VirtualDataSet">
     <meta property="og:image" content="http://docs.virtdata.io/images/virtdata_128.png">
     <meta name="apple-mobile-web-app-title" content="VirtualDataSet">
@@ -139,7 +139,7 @@
     </div>
     <div class="stretch">
       <div class="title">
-        Why VirtData?
+        Function Graph Kernel API
       </div>
     </div>
 
@@ -208,14 +208,11 @@
 
 
 
-<a class="current" title="Why VirtData?" href="http://docs.virtdata.io/why_virtdata/why_virtdata/">
+<a  title="Why VirtData?" href="http://docs.virtdata.io/why_virtdata/why_virtdata/">
 	
 	Why VirtData?
 </a>
 
-
-<ul id="scrollspy">
-</ul>
 
 
       
@@ -329,132 +326,39 @@
 
 	<article class="article">
 		<div class="wrapper">
-			<h1>Why VirtData? </h1>
+			<h1>Function Graph Kernel API </h1>
 
 			
 
-<p>If it is not real data, then what is the value of it? Virtual
-data is something that, when you need it, has no substitute.</p>
+<p>The functional graph kernel API is simply the implementation of a function
+graph, as realized in your application. This is the result of binding a parsed
+function graph template to a set of functions within a graph.</p>
 
-<p>To explain why, let us consider the trade-offs in some basic
-simulation and testing challenges and what they mean.</p>
+<p>What makes the functional kernel useful are the various ways that you can
+interact with it. This is defined by the API.</p>
 
-<h2 id="speed">Speed</h2>
+<h2 id="setting-coordinates">Setting coordinates</h2>
 
-<h3 id="challenge-access-large-amounts-of-bulk-data">Challenge: access large amounts of bulk data</h3>
+<p>Whe a functional kernel is realized in your runtime, it will have a set of named
+inputs which we call <em>coordinates</em>. These are simply the independent values
+which depend on nothing other that the controlling application. That is, the
+application that contains the function graph kernel object can set these values,
+and that is the only way that they can be changed. The virtdata API will provide
+a setter interface which allows values to be set int he kernel in a type-safe
+way.</p>
 
-<p>Actual Data
-- depends primarily on speed and efficiency of storage system
-- limited to size of storage system</p>
+<h2 id="reading-values">Reading values</h2>
 
-<p>Virtual Data
-- depends on speed of generation functions and CPU
-- not effectively limited to size of storage</p>
+<p>Just as inputs are named, so are all of the outputs in a function graph &ndash; at
+least the ones intended to be readable by the function graph designer. Any time
+an input coordinate is changed, the view of observable values is changed.</p>
 
-<p>In this case, virtual data is strongly favored for testing
- systems that need to be faster than the things that they
- are targeting. This is an essential requirement for any
- system that must provide high-fidelity results in timing,
- loading levels, etc. Essentially, load testing is a primary
- reason for having procedurally generated data. You can
- not easily get high fidelity results if the testing
- apparatus is saturated with load as easily as the test target.</p>
+<h2 id="thread-safety">Thread Safety</h2>
 
-<h2 id="agility">Agility</h2>
-
-<h3 id="challenge-modify-basic-properties-of-test-data">Challenge: modify basic properties of test data</h3>
-
-<p>Actual Data
-- requires recapture of test data, regardless of origin</p>
-
-<p>Virtual Data
-- has no moving mass, instantly changes according to recipe</p>
-
-<p>The ability to change your data set instantly is also a boon for testing
-systems. Not only can you modify the conditions of a test by changing out
-your virtual data set, you can create multiple variations that can elicit
-interesting contrasts and outcomes, ad-infinitum. The size of a virtual
-data set is paltry, often smaller than testing logic.</p>
-
-<h2 id="sophistication">Sophistication</h2>
-
-<h3 id="challenge-create-nuanced-interplay-between-data">Challenge: create nuanced interplay between data</h3>
-
-<p>Actual Data
-- same design burden as virtual data, but still with moving mass
-- significant effort is spent on managing bulk of data</p>
-
-<p>Virtual Data
-- is able to create statistically shaped data without bulk transfer
-- is able to provide determinism in addition to statistical shaping
-- is able to simulate superset/subset relationships</p>
-
-<p>Because virtual data is dependent on the generation methods, and
-generation methods can be chosen themselves to have interesting
-mathematical relationships, many things are possible that we don&rsquo;t
-even consider when raw data is handed to us.</p>
-
-<h2 id="realism">Realism</h2>
-
-<h3 id="challenge-access-real-data">Challenge: access real data</h3>
-
-<p>Real data wins this one, obviously. Virtual data is <em>not</em> strictly real
- data, but it <em>can</em> be. Read further for why.</p>
-
-<h3 id="challenge-access-realistic-data">Challenge: access realistic data</h3>
-
-<p>Virtual data can be as realistic as you need it to be, up to and including
- being based on samples of real data. If you want to capture a real data set
- and access it as such through a virtual interface, then the data is, in fact,
- real data.</p>
-
-<p>Virtual data methods can be used as a sliding scale between accessing real data
- and just making it all up according to statistical recipes. With a small
- amount of real data, you can create a very high volume of simulated data. The small
- sample is almost always easy to fit in memory, keeping the data generators fast.
- Still, the data generated can be extrapolated to data set sizes that can be
- useful for testing even the largest systems.</p>
-
-<p>For accessing realistic data, <strong>why not both?</strong> If you have an example data
-set, nothing prevents you from using it as raw data through the virtual data
-interface. Doing so gives you useful choices for tackling some of the
-challenges above.</p>
-
-<h2 id="distribution">Distribution</h2>
-
-<h3 id="challenge-partition-a-dataset-for-distributed-testing">Challenge: partition a dataset for distributed testing</h3>
-
-<p>Real Data
-- Requires a bulk processing step to do any reconfiguration or (re)partitioning</p>
-
-<p>Virtual Data
-- Subset groupings of virtual data are easily described by common recipes.</p>
-
-<p>When you need to be able to identify or control, or vary how data is distributed in
-a testing scenario, there is no comparison.</p>
-
-<h2 id="specificity">Specificity</h2>
-
-<h3 id="challenge-canonically-identify-detailed-test-data-parameters">Challenge: canonically identify detailed test data parameters</h3>
-
-<p>Real Data
-- In order to canonically capture and represent the testing parameters with a
-  real bulk dataset, you have to have and retain the whole dataset.</p>
-
-<p>Virtual Data
-- Virtual data can be described concisely and completely in a recipe. Whether
-  you are needing <em>book end</em> scenarios that identify corner cases, or more
-  <em>normal</em> data, the recipes are compact. For data that is based on real
-  samples, you get to pick how much is too much.</p>
-
-<h2 id="in-summary">In Summary</h2>
-
-<p>It is possible to have realistic samples, statistical shaping, high throughput,
-immediately adaptivity, and repeatability at the same time.</p>
-
-<p>The examples above are only the tip of the iceberg in terms of what is possible.
-Virtual DataSet aims to make it easier to explore and use new dataset simulation
-methods.</p>
+<p>By default, the functional kernel is not designed to be thread-safe.
+Multi-threaded support may come in the form of explicit semantics in a future
+update, but for now, it is best to create an instance of the kernel for each
+thread, <em>or</em> wrap any shared instance in a synchronizing API.</p>
 
 
 			<aside class="copyright" role="note">
@@ -473,18 +377,34 @@ methods.</p>
 <nav class="pagination" aria-label="Footer">
   <div class="previous">
   
+      <a href="http://docs.virtdata.io/concepts/function_graphs/" title="Function Graphs">
+        <span class="direction">
+          Previous
+        </span>
+        <div class="page">
+          <div class="button button-previous" role="button" aria-label="Previous">
+            <i class="icon icon-back"></i>
+          </div>
+          <div class="stretch">
+            <div class="title">
+              Function Graphs
+            </div>
+          </div>
+        </div>
+      </a>
+  
   </div>
 
   <div class="next">
   
-      <a href="http://docs.virtdata.io/" title="Virtual Data Set - User&#39;s Guide">
+      <a href="http://docs.virtdata.io/modeling_datasets/modeling_cardinality/" title="Cardinality">
         <span class="direction">
           Next
         </span>
         <div class="page">
           <div class="stretch">
             <div class="title">
-              Virtual Data Set - User&#39;s Guide
+              Cardinality
             </div>
           </div>
           <div class="button button-next" role="button" aria-label="Next">
