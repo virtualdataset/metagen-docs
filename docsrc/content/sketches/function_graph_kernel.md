@@ -14,8 +14,7 @@ of the [Function Graph Kernel API](../function_graph_kernel_api).
 
 A function graph is a directed graph. No loops are currently supported.
 
-Let us start with an example function graph template;
-This means that a function graph can look like this:
+Let us start with an example function graph template:
 
 {{< viz >}}
 digraph function_graph {
