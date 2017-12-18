@@ -54,9 +54,10 @@ can have the following:
 7. Named fields which have upstream inputs, which may be read or written to.
 
 However, the following is verboten:
-1. No loops are allowed. A function graph is a directed graph. All paths back to the inputs must end up at coordinate fields.
-2. No connections directly between fields is allowed. A field is the holder for the result of a single function.
-3. No fields which have more than one upstream function are allowed. A field is the holder for result of a single function. 
+
+1. Loops are **not** allowed. A function graph is a directed graph. All paths back to the inputs must end up at coordinate fields.
+2. Connections directly between fields are **not** allowed. A field is the holder for the result of a single function.
+3. Fields which have more than one upstream function are **not** allowed. A field is the holder for result of a single function. 
 
 ## Usage Semantics
 
@@ -76,16 +77,6 @@ variable will be deemed visible, but also settable by the application.
 
 Further, the fields have strict types. This is necessary in order to make an
 efficient FGK implementation as well as to handle type-conversion robustly.
-
-## Design Invariants
-
-Certain behaviors will need to be encoded as standard for the purposes of API
-simplicity:
-
-- As a design invariant, a given FGK should be initialized with all output fields
-current with respect to the default coordinates.
-- When an input coordinate is set to the same value as it was previously set to,
-the FGK should disregard setting any flags for field invalidation.
 
 ## Dependency Tracking
 
@@ -128,10 +119,6 @@ mask* that determines which of the global tracking register segments feed into
 it. If there are named variable which are not meant to be exposed to the
 getter/setter API, then these can be elided and the enclosing segments tracked
 as a single segment.
-
-The order of indexes associated with the dependency tracking register must follow
-a simple rule in order to enable the most efficient processing form:
-All upstream variables must appear first in normal execution order.
 
 Consider the following function graph:
 
@@ -182,7 +169,20 @@ digraph tracking {
 }
 {{< /viz >}}
 
-## Dependency Tracking
+## Design Invariants
+
+Certain behaviors will need to be encoded as standard for the purposes of API
+simplicity:
+
+- The function graph segments referenced in the *dependency tracking register*
+  should be ordered so that upstream segments always occur before their respective
+  downstream segments.
+- As a design invariant, a given FGK should be initialized with all output fields
+  current with respect to the default coordinates.
+- When an input coordinate is set to the same value as it was previously set to,
+  the FGK should disregard setting any flags for field invalidation.
+
+## Using Dependency Data
 
 This graph shows both the effect of tracking change flow for unary functions as well
 as an implied bi-function. If either the *seed* or the *cycle* value are changed, then
