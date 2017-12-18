@@ -115,7 +115,7 @@ independent segments tracked per kernel for the naive implementation.
 
 Further, each named variable has its own mask of bits, called the dependency
 mask* that determines which of the global tracking register segments feed into
-it. If there are named variable which are not meant to be exposed to the
+it. If there are named variables which are not meant to be exposed to the
 getter/setter API, then these can be elided and the enclosing segments tracked
 as a single segment.
 
@@ -176,14 +176,15 @@ simplicity:
 - The function graph segments referenced in the *dependency tracking register*
   should be ordered so that upstream segments always occur before their respective
   downstream segments.
-- As a design invariant, a given FGK should be initialized with all output fields
-  current with respect to the default coordinates.
+- A given FGK should be initialized with all output fields current with respect 
+  to the default coordinates. This also serves as a runtime validation of the
+  kernel.
 - When an input coordinate is set to the same value as it was previously set to,
   the FGK should disregard setting any flags for field invalidation.
 
 ## Using Dependency Data
 
-This graph shows both the effect of tracking change flow for unary functions as well
+The above graph shows both the effect of tracking change flow for unary functions as well
 as an implied bi-function. If either the *seed* or the *cycle* value are changed, then
 one of the inbound paths to *user_id* is affected. Further, it is specific which one is
 affected, although in the case of a bi-function, both inputs must be used again for
@@ -200,7 +201,24 @@ The basic rules of state tracking using this dependency scheme are as follows:
 
 This means that computing the required executions for a single readable variable 
 is akin to computing them for multiple fields. The only difference is that for multiple
-variables, the logical or of all dependency masks is taken first.
+variables, the logical or of all dependency masks is taken first. This can allow for
+iterative calls to a kernel to be coalesced if the fields sets are known ahead of time.
+
+## Optimizations
+
+With the model above, it becomes possible to create a caching layer around named
+fields that enable direct invocation of sections of the graph without the cost
+of name-based lookup.
+
+Example pseudo-code:
+
+    mut= fgk.prepareMutator(new String[]{ "var1", "var2"}, new String[]{"var5,var6"});
+    Object[] outs=mut.call("a","b");
+    
+While not proper code, this illustrates the idea of knowing which set of inputs will
+be used with a set of outputs and thus allowing for the *pre-baking* of the call-sites
+for better performance.
+
   
   
 
