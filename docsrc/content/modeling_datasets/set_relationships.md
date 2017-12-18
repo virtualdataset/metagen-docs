@@ -1,5 +1,5 @@
 ---
-date: 2017-12-347
+date: 2017-12-16
 title: Set Relationships
 weight: 51
 menu:
@@ -17,7 +17,7 @@ and [cardinality functions](modeling_cardinality.html).
 
 Suppose you have two different sets of things in your virtual dataset:
 
-{{#nomnoml
+{{< nomnoml >}}
 #zoom:0.75
 #direction:right
 #.data: fill=#FFFFFF visual=frame
@@ -26,9 +26,9 @@ Suppose you have two different sets of things in your virtual dataset:
 [<data> "bar"]
 [<data> "baz"]
 ]
-}}
+{{</ nomnoml >}}
 
-{{#nomnoml
+{{< nomnoml >}}
 #zoom:0.75
 #direction:right
 #.data: fill=#FFFFFF visual=frame
@@ -37,14 +37,14 @@ Suppose you have two different sets of things in your virtual dataset:
 [<data> "Y"]
 [<data> "Z"]
 ]
-}}
+{{</ nomnoml >}}
 
 It may be the case that there is no association between elements of the first set to
 the second set, as illustrated above.
 
 You could have a many-to-many association from set A to set B, like this:
 
-{{#nomnoml
+{{< nomnoml >}}
 #zoom:1.0
 #direction:down
 #.data: fill=#FFFFFF visual=frame
@@ -63,11 +63,12 @@ You could have a many-to-many association from set A to set B, like this:
 [baz] -> [X]
 [baz] -> [Y]
 [baz] -> [Z]
-}}
+{{</ nomnoml >}}
 
 In any case, the associations are themselves part of the data set. They must be
 modeled as such. The way that we do this in virtual dataset is to group our
-functions in the same way that data should be grouped.
+functions and thus their value relationships in the same way that data should
+be grouped.
 
 Isolating the values that we use for for uniqueness is a key step. 
 Assume for now, that you are using a simple long value to identify each 
@@ -129,8 +130,8 @@ it is easy to demonstrate on a coordinate plane as well using standard plotting 
 
 First, by using a floor function to visually illustrate the discrete mapping:
 
-<div id="fpthrees1" style="width: 400px; height: 200px;"></div> 
-{{#jsxgraph
+<div id="fpthrees1" style="width: 400px; height: 200px;"> 
+{{< jsxgraph >}}
  brd = JXG.JSXGraph.initBoard('fpthrees1', {boundingbox: [-1, 4, 20, -1], axis:true, showCopyright: false});
  brd.suspendUpdate();
  var c1 = brd.create('functiongraph', [function(x){ return (Math.floor(x) % 3); }],
@@ -138,13 +139,14 @@ First, by using a floor function to visually illustrate the discrete mapping:
  var c2 = brd.create('functiongraph', [function(x){ return (Math.floor(x/3.0) % 3); }],
                        {strokeWidth:5,strokeColor:'blue',strokeOpacity:'0.25'});  
  brd.unsuspendUpdate();
-}} 
+{{</ jsxgraph >}}
+</div>
 
 And second, the continuous analog, to show the relative slope 
 and repeating patterns at every 9th interval:
 
-<div id="fpthrees2" style="width: 400px; height: 200px;"></div> 
-{{#jsxgraph
+<div id="fpthrees2" style="width: 400px; height: 200px;"> 
+{{< jsxgraph >}}
  brd = JXG.JSXGraph.initBoard('fpthrees2', {boundingbox: [-1, 4, 20, -1], axis:true, showCopyright: false});
  brd.suspendUpdate();
  var c3 = brd.create('functiongraph', [function(x){ return (x % 3); }],
@@ -152,7 +154,8 @@ and repeating patterns at every 9th interval:
  var c4 = brd.create('functiongraph', [function(x){ return ((x/3.0) % 3); }],
                        {strokeWidth:5,strokeColor:'blue',strokeOpacity:'0.25'});  
  brd.unsuspendUpdate();
-}} 
+{{</ jsxgraph >}}
+</div>
 
 ### So What?
 

@@ -1,5 +1,5 @@
 ---
-date: 2017-12-347
+date: 2017-12-16
 title: FGK Sketch
 weight: 1000
 ---

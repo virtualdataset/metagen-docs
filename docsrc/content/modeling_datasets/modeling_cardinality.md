@@ -1,5 +1,5 @@
 ---
-date: 2017-12-347
+date: 2017-12-16
 title: Cardinality
 weight: 51
 menu:
@@ -63,7 +63,7 @@ range size we want, taking only the remainder.
 For example, the first 5 values produced by such a method with a modulo of 
 50 and absolute value are:
 
-{{#nomnoml
+{{< nomnoml >}}
 #zoom:0.75
 #direction:right
 #.input: fill=#FFFFFF visual=frame
@@ -90,7 +90,7 @@ For example, the first 5 values produced by such a method with a modulo of
 [<function>Hash(4)] -> [<input> 21]
 [<input> 21] -> [<function>Abs(21)]
 [<function>Abs(21)] -> [<firstname>result: 21]
-}}     
+{{</ nomnoml >}}
 
 We use absolute value in addition to modulo, because signed results allow our
 range to span twice as many unique values as our intended output range.

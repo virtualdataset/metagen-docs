@@ -1,5 +1,5 @@
 ---
-date: 2017-11-327
+date: 2017-11-27
 title: Mapping Functions
 weight: 31
 menu:
