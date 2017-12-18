@@ -6,16 +6,15 @@ weight: 1000
 
 This section elaborates on the function graph kernel design.
 
+Herein, the function graph kernel will be abbreviated as FGK, although it needs
+a better name. In essence, the function graph kernel is a runtime implementation
+of the [Function Graph Kernel API](../function_graph_kernel_api).
+
 Consider the following function graph. For the sake of discussion, it is assumed that this
 is not merely a functiong graph template, but instad a fully realized function graph kernel.
 In practices, this simply means that all of the function names can be mapped to an actual
 implementation in a runtime library, and that there is enough detail in the graph to find
 an unambiguous mapping for such.
-
-Herein, the function graph kernel will be abbreviated as FGK, although it needs
-a better name. In essence, the function graph kernel is a runtime implementation
-of the [Function Graph Kernel API](../function_graph_kernel_api).
-
 
 {{< nomnoml >}}
 #zoom:0.75
