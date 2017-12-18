@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Modeling_datasets on VirtualDataSet</title>
+    <link>http://docs.virtdata.io/modeling_datasets/</link>
+    <description>Recent content in Modeling_datasets on VirtualDataSet</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>APL 2.0</copyright>
+    
+	<atom:link href="http://docs.virtdata.io/modeling_datasets/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Cardinality</title>
+      <link>http://docs.virtdata.io/modeling_datasets/modeling_cardinality/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://docs.virtdata.io/modeling_datasets/modeling_cardinality/</guid>
+      <description>Data Types and Values Given that our values are all bits on some level, there is no basic fixed size data type that has an unlimited range of values. Even the floating point types have finite range, although it is represented and handled differently than that of the whole number types.
+Standard Types For a 64-bit data type, there are \( 64^2 \) different distinct values that can be represented.</description>
+    </item>
+    
+    <item>
+      <title>Set Relationships</title>
+      <link>http://docs.virtdata.io/modeling_datasets/set_relationships/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://docs.virtdata.io/modeling_datasets/set_relationships/</guid>
+      <description>This section will talk about how to model relative cardinality between different types of entities. Before reading this, you should already be familiar with data mapping and cardinality functions.
+Suppose you have two different sets of things in your virtual dataset:
+{{#nomnoml #zoom:0.75 #direction:right #.data: fill=#FFFFFF visual=frame [entity type A| [ &amp;ldquo;foo&amp;rdquo;] [ &amp;ldquo;bar&amp;rdquo;] [ &amp;ldquo;baz&amp;rdquo;] ] }}
+{{#nomnoml #zoom:0.75 #direction:right #.data: fill=#FFFFFF visual=frame [entity type B| [ &amp;ldquo;X&amp;rdquo;] [ &amp;ldquo;Y&amp;rdquo;] [ &amp;ldquo;Z&amp;rdquo;] ] }}</description>
+    </item>
+    
+  </channel>
+</rss>

@@ -1,0 +1,526 @@
+<!DOCTYPE html>
+  
+  
+  
+  
+   <html class="no-js"> 
+
+  <head lang="en-us">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <title>VirtualDataSet</title>
+    <meta name="generator" content="Hugo 0.20.7" />
+
+    
+    <meta name="description" content="VirtualDataSet Docs">
+    
+    <link rel="canonical" href="http://docs.virtdata.io/">
+    
+
+    <meta property="og:url" content="http://docs.virtdata.io/">
+    <meta property="og:title" content="VirtualDataSet">
+    <meta property="og:image" content="http://docs.virtdata.io/images/virtdata_128.png">
+    <meta name="apple-mobile-web-app-title" content="VirtualDataSet">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <link rel="shortcut icon" type="image/x-icon" href="http://docs.virtdata.io/images/engineblock_32.png">
+    <link rel="icon" type="image/x-icon" href="http://docs.virtdata.io/images/engineblock_32.png">
+
+    <style>
+      @font-face {
+        font-family: 'Icon';
+        src: url('http://docs.virtdata.io/fonts/icon.eot');
+        src: url('http://docs.virtdata.io/fonts/icon.eot')
+               format('embedded-opentype'),
+             url('http://docs.virtdata.io/fonts/icon.woff')
+               format('woff'),
+             url('http://docs.virtdata.io/fonts/icon.ttf')
+               format('truetype'),
+             url('http://docs.virtdata.io/fonts/icon.svg')
+               format('svg');
+        font-weight: normal;
+        font-style: normal;
+      }
+    </style>
+
+    <link rel="stylesheet" href="http://docs.virtdata.io/stylesheets/application.css">
+    <link rel="stylesheet" href="http://docs.virtdata.io/stylesheets/temporary.css">
+    <link rel="stylesheet" href="http://docs.virtdata.io/stylesheets/palettes.css">
+    <link rel="stylesheet" href="http://docs.virtdata.io/stylesheets/images.css">
+
+    <link rel="stylesheet" href="http://docs.virtdata.io/stylesheets/highlight/highlight.css">
+
+    
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,700|Roboto&#43;Mono">
+    <style>
+      body, input {
+        font-family: 'Roboto', Helvetica, Arial, sans-serif;
+      }
+      pre, code {
+        font-family: 'Roboto Mono', 'Courier New', 'Courier', monospace;
+      }
+    </style>
+
+    
+    <script src="http://docs.virtdata.io/javascripts/modernizr.js"></script>
+
+    
+    <link href="http://docs.virtdata.io/index.xml" rel="alternate" type="application/rss+xml" title="VirtualDataSet" />
+    <link href="http://docs.virtdata.io/index.xml" rel="feed" type="application/rss+xml" title="VirtualDataSet" />
+    
+
+  
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+
+
+      
+    
+    <link href="http://docs.virtdata.io//modules/annotatorjs/annotator.css" rel="stylesheet" />
+    <script src="http://docs.virtdata.io//modules/annotatorjs/jquery-3.2.1.js"></script>
+    <script src="http://docs.virtdata.io//modules/annotatorjs/annotator.js"></script>
+    <script>
+        var app = new annotator.App();
+        app.include(annotator.ui.main);
+        app
+            .start()
+            .then(function() {
+                app.annotations.load();
+            });
+    </script>
+
+
+  </head>
+  <body class="palette-primary-grey palette-accent-teal">
+
+
+
+
+<div class="backdrop">
+	<div class="backdrop-paper"></div>
+</div>
+
+<input class="toggle" type="checkbox" id="toggle-drawer">
+<input class="toggle" type="checkbox" id="toggle-search">
+<label class="toggle-button overlay" for="toggle-drawer"></label>
+
+<header class="header">
+	<nav aria-label="Header">
+  <div class="bar default">
+    <div class="button button-menu" role="button" aria-label="Menu">
+      <label class="toggle-button icon icon-menu" for="toggle-drawer">
+        <span></span>
+      </label>
+    </div>
+    <div class="stretch">
+      <div class="title">
+        VirtualDataSet
+      </div>
+    </div>
+
+    
+
+    
+    <div class="button button-github" role="button" aria-label="GitHub">
+      <a href="https://github.com/virtualdataset/metagen-java" title="@virtualdataset/metagen-java on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
+    </div>
+    
+    
+        
+  </div>
+  <div class="bar search">
+    <div class="button button-close" role="button" aria-label="Close">
+      <label class="toggle-button icon icon-back" for="toggle-search"></label>
+    </div>
+    <div class="stretch">
+      <div class="field">
+        <input class="query" type="text" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck>
+      </div>
+    </div>
+    <div class="button button-reset" role="button" aria-label="Search">
+      <button class="toggle-button icon icon-close" id="reset-search"></button>
+    </div>
+  </div>
+</nav>
+</header>
+
+<main class="main">
+	<div class="drawer">
+		<nav aria-label="Navigation">
+  <a href="http://docs.virtdata.io/" class="project">
+    <div class="banner">
+      
+        <div class="logo">
+          <img src="http://docs.virtdata.io/images/virtdata_128.png">
+        </div>
+      
+      <div class="name">
+        <strong>VirtualDataSet </strong>
+        
+      </div>
+    </div>
+  </a>
+
+  <div class="scrollable">
+    <div class="wrapper">
+      
+
+      <div class="toc">
+        
+        <ul>
+          
+
+
+
+
+<li>
+  
+    <span class="section">Introduction</span>
+    <ul>
+      
+        
+        
+
+
+
+<a  title="Why VirtData?" href="http://docs.virtdata.io/why_virtdata/why_virtdata/">
+	
+	Why VirtData?
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+
+<li>
+  
+    <span class="section">Concepts</span>
+    <ul>
+      
+        
+        
+
+
+
+<a  title="Mapping Functions" href="http://docs.virtdata.io/concepts/mapping_functions/">
+	
+	Mapping Functions
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Function Graphs" href="http://docs.virtdata.io/concepts/function_graphs/">
+	
+	Function Graphs
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+
+<li>
+  
+    <span class="section">Modeling Datasets</span>
+    <ul>
+      
+        
+        
+
+
+
+<a  title="Cardinality" href="http://docs.virtdata.io/modeling_datasets/modeling_cardinality/">
+	
+	Cardinality
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Set Relationships" href="http://docs.virtdata.io/modeling_datasets/set_relationships/">
+	
+	Set Relationships
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Glossary" href="http://docs.virtdata.io/glossary">
+	
+	Glossary
+</a>
+
+
+
+  
+</li>
+
+
+        </ul>
+        
+
+        
+      </div>
+    </div>
+  </div>
+</nav>
+
+	</div>
+
+	<article class="article">
+		<div class="wrapper">
+			
+				<h1>Virtual Data Set - User&#39;s Guide </h1>
+
+				
+
+<p><a href="https://maven-badges.herokuapp.com/maven-central/io.virtdata/metagen/"><img src="https://maven-badges.herokuapp.com/maven-central/io.virtdata/metagen/badge.svg" alt="Latest Release" /></a> <a href="https://travis-ci.org/virtualdataset/metagen-java"><img src="https://travis-ci.org/virtualdataset/metagen-java.svg?branch=master" alt="Build Status" /></a></p>
+
+<p><strong>Please stand by while we bring the docs online&hellip;</strong></p>
+
+<p>This book serves as the primary documentation for VirtualDataSet projects.</p>
+
+<h2 id="what-is-a-virtual-dataset">What is a Virtual DataSet?</h2>
+
+<p>Virtual data can be described by a recipe. It can be created when you attempt
+to access it. Virtual Data is a lens into a set of data that may not exist yet,
+but which, once observed, is as tangible as stored data. Virtual data is what
+results when you apply a mapping function to a coordinate.</p>
+
+<p>The procedurally generated worlds of some video
+games start out as a virtual data set. A <em>procedural generation algorithm</em>
+can be thought of as a mapping function between a set of specific coordinates
+and a set of observable details. The data is virtual because it
+is synthesized as you observe it, according to a recipe.</p>
+
+<p>The coordinates can be in any useful form, such as a time on a timeline, a
+set of cartesian coordinates, something even more rudimentary like a count of
+iterations. The details can represent any tangible idea that is called for.</p>
+
+<p>The recipes used with virtual dataset are simply called <em>virtdata recipes</em>.
+They can vary in complexity from the mundane to the sophisticated.</p>
+
+<p>Some recipes &ndash; those depending only on
+<a href="https://en.wikipedia.org/wiki/Pure_function">pure functions</a> &ndash; will generate a
+<em>static virtual dataset</em>. Recipes that rely mutable state will generate
+a <em>dynamic virtual dataset</em>.</p>
+
+<h2 id="requests">Requests</h2>
+
+<p>If you have requests for topics to include in this book, please submit them at the
+<a href="https://github.com/virtualdataset/metagen-docs/issues">Issue Tracker</a>.</p>
+
+<h2 id="next-steps">Next Steps</h2>
+
+<p>This book serves as the primary documentation for the
+Virtual DataSet projects, namely
+<a href="https://github.com/virtualdataset/metagen-java">Metagen-Java</a>
+If you have requests, please submit them at the</p>
+
+<p><a href="https://github.com/virtualdataset/virtdata-docs/issues">Issue Tracker</a>.</p>
+
+<p>The book is structured to give you a useful entry point regardless of your
+experience with the concepts and tools. You can choose to go directly to
+the <a href="using_virtdata/common_recipes.html">Recipes</a> section, or
+you can start with <a href="concepts/concepts.html">Concepts</a>.</p>
+
+<h2 id="virtdata-history">VirtData History</h2>
+
+<p>Virtual DataSet began as an experiment to see if a DSL could be used to create
+recipe-driven synthetic data streams for distributed testing.</p>
+
+<p>The first generation of the experiment, named <strong>Metagener</strong>, was successful in
+producing a working prototype, with a direct generator specification language,
+fluent API and built-in examples. However, it had at least one major failing: It
+was not easy to use.</p>
+
+<p>The current version of the toolkit exists as a reboot of the original ideas, but
+with a less ambitious set of goals and a focus providing something useful.</p>
+
+<p>The design priorities of this phase of the virtual dataset tools are:</p>
+
+<ol>
+<li>Late-binding and easy integration for runtime library extensions</li>
+<li>Idiomatic Java-8 functional reflection</li>
+<li>Efficient lambda construction and composition of higher-order data mappers</li>
+<li>Consumer-friendly APIs for easy client integration</li>
+<li>A set of common recipe examples for users to copy and paste</li>
+<li>Useful documentation</li>
+</ol>
+
+<p>Once these basic goals are met, some of the more interesting features of the
+original project may be added in.</p>
+
+			
+
+			<aside class="copyright" role="note">
+				
+				&copy; 2017 APL 2.0 &ndash;
+				
+				Documentation built with
+				<a href="https://www.gohugo.io" target="_blank">Hugo</a>
+				using the
+				<a href="http://github.com/digitalcraftsman/hugo-material-docs" target="_blank">Material</a> theme.
+			</aside>
+
+			<footer class="footer">
+				
+
+
+
+<nav class="pagination" aria-label="Footer">
+  <div class="previous">
+  </div>
+
+  
+  
+  <div class="next">
+      <a href="http://docs.virtdata.io/concepts/mapping_functions/" title="Mapping Functions">
+        <span class="direction">
+          Next
+        </span>
+        <div class="page">
+          <div class="stretch">
+            <div class="title">
+              Mapping Functions
+            </div>
+          </div>
+          <div class="button button-next" role="button" aria-label="Next">
+            <i class="icon icon-forward"></i>
+          </div>
+        </div>
+      </a>
+  </div>
+</nav>
+
+
+
+			</footer>
+		</div>
+	</article>
+
+	<div class="results" role="status" aria-live="polite">
+		<div class="scrollable">
+			<div class="wrapper">
+				<div class="meta"></div>
+				<div class="list"></div>
+			</div>
+		</div>
+	</div>
+</main>
+
+    <script>
+    
+      var base_url = '';
+      var repo_id  = '';
+    
+    </script>
+
+    <script src="http://docs.virtdata.io/javascripts/application.js"></script>
+    
+
+    <script>
+      /* Add headers to scrollspy */
+      var headers   = document.getElementsByTagName("h2");
+      var scrollspy = document.getElementById('scrollspy');
+
+      if(scrollspy) {
+        if(headers.length > 0) {
+          for(var i = 0; i < headers.length; i++) {
+            var li = document.createElement("li");
+            li.setAttribute("class", "anchor");
+
+            var a  = document.createElement("a");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", headers[i].innerHTML);
+            a.innerHTML = headers[i].innerHTML;
+
+            li.appendChild(a)
+            scrollspy.appendChild(li);
+          }
+        } else {
+          scrollspy.parentElement.removeChild(scrollspy)
+        }
+
+
+        /* Add permanent link next to the headers */
+        var headers = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
+
+        for(var i = 0; i < headers.length; i++) {
+            var a = document.createElement("a");
+            a.setAttribute("class", "headerlink");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", "Permanent link")
+            a.innerHTML = "¶";
+            headers[i].appendChild(a);
+        }
+      }
+    </script>
+
+    
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Sketches on VirtualDataSet</title>
+    <link>http://docs.virtdata.io/sketches/</link>
+    <description>Recent content in Sketches on VirtualDataSet</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>APL 2.0</copyright>
+    <lastBuildDate>Fri, 19 May 2017 21:51:26 +0000</lastBuildDate>
+    
+	<atom:link href="http://docs.virtdata.io/sketches/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>FGK-NeedsAName</title>
+      <link>http://docs.virtdata.io/sketches/runtime_kernel/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://docs.virtdata.io/sketches/runtime_kernel/</guid>
+      <description>The functional kernel is simply the implementation of a function graph, as realized in your application. This is the result of binding a parsed function graph template to a set of functions within a graph.
+What makes the functional kernel useful are the various ways that you can interact with it.
+Setting coordinates Whe a functional kernel is realized in your runtime, it will have a set of named inputs which we call coordinates.</description>
+    </item>
+    
+    <item>
+      <title>Design Sketches</title>
+      <link>http://docs.virtdata.io/sketches/</link>
+      <pubDate>Fri, 19 May 2017 21:51:26 +0000</pubDate>
+      
+      <guid>http://docs.virtdata.io/sketches/</guid>
+      <description>This section holds design sketches of some of the more esoteric design elements of EngineBlock.
+ Function Graph Kernel  </description>
+    </item>
+    
+    <item>
+      <title>FGK Sketch</title>
+      <link>http://docs.virtdata.io/sketches/function_graph_kernel/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://docs.virtdata.io/sketches/function_graph_kernel/</guid>
+      <description>This section elaborates on the function graph kernel design.
+Consider the following function graph. For the sake of discussion, it is assumed that this is not merely a functiong graph template, but instad a fully realized function graph kernel.
+Hereien, the function graph kernel will be abbrieviated as FGK, although it needs a better name.
+ #zoom:0.75 #direction:down #.function: fill=#FFFFFF visual=sender #.userid: visual=frame #.firstname: visual=frame #.lastname: visual=frame [&amp;lt;input&amp;gt;cycle: long] -&amp;gt;[&amp;lt;function&amp;gt;U] [&amp;lt;function&amp;gt;U] -&amp;gt; [&amp;lt;userid&amp;gt;user_id: long] [&amp;lt;userid&amp;gt;user_id: long] -&amp;gt;[&amp;lt;function&amp;gt;F] [&amp;lt;function&amp;gt;F] -&amp;gt; [&amp;lt;firstname&amp;gt;first_name: String] [&amp;lt;userid&amp;gt;user_id: long] -&amp;gt;[&amp;lt;function&amp;gt;L] [&amp;lt;function&amp;gt;L] -&amp;gt; [&amp;lt;lastname&amp;gt;last_name: String]   This graph clearly identifies the dependency relationships in the graph.</description>
+    </item>
+    
+  </channel>
+</rss>

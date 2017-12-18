@@ -1,0 +1,708 @@
+<!DOCTYPE html>
+  
+  
+  
+  
+   <html class="no-js"> 
+
+  <head lang="en-us">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <title>FGK Sketch - VirtualDataSet</title>
+    <meta name="generator" content="Hugo 0.20.7" />
+
+    
+    <meta name="description" content="VirtualDataSet Docs">
+    
+    <link rel="canonical" href="http://docs.virtdata.io/sketches/function_graph_kernel/">
+    
+
+    <meta property="og:url" content="http://docs.virtdata.io/sketches/function_graph_kernel/">
+    <meta property="og:title" content="VirtualDataSet">
+    <meta property="og:image" content="http://docs.virtdata.io/images/virtdata_128.png">
+    <meta name="apple-mobile-web-app-title" content="VirtualDataSet">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <link rel="shortcut icon" type="image/x-icon" href="http://docs.virtdata.io/images/engineblock_32.png">
+    <link rel="icon" type="image/x-icon" href="http://docs.virtdata.io/images/engineblock_32.png">
+
+    <style>
+      @font-face {
+        font-family: 'Icon';
+        src: url('http://docs.virtdata.io/fonts/icon.eot');
+        src: url('http://docs.virtdata.io/fonts/icon.eot')
+               format('embedded-opentype'),
+             url('http://docs.virtdata.io/fonts/icon.woff')
+               format('woff'),
+             url('http://docs.virtdata.io/fonts/icon.ttf')
+               format('truetype'),
+             url('http://docs.virtdata.io/fonts/icon.svg')
+               format('svg');
+        font-weight: normal;
+        font-style: normal;
+      }
+    </style>
+
+    <link rel="stylesheet" href="http://docs.virtdata.io/stylesheets/application.css">
+    <link rel="stylesheet" href="http://docs.virtdata.io/stylesheets/temporary.css">
+    <link rel="stylesheet" href="http://docs.virtdata.io/stylesheets/palettes.css">
+    <link rel="stylesheet" href="http://docs.virtdata.io/stylesheets/images.css">
+
+    <link rel="stylesheet" href="http://docs.virtdata.io/stylesheets/highlight/highlight.css">
+
+    
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,700|Roboto&#43;Mono">
+    <style>
+      body, input {
+        font-family: 'Roboto', Helvetica, Arial, sans-serif;
+      }
+      pre, code {
+        font-family: 'Roboto Mono', 'Courier New', 'Courier', monospace;
+      }
+    </style>
+
+    
+    <script src="http://docs.virtdata.io/javascripts/modernizr.js"></script>
+
+    
+
+  
+    
+    
+
+    
+    
+    <script src="http://docs.virtdata.io//modules/viz/viz.js"></script>
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    <script src="http://docs.virtdata.io//modules/nomnoml/lodash.min.js"></script>
+    <script src="http://docs.virtdata.io//modules/nomnoml/dagre.min.js"></script>
+    <script src="http://docs.virtdata.io//modules/nomnoml/skanaar.util.js"></script>
+    <script src="http://docs.virtdata.io//modules/nomnoml/skanaar.svg.js"></script>
+    <script src="http://docs.virtdata.io//modules/nomnoml/skanaar.vector.js"></script>
+    <script src="http://docs.virtdata.io//modules/nomnoml/skanaar.canvas.js"></script>
+    <script src="http://docs.virtdata.io//modules/nomnoml/nomnoml.jison.js"></script>
+    <script src="http://docs.virtdata.io//modules/nomnoml/nomnoml.parser.js"></script>
+    <script src="http://docs.virtdata.io//modules/nomnoml/nomnoml.layouter.js"></script>
+    <script src="http://docs.virtdata.io//modules/nomnoml/nomnoml.renderer.js"></script>
+    <script src="http://docs.virtdata.io//modules/nomnoml/nomnoml.js"></script>
+    
+    
+    
+    
+
+    
+    
+
+
+      
+    
+    <link href="http://docs.virtdata.io//modules/annotatorjs/annotator.css" rel="stylesheet" />
+    <script src="http://docs.virtdata.io//modules/annotatorjs/jquery-3.2.1.js"></script>
+    <script src="http://docs.virtdata.io//modules/annotatorjs/annotator.js"></script>
+    <script>
+        var app = new annotator.App();
+        app.include(annotator.ui.main);
+        app
+            .start()
+            .then(function() {
+                app.annotations.load();
+            });
+    </script>
+
+
+  </head>
+  <body class="palette-primary-grey palette-accent-teal">
+
+
+
+
+<div class="backdrop">
+	<div class="backdrop-paper"></div>
+</div>
+
+<input class="toggle" type="checkbox" id="toggle-drawer">
+<input class="toggle" type="checkbox" id="toggle-search">
+<label class="toggle-button overlay" for="toggle-drawer"></label>
+
+<header class="header">
+	<nav aria-label="Header">
+  <div class="bar default">
+    <div class="button button-menu" role="button" aria-label="Menu">
+      <label class="toggle-button icon icon-menu" for="toggle-drawer">
+        <span></span>
+      </label>
+    </div>
+    <div class="stretch">
+      <div class="title">
+        FGK Sketch
+      </div>
+    </div>
+
+    
+
+    
+    <div class="button button-github" role="button" aria-label="GitHub">
+      <a href="https://github.com/virtualdataset/metagen-java" title="@virtualdataset/metagen-java on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
+    </div>
+    
+    
+        
+  </div>
+  <div class="bar search">
+    <div class="button button-close" role="button" aria-label="Close">
+      <label class="toggle-button icon icon-back" for="toggle-search"></label>
+    </div>
+    <div class="stretch">
+      <div class="field">
+        <input class="query" type="text" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck>
+      </div>
+    </div>
+    <div class="button button-reset" role="button" aria-label="Search">
+      <button class="toggle-button icon icon-close" id="reset-search"></button>
+    </div>
+  </div>
+</nav>
+</header>
+
+<main class="main">
+	<div class="drawer">
+		<nav aria-label="Navigation">
+  <a href="http://docs.virtdata.io/" class="project">
+    <div class="banner">
+      
+        <div class="logo">
+          <img src="http://docs.virtdata.io/images/virtdata_128.png">
+        </div>
+      
+      <div class="name">
+        <strong>VirtualDataSet </strong>
+        
+      </div>
+    </div>
+  </a>
+
+  <div class="scrollable">
+    <div class="wrapper">
+      
+
+      <div class="toc">
+        
+        <ul>
+          
+
+
+
+
+<li>
+  
+    <span class="section">Introduction</span>
+    <ul>
+      
+        
+        
+
+
+
+<a  title="Why VirtData?" href="http://docs.virtdata.io/why_virtdata/why_virtdata/">
+	
+	Why VirtData?
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+
+<li>
+  
+    <span class="section">Concepts</span>
+    <ul>
+      
+        
+        
+
+
+
+<a  title="Mapping Functions" href="http://docs.virtdata.io/concepts/mapping_functions/">
+	
+	Mapping Functions
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Function Graphs" href="http://docs.virtdata.io/concepts/function_graphs/">
+	
+	Function Graphs
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+
+<li>
+  
+    <span class="section">Modeling Datasets</span>
+    <ul>
+      
+        
+        
+
+
+
+<a  title="Cardinality" href="http://docs.virtdata.io/modeling_datasets/modeling_cardinality/">
+	
+	Cardinality
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Set Relationships" href="http://docs.virtdata.io/modeling_datasets/set_relationships/">
+	
+	Set Relationships
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Glossary" href="http://docs.virtdata.io/glossary">
+	
+	Glossary
+</a>
+
+
+
+  
+</li>
+
+
+        </ul>
+        
+
+        
+      </div>
+    </div>
+  </div>
+</nav>
+
+	</div>
+
+	<article class="article">
+		<div class="wrapper">
+			<h1>FGK Sketch </h1>
+
+			
+
+<p>This section elaborates on the function graph kernel design.</p>
+
+<p>Consider the following function graph. For the sake of discussion, it is assumed that this
+is not merely a functiong graph template, but instad a fully realized function graph kernel.</p>
+
+<p>Hereien, the function graph kernel will be abbrieviated as FGK, although it needs a better name.</p>
+
+
+
+<div align="center" class="nomnoml-text"><div><pre>
+#zoom:0.75
+#direction:down
+#.function: fill=#FFFFFF visual=sender
+#.userid: visual=frame
+#.firstname: visual=frame
+#.lastname: visual=frame
+[&lt;input&gt;cycle: long] -&gt;[&lt;function&gt;U]
+[&lt;function&gt;U] -&gt; [&lt;userid&gt;user_id: long]
+[&lt;userid&gt;user_id: long] -&gt;[&lt;function&gt;F]
+[&lt;function&gt;F] -&gt; [&lt;firstname&gt;first_name: String]
+[&lt;userid&gt;user_id: long] -&gt;[&lt;function&gt;L]
+[&lt;function&gt;L] -&gt; [&lt;lastname&gt;last_name: String]
+</pre></div></div>
+<script type="text/javascript" src="http://docs.virtdata.io/modules/nomnoml/inithook-nomnoml.js"></script>
+
+
+<p>This graph clearly identifies the dependency relationships in the graph.</p>
+
+<p>However, there are limited ways to interact with the function graph. The
+designer of the function graph determines what the available inputs and outputs
+are, and gives them names to suit.</p>
+
+<p>All interactions with a user should be based on named inputs and outputs. These
+are referred to as <strong>fields</strong> in the FGK. In the naive implementation, all
+fields are simple state boxes which can be muted or observed via the named-based
+getter and setter API.</p>
+
+<p>Further, the fields have strict types. This is necessary in order to make an
+efficient FGK implementation as well as to handle type-conversion robustly.</p>
+
+<h2 id="dependency-tracking">Dependency Tracking</h2>
+
+<p>One of the goals of the FGK design is to allow for surgical modification of
+values which are relatively high-use without incurring the cost of recomputing
+chains of functions. This means that it is necessary to identify, based on
+the data flow throught the graph, when an observable value has become stale
+with respect to all coordinate inputs. There are various ways to approach this:</p>
+
+<p>As a design invariant, a given FGK should be initialized with all output fields
+current with respect to the default coordinates.</p>
+
+<p>Further, when an input coordinate is set to the same value as it was previously set to,
+the FGK should disregard setting any flags for field invalidation.</p>
+
+<p>Elaboration of dependency tracking ideas below will assume this composed function:</p>
+
+
+
+<div align="center" class="nomnoml-text"><div><pre>
+#zoom:0.75
+#direction:right
+#.function: fill=#FFFFFF visual=sender
+#.userid: visual=frame
+#.firstname: visual=frame
+#.lastname: visual=frame
+[&lt;input&gt;cycle: long] -&gt;[&lt;function&gt;U]
+[&lt;function&gt;U] -&gt; [&lt;userid&gt;user_id: long]
+[&lt;userid&gt;user_id: long] -&gt;[&lt;function&gt;F]
+[&lt;function&gt;F] -&gt; [&lt;firstname&gt;first_name: String]
+</pre></div></div>
+<script type="text/javascript" src="http://docs.virtdata.io/modules/nomnoml/inithook-nomnoml.js"></script>
+
+
+<h2 id="dependency-structure">Dependency Structure</h2>
+
+<p>Each pathway between a depending field and the fields it depends on is distinct.
+That means that any tracking of state changes for the purposes of optimal
+evaluation must be traversal-based, rather than node-based. To be more specific,
+it would not be sufficient to track whether user_id changed if you wanted to
+avoid unnecessary evaluations, of both first_name and last_name, as a change to
+user_id affects them both, and it isn&rsquo;t possible to know when each of them
+requires an update without knowing if they have been individually updated since
+a change to user_id.</p>
+
+<p>In simple terms, tracking upstream changes for an observable field requires tracking
+changes to each pathway up from that field. By tracking changes to pathways of
+data flow, both first_name and last_name can be accuratelly updated only when needed.</p>
+
+<h2 id="dependency-tracking-1">Dependency Tracking</h2>
+
+<p>Given each field-to-field data flow in a function graph, a simple tracking structure
+can be created that enumerates these paths in terms of a bitmask.</p>
+
+
+
+<div align="center" class="viz-text"><pre>
+digraph tracking {
+    size=&#34;4,4&#34;
+    seed[label=&#34;seed: long&#34;]
+    cycle[label=&#34;cycle: long&#34;]
+    user_id[label=&#34;user_id: long&#34;]
+    seed -&gt; U -&gt; user_id [color=&#34;grey&#34;, label=&#34;0&#34;,labelcolor=&#34;grey&#34;];
+    cycle-&gt; U -&gt; user_id [color=&#34;blue&#34;,label=&#34;1&#34;,labelcolor=&#34;blue&#34;];
+    user_id -&gt; F -&gt; first_name [color=&#34;red&#34;, label=&#34;2&#34;, labelcolor=&#34;red&#34;];
+    user_id -&gt; L -&gt; last_name [color=&#34;green&#34; label=&#34;3&#34;, labelcolor=&#34;green&#34;];
+  tracker[shape=&#34;record&#34;, label=&#34;{tracking register|{0|1|2|3|...}}&#34;]
+}
+</pre></div>
+<script type="text/javascript" src="http://docs.virtdata.io/modules/viz/inithook-viz.js"></script>
+
+
+<p>This graph shows both the effect of tracking change flow for unary functions as well
+as an implied bi-function. If either the <em>seed</em> or the <em>cycle</em> value are changed, then
+one of the inbound paths to <em>user_id</em> is affected. Further, it is specific which one is
+affected.</p>
+
+<p>For fields which are the product of bifunctions, such as <em>user_id</em> and <em>U()</em>, any upstream
+changes require the bi-function to be re-computed. However, &hellip;</p>
+
+<ul>
+<li>The dependency mask for <em>last_name</em> is <code>1011</code>.</li>
+<li>The dependency mask for <em>first_name</em> is <code>0111</code>.</li>
+<li>The dependency mask for <em>user_id</em> is <code>0011</code>.</li>
+</ul>
+
+<p>The basic rules of state tracking using this dependency scheme are as follows:</p>
+
+<ol>
+<li>When a FGK is initialized, all observable values are computed with
+respect to the default inputs (coordinats), and all tracked state is cleared.</li>
+<li>When a field is observed, it&rsquo;s</li>
+</ol>
+
+<h3 id="computed-state-and-function-unrolling">Computed State and Function Unrolling</h3>
+
+<p>For the above example, here are a specific and finite set of uncomputed
+states that are possible when the user attempts to observe thee <em>first_name</em> field.
+They are:</p>
+
+<ol>
+<li><s>cycle and identity have both been changed</s></li>
+<li>cycle has been changed</li>
+<li>user_id has been changed</li>
+<li>neither cycle nor user_id have been changed</li>
+</ol>
+
+<p>Of these, there are only three distict and actionable execution plans, owing to the
+fact that when cycle has been chaged, identity might as well have been changed in terms
+of how it affects the value of the <em>first_name</em> field. The last case with no changes <em>is</em>
+a specific execution plan, although it is effectively a NOOP.</p>
+
+<p>This provides a basic rationale for setting the required entry point for
+evaluation of the <em>first_name</em> field:</p>
+
+<ul>
+<li>In case <strong>2</strong>, compute the new value of <em>user_id</em> from cycle, then compute the new value of <em>first_name</em> from <em>user_id</em>, then return the value of <em>first_name</em>.</li>
+<li>In case <strong>3</strong>, compute the new value of <em>first_name</em> and then return the value of the curret <em>first_name</em> field.</li>
+<li>In case <strong>4</strong>, do nothing, return the current value of the <em>first_name</em> field.</li>
+</ul>
+
+<p>This yields an interesting affinity to loop unrolling, and can be encoded in a kernel with the following pseudocode (with more optimal numbering):</p>
+
+<pre><code>switch predecessor_state:
+  case: 0: compute user_id
+  case: 1: compute first_name
+
+return first_name
+</code></pre>
+
+<p>For a function graph which includes no bi-functions or other functions with higher arity,
+it would be possible to have a simple predecessor tracking bitmask by walkig backwards
+through the graph from a given field.</p>
+
+<p>For function graphs with bi-functions or other functions with higher arity, it
+is still possible to have a function tracking bitmask, although the mapping
+between predecessors would need to be established from a deterministic graph
+traversal method. This is the current approach to tracking that will be
+employed in the initial implementation.</p>
+
+<h3 id="predecessor-change-tracking">Predecessor Change Tracking</h3>
+
+<p>For a given functional kernel, a 64-bit register should be kept which is mapped
+to each of the named fields in the function graph, based on a breadth-first
+traversal. This register is called the <strong>change tracker</strong>.</p>
+
+<p>When a given field is set, its associated bit should be set in the change
+tracker. Further, each field should have its own field-dependency mask, which
+can be used to determine whether or not the current value is stale by looking
+for any bits in the change tracker are non-zero. This per-field mask is
+called the <strong>dependency mask</strong>.</p>
+
+<p>Naively, when a field is observed, it checks the binary AND of its dependency
+mask and thus determines whether to execute any upstream evaluations prior
+to returning the requested field value.</p>
+
+<h3 id="evaluation-invariant">Evaluation Invariant</h3>
+
+<p>Changing a field, whether or not via kernel API setters, or via recalculation
+fro upstream changes, should cause the currently observed fields change
+tracking bit to be set.</p>
+
+<p>Once all predecessor fields have been calculated, the change tracking for a
+given observable field should indicate that all upstream fields have been
+updated by setting their individual bits to 0. However, any calculation requied
+should automatically cause the field currently being observed to set its
+state tracking bit to 1.</p>
+
+<p>TODO: This is not consistent, and needs to be resolved. This is because change
+observation needs to occur with respect to both the depending field(s) and the
+referent field(s). This means that the pair-wise field associations and the
+functional paths between them are the real target of state tracking.</p>
+
+<h3 id="downstream-invalidation-on-modification">Downstream invalidation on modification</h3>
+
+<p>If each downstream field is marked as invalid for any upstream changes, then it
+is simply a matter of having the observer walk up the function graph to the last
+valid node and continuing processing fro there.</p>
+
+<p>This has the undesirable trade-off of imposing an arbitrary cost of invalidation
+on any data modification without consideration of the relative value of doing so.</p>
+
+<h3 id="upstream-validation">Upstream validation</h3>
+
+<p>If each upstream field is checked for changes with respect to the observed field,
+then</p>
+
+<h3 id="dependency-analysis">Dependency Analysis</h3>
+
+<p>If the mutators and observers to a FGK are limited to a set of patterns, it is
+possible to build the minimal dependency-aware kernel that will support these
+patters. This is a more advanced approach which is likely out of scope for any
+initial implementation. SOme detail is provided here to capture the idea.</p>
+
+
+			<aside class="copyright" role="note">
+				
+				&copy; 2017 APL 2.0 &ndash;
+				
+				Documentation built with
+				<a href="https://www.gohugo.io" target="_blank">Hugo</a>
+				using the
+				<a href="http://github.com/digitalcraftsman/hugo-material-docs" target="_blank">Material</a> theme.
+			</aside>
+
+			<footer class="footer">
+				
+
+<nav class="pagination" aria-label="Footer">
+  <div class="previous">
+  
+      <a href="http://docs.virtdata.io/sketches/" title="Design Sketches">
+        <span class="direction">
+          Previous
+        </span>
+        <div class="page">
+          <div class="button button-previous" role="button" aria-label="Previous">
+            <i class="icon icon-back"></i>
+          </div>
+          <div class="stretch">
+            <div class="title">
+              Design Sketches
+            </div>
+          </div>
+        </div>
+      </a>
+  
+  </div>
+
+  <div class="next">
+  
+      <a href="http://docs.virtdata.io/src/extending_virtdata/adding_libraries/" title="">
+        <span class="direction">
+          Next
+        </span>
+        <div class="page">
+          <div class="stretch">
+            <div class="title">
+              
+            </div>
+          </div>
+          <div class="button button-next" role="button" aria-label="Next">
+            <i class="icon icon-forward"></i>
+          </div>
+        </div>
+      </a>
+  
+  </div>
+</nav>
+
+
+
+
+
+			</footer>
+		</div>
+	</article>
+
+	<div class="results" role="status" aria-live="polite">
+		<div class="scrollable">
+			<div class="wrapper">
+				<div class="meta"></div>
+				<div class="list"></div>
+			</div>
+		</div>
+	</div>
+</main>
+
+    <script>
+    
+      var base_url = '';
+      var repo_id  = '';
+    
+    </script>
+
+    <script src="http://docs.virtdata.io/javascripts/application.js"></script>
+    
+
+    <script>
+      /* Add headers to scrollspy */
+      var headers   = document.getElementsByTagName("h2");
+      var scrollspy = document.getElementById('scrollspy');
+
+      if(scrollspy) {
+        if(headers.length > 0) {
+          for(var i = 0; i < headers.length; i++) {
+            var li = document.createElement("li");
+            li.setAttribute("class", "anchor");
+
+            var a  = document.createElement("a");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", headers[i].innerHTML);
+            a.innerHTML = headers[i].innerHTML;
+
+            li.appendChild(a)
+            scrollspy.appendChild(li);
+          }
+        } else {
+          scrollspy.parentElement.removeChild(scrollspy)
+        }
+
+
+        /* Add permanent link next to the headers */
+        var headers = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
+
+        for(var i = 0; i < headers.length; i++) {
+            var a = document.createElement("a");
+            a.setAttribute("class", "headerlink");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", "Permanent link")
+            a.innerHTML = "¶";
+            headers[i].appendChild(a);
+        }
+      }
+    </script>
+
+    
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

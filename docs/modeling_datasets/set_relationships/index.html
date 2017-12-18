@@ -1,0 +1,620 @@
+<!DOCTYPE html>
+  
+  
+  
+  
+   <html class="no-js"> 
+
+  <head lang="en-us">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <title>Set Relationships - VirtualDataSet</title>
+    <meta name="generator" content="Hugo 0.20.7" />
+
+    
+    <meta name="description" content="VirtualDataSet Docs">
+    
+    <link rel="canonical" href="http://docs.virtdata.io/modeling_datasets/set_relationships/">
+    
+
+    <meta property="og:url" content="http://docs.virtdata.io/modeling_datasets/set_relationships/">
+    <meta property="og:title" content="VirtualDataSet">
+    <meta property="og:image" content="http://docs.virtdata.io/images/virtdata_128.png">
+    <meta name="apple-mobile-web-app-title" content="VirtualDataSet">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <link rel="shortcut icon" type="image/x-icon" href="http://docs.virtdata.io/images/engineblock_32.png">
+    <link rel="icon" type="image/x-icon" href="http://docs.virtdata.io/images/engineblock_32.png">
+
+    <style>
+      @font-face {
+        font-family: 'Icon';
+        src: url('http://docs.virtdata.io/fonts/icon.eot');
+        src: url('http://docs.virtdata.io/fonts/icon.eot')
+               format('embedded-opentype'),
+             url('http://docs.virtdata.io/fonts/icon.woff')
+               format('woff'),
+             url('http://docs.virtdata.io/fonts/icon.ttf')
+               format('truetype'),
+             url('http://docs.virtdata.io/fonts/icon.svg')
+               format('svg');
+        font-weight: normal;
+        font-style: normal;
+      }
+    </style>
+
+    <link rel="stylesheet" href="http://docs.virtdata.io/stylesheets/application.css">
+    <link rel="stylesheet" href="http://docs.virtdata.io/stylesheets/temporary.css">
+    <link rel="stylesheet" href="http://docs.virtdata.io/stylesheets/palettes.css">
+    <link rel="stylesheet" href="http://docs.virtdata.io/stylesheets/images.css">
+
+    <link rel="stylesheet" href="http://docs.virtdata.io/stylesheets/highlight/highlight.css">
+
+    
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,700|Roboto&#43;Mono">
+    <style>
+      body, input {
+        font-family: 'Roboto', Helvetica, Arial, sans-serif;
+      }
+      pre, code {
+        font-family: 'Roboto Mono', 'Courier New', 'Courier', monospace;
+      }
+    </style>
+
+    
+    <script src="http://docs.virtdata.io/javascripts/modernizr.js"></script>
+
+    
+
+  
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+
+
+      
+    
+    <link href="http://docs.virtdata.io//modules/annotatorjs/annotator.css" rel="stylesheet" />
+    <script src="http://docs.virtdata.io//modules/annotatorjs/jquery-3.2.1.js"></script>
+    <script src="http://docs.virtdata.io//modules/annotatorjs/annotator.js"></script>
+    <script>
+        var app = new annotator.App();
+        app.include(annotator.ui.main);
+        app
+            .start()
+            .then(function() {
+                app.annotations.load();
+            });
+    </script>
+
+
+  </head>
+  <body class="palette-primary-grey palette-accent-teal">
+
+
+
+
+<div class="backdrop">
+	<div class="backdrop-paper"></div>
+</div>
+
+<input class="toggle" type="checkbox" id="toggle-drawer">
+<input class="toggle" type="checkbox" id="toggle-search">
+<label class="toggle-button overlay" for="toggle-drawer"></label>
+
+<header class="header">
+	<nav aria-label="Header">
+  <div class="bar default">
+    <div class="button button-menu" role="button" aria-label="Menu">
+      <label class="toggle-button icon icon-menu" for="toggle-drawer">
+        <span></span>
+      </label>
+    </div>
+    <div class="stretch">
+      <div class="title">
+        Set Relationships
+      </div>
+    </div>
+
+    
+
+    
+    <div class="button button-github" role="button" aria-label="GitHub">
+      <a href="https://github.com/virtualdataset/metagen-java" title="@virtualdataset/metagen-java on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
+    </div>
+    
+    
+        
+  </div>
+  <div class="bar search">
+    <div class="button button-close" role="button" aria-label="Close">
+      <label class="toggle-button icon icon-back" for="toggle-search"></label>
+    </div>
+    <div class="stretch">
+      <div class="field">
+        <input class="query" type="text" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck>
+      </div>
+    </div>
+    <div class="button button-reset" role="button" aria-label="Search">
+      <button class="toggle-button icon icon-close" id="reset-search"></button>
+    </div>
+  </div>
+</nav>
+</header>
+
+<main class="main">
+	<div class="drawer">
+		<nav aria-label="Navigation">
+  <a href="http://docs.virtdata.io/" class="project">
+    <div class="banner">
+      
+        <div class="logo">
+          <img src="http://docs.virtdata.io/images/virtdata_128.png">
+        </div>
+      
+      <div class="name">
+        <strong>VirtualDataSet </strong>
+        
+      </div>
+    </div>
+  </a>
+
+  <div class="scrollable">
+    <div class="wrapper">
+      
+
+      <div class="toc">
+        
+        <ul>
+          
+
+
+
+
+<li>
+  
+    <span class="section">Introduction</span>
+    <ul>
+      
+        
+        
+
+
+
+<a  title="Why VirtData?" href="http://docs.virtdata.io/why_virtdata/why_virtdata/">
+	
+	Why VirtData?
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+
+<li>
+  
+    <span class="section">Concepts</span>
+    <ul>
+      
+        
+        
+
+
+
+<a  title="Mapping Functions" href="http://docs.virtdata.io/concepts/mapping_functions/">
+	
+	Mapping Functions
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Function Graphs" href="http://docs.virtdata.io/concepts/function_graphs/">
+	
+	Function Graphs
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+
+<li>
+  
+    <span class="section">Modeling Datasets</span>
+    <ul>
+      
+        
+        
+
+
+
+<a  title="Cardinality" href="http://docs.virtdata.io/modeling_datasets/modeling_cardinality/">
+	
+	Cardinality
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a class="current" title="Set Relationships" href="http://docs.virtdata.io/modeling_datasets/set_relationships/">
+	
+	Set Relationships
+</a>
+
+
+<ul id="scrollspy">
+</ul>
+
+
+      
+    </ul>
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Glossary" href="http://docs.virtdata.io/glossary">
+	
+	Glossary
+</a>
+
+
+
+  
+</li>
+
+
+        </ul>
+        
+
+        
+      </div>
+    </div>
+  </div>
+</nav>
+
+	</div>
+
+	<article class="article">
+		<div class="wrapper">
+			<h1>Set Relationships </h1>
+
+			
+
+<p>This section will talk about how to model relative cardinality between
+different types of entities. Before reading this, you should already
+be familiar with <a href="http://docs.virtdata.io/concepts/data_mapping_functions.html">data mapping</a>
+and <a href="modeling_cardinality.html">cardinality functions</a>.</p>
+
+<p>Suppose you have two different sets of things in your virtual dataset:</p>
+
+<p>{{#nomnoml
+#zoom:0.75
+#direction:right
+#.data: fill=#FFFFFF visual=frame
+[entity type A|
+[<data> &ldquo;foo&rdquo;]
+[<data> &ldquo;bar&rdquo;]
+[<data> &ldquo;baz&rdquo;]
+]
+}}</p>
+
+<p>{{#nomnoml
+#zoom:0.75
+#direction:right
+#.data: fill=#FFFFFF visual=frame
+[entity type B|
+[<data> &ldquo;X&rdquo;]
+[<data> &ldquo;Y&rdquo;]
+[<data> &ldquo;Z&rdquo;]
+]
+}}</p>
+
+<p>It may be the case that there is no association between elements of the first set to
+the second set, as illustrated above.</p>
+
+<p>You could have a many-to-many association from set A to set B, like this:</p>
+
+<p>{{#nomnoml
+#zoom:1.0
+#direction:down
+#.data: fill=#FFFFFF visual=frame
+[<data> foo]
+[<data> bar]
+[<data> baz]
+[<data> X]
+[<data> Y]
+[<data> Z]
+[foo] -&gt; [X]
+[foo] -&gt; [Y]
+[foo] -&gt; [Z]
+[bar] -&gt; [X]
+[bar] -&gt; [Y]
+[bar] -&gt; [Z]
+[baz] -&gt; [X]
+[baz] -&gt; [Y]
+[baz] -&gt; [Z]
+}}</p>
+
+<p>In any case, the associations are themselves part of the data set. They must be
+modeled as such. The way that we do this in virtual dataset is to group our
+functions in the same way that data should be grouped.</p>
+
+<p>Isolating the values that we use for for uniqueness is a key step.
+Assume for now, that you are using a simple long value to identify each
+unique entity or instance of your virtual dataset. For example, <em>foo</em>
+is entity 0, <em>bar</em> is entity 1, and <em>baz</em> is entity 2. The same applies
+for X, Y and Z: X is 0, Y is 1, and Z is 2.</p>
+
+<p>Let&rsquo;s make this clear in terms of the value groupings that we would need to simulate
+for a full association between all type-A entities and all type-B entities. Here are
+the tuples: (0,0), (0,1), (0,2), (1,0), (1,1), (1,2), (2,0), (2,1), (2,2).</p>
+
+<p>Another way to say this is that &ldquo;All members of set A are associated with
+All members of Set B&rdquo;.</p>
+
+<p>A simple modulo function that does only range adjustment for the sizes of these two
+populations is simply &ldquo;mod 3&rdquo;. You could draw many many samples via a mapping function,
+but as long as the mapping functions are the <em>same</em>, you would get the same identifier
+value for each entity in the tuple. You could only ever get (0,0), (1,1), and (2,2).
+This does not suffice for our nine different associations above.</p>
+
+<p>Let us look at the associations directly, and work backwards to find the appropriate
+functions that will maintain the correspondence.</p>
+
+<p>Here are the associations, enumerated by sample number (coordinate value). The discrete
+correspondence is captured for A and B in a more visually obvious way in the columns
+to the right.</p>
+
+<pre><code>sample=#  association  A map   B map
+
+sample=0  (0,0)        0-&gt;0    0-&gt;0
+sample=1  (0,1)        1-&gt;0    1-&gt;1
+sample=2  (0,2)        2-&gt;0    2-&gt;2
+sample=3  (1,0)        3-&gt;1    3-&gt;0
+sample=4  (1,1)        4-&gt;1    4-&gt;1
+sample=5  (1,2)        5-&gt;1    5-&gt;2
+sample=6  (2,0)        6-&gt;2    6-&gt;0
+sample=7  (2,1)        7-&gt;2    7-&gt;1
+sample=8  (2,2)        8-&gt;2    8-&gt;2
+
+sample=9  (0,0)        9-&gt;0    9-&gt;0
+sample=10 (0,1)       10-&gt;0   10-&gt;1
+sample=11 (0,2)       11-&gt;0   11-&gt;2
+...       ...         ...     ...
+</code></pre>
+
+<p>In this case, we can see that the functions must do more than simply correct for the
+possible number of unique identifiers in each population. They must also have
+some type of relationship that adjust for the relative rates of progression through
+the possible values. For every A value, we need to see one each of B. In other words,
+we need to see a new A value about <sup>1</sup>&frasl;<sub>3</sub> as frequently as we see a new B value.</p>
+
+<p>For A, we need a function like &ldquo;divide by 3, then modulo by 3&rdquo;.
+For B, simply &ldquo;modulo by 3&rdquo;. By dividing the sampling input by a number, we reduce
+its rate of progression.</p>
+
+<p>Although we are looking at correspondence between discrete values (the counting numbers),
+it is easy to demonstrate on a coordinate plane as well using standard plotting tools.</p>
+
+<p>First, by using a floor function to visually illustrate the discrete mapping:</p>
+
+<p><div id="fpthrees1" style="width: 400px; height: 200px;"></div>
+{{#jsxgraph
+ brd = JXG.JSXGraph.initBoard(&lsquo;fpthrees1&rsquo;, {boundingbox: [-1, 4, 20, -1], axis:true, showCopyright: false});
+ brd.suspendUpdate();
+ var c1 = brd.create(&lsquo;functiongraph&rsquo;, [function(x){ return (Math.floor(x) % 3); }],
+                       {strokeWidth:2,strokeColor:&lsquo;black&rsquo;});
+ var c2 = brd.create(&lsquo;functiongraph&rsquo;, [function(x){ return (Math.floor(x/3.0) % 3); }],
+                       {strokeWidth:5,strokeColor:&lsquo;blue&rsquo;,strokeOpacity:&lsquo;0.25&rsquo;});<br />
+ brd.unsuspendUpdate();
+}}</p>
+
+<p>And second, the continuous analog, to show the relative slope
+and repeating patterns at every 9th interval:</p>
+
+<p><div id="fpthrees2" style="width: 400px; height: 200px;"></div>
+{{#jsxgraph
+ brd = JXG.JSXGraph.initBoard(&lsquo;fpthrees2&rsquo;, {boundingbox: [-1, 4, 20, -1], axis:true, showCopyright: false});
+ brd.suspendUpdate();
+ var c3 = brd.create(&lsquo;functiongraph&rsquo;, [function(x){ return (x % 3); }],
+                       {strokeWidth:2,strokeColor:&lsquo;black&rsquo;});
+ var c4 = brd.create(&lsquo;functiongraph&rsquo;, [function(x){ return ((x/3.0) % 3); }],
+                       {strokeWidth:5,strokeColor:&lsquo;blue&rsquo;,strokeOpacity:&lsquo;0.25&rsquo;});<br />
+ brd.unsuspendUpdate();
+}}</p>
+
+<h3 id="so-what">So What?</h3>
+
+<p>From all this we can see one of the most basic strategies for establishing a one-to-many
+relationship. The basic rule is that the <em>many</em> side of the relationship must
+have exactly <em>that many</em> more values per coordinate range than the <em>one</em> side. It is
+usually just a matter of adjusting the relative rates of progression along the
+coordinate line, as illustrated above.</p>
+
+<p>Also, the example above is very basic. It shows a regular repeating pattern with
+a full one-to-many association. How do we extrapolate this to other more advanced examples?
+This is a more advanced topic that will be explored in the future. For now, refer
+  to the recipes section for some ideas.</p>
+
+
+			<aside class="copyright" role="note">
+				
+				&copy; 2017 APL 2.0 &ndash;
+				
+				Documentation built with
+				<a href="https://www.gohugo.io" target="_blank">Hugo</a>
+				using the
+				<a href="http://github.com/digitalcraftsman/hugo-material-docs" target="_blank">Material</a> theme.
+			</aside>
+
+			<footer class="footer">
+				
+
+<nav class="pagination" aria-label="Footer">
+  <div class="previous">
+  
+      <a href="http://docs.virtdata.io/modeling_datasets/modeling_cardinality/" title="Cardinality">
+        <span class="direction">
+          Previous
+        </span>
+        <div class="page">
+          <div class="button button-previous" role="button" aria-label="Previous">
+            <i class="icon icon-back"></i>
+          </div>
+          <div class="stretch">
+            <div class="title">
+              Cardinality
+            </div>
+          </div>
+        </div>
+      </a>
+  
+  </div>
+
+  <div class="next">
+  
+      <a href="http://docs.virtdata.io/sketches/" title="Design Sketches">
+        <span class="direction">
+          Next
+        </span>
+        <div class="page">
+          <div class="stretch">
+            <div class="title">
+              Design Sketches
+            </div>
+          </div>
+          <div class="button button-next" role="button" aria-label="Next">
+            <i class="icon icon-forward"></i>
+          </div>
+        </div>
+      </a>
+  
+  </div>
+</nav>
+
+
+
+
+
+			</footer>
+		</div>
+	</article>
+
+	<div class="results" role="status" aria-live="polite">
+		<div class="scrollable">
+			<div class="wrapper">
+				<div class="meta"></div>
+				<div class="list"></div>
+			</div>
+		</div>
+	</div>
+</main>
+
+    <script>
+    
+      var base_url = '';
+      var repo_id  = '';
+    
+    </script>
+
+    <script src="http://docs.virtdata.io/javascripts/application.js"></script>
+    
+
+    <script>
+      /* Add headers to scrollspy */
+      var headers   = document.getElementsByTagName("h2");
+      var scrollspy = document.getElementById('scrollspy');
+
+      if(scrollspy) {
+        if(headers.length > 0) {
+          for(var i = 0; i < headers.length; i++) {
+            var li = document.createElement("li");
+            li.setAttribute("class", "anchor");
+
+            var a  = document.createElement("a");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", headers[i].innerHTML);
+            a.innerHTML = headers[i].innerHTML;
+
+            li.appendChild(a)
+            scrollspy.appendChild(li);
+          }
+        } else {
+          scrollspy.parentElement.removeChild(scrollspy)
+        }
+
+
+        /* Add permanent link next to the headers */
+        var headers = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
+
+        for(var i = 0; i < headers.length; i++) {
+            var a = document.createElement("a");
+            a.setAttribute("class", "headerlink");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", "Permanent link")
+            a.innerHTML = "¶";
+            headers[i].appendChild(a);
+        }
+      }
+    </script>
+
+    
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

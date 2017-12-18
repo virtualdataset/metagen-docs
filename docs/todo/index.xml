@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Todos on VirtualDataSet</title>
+    <link>http://docs.virtdata.io/todo/</link>
+    <description>Recent content in Todos on VirtualDataSet</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>APL 2.0</copyright>
+    
+	<atom:link href="http://docs.virtdata.io/todo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>http://docs.virtdata.io/todo/rendercheck/typography/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://docs.virtdata.io/todo/rendercheck/typography/</guid>
+      <description>Typography This book includes some diagrams that are rendered on the client side from various graphical markup systems.
+This page lets you verify that you can read the glyph and diagrams correctly. If you do not see two of everything, then you will not be able to see some of the diagrams in the book. In that case, please report the issue.
+In each of the rendering checks below, the dynamically rendered element is shown first, followed by a reference image.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://docs.virtdata.io/todo/using_virtdata/common_recipes/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://docs.virtdata.io/todo/using_virtdata/common_recipes/</guid>
+      <description> Common VirtData Recipes Identity Identity()  Random Values random longs Hash()  </description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://docs.virtdata.io/todo/using_virtdata/specifiers/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://docs.virtdata.io/todo/using_virtdata/specifiers/</guid>
+      <description>Metagen Design 101 This serves as a basic design doc for metagen, including library integration, specifier formats, etc.
+Overview Metagen&amp;rsquo;s purpose is to make a modular and composable set of procedural generation libraries that everyone can use. A succesful outcome would resemble users building complex data mapping recipes in the same spirit of adding seasonings to their favorite soup recipe.
+Eventually, a rapid-prototyping feedback loop similar to the REPL concept will be supported.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://docs.virtdata.io/todo/using_virtdata/using_virtdata/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://docs.virtdata.io/todo/using_virtdata/using_virtdata/</guid>
+      <description>VirtData Usage TBD: restructure the section Data Mapper Library Data Mapping functions are packaged into libraries which can be loaded by the user library module of the project. Each library has its own way of providing
+Function Resolver Each library must implement its own function resolver. This is because each library may have a different way of naming, finding, creating or managing function generator instances. For the user, the description of a generator is simply a string.</description>
+    </item>
+    
+  </channel>
+</rss>

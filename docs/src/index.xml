@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Srcs on VirtualDataSet</title>
+    <link>http://docs.virtdata.io/src/</link>
+    <description>Recent content in Srcs on VirtualDataSet</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>APL 2.0</copyright>
+    
+	<atom:link href="http://docs.virtdata.io/src/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title></title>
+      <link>http://docs.virtdata.io/src/extending_virtdata/adding_libraries/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://docs.virtdata.io/src/extending_virtdata/adding_libraries/</guid>
+      <description>Adding a Data Mapper Library The basic recipe for adding a data mapper library to the VirtData runtime is a follows:
+ Add maven dependency Implement DataMapperLibrary  If you are just wanting to provide functional classes implementing your mapping functions, simply extend &amp;hellip;  Implement your functions&amp;hellip; Add supporting documentation Add your Maven mojo to publish your library to the services manifest in META-INF/services/ Expose your library to the runtimes   In detail&amp;hellip;</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://docs.virtdata.io/src/extending_virtdata/extending_virtdata/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://docs.virtdata.io/src/extending_virtdata/extending_virtdata/</guid>
+      <description>Extending VirtData The VirtData library is not meant to be a closed system. Much of the runtime wiring was built to allow easy extension with data mapping functions of your own design. This is true at the module level as well as the individual function level.
+The following sections should tell you everything you need to customize the avaialble data mapping functions for your own projects.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://docs.virtdata.io/src/extending_virtdata/library_structure/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://docs.virtdata.io/src/extending_virtdata/library_structure/</guid>
+      <description>VirtData Library Structure The data mapping functions that come with the virtdata runtime are implemented and packaged as individual libraries. They come along for the ride with the runtime artifact.
+Data Mapper Libraries Each such library is known as a data mapper library, and comes with its own essential machinery:
+Library Metadata The metadata for a library describes the name and purpose of the library so that users may know when and why to use it.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://docs.virtdata.io/src/matter/glossary/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://docs.virtdata.io/src/matter/glossary/</guid>
+      <description>Glossary  Data Model  A model that describes the types of data that may be stored in a data set, logical or physical. It includes the types, and in some cases, the implied set of operations which are valid for accessing and manipulationg the data.  Dataset  A dataset is simply a named set of content which can be consumed, and/or modified, generally for a particular purpose. A dataset can be described by a generative model or it can be actual data that has been simulated or captured from a real world activity.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://docs.virtdata.io/src/nomnoml_test/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://docs.virtdata.io/src/nomnoml_test/</guid>
+      <description>paragraph 1
+{{#nomnoml #direction:right [f2| [ func2] [ arg2] &amp;ndash;&amp;gt; [func2] ] [ itype2] -&amp;gt; [f2] [ itype3] -&amp;gt; [f2] [f2] -&amp;gt; [ otype2] }}</description>
+    </item>
+    
+  </channel>
+</rss>

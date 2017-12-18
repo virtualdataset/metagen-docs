@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  
+  <url>
+    <loc>http://docs.virtdata.io/why_virtdata/why_virtdata/</loc>
+  </url>
+  
+  <url>
+    <loc>http://docs.virtdata.io/</loc>
+    <lastmod>2017-05-19T21:52:39+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://docs.virtdata.io/concepts/mapping_functions/</loc>
+  </url>
+  
+  <url>
+    <loc>http://docs.virtdata.io/concepts/function_graphs/</loc>
+  </url>
+  
+  <url>
+    <loc>http://docs.virtdata.io/sketches/runtime_kernel/</loc>
+  </url>
+  
+  <url>
+    <loc>http://docs.virtdata.io/modeling_datasets/modeling_cardinality/</loc>
+  </url>
+  
+  <url>
+    <loc>http://docs.virtdata.io/modeling_datasets/set_relationships/</loc>
+  </url>
+  
+  <url>
+    <loc>http://docs.virtdata.io/sketches/</loc>
+    <lastmod>2017-05-19T21:51:26+00:00</lastmod>
+  </url>
+  
+  <url>
+    <loc>http://docs.virtdata.io/sketches/function_graph_kernel/</loc>
+  </url>
+  
+  <url>
+    <loc>http://docs.virtdata.io/src/extending_virtdata/adding_libraries/</loc>
+  </url>
+  
+  <url>
+    <loc>http://docs.virtdata.io/src/extending_virtdata/extending_virtdata/</loc>
+  </url>
+  
+  <url>
+    <loc>http://docs.virtdata.io/src/extending_virtdata/library_structure/</loc>
+  </url>
+  
+  <url>
+    <loc>http://docs.virtdata.io/src/matter/glossary/</loc>
+  </url>
+  
+  <url>
+    <loc>http://docs.virtdata.io/src/nomnoml_test/</loc>
+  </url>
+  
+  <url>
+    <loc>http://docs.virtdata.io/todo/</loc>
+  </url>
+  
+  <url>
+    <loc>http://docs.virtdata.io/todo/rendercheck/typography/</loc>
+  </url>
+  
+  <url>
+    <loc>http://docs.virtdata.io/todo/using_virtdata/common_recipes/</loc>
+  </url>
+  
+  <url>
+    <loc>http://docs.virtdata.io/todo/using_virtdata/specifiers/</loc>
+  </url>
+  
+  <url>
+    <loc>http://docs.virtdata.io/todo/using_virtdata/using_virtdata/</loc>
+  </url>
+  
+  <url>
+    <loc>http://docs.virtdata.io/categories/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://docs.virtdata.io/concepts/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://docs.virtdata.io/modeling_datasets/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://docs.virtdata.io/sketches/</loc>
+    <lastmod>2017-05-19T21:51:26+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://docs.virtdata.io/src/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://docs.virtdata.io/tags/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://docs.virtdata.io/todo/</loc>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://docs.virtdata.io/</loc>
+    <lastmod>2017-05-19T21:52:39+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
+    <loc>http://docs.virtdata.io/why_virtdata/</loc>
+    <priority>0</priority>
+  </url>
+  
+</urlset>

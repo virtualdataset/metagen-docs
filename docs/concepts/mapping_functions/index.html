@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+  
+  
+  
+  
+   <html class="no-js"> 
+
+  <head lang="en-us">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <title>Mapping Functions - VirtualDataSet</title>
+    <meta name="generator" content="Hugo 0.20.7" />
+
+    
+    <meta name="description" content="VirtualDataSet Docs">
+    
+    <link rel="canonical" href="http://docs.virtdata.io/concepts/mapping_functions/">
+    
+
+    <meta property="og:url" content="http://docs.virtdata.io/concepts/mapping_functions/">
+    <meta property="og:title" content="VirtualDataSet">
+    <meta property="og:image" content="http://docs.virtdata.io/images/virtdata_128.png">
+    <meta name="apple-mobile-web-app-title" content="VirtualDataSet">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <link rel="shortcut icon" type="image/x-icon" href="http://docs.virtdata.io/images/engineblock_32.png">
+    <link rel="icon" type="image/x-icon" href="http://docs.virtdata.io/images/engineblock_32.png">
+
+    <style>
+      @font-face {
+        font-family: 'Icon';
+        src: url('http://docs.virtdata.io/fonts/icon.eot');
+        src: url('http://docs.virtdata.io/fonts/icon.eot')
+               format('embedded-opentype'),
+             url('http://docs.virtdata.io/fonts/icon.woff')
+               format('woff'),
+             url('http://docs.virtdata.io/fonts/icon.ttf')
+               format('truetype'),
+             url('http://docs.virtdata.io/fonts/icon.svg')
+               format('svg');
+        font-weight: normal;
+        font-style: normal;
+      }
+    </style>
+
+    <link rel="stylesheet" href="http://docs.virtdata.io/stylesheets/application.css">
+    <link rel="stylesheet" href="http://docs.virtdata.io/stylesheets/temporary.css">
+    <link rel="stylesheet" href="http://docs.virtdata.io/stylesheets/palettes.css">
+    <link rel="stylesheet" href="http://docs.virtdata.io/stylesheets/images.css">
+
+    <link rel="stylesheet" href="http://docs.virtdata.io/stylesheets/highlight/highlight.css">
+
+    
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,700|Roboto&#43;Mono">
+    <style>
+      body, input {
+        font-family: 'Roboto', Helvetica, Arial, sans-serif;
+      }
+      pre, code {
+        font-family: 'Roboto Mono', 'Courier New', 'Courier', monospace;
+      }
+    </style>
+
+    
+    <script src="http://docs.virtdata.io/javascripts/modernizr.js"></script>
+
+    
+
+  
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+
+
+      
+    
+    <link href="http://docs.virtdata.io//modules/annotatorjs/annotator.css" rel="stylesheet" />
+    <script src="http://docs.virtdata.io//modules/annotatorjs/jquery-3.2.1.js"></script>
+    <script src="http://docs.virtdata.io//modules/annotatorjs/annotator.js"></script>
+    <script>
+        var app = new annotator.App();
+        app.include(annotator.ui.main);
+        app
+            .start()
+            .then(function() {
+                app.annotations.load();
+            });
+    </script>
+
+
+  </head>
+  <body class="palette-primary-grey palette-accent-teal">
+
+
+
+
+<div class="backdrop">
+	<div class="backdrop-paper"></div>
+</div>
+
+<input class="toggle" type="checkbox" id="toggle-drawer">
+<input class="toggle" type="checkbox" id="toggle-search">
+<label class="toggle-button overlay" for="toggle-drawer"></label>
+
+<header class="header">
+	<nav aria-label="Header">
+  <div class="bar default">
+    <div class="button button-menu" role="button" aria-label="Menu">
+      <label class="toggle-button icon icon-menu" for="toggle-drawer">
+        <span></span>
+      </label>
+    </div>
+    <div class="stretch">
+      <div class="title">
+        Mapping Functions
+      </div>
+    </div>
+
+    
+
+    
+    <div class="button button-github" role="button" aria-label="GitHub">
+      <a href="https://github.com/virtualdataset/metagen-java" title="@virtualdataset/metagen-java on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
+    </div>
+    
+    
+        
+  </div>
+  <div class="bar search">
+    <div class="button button-close" role="button" aria-label="Close">
+      <label class="toggle-button icon icon-back" for="toggle-search"></label>
+    </div>
+    <div class="stretch">
+      <div class="field">
+        <input class="query" type="text" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck>
+      </div>
+    </div>
+    <div class="button button-reset" role="button" aria-label="Search">
+      <button class="toggle-button icon icon-close" id="reset-search"></button>
+    </div>
+  </div>
+</nav>
+</header>
+
+<main class="main">
+	<div class="drawer">
+		<nav aria-label="Navigation">
+  <a href="http://docs.virtdata.io/" class="project">
+    <div class="banner">
+      
+        <div class="logo">
+          <img src="http://docs.virtdata.io/images/virtdata_128.png">
+        </div>
+      
+      <div class="name">
+        <strong>VirtualDataSet </strong>
+        
+      </div>
+    </div>
+  </a>
+
+  <div class="scrollable">
+    <div class="wrapper">
+      
+
+      <div class="toc">
+        
+        <ul>
+          
+
+
+
+
+<li>
+  
+    <span class="section">Introduction</span>
+    <ul>
+      
+        
+        
+
+
+
+<a  title="Why VirtData?" href="http://docs.virtdata.io/why_virtdata/why_virtdata/">
+	
+	Why VirtData?
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+
+<li>
+  
+    <span class="section">Concepts</span>
+    <ul>
+      
+        
+        
+
+
+
+<a class="current" title="Mapping Functions" href="http://docs.virtdata.io/concepts/mapping_functions/">
+	
+	Mapping Functions
+</a>
+
+
+<ul id="scrollspy">
+</ul>
+
+
+      
+        
+        
+
+
+
+<a  title="Function Graphs" href="http://docs.virtdata.io/concepts/function_graphs/">
+	
+	Function Graphs
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+
+<li>
+  
+    <span class="section">Modeling Datasets</span>
+    <ul>
+      
+        
+        
+
+
+
+<a  title="Cardinality" href="http://docs.virtdata.io/modeling_datasets/modeling_cardinality/">
+	
+	Cardinality
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Set Relationships" href="http://docs.virtdata.io/modeling_datasets/set_relationships/">
+	
+	Set Relationships
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+
+<li>
+  
+    
+
+
+
+<a  title="Glossary" href="http://docs.virtdata.io/glossary">
+	
+	Glossary
+</a>
+
+
+
+  
+</li>
+
+
+        </ul>
+        
+
+        
+      </div>
+    </div>
+  </div>
+</nav>
+
+	</div>
+
+	<article class="article">
+		<div class="wrapper">
+			<h1>Mapping Functions </h1>
+
+			
+
+<p>VirtData provides more than just a set of libraries and APIs.
+The concepts are the starting point and foundation. The software
+tools are built directly from the concepts. Having a strong
+understanding of them will enable you to get the most out
+of virtual dataset.</p>
+
+<h2 id="procedural-generation">Procedural Generation</h2>
+
+<p>Procedural generation is a method of generating data by feeding a stream of
+<em>random</em> or <em>pseudo-random</em> data into an algorithm. Usually, procedural
+generation aims to produce content which appears original, not generated by an
+algorithm &ndash; believably authentic by some standard.</p>
+
+<p>In VirtData, this takes the form of applying a layer of data mapping functions
+to a set of inputs called coordinates.</p>
+
+<h2 id="data-mapping-functions">Data Mapping Functions</h2>
+
+<p>The primary tool in the VirtData toolbox is the data mapping function. It is
+simply a function that knows how to take an input and produce a result that is
+meaningful to the user. VirtData makes it easy to reuse data mapping functions
+in pre-assembled ways, thus acting as a &ldquo;recipe&rdquo; for a virtual dataset.</p>
+
+<h2 id="input-coordinates">Input Coordinates</h2>
+
+<p>An input coordinate is simply the logical address of a set of data that a
+mapping function can render. Input coordinates are often single scalar values.
+However, for some functions, multiple values may be supported. At the most basic
+level, input coordinates can be thought of as the independent variables that
+determine all of the dependent output variables.</p>
+
+<p>A single-valued input coordinate can be used, for example, to describe a point
+on a time line. A coordinate pair may be used to represent latitude and
+longitude. A 4-tuple could describe a place and time with X, Y, Z, and T
+components.</p>
+
+<h2 id="random-number-generators">Random Number Generators</h2>
+
+<p>Sequences of values produced by random number generators (more properly called
+Pseudo-RNGs) are not actually random, even though they may pass certain tests
+for randomness. Useful (P)RNGs produce <em>apparently</em> random data that is
+completely deterministic. In practice, the combination of these two properties
+is quite valuable for testing and data synthesis. Apparent randomness and
+determinism (AKA repeatability in this context) are not mutually exclusive.</p>
+
+<p>There <em>are</em> ways of collecting random data that is effectively and truly random,
+although such methods are not generally useful for testing at speed. Assume that
+the term RNG in VirtData always refers to the common Pseudo*-RNG.</p>
+
+<h2 id="hash-functions">Hash Functions</h2>
+
+<p>While RNGs do provide a repeatable stream upon which to build a virtual data set,
+this requires that you always iterate the RNG state in the same order. That is,
+you must iterate every cycle in the same exact order for each time you want
+to create a rendering of data. Ideally, we want to be able to observe
+a part of the virtual data set without having to iteratively advance the RNG
+states to the interesting part.</p>
+
+<p>For this, we use hashing instead of RNGs. By using a hash with relatively good
+apparent randomness and high dispersion, we can achieve much the same as with an
+RNG with the added benefit of random access to the data stream.</p>
+
+<h2 id="density-sampling">Density Sampling</h2>
+
+<p>Just as RNGs can appear random when the are not truly, statistical distributions
+which take them as inputs work in the same way. By feeding a uniform RNG over
+the unit interval [0,1.0] into a density function, we can simulate random
+sampling (with replacement) over an imagined population of entities, events,
+times, etc. This is a common building block of realistic simulations, for video
+games as well as database tests, and everything in between.</p>
+
+<h2 id="mapping-vs-generation">Mapping vs Generation</h2>
+
+<p>Virtual dataset emphasizes the idea of &ldquo;data mapping&rdquo; over &ldquo;data generation&rdquo;,
+but allows for users to break these rules when necessary. Data mapping
+implies that pure functions are being used. Data generation implies
+that deterministic output is not expected. The choice between these
+is simply a matter of whether you use mutable state in your mapping.</p>
+
+<h2 id="mutable-state">Mutable State</h2>
+
+<p>A functions that depends on mutable state in addition to the input
+value will not yield the same result for a given input. Such functions
+may produce the same sequence of outputs given the same sequence
+of inputs, but this is not sufficient for simulating sampling from
+a population with stable properties.</p>
+
+<h2 id="immutable-state">Immutable State</h2>
+
+<p>A mapping function that does not depend on changing state is
+effectively a pure function. This includes functions that depend
+on data, as long as that data itself doesn&rsquo;t change.</p>
+
+<p>Parameters to a function that can initialize it are simply another
+form of immutable state &ndash; so long as these parameters do not change
+for the life of the function.</p>
+
+
+			<aside class="copyright" role="note">
+				
+				&copy; 2017 APL 2.0 &ndash;
+				
+				Documentation built with
+				<a href="https://www.gohugo.io" target="_blank">Hugo</a>
+				using the
+				<a href="http://github.com/digitalcraftsman/hugo-material-docs" target="_blank">Material</a> theme.
+			</aside>
+
+			<footer class="footer">
+				
+
+<nav class="pagination" aria-label="Footer">
+  <div class="previous">
+  
+      <a href="http://docs.virtdata.io/" title="Virtual Data Set - User&#39;s Guide">
+        <span class="direction">
+          Previous
+        </span>
+        <div class="page">
+          <div class="button button-previous" role="button" aria-label="Previous">
+            <i class="icon icon-back"></i>
+          </div>
+          <div class="stretch">
+            <div class="title">
+              Virtual Data Set - User&#39;s Guide
+            </div>
+          </div>
+        </div>
+      </a>
+  
+  </div>
+
+  <div class="next">
+  
+      <a href="http://docs.virtdata.io/concepts/function_graphs/" title="Function Graphs">
+        <span class="direction">
+          Next
+        </span>
+        <div class="page">
+          <div class="stretch">
+            <div class="title">
+              Function Graphs
+            </div>
+          </div>
+          <div class="button button-next" role="button" aria-label="Next">
+            <i class="icon icon-forward"></i>
+          </div>
+        </div>
+      </a>
+  
+  </div>
+</nav>
+
+
+
+
+
+			</footer>
+		</div>
+	</article>
+
+	<div class="results" role="status" aria-live="polite">
+		<div class="scrollable">
+			<div class="wrapper">
+				<div class="meta"></div>
+				<div class="list"></div>
+			</div>
+		</div>
+	</div>
+</main>
+
+    <script>
+    
+      var base_url = '';
+      var repo_id  = '';
+    
+    </script>
+
+    <script src="http://docs.virtdata.io/javascripts/application.js"></script>
+    
+
+    <script>
+      /* Add headers to scrollspy */
+      var headers   = document.getElementsByTagName("h2");
+      var scrollspy = document.getElementById('scrollspy');
+
+      if(scrollspy) {
+        if(headers.length > 0) {
+          for(var i = 0; i < headers.length; i++) {
+            var li = document.createElement("li");
+            li.setAttribute("class", "anchor");
+
+            var a  = document.createElement("a");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", headers[i].innerHTML);
+            a.innerHTML = headers[i].innerHTML;
+
+            li.appendChild(a)
+            scrollspy.appendChild(li);
+          }
+        } else {
+          scrollspy.parentElement.removeChild(scrollspy)
+        }
+
+
+        /* Add permanent link next to the headers */
+        var headers = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
+
+        for(var i = 0; i < headers.length; i++) {
+            var a = document.createElement("a");
+            a.setAttribute("class", "headerlink");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", "Permanent link")
+            a.innerHTML = "¶";
+            headers[i].appendChild(a);
+        }
+      }
+    </script>
+
+    
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+
