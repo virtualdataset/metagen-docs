@@ -1,6 +1,6 @@
 ---
 date: 2017-12-16
-title: Function Graph Kernel API       
+title: Function Graph Kernel API
 weight: 36
 ---
 
@@ -8,8 +8,8 @@ The functional graph kernel API is simply the implementation of a function
 graph, as realized in your application. This is the result of binding a parsed
 function graph template to a set of functions within a graph.
 
-What makes the functional kernel useful are the various ways that you can
-interact with it. This is defined by the API.
+What makes the functional kernel useful at the most basic level are the named
+input and output operations.
 
 ## Setting coordinates
 

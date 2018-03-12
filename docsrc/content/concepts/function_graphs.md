@@ -219,12 +219,12 @@ Function graphs of this type can be referred to as *function graph template*.
 
 From this function graph template, we have two distinct paths -- two different
 composed functions to be created. If we traverse each path from the coordinate,
-we see two *composed function template*s. They are, in pseudo-code form:
+we see two *composed function templates*. They are, in pseudo-code form:
 
 - `long->U->long->F->String`
 - `long->U->long->L->String`
 
-When decomposed further, these composed function templates yeild a more specific
+When decomposed further, these composed function templates yield a more specific
 function template for each function in the flow which must be individually assignable from 
 the available functions in the runtime.
 
@@ -233,7 +233,7 @@ the available functions in the runtime.
 - `long->L->String`
 
 So long as the runtime library has a matching function available for the function name
-and type signature, it is possible to realize a FGK at runtime.
+and type signature, it is possible to realize a usable mapping function at runtime.
 
 ## Binding a Template
 
@@ -249,7 +249,7 @@ In Java, these might look like
 In this case, it would be possible to bind the example function graph template above using
 simple function name resolution to method (or static functions if you prefer) names. If
 the call to bind the function graph template was successful, the result would be called
-a FGK-NeedsAName, and would provide a runtime API for setting and getting values.
+a Lambda, which could be used just like any other function at runtime.
 
 The function placeholders in the examples above can be satisfied by any function
 instance that fits the type signatures. Further, how these functions are
