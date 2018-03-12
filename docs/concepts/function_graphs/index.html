@@ -10,7 +10,7 @@
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
     <title>Function Graphs - VirtualDataSet</title>
-    <meta name="generator" content="Hugo 0.30.2" />
+    <meta name="generator" content="Hugo 0.31" />
 
     
     <meta name="description" content="VirtualDataSet Docs">
@@ -582,14 +582,14 @@ Function graphs of this type can be referred to as <em>function graph template</
 
 <p>From this function graph template, we have two distinct paths &ndash; two different
 composed functions to be created. If we traverse each path from the coordinate,
-we see two *composed function template*s. They are, in pseudo-code form:</p>
+we see two <em>composed function templates</em>. They are, in pseudo-code form:</p>
 
 <ul>
 <li><code>long-&gt;U-&gt;long-&gt;F-&gt;String</code></li>
 <li><code>long-&gt;U-&gt;long-&gt;L-&gt;String</code></li>
 </ul>
 
-<p>When decomposed further, these composed function templates yeild a more specific
+<p>When decomposed further, these composed function templates yield a more specific
 function template for each function in the flow which must be individually assignable from
 the available functions in the runtime.</p>
 
@@ -600,7 +600,7 @@ the available functions in the runtime.</p>
 </ul>
 
 <p>So long as the runtime library has a matching function available for the function name
-and type signature, it is possible to realize a FGK at runtime.</p>
+and type signature, it is possible to realize a usable mapping function at runtime.</p>
 
 <h2 id="binding-a-template">Binding a Template</h2>
 
@@ -617,7 +617,7 @@ String L(long input) ...
 <p>In this case, it would be possible to bind the example function graph template above using
 simple function name resolution to method (or static functions if you prefer) names. If
 the call to bind the function graph template was successful, the result would be called
-a FGK-NeedsAName, and would provide a runtime API for setting and getting values.</p>
+a Lambda, which could be used just like any other function at runtime.</p>
 
 <p>The function placeholders in the examples above can be satisfied by any function
 instance that fits the type signatures. Further, how these functions are
@@ -629,7 +629,7 @@ described above.</p>
 
 			<aside class="copyright" role="note">
 				
-				&copy; 2017 APL 2.0 &ndash;
+				&copy; 2018 APL 2.0 &ndash;
 				
 				Documentation built with
 				<a href="https://www.gohugo.io" target="_blank">Hugo</a>

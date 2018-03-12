@@ -9,16 +9,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
-    <title>FGK Implementation Ideas - VirtualDataSet</title>
-    <meta name="generator" content="Hugo 0.30.2" />
+    <title>FGK Sketch Primitives - VirtualDataSet</title>
+    <meta name="generator" content="Hugo 0.31" />
 
     
     <meta name="description" content="VirtualDataSet Docs">
     
-    <link rel="canonical" href="http://docs.virtdata.io/sketches/function_graph_kernel_impl/">
+    <link rel="canonical" href="http://docs.virtdata.io/sketches/function_graph_kernel_primitives/">
     
 
-    <meta property="og:url" content="http://docs.virtdata.io/sketches/function_graph_kernel_impl/">
+    <meta property="og:url" content="http://docs.virtdata.io/sketches/function_graph_kernel_primitives/">
     <meta property="og:title" content="VirtualDataSet">
     <meta property="og:image" content="http://docs.virtdata.io/images/virtdata_128.png">
     <meta name="apple-mobile-web-app-title" content="VirtualDataSet">
@@ -75,6 +75,8 @@
     
 
     
+    
+    <script src="http://docs.virtdata.io//modules/viz/viz.js"></script>
     
 
     
@@ -139,7 +141,7 @@
     </div>
     <div class="stretch">
       <div class="title">
-        FGK Implementation Ideas
+        FGK Sketch Primitives
       </div>
     </div>
 
@@ -326,50 +328,228 @@
 
 	<article class="article">
 		<div class="wrapper">
-			<h1>FGK Implementation Ideas </h1>
+			<h1>FGK Sketch Primitives </h1>
 
 			
 
-<h2 id="computed-state-and-function-unrolling">Computed State and Function Unrolling</h2>
+<p>Some basic examples of function graph structures and how they relate are
+in this section.</p>
 
-<p>For the above example, here are a specific and finite set of uncomputed
-states that are possible when the user attempts to observe thee <em>first_name</em> field.
-They are:</p>
+<h2 id="function-graph-notation">Function Graph Notation.</h2>
+
+<p>The illustration below shows the visual notation that will be used to explain
+function graphs. These conventions are based on graphviz primitives, thus
+graphviz is implied as a standard tooling for visualizing function graphs.</p>
+
+<p><strong>Fields</strong> are uniquely named readable or writable variables within a function graph. They
+are represented in general with box shapes:</p>
+
+
+
+<div align="left" class="viz-text"><pre>
+digraph function_graph {
+ size=&#34;2,2&#34;
+ temperature[shape=&#34;box&#34;];
+ curator_name[shape=&#34;box&#34;];
+}
+</pre></div>
+<script type="text/javascript" src="http://docs.virtdata.io/modules/viz/inithook-viz.js"></script>
+
+
+<p><strong>Coordinates</strong> are fields which are used as primary inputs to a function graph.
+Coordinates are sometimes marked with an inverse trapezoidal shape to indicate
+that they are bound to the top of a function graph. Think of them as ports, or
+anchoring points at the top of the function graph. Coordinates may be notated
+simply a fields, like above, as well. Any field which has no inbound connection
+is still a coordinate, although the node shape may be used to make it more
+visually obvious.</p>
+
+
+
+<div align="left" class="viz-text"><pre>
+digraph function_graph {
+ size=&#34;2&#34;
+ x[shape=&#34;invtrapezium&#34;];
+ y[shape=&#34;invtrapezium&#34;];
+ time[shape=&#34;invtrapezium&#34;];
+}
+</pre></div>
+<script type="text/javascript" src="http://docs.virtdata.io/modules/viz/inithook-viz.js"></script>
+
+
+<p><strong>Outputs</strong> are fields which are meant to be read as a side-effect of setting other fields.
+Outputs are notated with a trapezoidal shape, but may also be notated as a simple field. Any
+field which has no downstream connections is still considered an output.</p>
+
+
+
+<div align="left" class="viz-text"><pre>
+digraph function_graph {
+ size=&#34;2&#34;
+ altitude[shape=&#34;trapezium&#34;];
+ airspeed[shape=&#34;trapezium&#34;];
+}
+</pre></div>
+<script type="text/javascript" src="http://docs.virtdata.io/modules/viz/inithook-viz.js"></script>
+
+
+<p><strong>Functions</strong> are exactly as you would expect:</p>
+
+
+
+<div align="left" class="viz-text"><pre>
+digraph function_graph {
+ size=&#34;1.25&#34;
+ f1[label=&#34;f()&#34;,shape=&#34;ellipse&#34;]
+ g1[label=&#34;g()&#34;,shape=&#34;ellipse&#34;]
+}
+</pre></div>
+<script type="text/javascript" src="http://docs.virtdata.io/modules/viz/inithook-viz.js"></script>
+
+
+<p>Data Flow <strong>Arrows</strong> can connect the above elements in various ways.</p>
+
+<p><strong>Arrows can connect one or more fields to one or more functions:</strong></p>
+
+
+
+<div align="left" class="viz-text"><pre>
+digraph function_graph {
+ size=&#34;3&#34;
+ w,x,y,z[shape=&#34;box&#34;];
+ f1[label=&#34;f()&#34;,shape=&#34;ellipse&#34;]
+ g1[label=&#34;g()&#34;,shape=&#34;ellipse&#34;]
+ h1[label=&#34;h()&#34;,shape=&#34;ellipse&#34;]
+ i1[label=&#34;i()&#34;,shape=&#34;ellipse&#34;]
+ subgraph cluster1 {
+  label=&#34;(1) unary function&#34;;
+   w -&gt; f1;
+ }
+ subgraph cluster2 {
+  label=&#34;(2) bifunction&#34;;
+  x,y -&gt; g1;
+ }
+ subgraph cluster3 {
+  label=&#34;(3) shared input&#34;
+  z -&gt; h1,i1;
+ }
+}
+</pre></div>
+<script type="text/javascript" src="http://docs.virtdata.io/modules/viz/inithook-viz.js"></script>
+
+
+<p>(1) In this example, the field <em>w</em> is an input to the function <em>f()</em>. The number of
+inputs determines the <a href="https://en.wikipedia.org/wiki/Arity">arity</a> of the
+function, thus directly represents the function&rsquo;s call signature.</p>
+
+<p>(2) This illustrates the function graph representation of a bifunction
+<em>g()</em>, with two arguments. Symbolically, these functions would be named <code>f(w)</code>
+and <code>g(y,x)</code>. Notice that the order is retained between the left-to-right
+ordering in the graph and the position in the argument list.</p>
+
+<p>(3) Simply shows multiple functions with a common input.</p>
+
+<p><strong>Arrows can connect one or more functions together to represent composed functions:</strong></p>
+
+
+
+<div align="left" class="viz-text"><pre>
+digraph function_graph {
+ size=&#34;3&#34;
+ w1[label=&#34;w()&#34;,shape=&#34;ellipse&#34;]
+ x1[label=&#34;x()&#34;,shape=&#34;ellipse&#34;]
+ y1[label=&#34;y()&#34;,shape=&#34;ellipse&#34;]
+ z1[label=&#34;z()&#34;,shape=&#34;ellipse&#34;]
+ f1[label=&#34;f()&#34;,shape=&#34;ellipse&#34;]
+ g1[label=&#34;g()&#34;,shape=&#34;ellipse&#34;]
+ h1[label=&#34;h()&#34;,shape=&#34;ellipse&#34;]
+ i1[label=&#34;i()&#34;,shape=&#34;ellipse&#34;]
+ subgraph cluster1 {
+  label=&#34;(1) unary function\ncomposition&#34;;
+   w1 -&gt; f1;
+ }
+ subgraph cluster2 {
+  label=&#34;(2) bifunction\ncomposition&#34;;
+  x1,y1 -&gt; g1;
+ }
+ subgraph cluster3 {
+  label=&#34;(3) shared function\ncomposition&#34;
+  z1 -&gt; h1,i1;
+ }
+}
+</pre></div>
+<script type="text/javascript" src="http://docs.virtdata.io/modules/viz/inithook-viz.js"></script>
+
+
+<p>(1) When functions are connected in this way, they form lambdas. The first case
+is simple unary function composition. It would yield a composed function
+<code>f(w(...))</code>, depending on the argument signature for <em>w()</em>. This means that the
+order of evaluation follows the data flow as one would expect, with <em>w(&hellip;)</em>
+being evaluated first, <strong>and-then</strong> <em>f()</em> on the result of that.</p>
+
+<p>(2) A function with multiple inbound arrows represents a bifunction, whether the
+inbound arrows are from fields or functions. However, the way that the function
+is bound at runtime will vary according to the input types. In this case, the
+composed function would be symbolically <code>g(y(...),x(...))</code> depending on the
+inputs to y()* and <em>x()</em>.</p>
+
+<p>(3) With a function feeding into multiple downstream functions, each path
+represents a distinct and separate lambda. In this case <code>h(z(...))</code> and
+<code>i(z(...))</code>.</p>
+
+<p><strong>Arrows can connect functions to fields:</strong></p>
+
+
+
+<div align="left" class="viz-text"><pre>
+digraph function_graph {
+ size=&#34;3&#34;
+ w1[label=&#34;w()&#34;,shape=&#34;ellipse&#34;]
+ z1[label=&#34;z()&#34;,shape=&#34;ellipse&#34;]
+ x1[label=&#34;&#34;,shape=&#34;ellipse&#34;]
+ y1[label=&#34;&#34;,shape=&#34;ellipse&#34;]
+ g[label=&#34;&#34;,shape=&#34;box&#34;]
+ f,h,i[shape=&#34;box&#34;]
+ subgraph cluster1 {
+  label=&#34;(1) single output&#34;;
+   w1 -&gt; f;
+ }
+ subgraph cluster3 {
+  label=&#34;(2) multiple output&#34;
+  z1 -&gt; h,i;
+ }
+ subgraph cluster2 {
+  label=&#34;NOT ALLOWED&#34;;
+  x1,y1 -&gt; g;
+ }
+}
+</pre></div>
+<script type="text/javascript" src="http://docs.virtdata.io/modules/viz/inithook-viz.js"></script>
+
+
+<p>(1) When a function is connected to a field in this way, then the field represents
+a stateful variable for that function&rsquo;s output values. More precisely stated, accessing
+the value of that field requires computing all inputs that lead to it, including all inbound
+arrows.</p>
+
+<p>(2) It is acceptable to have multiple fields which depend directly on the same function.</p>
+
+<p><strong>Fields may never have multiple inbound arrows.</strong> This would cause ambiguity for
+how to compute the value of the field. Arrows <strong>never</strong> connect a field to a
+field.</p>
+
+<p>In a nutshell, arrows are allowed anywhere <em>except</em> in these cases:</p>
 
 <ol>
-<li><s>cycle and identity have both been changed</s></li>
-<li>cycle has been changed</li>
-<li>user_id has been changed</li>
-<li>neither cycle nor user_id have been changed</li>
+<li>Arrows may not connect fields to fields.</li>
+<li>Arrows may not connect multiple inputs to a field.</li>
+<li>Loops are not allowed. A function graph is a directed graph.</li>
 </ol>
-
-<p>Of these, there are only three distict and actionable execution plans, owing to the
-fact that when cycle has been chaged, identity might as well have been changed in terms
-of how it affects the value of the <em>first_name</em> field. The last case with no changes <em>is</em>
-a specific execution plan, although it is effectively a NOOP.</p>
-
-<p>This provides a basic rationale for setting the required entry point for
-evaluation of the <em>first_name</em> field:</p>
-
-<ul>
-<li>In case <strong>2</strong>, compute the new value of <em>user_id</em> from cycle, then compute the new value of <em>first_name</em> from <em>user_id</em>, then return the value of <em>first_name</em>.</li>
-<li>In case <strong>3</strong>, compute the new value of <em>first_name</em> and then return the value of the curret <em>first_name</em> field.</li>
-<li>In case <strong>4</strong>, do nothing, return the current value of the <em>first_name</em> field.</li>
-</ul>
-
-<p>This yields an interesting affinity to loop unrolling, and can be encoded in a kernel with the following pseudocode (with more optimal numbering):</p>
-
-<pre><code>switch predecessor_state:
-  case: 0: compute user_id
-  case: 1: compute first_name
-
-return first_name
-</code></pre>
 
 
 			<aside class="copyright" role="note">
 				
-				&copy; 2017 APL 2.0 &ndash;
+				&copy; 2018 APL 2.0 &ndash;
 				
 				Documentation built with
 				<a href="https://www.gohugo.io" target="_blank">Hugo</a>
@@ -383,7 +563,7 @@ return first_name
 <nav class="pagination" aria-label="Footer">
   <div class="previous">
   
-      <a href="http://docs.virtdata.io/sketches/" title="Design Sketches">
+      <a href="http://docs.virtdata.io/sketches/function_graph_kernel_concepts/" title="FGK Sketch Concepts">
         <span class="direction">
           Previous
         </span>
@@ -393,7 +573,7 @@ return first_name
           </div>
           <div class="stretch">
             <div class="title">
-              Design Sketches
+              FGK Sketch Concepts
             </div>
           </div>
         </div>
@@ -403,14 +583,14 @@ return first_name
 
   <div class="next">
   
-      <a href="http://docs.virtdata.io/sketches/function_graph_kernel/" title="FGK Sketch">
+      <a href="http://docs.virtdata.io/src/extending_virtdata/adding_libraries/" title="">
         <span class="direction">
           Next
         </span>
         <div class="page">
           <div class="stretch">
             <div class="title">
-              FGK Sketch
+              
             </div>
           </div>
           <div class="button button-next" role="button" aria-label="Next">

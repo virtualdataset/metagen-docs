@@ -19,8 +19,18 @@
       
       <guid>http://docs.virtdata.io/sketches/function_graph_kernel_api/</guid>
       <description>The functional graph kernel API is simply the implementation of a function graph, as realized in your application. This is the result of binding a parsed function graph template to a set of functions within a graph.
-What makes the functional kernel useful are the various ways that you can interact with it. This is defined by the API.
+What makes the functional kernel useful at the most basic level are the named input and output operations.
 Setting coordinates Whe a functional kernel is realized in your runtime, it will have a set of named inputs which we call coordinates.</description>
+    </item>
+    
+    <item>
+      <title>Function Graph Kernel Overview</title>
+      <link>http://docs.virtdata.io/sketches/function_graph_kernel/</link>
+      <pubDate>Sat, 16 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://docs.virtdata.io/sketches/function_graph_kernel/</guid>
+      <description>This is the first section of a multi-part design sketch. The other parts are:
+ Function Graph Primitives Function Graph Kernel API Function Graph Kernel Concepts Function Graph Kernel Scratch  A function graph kernel is a runtime object which provides a state and evaluation services to a client runtime. It encodes relationships between input values, functions, and output values in a way that makes it efficient and ergonomic for developers to use advanced function graph features.</description>
     </item>
     
     <item>
@@ -35,25 +45,36 @@ Setting coordinates Whe a functional kernel is realized in your runtime, it will
     
     <item>
       <title>FGK Implementation Ideas</title>
-      <link>http://docs.virtdata.io/sketches/function_graph_kernel_impl/</link>
+      <link>http://docs.virtdata.io/sketches/function_graph_kernel_scratch/</link>
       <pubDate>Sat, 16 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://docs.virtdata.io/sketches/function_graph_kernel_impl/</guid>
-      <description>Computed State and Function Unrolling For the above example, here are a specific and finite set of uncomputed states that are possible when the user attempts to observe thee first_name field. They are:
- cycle and identity have both been changed cycle has been changed user_id has been changed neither cycle nor user_id have been changed  Of these, there are only three distict and actionable execution plans, owing to the fact that when cycle has been chaged, identity might as well have been changed in terms of how it affects the value of the first_name field.</description>
+      <guid>http://docs.virtdata.io/sketches/function_graph_kernel_scratch/</guid>
+      <description>Usage Semantics However, there are limited ways to interact with the function graph. The designer of the function graph determines what the available inputs and outputs are, and gives them names to suit.
+All interactions with a user should be based on named inputs and outputs. These are referred to as fields in the FGK. In the naive implementation, all fields are simple state boxes which can be muted or observed via the named-based getter and setter API.</description>
     </item>
     
     <item>
-      <title>FGK Sketch</title>
-      <link>http://docs.virtdata.io/sketches/function_graph_kernel/</link>
+      <title>FGK Sketch Concepts</title>
+      <link>http://docs.virtdata.io/sketches/function_graph_kernel_concepts/</link>
       <pubDate>Sat, 16 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://docs.virtdata.io/sketches/function_graph_kernel/</guid>
+      <guid>http://docs.virtdata.io/sketches/function_graph_kernel_concepts/</guid>
       <description>Description This section elaborates on the function graph kernel design.
 Herein, the function graph kernel will be abbreviated as FGK, although it needs a better name. In essence, the function graph kernel is a runtime implementation of the Function Graph Kernel API.
 A function graph is a directed graph. No loops are currently supported.
 Let us start with an example function graph template:
  digraph function_graph { size=&amp;#34;4,4&amp;#34; f1[label=&amp;#34;f()&amp;#34;,shape=&amp;#34;ellipse&amp;#34;]; f2[label=&amp;#34;g()&amp;#34;,shape=&amp;#34;ellipse&amp;#34;]; f3[label=&amp;#34;h()&amp;#34;,shape=&amp;#34;ellipse&amp;#34;]; f4[label=&amp;#34;i()&amp;#34;,shape=&amp;#34;ellipse&amp;#34;]; node[shape=&amp;#34;box&amp;#34;]; var1,var2,var3,var4; var2 -&amp;gt; f1 -&amp;gt; f2 -&amp;gt; var4; var1 -&amp;gt; f1 -&amp;gt; var3; var2 -&amp;gt; f4 -&amp;gt; var6; f1 -&amp;gt; var5 -&amp;gt; f3 -&amp;gt; var3; subgraph cluster1 { label=&amp;#34;inputs&amp;#34;; var1,var2; } subgraph cluster2 { label=&amp;#34;outputs&amp;#34;; var3, var4, var6; } }   This is a basic model of a function graph without the usual data types and meaningful names.</description>
+    </item>
+    
+    <item>
+      <title>FGK Sketch Primitives</title>
+      <link>http://docs.virtdata.io/sketches/function_graph_kernel_primitives/</link>
+      <pubDate>Sat, 16 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://docs.virtdata.io/sketches/function_graph_kernel_primitives/</guid>
+      <description>Some basic examples of function graph structures and how they relate are in this section.
+Function Graph Notation. The illustration below shows the visual notation that will be used to explain function graphs. These conventions are based on graphviz primitives, thus graphviz is implied as a standard tooling for visualizing function graphs.
+Fields are uniquely named readable or writable variables within a function graph. They are represented in general with box shapes:</description>
     </item>
     
   </channel>
