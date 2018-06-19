@@ -53,12 +53,16 @@ canonifyurls = true
 	url    = "/modeling_datasets"
 	weight = 40
 
+[[menu.main]]
+    name   = "Syntax Reference"
+    url    = "/syntax"
+    weight = 50
 
 [[menu.main]]
-	name   = "Glossary"
-	url    = "/glossary"
-	weight = 50
-
+	name   = "Function Reference"
+	url    = "/functions"
+	weight = 60
+	
 #[[menu.main]]
 #    name   = "Design Sketches"
 #    url    = "designsketches/"
