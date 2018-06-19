@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+  
+  
+  
+  
+   <html class="no-js"> 
+
+  <head lang="en-us">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <title>Syntax Reference - VirtualDataSet</title>
+    <meta name="generator" content="Hugo 0.31" />
+
+    
+    <meta name="description" content="VirtualDataSet Docs">
+    
+    <link rel="canonical" href="http://docs.virtdata.io/syntax/syntax_overview/">
+    
+
+    <meta property="og:url" content="http://docs.virtdata.io/syntax/syntax_overview/">
+    <meta property="og:title" content="VirtualDataSet">
+    <meta property="og:image" content="/images/virtdata_128.png">
+    <meta name="apple-mobile-web-app-title" content="VirtualDataSet">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <link rel="shortcut icon" type="image/x-icon" href="http://docs.virtdata.io/images/engineblock_32.png">
+    <link rel="icon" type="image/x-icon" href="http://docs.virtdata.io/images/engineblock_32.png">
+
+    <style>
+      @font-face {
+        font-family: 'Icon';
+        src: url('/fonts/icon.eot?52m981');
+        src: url('/fonts/icon.eot?#iefix52m981')
+               format('embedded-opentype'),
+             url('/fonts/icon.woff?52m981')
+               format('woff'),
+             url('/fonts/icon.ttf?52m981')
+               format('truetype'),
+             url('/fonts/icon.svg?52m981#icon')
+               format('svg');
+        font-weight: normal;
+        font-style: normal;
+      }
+    </style>
+
+    <link rel="stylesheet" href="http://docs.virtdata.io/stylesheets/application.css">
+    <link rel="stylesheet" href="http://docs.virtdata.io/stylesheets/temporary.css">
+    <link rel="stylesheet" href="http://docs.virtdata.io/stylesheets/palettes.css">
+    <link rel="stylesheet" href="http://docs.virtdata.io/stylesheets/images.css">
+
+    <link rel="stylesheet" href="http://docs.virtdata.io/stylesheets/highlight/highlight.css">
+
+    
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,700|Roboto&#43;Mono">
+    <style>
+      body, input {
+        font-family: 'Roboto', Helvetica, Arial, sans-serif;
+      }
+      pre, code {
+        font-family: 'Roboto Mono', 'Courier New', 'Courier', monospace;
+      }
+    </style>
+
+    
+    <script src="http://docs.virtdata.io/javascripts/modernizr.js"></script>
+
+    
+
+  
+    
+
+    
+    <script src="http://docs.virtdata.io//modules/railroad/railroad-diagrams.js"></script>
+    <link href="http://docs.virtdata.io//modules/railroad/railroad-diagrams.css" rel="stylesheet">
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+
+
+  </head>
+  <body class="palette-primary-grey palette-accent-teal">
+
+
+
+
+<div class="backdrop">
+	<div class="backdrop-paper"></div>
+</div>
+
+<input class="toggle" type="checkbox" id="toggle-drawer">
+<input class="toggle" type="checkbox" id="toggle-search">
+<label class="toggle-button overlay" for="toggle-drawer"></label>
+
+<header class="header">
+	<nav aria-label="Header">
+  <div class="bar default">
+    <div class="button button-menu" role="button" aria-label="Menu">
+      <label class="toggle-button icon icon-menu" for="toggle-drawer">
+        <span></span>
+      </label>
+    </div>
+    <div class="stretch">
+      <div class="title">
+        Syntax Reference
+      </div>
+    </div>
+
+    
+
+    
+    <div class="button button-github" role="button" aria-label="GitHub">
+      <a href="https://github.com/virtualdataset/metagen-java" title="@virtualdataset/metagen-java on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
+    </div>
+    
+    
+        
+  </div>
+  <div class="bar search">
+    <div class="button button-close" role="button" aria-label="Close">
+      <label class="toggle-button icon icon-back" for="toggle-search"></label>
+    </div>
+    <div class="stretch">
+      <div class="field">
+        <input class="query" type="text" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck>
+      </div>
+    </div>
+    <div class="button button-reset" role="button" aria-label="Search">
+      <button class="toggle-button icon icon-close" id="reset-search"></button>
+    </div>
+  </div>
+</nav>
+</header>
+
+<main class="main">
+	<div class="drawer">
+		<nav aria-label="Navigation">
+  <a href="http://docs.virtdata.io/" class="project">
+    <div class="banner">
+      
+        <div class="logo">
+          <img src="http://docs.virtdata.io/images/virtdata_128.png">
+        </div>
+      
+      <div class="name">
+        <strong>VirtualDataSet </strong>
+        
+      </div>
+    </div>
+  </a>
+
+  <div class="scrollable">
+    <div class="wrapper">
+      
+
+      <div class="toc">
+        
+        <ul>
+          
+
+
+
+
+<li>
+  
+    <span class="section">Introduction</span>
+    <ul>
+      
+        
+        
+
+
+
+<a  title="Why VirtData?" href="http://docs.virtdata.io/why_virtdata/why_virtdata/">
+	
+	Why VirtData?
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+
+<li>
+  
+    <span class="section">Concepts</span>
+    <ul>
+      
+        
+        
+
+
+
+<a  title="Mapping Functions" href="http://docs.virtdata.io/concepts/mapping_functions/">
+	
+	Mapping Functions
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Function Graphs" href="http://docs.virtdata.io/concepts/function_graphs/">
+	
+	Function Graphs
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+
+<li>
+  
+    <span class="section">Modeling Datasets</span>
+    <ul>
+      
+        
+        
+
+
+
+<a  title="Cardinality" href="http://docs.virtdata.io/modeling_datasets/modeling_cardinality/">
+	
+	Cardinality
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Set Relationships" href="http://docs.virtdata.io/modeling_datasets/set_relationships/">
+	
+	Set Relationships
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+
+<li>
+  
+    <span class="section">Syntax Reference</span>
+    <ul>
+      
+        
+        
+
+
+
+<a  title="Syntax Reference" href="http://docs.virtdata.io/syntax/syntax_overview/">
+	
+	Syntax Reference
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+
+<li>
+  
+    <span class="section">Function Reference</span>
+    <ul>
+      
+        
+        
+
+
+
+<a  title="All Functions" href="http://docs.virtdata.io/functions/autodoc_reference/">
+	
+	All Functions
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+        </ul>
+        
+
+        
+      </div>
+    </div>
+  </div>
+</nav>
+
+	</div>
+
+	<article class="article">
+		<div class="wrapper">
+			<h1>Syntax Reference </h1>
+
+			
+
+<p>This is a railroad schematic of the currently supported VirtData recipe syntax.</p>
+
+<div class="admonition note">
+<p class="admonition-title"></p>
+<p>If this is your first time reading this guide, it is best to start
+at the top and read in order. Once you are familiar with the page, it can be used as
+ a handy reference.</p>
+</div>
+
+<h2 id="conventions">Conventions</h2>
+
+<p>In this documentation, <strong>CAPITALIZED :=</strong> sections refer directly to a syntax type, for
+reference purposes. Other sections accompany the syntax diagrams, and are more
+explanatory in nature. Further, the diagrammatic conventions are explained
+below.</p>
+
+<p><strong>double quotes</strong></p>
+
+
+
+<div align="left" class="railroad-text"><pre>Diagram(Sequence(&#39;&#34;(&#34;&#39;,Comment(&#39;notice the double quotes&#39;)));</pre></div>
+<script type="text/javascript" src="http://docs.virtdata.io/modules/railroad/inithook-railroad.js"></script>
+
+
+
+
+
+
+
+<p>Any double quoted values are literal. The above example refers to a single
+left parenthesis, not including the double quotes. Also, an inline text that doesn&rsquo;t appear inside a bubble is there just
+to point out details. These are merely <em>inline</em> comments, nothing else.</p>
+
+<p><strong>angle brackets</strong></p>
+
+
+
+<div align="left" class="railroad-text"><pre>Diagram(&#39;&lt;IDENTIFIER: name&gt;&#39;);</pre></div>
+<script type="text/javascript" src="http://docs.virtdata.io/modules/railroad/inithook-railroad.js"></script>
+
+
+
+
+
+
+
+<p>Any angle bracket values are meant as place holders for a syntax or value that
+is explained in another diagram or section. When building mapping functions, you
+can replace angle brackets with valid syntax from the appropriate section.</p>
+
+<p>If you see a two-part identifier in the angle brackets above, the first part, <code>ID</code> in this
+case, describes the syntax which must be used to build a valid substitute for
+the angle brackets. The second part, <code>name</code> in this case, is used to explain how
+the constructed syntax is meant to be used. In other words, <code>IDENTIFIER</code> represents
+structure, and <code>name</code> represents semantics.</p>
+
+<p><strong>square brackets</strong></p>
+
+
+
+<div align="left" class="railroad-text"><pre>Diagram(&#39;[a-zA-Z_]&#39;);</pre></div>
+<script type="text/javascript" src="http://docs.virtdata.io/modules/railroad/inithook-railroad.js"></script>
+
+
+
+
+
+
+
+<p>Square bracketed values refer to possible characters from a set. Without any
+suffixes, square brackets allow only one matching character from the sets
+provided. Thus, the example above allows for a single uppercase or lowercase
+character between &lsquo;a&rsquo; and &lsquo;z&rsquo; OR the underscore character.</p>
+
+<h2 id="syntax">Syntax</h2>
+
+<p>The general syntax of a VirtData recipe is designed to support the construction of composed functions.
+As such, the syntax resembles a sequence of constructor signatures. Instead of requiring
+nesting of functions, they are specified as a chain, where the flow of data from output to input
+occurs between the function instances that are described by the template. The syntax of
+multiple functions in a chain are called a <em>VirtData Flow</em>.</p>
+
+<p>Let&rsquo;s start with identifier conventions.</p>
+
+<h2 id="identifier">IDENTIFIER :=</h2>
+
+<p>Identifers are used throughout virtdata and have a uniform syntax.</p>
+
+
+
+<div align="left" class="railroad-text"><pre>Diagram(
+ OneOrMore(Sequence(&#39;[a-zA-Z]&#39;, ZeroOrMore(&#39;[0-9a-zA-Z_]&#39;)),&#39;.&#39;)
+);</pre></div>
+<script type="text/javascript" src="http://docs.virtdata.io/modules/railroad/inithook-railroad.js"></script>
+
+
+
+
+
+
+
+<p>Simple identifiers consist of only a single word with no <code>.</code> characters.
+Canonical identifiers build on simple identifiers by allowing a path separated
+by <code>.</code> characters. This allows for an identifier to have a qualifying path just
+as with Java package names. For example, <code>Max</code> is a simple identifier, and
+<code>io.virtdata.basicsmappers.unary_int.Max</code> is a qualified identifier.</p>
+
+<p>You can use simple identifiers by default. If you need qualified identifiers, this
+will be called out in the respective sections below.</p>
+
+<h2 id="flow">FLOW :=</h2>
+
+
+
+<div align="left" class="railroad-text"><pre>Diagram( OneOrMore(&#39;&lt;FUNCTION&gt;&#39;,&#39;&#34;;&#34;&#39;) );</pre></div>
+<script type="text/javascript" src="http://docs.virtdata.io/modules/railroad/inithook-railroad.js"></script>
+
+
+
+
+
+
+
+<p>Functions can be chained together. This supports a flow-oriented way of thinking
+about data transformations, rather than nested functions. When a virtdata flow
+is created by chaining multiple function templates together, the result
+specifies a virtdata lambda template. This is simply a convenient and portable
+way of composing functions for specialized purposes.</p>
+
+<p>The VirtData runtime treats all bindings recipes as function flows. If there
+only one function, then it is simply a single-function flow at the API level.</p>
+
+<h2 id="function">FUNCTION :=</h2>
+
+<p>The syntax of a function in a virtdata flow is:</p>
+
+<p>
+
+<div align="left" class="railroad-text"><pre>Diagram(
+ Stack(
+   Sequence(Optional(Sequence(&#39;&lt;IDENTIFIER: input type&gt;&#39;,&#39;&#34;-&gt;&#34;&#39;))),
+    Sequence(&#39;&lt;IDENTIFIER: function name&gt;&#39;,&#39;&#34;(&#34;&#39;,OneOrMore(&#39;&lt;ARG: argument&gt;&#39;,&#39;&#34;,&#34;&#39;),&#39;&#34;)&#34;&#39;),
+   Sequence(Optional(Sequence(&#39;&#34;-&gt;&#34;&#39;, &#39;&lt;IDENTIFIER: output type&gt;&#39;)))
+ )
+);</pre></div>
+<script type="text/javascript" src="http://docs.virtdata.io/modules/railroad/inithook-railroad.js"></script>
+
+
+
+
+
+
+For better illustration, here are a couple version that decompose the syntax above into a more intuitive view:</p>
+
+<h3 id="funcspec">FUNCSPEC :=</h3>
+
+
+
+<div align="left" class="railroad-text"><pre>Diagram(
+ Sequence(
+   Sequence(Optional(Sequence(&#39;&lt;IDENTIFIER: input type&gt;&#39;,&#39;&#34;-&gt;&#34;&#39;))),
+    &#39;&lt;NAMEANDARGS&gt;&#39;,
+   Sequence(Optional(Sequence(&#39;&#34;-&gt;&#34;&#39;, &#39;&lt;IDENTIFIER: output type&gt;&#39;)))
+ )
+);</pre></div>
+<script type="text/javascript" src="http://docs.virtdata.io/modules/railroad/inithook-railroad.js"></script>
+
+
+
+
+
+
+
+<p>The input type and output type are completely optional. If you don&rsquo;t provide
+them, then the runtime will do it&rsquo;s own best-effort matching against all of the
+functions available in the bundled function libraries.</p>
+
+<h3 id="nameandargs">NAMEANDARGS :=</h3>
+
+
+
+<div align="left" class="railroad-text"><pre>Diagram(
+ &#39;&lt;IDENTIFIER: function name&gt;&#39;,&#39;&#34;(&#34;&#39;,
+ OneOrMore(&#39;&lt;ARG: argument&gt;&#39;,&#39;,&#39;)
+ ,&#39;&#34;)&#34;&#39;
+);</pre></div>
+<script type="text/javascript" src="http://docs.virtdata.io/modules/railroad/inithook-railroad.js"></script>
+
+
+
+
+
+
+
+<ul>
+<li><strong>input type</strong> is an optional input type qualifier. If provided, it limits matching functions to those with the input
+type specified. The value can be any primitive java type name or a fully qualified Java class name, including the package name.</li>
+<li><strong>function name</strong> is a valid function class name from the library.</li>
+<li><strong>argument</strong> is a valid argument as explained below.</li>
+<li><strong>output type</strong> is an optional output type qualifier. If provided, it limits the matching functions to those with
+the output type specified. It has the same value restrictions as the input type above.</li>
+</ul>
+
+<p>This merely shows that a function template has basic C-like syntax, with the
+addition of optional input type and/or output type qualifiers.</p>
+
+<h2 id="function-arguments">Function Arguments</h2>
+
+<p>Each type of argument syntax is distinguished below. When specifying value
+literals, the types are distinct. This means that a function template which
+takes a long argument as an initializer will be distinct from one that takes an
+int in the same position. Thus, <code>Max(234)</code> specifies a <em>different</em> function than
+<code>Max(234L)</code>. This is very important to note when constructing recipes, as the types
+provided determine which functions could match the function template.</p>
+
+<h2 id="arg">ARG :=</h2>
+
+
+
+<div align="left" class="railroad-text"><pre>Diagram(
+Choice(0,
+ Sequence(
+   Comment(&#39;value&#39;),
+   Choice(1,
+       &#39;&lt;INTEGER: value&gt;&#39;,
+       &#39;&lt;LONG: value&gt;&#39;,
+       &#39;&lt;FLOAT: value&gt;&#39;,
+       &#39;&lt;DOUBLE: value&gt;&#39;,
+       &#39;&lt;STRING: value&gt;&#39;
+   )
+ ),
+ Sequence(
+  Comment(&#39;function&#39;),
+  &#39;&lt;FUNCTION&gt;&#39;
+ )
+)
+);</pre></div>
+<script type="text/javascript" src="http://docs.virtdata.io/modules/railroad/inithook-railroad.js"></script>
+
+
+
+
+
+
+
+<h3 id="integer">INTEGER :=</h3>
+
+
+
+<div align="left" class="railroad-text"><pre>Diagram(
+ Sequence(Optional(&#39;-&#39;),OneOrMore(&#39;[0-9]&#39;))
+);</pre></div>
+<script type="text/javascript" src="http://docs.virtdata.io/modules/railroad/inithook-railroad.js"></script>
+
+
+
+
+
+
+
+<h3 id="long">LONG :=</h3>
+
+
+
+<div align="left" class="railroad-text"><pre>Diagram(Sequence(Optional(&#39;-&#39;),OneOrMore(&#39;[0-9]&#39;),Choice(1,&#39;L&#39;,&#39;l&#39;)));</pre></div>
+<script type="text/javascript" src="http://docs.virtdata.io/modules/railroad/inithook-railroad.js"></script>
+
+
+
+
+
+
+
+<h3 id="float">FLOAT :=</h3>
+
+
+
+<div align="left" class="railroad-text"><pre>Diagram(
+ Optional(&#39;-&#39;),
+ OneOrMore(&#39;[0-9]&#39;),
+ Optional(
+  Sequence(
+   &#39;&#34;.&#34;&#39;,
+   OneOrMore(&#39;[0-9]&#39;)
+  )
+ ),
+ Optional(Sequence(Choice(1,&#39;e&#39;,&#39;E&#39;),OneOrMore(&#39;[0-9]&#39;)))
+);</pre></div>
+<script type="text/javascript" src="http://docs.virtdata.io/modules/railroad/inithook-railroad.js"></script>
+
+
+
+
+
+
+
+<h3 id="double">DOUBLE :=</h3>
+
+
+
+<div align="left" class="railroad-text"><pre>Diagram(
+ Optional(&#39;-&#39;),
+ OneOrMore(&#39;[0-9]&#39;),
+ Optional(
+  Sequence(
+   &#39;&#34;.&#34;&#39;,
+   OneOrMore(&#39;[0-9]&#39;)
+  )
+ ),
+ Optional(Sequence(Choice(1,&#39;e&#39;,&#39;E&#39;),OneOrMore(&#39;[0-9]&#39;))),
+ Choice(1,&#39;d&#39;,&#39;D&#39;)
+);</pre></div>
+<script type="text/javascript" src="http://docs.virtdata.io/modules/railroad/inithook-railroad.js"></script>
+
+
+
+
+
+
+
+<p>Notice that a function can contain a function as an argument. This allows for higher-order function to be created.</p>
+
+
+			<aside class="copyright" role="note">
+				
+				&copy; 2018 APL 2.0 &ndash;
+				
+				Documentation built with
+				<a href="https://www.gohugo.io" target="_blank">Hugo</a>
+				using the
+				<a href="http://github.com/digitalcraftsman/hugo-material-docs" target="_blank">Material</a> theme.
+			</aside>
+
+			<footer class="footer">
+				
+
+<nav class="pagination" aria-label="Footer">
+  <div class="previous">
+  
+      <a href="http://docs.virtdata.io/concepts/function_graphs/" title="Function Graphs">
+        <span class="direction">
+          Previous
+        </span>
+        <div class="page">
+          <div class="button button-previous" role="button" aria-label="Previous">
+            <i class="icon icon-back"></i>
+          </div>
+          <div class="stretch">
+            <div class="title">
+              Function Graphs
+            </div>
+          </div>
+        </div>
+      </a>
+  
+  </div>
+
+  <div class="next">
+  
+      <a href="http://docs.virtdata.io/modeling_datasets/modeling_cardinality/" title="Cardinality">
+        <span class="direction">
+          Next
+        </span>
+        <div class="page">
+          <div class="stretch">
+            <div class="title">
+              Cardinality
+            </div>
+          </div>
+          <div class="button button-next" role="button" aria-label="Next">
+            <i class="icon icon-forward"></i>
+          </div>
+        </div>
+      </a>
+  
+  </div>
+</nav>
+
+
+
+
+
+			</footer>
+		</div>
+	</article>
+
+	<div class="results" role="status" aria-live="polite">
+		<div class="scrollable">
+			<div class="wrapper">
+				<div class="meta"></div>
+				<div class="list"></div>
+			</div>
+		</div>
+	</div>
+</main>
+
+    <script>
+    
+      var base_url = '';
+      var repo_id  = '';
+    
+    </script>
+
+    <script src="http://docs.virtdata.io/javascripts/application.js"></script>
+    
+
+    <script>
+      /* Add headers to scrollspy */
+      var headers   = document.getElementsByTagName("h2");
+      var scrollspy = document.getElementById('scrollspy');
+
+      if(scrollspy) {
+        if(headers.length > 0) {
+          for(var i = 0; i < headers.length; i++) {
+            var li = document.createElement("li");
+            li.setAttribute("class", "anchor");
+
+            var a  = document.createElement("a");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", headers[i].innerHTML);
+            a.innerHTML = headers[i].innerHTML;
+
+            li.appendChild(a)
+            scrollspy.appendChild(li);
+          }
+        } else {
+          scrollspy.parentElement.removeChild(scrollspy)
+        }
+
+
+        /* Add permanent link next to the headers */
+        var headers = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
+
+        for(var i = 0; i < headers.length; i++) {
+            var a = document.createElement("a");
+            a.setAttribute("class", "headerlink");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", "Permanent link")
+            a.innerHTML = "¶";
+            headers[i].appendChild(a);
+        }
+      }
+    </script>
+
+    
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

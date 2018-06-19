@@ -23,13 +23,8 @@
   </url>
   
   <url>
-    <loc>http://docs.virtdata.io/sketches/function_graph_kernel_api/</loc>
-    <lastmod>2017-12-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://docs.virtdata.io/sketches/function_graph_kernel/</loc>
-    <lastmod>2017-12-16T00:00:00+00:00</lastmod>
+    <loc>http://docs.virtdata.io/syntax/syntax_overview/</loc>
+    <lastmod>2018-06-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
@@ -43,23 +38,12 @@
   </url>
   
   <url>
-    <loc>http://docs.virtdata.io/sketches/</loc>
-    <lastmod>2017-05-19T21:51:26+00:00</lastmod>
+    <loc>http://docs.virtdata.io/functions/autodoc_reference/</loc>
+    <lastmod>2018-06-18T00:00:00+00:00</lastmod>
   </url>
   
   <url>
-    <loc>http://docs.virtdata.io/sketches/function_graph_kernel_scratch/</loc>
-    <lastmod>2017-12-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://docs.virtdata.io/sketches/function_graph_kernel_concepts/</loc>
-    <lastmod>2017-12-16T00:00:00+00:00</lastmod>
-  </url>
-  
-  <url>
-    <loc>http://docs.virtdata.io/sketches/function_graph_kernel_primitives/</loc>
-    <lastmod>2017-12-16T00:00:00+00:00</lastmod>
+    <loc>http://docs.virtdata.io/functions/functions_reference2/</loc>
   </url>
   
   <url>
@@ -114,19 +98,25 @@
   </url>
   
   <url>
+    <loc>http://docs.virtdata.io/functions/</loc>
+    <lastmod>2018-06-18T00:00:00+00:00</lastmod>
+    <priority>0</priority>
+  </url>
+  
+  <url>
     <loc>http://docs.virtdata.io/modeling_datasets/</loc>
     <lastmod>2017-12-16T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://docs.virtdata.io/sketches/</loc>
-    <lastmod>2017-12-16T00:00:00+00:00</lastmod>
+    <loc>http://docs.virtdata.io/src/</loc>
     <priority>0</priority>
   </url>
   
   <url>
-    <loc>http://docs.virtdata.io/src/</loc>
+    <loc>http://docs.virtdata.io/syntax/</loc>
+    <lastmod>2018-06-18T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   

@@ -1,0 +1,35 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Functions on VirtualDataSet</title>
+    <link>http://docs.virtdata.io/functions/</link>
+    <description>Recent content in Functions on VirtualDataSet</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>APL 2.0</copyright>
+    <lastBuildDate>Mon, 18 Jun 2018 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://docs.virtdata.io/functions/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>All Functions</title>
+      <link>http://docs.virtdata.io/functions/autodoc_reference/</link>
+      <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://docs.virtdata.io/functions/autodoc_reference/</guid>
+      <description>Add  long -&amp;gt; Add(long: addend) -&amp;gt; long int -&amp;gt; Add(int: addend) -&amp;gt; int  example: Add(23) adds integer 23 to the input integer value  long -&amp;gt; Add(long: addend) -&amp;gt; int double -&amp;gt; Add(double: addend) -&amp;gt; double  Adds a value to the input.
+AddCycleRange  long -&amp;gt; AddCycleRange(long: maxValue) -&amp;gt; int long -&amp;gt; AddCycleRange(long: minValue, long: maxValue) -&amp;gt; int int -&amp;gt; AddCycleRange(int: maxValue) -&amp;gt; int int -&amp;gt; AddCycleRange(int: minValue, int: maxValue) -&amp;gt; int long -&amp;gt; AddCycleRange(long: maxValue) -&amp;gt; long long -&amp;gt; AddCycleRange(long: minValue, long: maxValue) -&amp;gt; long  AddHashRange  long -&amp;gt; AddHashRange(long: maxValue) -&amp;gt; int long -&amp;gt; AddHashRange(long: minValue, long: maxValue) -&amp;gt; int long -&amp;gt; AddHashRange(long: maxValue) -&amp;gt; long long -&amp;gt; AddHashRange(long: minValue, long: maxValue) -&amp;gt; long int -&amp;gt; AddHashRange(int: maxValue) -&amp;gt; int int -&amp;gt; AddHashRange(int: minValue, int: maxValue) -&amp;gt; int  AliasElementSampler  double -&amp;gt; AliasElementSampler(double[]: biases, T[]: elements) -&amp;gt; T double -&amp;gt; AliasElementSampler(java.</description>
+    </item>
+    
+    <item>
+      <title></title>
+      <link>http://docs.virtdata.io/functions/functions_reference2/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>http://docs.virtdata.io/functions/functions_reference2/</guid>
+      <description>mapto_hypergeometric mapto_compute_hypergeometric compute_hypergeometric uniform_integer mapto_uniform_integer mapto_compute_uniform_integer compute_uniform_integer geometric mapto_geometric mapto_compute_geometric compute_geometric poisson mapto_poisson mapto_compute_poisson compute_poisson zipf mapto_zipf mapto_compute_zipf compute_zipf binomial mapto_binomial mapto_compute_binomial compute_binomial pascal mapto_pascal mapto_compute_pascal compute_pascal levy mapto_levy mapto_compute_levy compute_levy nakagami mapto_nakagami mapto_compute_nakagami compute_nakagami triangular mapto_triangular mapto_compute_triangular compute_triangular exponential mapto_exponential mapto_compute_exponential compute_exponential logistic mapto_logistic mapto_compute_logistic compute_logistic enumerated_real mapto_enumerated_real mapto_compute_enumerated_real compute_enumerated_real laplace mapto_laplace mapto_compute_laplace compute_laplace log_normal mapto_log_normal mapto_compute_log_normal compute_log_normal cauchy mapto_cauchy mapto_compute_cauchy compute_cauchy f mapto_f mapto_compute_f compute_f t mapto_t mapto_compute_t compute_t empirical mapto_empirical mapto_compute_empirical compute_empirical normal mapto_normal mapto_compute_normal compute_normal weibull mapto_weibull mapto_compute_weibull compute_weibull chi_squared mapto_chi_squared mapto_compute_chi_squared compute_chi_squared gumbel mapto_gumbel mapto_compute_gumbel compute_gumbel beta mapto_beta mapto_compute_beta compute_beta pareto mapto_pareto mapto_compute_pareto compute_pareto gamma mapto_gamma mapto_compute_gamma compute_gamma uniform_real mapto_uniform_real mapto_compute_uniform_real compute_uniform_real Add available forms:</description>
+    </item>
+    
+  </channel>
+</rss>
