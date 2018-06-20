@@ -442,7 +442,7 @@ multiple functions in a chain are called a <em>VirtData Flow</em>.</p>
 
 
 <div align="left" class="railroad-text"><pre>Diagram(
- OneOrMore(Sequence(&#39;[a-zA-Z]&#39;, ZeroOrMore(&#39;[0-9a-zA-Z_]&#39;)),&#39;.&#39;)
+ OneOrMore(Sequence(&#39;[a-zA-Z]&#39;, ZeroOrMore(&#39;[0-9a-zA-Z_]&#39;)),&#39;&#34;.&#34;&#39;)
 );</pre></div>
 <script type="text/javascript" src="http://docs.virtdata.io/modules/railroad/inithook-railroad.js"></script>
 
@@ -534,7 +534,7 @@ functions available in the bundled function libraries.</p>
 
 <div align="left" class="railroad-text"><pre>Diagram(
  &#39;&lt;IDENTIFIER: function name&gt;&#39;,&#39;&#34;(&#34;&#39;,
- OneOrMore(&#39;&lt;ARG: argument&gt;&#39;,&#39;,&#39;)
+ OneOrMore(&#39;&lt;ARG: argument&gt;&#39;,&#39;&#34;,&#34;&#39;)
  ,&#39;&#34;)&#34;&#39;
 );</pre></div>
 <script type="text/javascript" src="http://docs.virtdata.io/modules/railroad/inithook-railroad.js"></script>
@@ -615,7 +615,7 @@ Choice(0,
 
 
 
-<div align="left" class="railroad-text"><pre>Diagram(Sequence(Optional(&#39;-&#39;),OneOrMore(&#39;[0-9]&#39;),Choice(1,&#39;L&#39;,&#39;l&#39;)));</pre></div>
+<div align="left" class="railroad-text"><pre>Diagram(Sequence(Optional(&#39;&#34;-&#34;&#39;),OneOrMore(&#39;[0-9]&#39;),Choice(1,&#39;&#34;L&#34;&#39;,&#39;&#34;l&#34;&#39;)));</pre></div>
 <script type="text/javascript" src="http://docs.virtdata.io/modules/railroad/inithook-railroad.js"></script>
 
 
@@ -629,7 +629,7 @@ Choice(0,
 
 
 <div align="left" class="railroad-text"><pre>Diagram(
- Optional(&#39;-&#39;),
+ Optional(&#39;&#34;-&#34;&#39;),
  OneOrMore(&#39;[0-9]&#39;),
  Optional(
   Sequence(
@@ -637,7 +637,7 @@ Choice(0,
    OneOrMore(&#39;[0-9]&#39;)
   )
  ),
- Optional(Sequence(Choice(1,&#39;e&#39;,&#39;E&#39;),OneOrMore(&#39;[0-9]&#39;)))
+ Optional(Sequence(Choice(1,&#39;&#34;e&#34;&#39;,&#39;&#34;E&#34;&#39;),OneOrMore(&#39;[0-9]&#39;)))
 );</pre></div>
 <script type="text/javascript" src="http://docs.virtdata.io/modules/railroad/inithook-railroad.js"></script>
 
@@ -652,7 +652,7 @@ Choice(0,
 
 
 <div align="left" class="railroad-text"><pre>Diagram(
- Optional(&#39;-&#39;),
+ Optional(&#39;&#34;-&#34;&#39;),
  OneOrMore(&#39;[0-9]&#39;),
  Optional(
   Sequence(
@@ -660,8 +660,8 @@ Choice(0,
    OneOrMore(&#39;[0-9]&#39;)
   )
  ),
- Optional(Sequence(Choice(1,&#39;e&#39;,&#39;E&#39;),OneOrMore(&#39;[0-9]&#39;))),
- Choice(1,&#39;d&#39;,&#39;D&#39;)
+ Optional(Sequence(Choice(1,&#39;&#34;e&#34;&#39;,&#39;&#34;E&#34;&#39;),OneOrMore(&#39;[0-9]&#39;))),
+ Choice(1,&#39;&#34;d&#34;&#39;,&#39;&#34;D&#34;&#39;)
 );</pre></div>
 <script type="text/javascript" src="http://docs.virtdata.io/modules/railroad/inithook-railroad.js"></script>
 
