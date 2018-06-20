@@ -9,7 +9,7 @@ menu:
     weight: 51
 ---
 
-### Reference Format
+Reference Format
 
 Each heading in this page is the name of a function. The description of
 the function in general is provided, if any after it.
@@ -20,7 +20,7 @@ examples and notes are provided if available under *ex:* and *notes:*.
 
 Here is a fake documentation entry that visually explains the layout:
 
-### AnyFunc (not a real one)
+**AnyFunc (not a real function)**
 
 The explanation of what AnyFunc does goes here. It will explain the general purpose of AnyFunc,
 regardless of the type-specific details that may go below.
