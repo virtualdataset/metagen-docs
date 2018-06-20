@@ -68,7 +68,7 @@ Let's start with identifier conventions.
 Identifers are used throughout virtdata and have a uniform syntax. 
 
 {{< rr >}}
- OneOrMore(Sequence('[a-zA-Z]', ZeroOrMore('[0-9a-zA-Z_]')),'.')
+ OneOrMore(Sequence('[a-zA-Z]', ZeroOrMore('[0-9a-zA-Z_]')),'"."')
 {{</ rr >}}
 
 Simple identifiers consist of only a single word with no `.` characters.
@@ -125,7 +125,7 @@ functions available in the bundled function libraries.
 
 {{< rr align="left">}}
  '<IDENTIFIER: function name>','"("',
- OneOrMore('<ARG: argument>',',')
+ OneOrMore('<ARG: argument>','","')
  ,'")"'
 {{</ rr >}}
 
@@ -178,12 +178,12 @@ Choice(0,
 {{</ rr >}}
 
 ### LONG :=
-{{< rr align="left">}}Sequence(Optional('-'),OneOrMore('[0-9]'),Choice(1,'L','l')){{</ rr >}}
+{{< rr align="left">}}Sequence(Optional('"-"'),OneOrMore('[0-9]'),Choice(1,'"L"','"l"')){{</ rr >}}
 
 ### FLOAT :=
 
 {{< rr align="left">}}
- Optional('-'),
+ Optional('"-"'),
  OneOrMore('[0-9]'),
  Optional(
   Sequence(
@@ -191,13 +191,13 @@ Choice(0,
    OneOrMore('[0-9]')
   )
  ),
- Optional(Sequence(Choice(1,'e','E'),OneOrMore('[0-9]')))
+ Optional(Sequence(Choice(1,'"e"','"E"'),OneOrMore('[0-9]')))
 {{</ rr >}}
 
 ### DOUBLE :=
 
 {{< rr align="left">}}
- Optional('-'),
+ Optional('"-"'),
  OneOrMore('[0-9]'),
  Optional(
   Sequence(
@@ -205,8 +205,8 @@ Choice(0,
    OneOrMore('[0-9]')
   )
  ),
- Optional(Sequence(Choice(1,'e','E'),OneOrMore('[0-9]'))),
- Choice(1,'d','D')
+ Optional(Sequence(Choice(1,'"e"','"E"'),OneOrMore('[0-9]'))),
+ Choice(1,'"d"','"D"')
 {{</ rr >}}
 
 Notice that a function can contain a function as an argument. This allows for higher-order function to be created.
