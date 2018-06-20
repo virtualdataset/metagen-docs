@@ -92,7 +92,8 @@ Suppose you have two different sets of things in your virtual dataset:
       <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>http://docs.virtdata.io/functions/autodoc_reference/</guid>
-      <description>Reference Format Each heading in this page is the name of a function. The description of the function in general is provided, if any after it.
+      <description>Reference Format
+Each heading in this page is the name of a function. The description of the function in general is provided, if any after it.
 The details that follow show all of the forms of the function which are available, according to different input, out, and argument signatures. For each form, examples and notes are provided if available under ex: and notes:.
 Here is a fake documentation entry that visually explains the layout:</description>
     </item>
