@@ -18,8 +18,9 @@
       <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>http://docs.virtdata.io/functions/autodoc_reference/</guid>
-      <description>Add  long -&amp;gt; Add(long: addend) -&amp;gt; long int -&amp;gt; Add(int: addend) -&amp;gt; int  example: Add(23) adds integer 23 to the input integer value  long -&amp;gt; Add(long: addend) -&amp;gt; int double -&amp;gt; Add(double: addend) -&amp;gt; double  Adds a value to the input.
-AddCycleRange  long -&amp;gt; AddCycleRange(long: maxValue) -&amp;gt; int long -&amp;gt; AddCycleRange(long: minValue, long: maxValue) -&amp;gt; int int -&amp;gt; AddCycleRange(int: maxValue) -&amp;gt; int int -&amp;gt; AddCycleRange(int: minValue, int: maxValue) -&amp;gt; int long -&amp;gt; AddCycleRange(long: maxValue) -&amp;gt; long long -&amp;gt; AddCycleRange(long: minValue, long: maxValue) -&amp;gt; long  AddHashRange  long -&amp;gt; AddHashRange(long: maxValue) -&amp;gt; int long -&amp;gt; AddHashRange(long: minValue, long: maxValue) -&amp;gt; int long -&amp;gt; AddHashRange(long: maxValue) -&amp;gt; long long -&amp;gt; AddHashRange(long: minValue, long: maxValue) -&amp;gt; long int -&amp;gt; AddHashRange(int: maxValue) -&amp;gt; int int -&amp;gt; AddHashRange(int: minValue, int: maxValue) -&amp;gt; int  AliasElementSampler  double -&amp;gt; AliasElementSampler(double[]: biases, T[]: elements) -&amp;gt; T double -&amp;gt; AliasElementSampler(java.</description>
+      <description>Reference Format Each heading in this page is the name of a function. The description of the function in general is provided, if any after it.
+The details that follow show all of the forms of the function which are available, according to different input, out, and argument signatures. For each form, examples and notes are provided if available under ex: and notes:.
+Here is a fake documentation entry that visually explains the layout:</description>
     </item>
     
     <item>

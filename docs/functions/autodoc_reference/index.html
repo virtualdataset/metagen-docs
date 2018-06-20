@@ -348,22 +348,54 @@
 
 			
 
+<h3 id="reference-format">Reference Format</h3>
+
+<p>Each heading in this page is the name of a function. The description of
+the function in general is provided, if any after it.</p>
+
+<p>The details that follow show all of the forms of the function which are available,
+according to different input, out, and argument signatures. For each form,
+examples and notes are provided if available under <em>ex:</em> and <em>notes:</em>.</p>
+
+<p>Here is a fake documentation entry that visually explains the layout:</p>
+
+<h3 id="anyfunc-not-a-real-one">AnyFunc (not a real one)</h3>
+
+<p>The explanation of what AnyFunc does goes here. It will explain the general purpose of AnyFunc,
+regardless of the type-specific details that may go below.</p>
+
+<ul>
+<li>int -&gt; AnyFunc(int: size) -&gt; int <em>(This is the full type signature of one of the availabler versions of AnyFunc)</em>
+
+<ul>
+<li><em>ex:</em> <code>AnyFunc(42)</code> - <em>An example to the left, and an explanation for what makes it useful.</em></li>
+<li><em>notes:</em> This particular explanation is just to show where additional notes on the AnyFunc(int) variant would go.</li>
+</ul></li>
+<li>long -&gt; AnyFunc(long: size) -&gt; long <em>(There is another form available which specializes for the long type.)</em>
+
+<ul>
+<li><em>ex:</em> <code>AnyFunc(42L)</code> - <em>This form wants the argument to be a long</em></li>
+</ul></li>
+</ul>
+
 <h2 id="add">Add</h2>
+
+<p>Adds a value to the input.</p>
 
 <ul>
 <li>long -&gt; Add(long: addend) -&gt; long</li>
 <li>int -&gt; Add(int: addend) -&gt; int
 
 <ul>
-<li><em>example:</em> Add(23) <em>adds integer 23 to the input integer value</em></li>
+<li><em>ex:</em> <code>Add(23)</code> - <em>adds integer 23 to the input integer value</em></li>
 </ul></li>
 <li>long -&gt; Add(long: addend) -&gt; int</li>
 <li>double -&gt; Add(double: addend) -&gt; double</li>
 </ul>
 
-<p>Adds a value to the input.</p>
-
 <h2 id="addcyclerange">AddCycleRange</h2>
+
+<p>Adds a cycle range to the input, producing an increasing sawtooth-like output.</p>
 
 <ul>
 <li>long -&gt; AddCycleRange(long: maxValue) -&gt; int</li>
@@ -376,6 +408,8 @@
 
 <h2 id="addhashrange">AddHashRange</h2>
 
+<p>Adds a pseudo-random value within the specified range to the input.</p>
+
 <ul>
 <li>long -&gt; AddHashRange(long: maxValue) -&gt; int</li>
 <li>long -&gt; AddHashRange(long: minValue, long: maxValue) -&gt; int</li>
@@ -387,12 +421,6 @@
 
 <h2 id="aliaselementsampler">AliasElementSampler</h2>
 
-<ul>
-<li>double -&gt; AliasElementSampler(double[]: biases, T[]: elements) -&gt; T</li>
-<li>double -&gt; AliasElementSampler(java.util.Collection<T>: elements, java.util.function.Function<T,Double>: weightFunction) -&gt; T</li>
-<li>double -&gt; AliasElementSampler(java.util.List<io.virtdata.stathelpers.ElemProbD<T>&gt;: events) -&gt; T</li>
-</ul>
-
 <p>Uses the alias sampling method to encode and sample from discrete probabilities,
 even over larger sets of data. This form requires a unit interval sample value
 between 0.0 and 1.0. Assuming the maximal amount of memory is used for distinct
@@ -402,21 +430,31 @@ requiring 32MB of memory for 1M entries. Not bad, eh?</p>
 <p>This sampler should be shared between threads, and will be by default, in order
 to avoid many instances of a 32MB buffer on heap.</p>
 
+<ul>
+<li>double -&gt; AliasElementSampler(double[]: biases, T[]: elements) -&gt; T
+
+<ul>
+<li><em>notes:</em> Setup an alias table for T type objects.</li>
+</ul></li>
+<li>double -&gt; AliasElementSampler(java.util.Collection<T>: elements, java.util.function.Function<T,Double>: weightFunction) -&gt; T</li>
+<li>double -&gt; AliasElementSampler(java.util.List<io.virtdata.stathelpers.ElemProbD<T>&gt;: events) -&gt; T</li>
+</ul>
+
 <h2 id="aliassamplerdoubleint">AliasSamplerDoubleInt</h2>
+
+<p>Uses the alias sampling method to encode and sample from discrete probabilities,
+even over larger sets of data. This form requires a unit interval sample value
+between 0.0 and 1.0. Assuming the maximal amount of memory is used for distinct
+outcomes N, a memory buffer of N*16 bytes is required for this implementation,
+requiring 32MB of memory for 1M entries. Not bad, eh?</p>
+
+<p>This sampler should be shared between threads, and will be by default, in order
+to avoid many instances of a 32MB buffer on heap.</p>
 
 <ul>
 <li>double -&gt; AliasSamplerDoubleInt(java.nio.ByteBuffer: stats) -&gt; int</li>
 <li>double -&gt; AliasSamplerDoubleInt(java.util.List<io.virtdata.stathelpers.EvProbD>: events) -&gt; int</li>
 </ul>
-
-<p>Uses the alias sampling method to encode and sample from discrete probabilities,
-even over larger sets of data. This form requires a unit interval sample value
-between 0.0 and 1.0. Assuming the maximal amount of memory is used for distinct
-outcomes N, a memory buffer of N*16 bytes is required for this implementation,
-requiring 32MB of memory for 1M entries. Not bad, eh?</p>
-
-<p>This sampler should be shared between threads, and will be by default, in order
-to avoid many instances of a 32MB buffer on heap.</p>
 
 <h2 id="alphanumericstring">AlphaNumericString</h2>
 
@@ -426,24 +464,22 @@ to avoid many instances of a 32MB buffer on heap.</p>
 
 <h2 id="clear">Clear</h2>
 
+<p>Clears the per-thread map which is used by the Expr function.</p>
+
 <ul>
-<li>long -&gt; Clear() -&gt; long</li>
-<li>long -&gt; Clear(String[]: names) -&gt; long</li>
+<li>long -&gt; Clear() -&gt; long
+
+<ul>
+<li><em>notes:</em> Clear all named entries from the per-thread map.</li>
+</ul></li>
+<li>long -&gt; Clear(String[]&hellip;: names) -&gt; long
+
+<ul>
+<li><em>notes:</em> Clear the specified names from the per-thread map.</li>
+</ul></li>
 </ul>
 
 <h2 id="combinations">Combinations</h2>
-
-<ul>
-<li>long -&gt; Combinations(String: spec) -&gt; String
-
-<ul>
-<li><em>example:</em> Combinations(&lsquo;A-Z;A-Z&rsquo;) <em>a two digit alphanumeric code. Wraps at 26^2</em></li>
-<li><em>example:</em> Combinations(&lsquo;0-9A-F&rsquo;) <em>a single hexadecimal digit</em></li>
-<li><em>example:</em> Combinations(&lsquo;0123456789ABCDEF&rsquo;) <em>a single hexadecimal digit</em></li>
-<li><em>example:</em> Combinations(&lsquo;0-9A-F;0-9A-F;0-9A-F;0-9A-F;&rsquo;) <em>two bytes of hexadecimal</em></li>
-<li><em>example:</em> Combinations(&lsquo;A-9&rsquo;) <em>upper case alphanumeric</em></li>
-</ul></li>
-</ul>
 
 <p>Convert a numeric value into a code according to ASCII printable
 characters. This is useful for creating various encodings using different
@@ -459,22 +495,41 @@ character set, described by the shorthand in the examples below.</p>
 which can be represented in a long value. (This is a very high
 number).</p>
 
+<ul>
+<li>long -&gt; Combinations(String: spec) -&gt; String
+
+<ul>
+<li><em>ex:</em> <code>Combinations('A-Z;A-Z')</code> - <em>a two digit alphanumeric code. Wraps at 26^2</em></li>
+<li><em>ex:</em> <code>Combinations('0-9A-F')</code> - <em>a single hexadecimal digit</em></li>
+<li><em>ex:</em> <code>Combinations('0123456789ABCDEF')</code> - <em>a single hexadecimal digit</em></li>
+<li><em>ex:</em> <code>Combinations('0-9A-F;0-9A-F;0-9A-F;0-9A-F;')</code> - <em>two bytes of hexadecimal</em></li>
+<li><em>ex:</em> <code>Combinations('A-9')</code> - <em>upper case alphanumeric</em></li>
+</ul></li>
+</ul>
+
 <h2 id="cyclerange">CycleRange</h2>
+
+<p>Yields a value within a specified range, which rolls over continuously.</p>
 
 <ul>
 <li>long -&gt; CycleRange(long: maxValue) -&gt; long</li>
 <li>long -&gt; CycleRange(long: minValue, long: maxValue) -&gt; long</li>
 <li>long -&gt; CycleRange(long: maxValue) -&gt; int</li>
 <li>long -&gt; CycleRange(long: minValue, long: maxValue) -&gt; int</li>
-<li>int -&gt; CycleRange(int: maxValue) -&gt; int</li>
-<li>int -&gt; CycleRange(int: minValue, int: maxValue) -&gt; int</li>
+<li>int -&gt; CycleRange(int: maxValue) -&gt; int
+
+<ul>
+<li><em>notes:</em> Sets the maximum value of the cycle range. The minimum is default to 0.</li>
+<li><em>ex:</em> <code>CycleRange(34)</code> - <em>add a rotating value between 0 and 34 to the input</em></li>
+</ul></li>
+<li>int -&gt; CycleRange(int: minValue, int: maxValue) -&gt; int
+
+<ul>
+<li><em>notes:</em> Sets the minimum and maximum value of the cycle range.</li>
+</ul></li>
 </ul>
 
 <h2 id="datetimeformats">DateTimeFormats</h2>
-
-<ul>
-<li>null -&gt; DateTimeFormats() -&gt; null</li>
-</ul>
 
 <p>The valid formats, in joda specifier form are documented in DateTimeFormats
 <ol>
@@ -487,6 +542,10 @@ number).</p>
 <li>yyyyMM, for example: 201502</li>
 <li>yyyy, for example: 2015</li>
 </ol></p>
+
+<ul>
+<li>null -&gt; DateTimeFormats() -&gt; null</li>
+</ul>
 
 <h2 id="directorylines">DirectoryLines</h2>
 
@@ -505,11 +564,11 @@ number).</p>
 
 <h2 id="dividetolongtostring">DivideToLongToString</h2>
 
+<p>Integer devide the cycle, the other side of modulo.</p>
+
 <ul>
 <li>long -&gt; DivideToLongToString(long: divisor) -&gt; String</li>
 </ul>
-
-<p>Integer devide the cycle, the other side of modulo.</p>
 
 <h2 id="doubletofloat">DoubleToFloat</h2>
 
@@ -518,6 +577,15 @@ number).</p>
 </ul>
 
 <h2 id="expr">Expr</h2>
+
+<p>Allow for the use of arbitrary expressions according to the
+<a href="http://mvel.documentnode.com/">MVEL</a> expression language.</p>
+
+<p>Variables that have been set by a Save function are available
+to be used in this function.</p>
+
+<p>The variable name <strong>cycle</strong> is reserved, and is always equal to
+the current input value.</p>
 
 <ul>
 <li>int -&gt; Expr(String: expr) -&gt; int</li>
@@ -534,31 +602,46 @@ number).</p>
 
 <h2 id="fieldextractor">FieldExtractor</h2>
 
+<p>Extracts out a set of fields from a delimited string, returning
+a string with the same delimiter containing only the specified fields.</p>
+
 <ul>
 <li>String -&gt; FieldExtractor(String: fields) -&gt; String</li>
 </ul>
 
-<p>Extracts out a set of fields from a delimited string, returning
-a string with the same delimiter containing only the specified fields.</p>
-
 <h2 id="firstnames">FirstNames</h2>
 
+<p>Returns a first name from all names that were seen more than 100 times in the last census,
+according to the frequency that it was actually seen.
+This function does <em>not</em> pre-hash its input. You need to provide a form of hashing using
+any of the documented Hash functions first.</p>
+
 <ul>
-<li>null -&gt; FirstNames() -&gt; null</li>
+<li>null -&gt; FirstNames() -&gt; null
+
+<ul>
+<li><em>ex:</em> <code>FirstNames()</code></li>
+</ul></li>
 </ul>
 
 <h2 id="fixedvalue">FixedValue</h2>
 
+<p>Yield a fixed value.</p>
+
 <ul>
-<li>long -&gt; FixedValue(int: value) -&gt; int</li>
+<li>long -&gt; FixedValue(int: value) -&gt; int
+
+<ul>
+<li><em>ex:</em> <code>FixedValue(42)</code> - <em>always return 42</em></li>
+</ul></li>
 <li>long -&gt; FixedValue(long: fixedValue) -&gt; long</li>
 </ul>
 
 <h2 id="fixedvalues">FixedValues</h2>
 
 <ul>
-<li>long -&gt; FixedValues(long[]: values) -&gt; long</li>
-<li>long -&gt; FixedValues(int[]: values) -&gt; int</li>
+<li>long -&gt; FixedValues(long[]&hellip;: values) -&gt; long</li>
+<li>long -&gt; FixedValues(int[]&hellip;: values) -&gt; int</li>
 </ul>
 
 <h2 id="format">Format</h2>
@@ -569,10 +652,6 @@ a string with the same delimiter containing only the specified fields.</p>
 
 <h2 id="fullhash">FullHash</h2>
 
-<ul>
-<li>long -&gt; FullHash() -&gt; long</li>
-</ul>
-
 <p>This uses the Murmur3F (64-bit optimized) version of Murmur3,
 not as a checksum, but as a simple hash. It doesn&rsquo;t bother
 pushing the high-64 bits of input, since it only uses the lower
@@ -580,6 +659,10 @@ pushing the high-64 bits of input, since it only uses the lower
 
 <p>This version returns the value regardless of this sign bit.
 It does not return the absolute value, as Hash does.</p>
+
+<ul>
+<li>long -&gt; FullHash() -&gt; long</li>
+</ul>
 
 <h2 id="fullnames">FullNames</h2>
 
@@ -595,17 +678,17 @@ It does not return the absolute value, as Hash does.</p>
 
 <h2 id="hash">Hash</h2>
 
-<ul>
-<li>long -&gt; Hash() -&gt; long</li>
-<li>int -&gt; Hash() -&gt; int</li>
-<li>long -&gt; Hash() -&gt; int</li>
-</ul>
-
 <p>This uses the Murmur3F (64-bit optimized) version of Murmur3,
 not as a checksum, but as a simple hash. It doesn&rsquo;t bother
 pushing the high-64 bits of input, since it only uses the lower
 64 bits of output. It does, however, return the absolute value.
 This is to make it play nice with users and other libraries.</p>
+
+<ul>
+<li>long -&gt; Hash() -&gt; long</li>
+<li>int -&gt; Hash() -&gt; int</li>
+<li>long -&gt; Hash() -&gt; int</li>
+</ul>
 
 <h2 id="hashrange">HashRange</h2>
 
@@ -620,20 +703,16 @@ This is to make it play nice with users and other libraries.</p>
 
 <h2 id="hashrangescaled">HashRangeScaled</h2>
 
+<p>Uses the input value as well to establish the upper bound of the
+value produced from the hash.</p>
+
 <ul>
 <li>long -&gt; HashRangeScaled() -&gt; int</li>
 <li>long -&gt; HashRangeScaled() -&gt; long</li>
 <li>int -&gt; HashRangeScaled() -&gt; int</li>
 </ul>
 
-<p>Uses the input value as well to establish the upper bound of the
-value produced from the hash.</p>
-
 <h2 id="hasheddoublerange">HashedDoubleRange</h2>
-
-<ul>
-<li>long -&gt; HashedDoubleRange(double: min, double: max) -&gt; double</li>
-</ul>
 
 <p>This simulates a uniform sample from a range of double values
 via long hashing. This function attempts to take a double
@@ -650,6 +729,10 @@ IEEE floating point values much further apart.</p>
 <p>This should be consider the default double range sampling
 function for most uses, when the exponent is not needed for
 readability.</p>
+
+<ul>
+<li>long -&gt; HashedDoubleRange(double: min, double: max) -&gt; double</li>
+</ul>
 
 <h2 id="hashedfileextracttostring">HashedFileExtractToString</h2>
 
@@ -701,11 +784,6 @@ readability.</p>
 
 <h2 id="hashedrangedtononuniformdouble">HashedRangedToNonuniformDouble</h2>
 
-<ul>
-<li>null -&gt; HashedRangedToNonuniformDouble(long: min, long: max) -&gt; null</li>
-<li>null -&gt; HashedRangedToNonuniformDouble(long: min, long: max, long: seed) -&gt; null</li>
-</ul>
-
 <p>This provides a random sample of a double in a range, without
 accounting for the non-uniform distribution of IEEE double representation.
 This means that values closer to high-precision areas of the IEEE spec
@@ -713,14 +791,19 @@ will be weighted higher in the output. However, NaN and positive and
 negative infinity are filtered out via oversampling. Results are still
 stable for a given input value.</p>
 
+<ul>
+<li>null -&gt; HashedRangedToNonuniformDouble(long: min, long: max) -&gt; null</li>
+<li>null -&gt; HashedRangedToNonuniformDouble(long: min, long: max, long: seed) -&gt; null</li>
+</ul>
+
 <h2 id="hashedtobytebuffer">HashedToByteBuffer</h2>
+
+<p>Hash a long input value into a byte buffer, at least length bytes long, but aligned on 8-byte
+boundary;</p>
 
 <ul>
 <li>long -&gt; HashedToByteBuffer(int: lengthInBytes) -&gt; java.nio.ByteBuffer</li>
 </ul>
-
-<p>Hash a long input value into a byte buffer, at least length bytes long, but aligned on 8-byte
-boundary;</p>
 
 <h2 id="identity">Identity</h2>
 
@@ -731,19 +814,19 @@ boundary;</p>
 <h2 id="interpolate">Interpolate</h2>
 
 <ul>
-<li>long -&gt; Interpolate(double[]: value) -&gt; long
+<li>long -&gt; Interpolate(double[]&hellip;: value) -&gt; long
 
 <ul>
-<li><em>example:</em> Interpolate(0.0d,100.0d) <em>return a linear value between 0L and 100L based on input in range 0L, Long.MAX_VALUE</em></li>
-<li><em>example:</em> Interpolate(0.0d,90.0d,95.0d,98.0d,100.0d) <em>return a weighted value between 0L and 100L based on input in range 0L, Long.MAX_VALUE, where the first second and third quartiles map to 90.0D, 95.0D, and 98.0D</em></li>
+<li><em>ex:</em> <code>Interpolate(0.0d,100.0d)</code> - <em>return a linear value between 0L and 100L based on input in range 0L, Long.MAX_VALUE</em></li>
+<li><em>ex:</em> <code>Interpolate(0.0d,90.0d,95.0d,98.0d,100.0d)</code> - <em>return a weighted value between 0L and 100L based on input in range 0L, Long.MAX_VALUE, where the first second and third quartiles map to 90.0D, 95.0D, and 98.0D</em></li>
 </ul></li>
-<li>long -&gt; Interpolate(long[]: value) -&gt; long</li>
+<li>long -&gt; Interpolate(long[]&hellip;: value) -&gt; long</li>
 <li>long -&gt; Interpolate(int: resolution, double[]: lut) -&gt; long</li>
-<li>long -&gt; Interpolate(double[]: value) -&gt; double
+<li>long -&gt; Interpolate(double[]&hellip;: value) -&gt; double
 
 <ul>
-<li><em>example:</em> Interpolate(0.0d,100.0d) // return a linear value, 0L -&gt; 0.0D, Long.MAX_VALUE -&gt; 100.0D</li>
-<li><em>example:</em> Interpolate(0.0d,90.0d,95.0d,98.0d,100.0d) <em>return a weighted value between 0.0D and 100.0D based on input in range 0L, Long.MAX_VALUE, where the first second and third quartiles map to 90.0D, 95.0D, and 98.0D</em></li>
+<li><em>ex:</em> <code>Interpolate(0.0d,100.0d) // return a linear value, 0L -&gt; 0.0D, Long.MAX_VALUE -&gt; 100.0D</code></li>
+<li><em>ex:</em> <code>Interpolate(0.0d,90.0d,95.0d,98.0d,100.0d)</code> - <em>return a weighted value between 0.0D and 100.0D based on input in range 0L, Long.MAX_VALUE, where the first second and third quartiles map to 90.0D, 95.0D, and 98.0D</em></li>
 </ul></li>
 <li>long -&gt; Interpolate(int: resolution, double[]: lut) -&gt; double</li>
 </ul>
@@ -751,9 +834,20 @@ boundary;</p>
 <h2 id="jointemplate">JoinTemplate</h2>
 
 <ul>
-<li>null -&gt; JoinTemplate(String: delimiter, java.util.function.LongFunction&lt;?&gt;[]: funcs) -&gt; null</li>
-<li>null -&gt; JoinTemplate(String: prefix, String: delimiter, String: suffix, java.util.function.LongFunction&lt;?&gt;[]: funcs) -&gt; null</li>
-<li>null -&gt; JoinTemplate(java.util.function.LongUnaryOperator: iterop, String: prefix, String: delimiter, String: suffix, java.util.function.LongFunction&lt;?&gt;[]: funcs) -&gt; null</li>
+<li>null -&gt; JoinTemplate(String: delimiter, java.util.function.LongFunction&lt;?&gt;[]&hellip;: funcs) -&gt; null
+
+<ul>
+<li><em>notes:</em> Creates a string template function which will concatenate the result of the
+provided functions together with the provided delimiter.</li>
+</ul></li>
+<li>null -&gt; JoinTemplate(String: prefix, String: delimiter, String: suffix, java.util.function.LongFunction&lt;?&gt;[]&hellip;: funcs) -&gt; null
+
+<ul>
+<li><em>notes:</em> Creates a string template function which will concatenate the result
+of the provided function together with the delimiter, but with the
+prifix prepended and the suffix appended to the final result.</li>
+</ul></li>
+<li>null -&gt; JoinTemplate(java.util.function.LongUnaryOperator: iterop, String: prefix, String: delimiter, String: suffix, java.util.function.LongFunction&lt;?&gt;[]&hellip;: funcs) -&gt; null</li>
 </ul>
 
 <h2 id="lastnames">LastNames</h2>
@@ -769,6 +863,10 @@ boundary;</p>
 </ul>
 
 <h2 id="load">Load</h2>
+
+<p>Load a named value from the per-thread state map.
+The previous input value will be forgotten, and the named value will replace it
+before the next function in the chain.</p>
 
 <ul>
 <li>long -&gt; Load(String: name) -&gt; long</li>
@@ -814,8 +912,8 @@ boundary;</p>
 <li>long -&gt; Max(long: max) -&gt; long
 
 <ul>
-<li><em>example:</em> Max(42L) <em>take the value of 42L or the input, which ever is greater</em></li>
-<li><em>example:</em> Max(-42L) <em>take the value of -42L or the input, which ever is greater</em></li>
+<li><em>ex:</em> <code>Max(42L)</code> - <em>take the value of 42L or the input, which ever is greater</em></li>
+<li><em>ex:</em> <code>Max(-42L)</code> - <em>take the value of -42L or the input, which ever is greater</em></li>
 </ul></li>
 <li>int -&gt; Max(int: max) -&gt; int</li>
 <li>double -&gt; Max(double: max) -&gt; double</li>
@@ -916,11 +1014,11 @@ boundary;</p>
 
 <h2 id="prefix">Prefix</h2>
 
+<p>Created by sebastianestevez on 8/28/17.</p>
+
 <ul>
 <li>String -&gt; Prefix(String: prefix) -&gt; String</li>
 </ul>
-
-<p>Created by sebastianestevez on 8/28/17.</p>
 
 <h2 id="save">Save</h2>
 
@@ -934,36 +1032,36 @@ boundary;</p>
 
 <h2 id="scale">Scale</h2>
 
+<p>Scale the input to the</p>
+
 <ul>
 <li>long -&gt; Scale(double: scaleFactor) -&gt; long</li>
 <li>long -&gt; Scale(double: scaleFactor) -&gt; int</li>
 <li>int -&gt; Scale(double: scaleFactor) -&gt; int</li>
 </ul>
 
-<p>Scale the input to the</p>
-
 <h2 id="show">Show</h2>
 
 <ul>
 <li>Object -&gt; Show() -&gt; String</li>
-<li>Object -&gt; Show(String[]: names) -&gt; String</li>
+<li>Object -&gt; Show(String[]&hellip;: names) -&gt; String</li>
 </ul>
 
 <h2 id="shuffle">Shuffle</h2>
-
-<ul>
-<li>long -&gt; Shuffle(long: min, long: maxPlusOne) -&gt; long
-
-<ul>
-<li><em>example:</em> Shuffle(11,99) <em>Provide all values between 11 and 98 inclusive, in some order, then repeat</em></li>
-</ul></li>
-<li>long -&gt; Shuffle(long: min, long: maxPlusOne, int: moduloSelector) -&gt; long</li>
-</ul>
 
 <p>This function provides a low-overhead shuffling effect without loading
 elements into memory. It uses a bundled dataset of pre-computed
 Galois LFSR shift register configurations, along with a down-sampling
 method to provide amortized virtual shuffling with minimal memory usage.</p>
+
+<ul>
+<li>long -&gt; Shuffle(long: min, long: maxPlusOne) -&gt; long
+
+<ul>
+<li><em>ex:</em> <code>Shuffle(11,99)</code> - <em>Provide all values between 11 and 98 inclusive, in some order, then repeat</em></li>
+</ul></li>
+<li>long -&gt; Shuffle(long: min, long: maxPlusOne, int: moduloSelector) -&gt; long</li>
+</ul>
 
 <h2 id="signedhash">SignedHash</h2>
 
@@ -975,18 +1073,18 @@ method to provide amortized virtual shuffling with minimal memory usage.</p>
 
 <h2 id="startingepochmillis">StartingEpochMillis</h2>
 
-<ul>
-<li>long -&gt; StartingEpochMillis(String: baseTimeSpec) -&gt; long
-
-<ul>
-<li><em>example:</em> {StartingEpochMillis(&lsquo;2017-01-01 23:59:59&rsquo;)} <em>add the millisecond epoch time of 2017-01-01 23:59:59 to all input values</em></li>
-</ul></li>
-</ul>
-
 <p>This function sets the minimum long value to the equivalent
 unix epoch time in milliseconds. It simply adds the input
 value to this base value as determined by the provided
 time specifier. It wraps any overflow within this range as well.</p>
+
+<ul>
+<li>long -&gt; StartingEpochMillis(String: baseTimeSpec) -&gt; long
+
+<ul>
+<li><em>ex:</em> <code>{StartingEpochMillis('2017-01-01 23:59:59')}</code> - <em>add the millisecond epoch time of 2017-01-01 23:59:59 to all input values</em></li>
+</ul></li>
+</ul>
 
 <h2 id="staticstringmapper">StaticStringMapper</h2>
 
@@ -1008,40 +1106,49 @@ time specifier. It wraps any overflow within this range as well.</p>
 
 <h2 id="template">Template</h2>
 
-<ul>
-<li>long -&gt; Template(String: template, java.util.function.LongFunction&lt;?&gt;[]: funcs) -&gt; String</li>
-<li>long -&gt; Template(java.util.function.LongUnaryOperator: iterOp, String: template, java.util.function.LongFunction&lt;?&gt;[]: funcs) -&gt; String</li>
-</ul>
-
 <p>Creates a template function which will yield a string which fits the template
 provided, with all occurrences of <code>{}</code> substituted pair-wise with the
-result of the provided function. The number of <code>{}</code> entries in the template
-must strictly match the number of functions or an error will be thrown.
-To provide differing values for similarly defined functions in the list, the input
+result of the provided functions. The number of <code>{}</code> entries in the template
+must strictly match the number of functions or an error will be thrown.</p>
+
+<p>To provide differing values for similarly defined functions in the list, the input
 value used is automatically incremented by one for each function, starting with
 the initial input value.</p>
 
+<ul>
+<li>long -&gt; Template(String: template, java.util.function.LongFunction&lt;?&gt;[]&hellip;: funcs) -&gt; String
+
+<ul>
+<li><em>ex:</em> <code>Template('{}-{}',Add(10),Hash())</code> - <em>concatenate input+10, &lsquo;-&rsquo;, and a pseudo-random long</em></li>
+</ul></li>
+<li>long -&gt; Template(java.util.function.LongUnaryOperator: iterOp, String: template, java.util.function.LongFunction&lt;?&gt;[]&hellip;: funcs) -&gt; String
+
+<ul>
+<li><em>notes:</em> If an operator is provided, it is use to change the function input value in an additional way before each function.</li>
+</ul></li>
+</ul>
+
 <h2 id="threadnumtointeger">ThreadNumToInteger</h2>
+
+<p>Matches a digit sequence in the current thread name and caches it in a thread local.
+This allows you to use any intentionally indexed thread factories to provide an analogue for
+concurrency. Note that once the thread number is cached, it will not be refreshed. This means
+you can&rsquo;t change the thread name and get an updated value.</p>
 
 <ul>
 <li>long -&gt; ThreadNumToInteger() -&gt; Integer</li>
 </ul>
 
+<h2 id="threadnumtolong">ThreadNumToLong</h2>
+
 <p>Matches a digit sequence in the current thread name and caches it in a thread local.
 This allows you to use any intentionally indexed thread factories to provide an analogue for
 concurrency. Note that once the thread number is cached, it will not be refreshed. This means
 you can&rsquo;t change the thread name and get an updated value.</p>
-
-<h2 id="threadnumtolong">ThreadNumToLong</h2>
 
 <ul>
 <li>long -&gt; ThreadNumToLong() -&gt; long</li>
 </ul>
-
-<p>Matches a digit sequence in the current thread name and caches it in a thread local.
-This allows you to use any intentionally indexed thread factories to provide an analogue for
-concurrency. Note that once the thread number is cached, it will not be refreshed. This means
-you can&rsquo;t change the thread name and get an updated value.</p>
 
 <h2 id="tobigint">ToBigInt</h2>
 
@@ -1109,39 +1216,6 @@ you can&rsquo;t change the thread name and get an updated value.</p>
 
 <h2 id="toepochtimeuuid">ToEpochTimeUUID</h2>
 
-<ul>
-<li>long -&gt; ToEpochTimeUUID() -&gt; java.util.UUID
-
-<ul>
-<li><em>example:</em> ToEpochTimeUUID() <em>basetime 0, computed node data, empty clock data</em></li>
-</ul></li>
-<li>long -&gt; ToEpochTimeUUID(long: node) -&gt; java.util.UUID
-
-<ul>
-<li><em>example:</em> ToEpochTimeUUID(5234) <em>basetime 0, specified node data (5234), empty clock data</em></li>
-</ul></li>
-<li>long -&gt; ToEpochTimeUUID(long: node, long: clock) -&gt; java.util.UUID
-
-<ul>
-<li><em>example:</em> ToEpochTimeUUID(31,337) <em>basetime 0, specified node data (31) and clock data (337)</em></li>
-</ul></li>
-<li>long -&gt; ToEpochTimeUUID(String: baseSpec) -&gt; java.util.UUID
-
-<ul>
-<li><em>example:</em> ToEpochTimeUUID(&lsquo;2017-01-01T23:59:59&rsquo;) <em>specified basetime, computed node data, empty clock data</em></li>
-</ul></li>
-<li>long -&gt; ToEpochTimeUUID(String: baseSpec, long: node) -&gt; java.util.UUID
-
-<ul>
-<li><em>example:</em> ToEpochTimeUUID(&lsquo;2012&rsquo;,12345) <em>basetime at start if 2012, with node data 12345, empty clock data</em></li>
-</ul></li>
-<li>long -&gt; ToEpochTimeUUID(String: baseSpec, long: node, long: clock) -&gt; java.util.UUID
-
-<ul>
-<li><em>example:</em> ToEpochTimeUUID(&lsquo;20171231T1015.243&rsquo;,123,456) <em>ms basetime, specified node and clock data</em></li>
-</ul></li>
-</ul>
-
 <p>Converts a long UTC timestamp in epoch millis form into a Version 1 TimeUUID
 according to <a href="https://www.ietf.org/rfc/rfc4122.txt">RFC 4122</a>.
 This means that only one unique value for a timeuuid can be generated for
@@ -1169,40 +1243,72 @@ meaning that the most significant fields always go before the others.</p>
 <li>yyyy, for example: 2015</li>
 </ol></p>
 
-<h2 id="tofinesttimeuuid">ToFinestTimeUUID</h2>
+<ul>
+<li>long -&gt; ToEpochTimeUUID() -&gt; java.util.UUID
 
 <ul>
-<li>long -&gt; ToFinestTimeUUID() -&gt; java.util.UUID
-
-<ul>
-<li><em>example:</em> ToFinestTimeUUID() <em>basetime 0, computed node data, empty clock data</em></li>
+<li><em>notes:</em> Create version 1 timeuuids with a per-host node and empty clock data.
+The node and clock components are seeded from network interface data. In this case,
+the clock data is not seeded uniquely.</li>
+<li><em>ex:</em> <code>ToEpochTimeUUID()</code> - <em>basetime 0, computed node data, empty clock data</em></li>
 </ul></li>
-<li>long -&gt; ToFinestTimeUUID(long: node) -&gt; java.util.UUID
+
+<li><p>long -&gt; ToEpochTimeUUID(long: node) -&gt; java.util.UUID</p>
 
 <ul>
-<li><em>example:</em> ToFinestTimeUUID(5234) <em>basetime 0, specified node data (5234), empty clock data</em></li>
+<li><p><em>notes:</em> Create version 1 timeuuids with a specific static node and empty clock data.
+This is useful for testing so that you can know that values are verifiable, even though
+in non-testing practice, you would rely on some form of entropy per-system to provide
+more practical dispersion of values over reboots, etc.</p></li>
+
+<li><p><em>ex:</em> <code>ToEpochTimeUUID(5234)</code> - <em>basetime 0, specified node data (5234), empty clock data</em></p></li>
 </ul></li>
-<li>long -&gt; ToFinestTimeUUID(long: node, long: clock) -&gt; java.util.UUID
+
+<li><p>long -&gt; ToEpochTimeUUID(long: node, long: clock) -&gt; java.util.UUID</p>
 
 <ul>
-<li><em>example:</em> ToFinestTimeUUID(31,337) <em>basetime 0, specified node data (31) and clock data (337)</em></li>
+<li><p><em>notes:</em> Create version 1 timeuuids with a specific static node and specific clock data.
+This is useful for testing so that you can know that values are verifiable, even though
+in non-testing practice, you would rely on some form of entropy per-system to provide
+more practical dispersion of values over reboots, etc.</p></li>
+
+<li><p><em>ex:</em> <code>ToEpochTimeUUID(31,337)</code> - <em>basetime 0, specified node data (31) and clock data (337)</em></p></li>
 </ul></li>
-<li>long -&gt; ToFinestTimeUUID(String: baseTimeSpec) -&gt; java.util.UUID
+
+<li><p>long -&gt; ToEpochTimeUUID(String: baseSpec) -&gt; java.util.UUID</p>
 
 <ul>
-<li><em>example:</em> ToFinestTimeUUID(&lsquo;2017-01-01T23:59:59&rsquo;) <em>specified basetime, computed node data, empty clock data</em></li>
+<li><p><em>notes:</em> Create version 1 timeuuids with a per-host node and empty clock data.
+The node and clock components are seeded from network interface data. In this case,
+the clock data is not seeded uniquely.</p></li>
+
+<li><p><em>ex:</em> <code>ToEpochTimeUUID('2017-01-01T23:59:59')</code> - <em>specified basetime, computed node data, empty clock data</em></p></li>
 </ul></li>
-<li>long -&gt; ToFinestTimeUUID(String: baseTimeSpec, long: node) -&gt; java.util.UUID
+
+<li><p>long -&gt; ToEpochTimeUUID(String: baseSpec, long: node) -&gt; java.util.UUID</p>
 
 <ul>
-<li><em>example:</em> ToFinestTimeUUID(&lsquo;2012&rsquo;,12345) <em>basetime at start if 2012, with node data 12345, empty clock data</em></li>
+<li><p><em>notes:</em> Create version 1 timeuuids with a specific static node and empty clock data.
+This is useful for testing so that you can know that values are verifiable, even though
+in non-testing practice, you would rely on some form of entropy per-system to provide
+more practical dispersion of values over reboots, etc.</p></li>
+
+<li><p><em>ex:</em> <code>ToEpochTimeUUID('2012',12345)</code> - <em>basetime at start if 2012, with node data 12345, empty clock data</em></p></li>
 </ul></li>
-<li>long -&gt; ToFinestTimeUUID(String: baseTimeSpec, long: node, long: clock) -&gt; java.util.UUID
+
+<li><p>long -&gt; ToEpochTimeUUID(String: baseSpec, long: node, long: clock) -&gt; java.util.UUID</p>
 
 <ul>
-<li><em>example:</em> ToFinestTimeUUID(&lsquo;20171231T1015.243&rsquo;,123,456) <em>ms basetime, specified node and clock data</em></li>
+<li><p><em>notes:</em> Create version 1 timeuuids with a specific static node and specific clock data.
+This is useful for testing so that you can know that values are verifiable, even though
+in non-testing practice, you would rely on some form of entropy per-system to provide
+more practical dispersion of values over reboots, etc.</p></li>
+
+<li><p><em>ex:</em> <code>ToEpochTimeUUID('20171231T1015.243',123,456)</code> - <em>ms basetime, specified node and clock data</em></p></li>
 </ul></li>
 </ul>
+
+<h2 id="tofinesttimeuuid">ToFinestTimeUUID</h2>
 
 <p>Converts a count of 100ns intervals from 1582 Julian to a Type1 TimeUUID
 according to <a href="https://www.ietf.org/rfc/rfc4122.txt">RFC 4122</a>.
@@ -1229,6 +1335,71 @@ meaning that the most significant fields always go before the others.</p>
 <li>yyyy, for example: 2015</li>
 </ol>
 
+<ul>
+<li>long -&gt; ToFinestTimeUUID() -&gt; java.util.UUID
+
+<ul>
+<li><em>notes:</em> Create version 1 timeuuids with a per-host node and empty clock data.
+The node and clock components are seeded from network interface data. In this case,
+the clock data is not seeded uniquely.</li>
+<li><em>ex:</em> <code>ToFinestTimeUUID()</code> - <em>basetime 0, computed node data, empty clock data</em></li>
+</ul></li>
+
+<li><p>long -&gt; ToFinestTimeUUID(long: node) -&gt; java.util.UUID</p>
+
+<ul>
+<li><p><em>notes:</em> Create version 1 timeuuids with a specific static node and empty clock data.
+This is useful for testing so that you can know that values are verifiable, even though
+in non-testing practice, you would rely on some form of entropy per-system to provide
+more practical dispersion of values over reboots, etc.</p></li>
+
+<li><p><em>ex:</em> <code>ToFinestTimeUUID(5234)</code> - <em>basetime 0, specified node data (5234), empty clock data</em></p></li>
+</ul></li>
+
+<li><p>long -&gt; ToFinestTimeUUID(long: node, long: clock) -&gt; java.util.UUID</p>
+
+<ul>
+<li><p><em>notes:</em> Create version 1 timeuuids with a specific static node and specific clock data.
+This is useful for testing so that you can know that values are verifiable, even though
+in non-testing practice, you would rely on some form of entropy per-system to provide
+more practical dispersion of values over reboots, etc.</p></li>
+
+<li><p><em>ex:</em> <code>ToFinestTimeUUID(31,337)</code> - <em>basetime 0, specified node data (31) and clock data (337)</em></p></li>
+</ul></li>
+
+<li><p>long -&gt; ToFinestTimeUUID(String: baseTimeSpec) -&gt; java.util.UUID</p>
+
+<ul>
+<li><p><em>notes:</em> Create version 1 timeuuids with a per-host node and empty clock data.
+The node and clock components are seeded from network interface data. In this case,
+the clock data is not seeded uniquely.</p></li>
+
+<li><p><em>ex:</em> <code>ToFinestTimeUUID('2017-01-01T23:59:59')</code> - <em>specified basetime, computed node data, empty clock data</em></p></li>
+</ul></li>
+
+<li><p>long -&gt; ToFinestTimeUUID(String: baseTimeSpec, long: node) -&gt; java.util.UUID</p>
+
+<ul>
+<li><p><em>notes:</em> Create version 1 timeuuids with a specific static node and empty clock data.
+This is useful for testing so that you can know that values are verifiable, even though
+in non-testing practice, you would rely on some form of entropy per-system to provide
+more practical dispersion of values over reboots, etc.</p></li>
+
+<li><p><em>ex:</em> <code>ToFinestTimeUUID('2012',12345)</code> - <em>basetime at start if 2012, with node data 12345, empty clock data</em></p></li>
+</ul></li>
+
+<li><p>long -&gt; ToFinestTimeUUID(String: baseTimeSpec, long: node, long: clock) -&gt; java.util.UUID</p>
+
+<ul>
+<li><p><em>notes:</em> Create version 1 timeuuids with a specific static node and specific clock data.
+This is useful for testing so that you can know that values are verifiable, even though
+in non-testing practice, you would rely on some form of entropy per-system to provide
+more practical dispersion of values over reboots, etc.</p></li>
+
+<li><p><em>ex:</em> <code>ToFinestTimeUUID('20171231T1015.243',123,456)</code> - <em>ms basetime, specified node and clock data</em></p></li>
+</ul></li>
+</ul>
+
 <h2 id="tofloat">ToFloat</h2>
 
 <ul>
@@ -1244,12 +1415,12 @@ meaning that the most significant fields always go before the others.</p>
 
 <h2 id="tohasheduuid">ToHashedUUID</h2>
 
+<p>This function provides a stable hashing of the input value to
+a version 4 (Random) UUID.</p>
+
 <ul>
 <li>long -&gt; ToHashedUUID() -&gt; java.util.UUID</li>
 </ul>
-
-<p>This function provides a stable hashing of the input value to
-a version 4 (Random) UUID.</p>
 
 <h2 id="toinetaddress">ToInetAddress</h2>
 
@@ -1290,6 +1461,10 @@ a version 4 (Random) UUID.</p>
 
 <h2 id="tolongfunction">ToLongFunction</h2>
 
+<p>Adapts any FunctionalInterface type to a LongFunction,
+for use with higher-order functions, when they require a
+LongFunction as an argument.</p>
+
 <ul>
 <li>long -&gt; ToLongFunction(java.util.function.LongUnaryOperator: op) -&gt; Object</li>
 <li>long -&gt; ToLongFunction(java.util.function.Function<Long,Long>: op) -&gt; Object</li>
@@ -1297,10 +1472,6 @@ a version 4 (Random) UUID.</p>
 <li>long -&gt; ToLongFunction(java.util.function.LongToDoubleFunction: op) -&gt; Object</li>
 <li>long -&gt; ToLongFunction(java.util.function.LongFunction&lt;?&gt;: func) -&gt; Object</li>
 </ul>
-
-<p>Adapts any FunctionalInterface type to a LongFunction,
-for use with higher-order functions, when they require a
-LongFunction as an argument.</p>
 
 <h2 id="tolongunaryoperator">ToLongUnaryOperator</h2>
 
@@ -1332,11 +1503,6 @@ LongFunction as an argument.</p>
 
 <h2 id="touuid">ToUUID</h2>
 
-<ul>
-<li>long -&gt; ToUUID() -&gt; java.util.UUID</li>
-<li>long -&gt; ToUUID(long: msbs) -&gt; java.util.UUID</li>
-</ul>
-
 <p>This function creates a non-random UUID in the type 4 version (Random).
 It puts the same value in the MSB position of the UUID format.
 The input value is put in the LSB position.</p>
@@ -1351,11 +1517,21 @@ a version identifier (position M) dividing the dynamic range of the data type.
 For this reason, only the LSB side is used for this mapper, which allows
 an effective range of Long.MAX_VALUE/8, given the loss of 3 digits of precision.</p>
 
+<ul>
+<li>long -&gt; ToUUID() -&gt; java.util.UUID</li>
+<li>long -&gt; ToUUID(long: msbs) -&gt; java.util.UUID</li>
+</ul>
+
 <h2 id="weightedstrings">WeightedStrings</h2>
 
 <ul>
 <li>long -&gt; WeightedStrings(String: valuesAndWeights) -&gt; String</li>
-<li>long -&gt; WeightedStrings(String: valueColumn, String: weightColumn, String[]: filenames) -&gt; String</li>
+<li>long -&gt; WeightedStrings(String: valueColumn, String: weightColumn, String[]&hellip;: filenames) -&gt; String
+
+<ul>
+<li><em>notes:</em> Create a sampler of strings from the given CSV file. The CSV file must have plain CSV headers
+as its first line.</li>
+</ul></li>
 </ul>
 
 
