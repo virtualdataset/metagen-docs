@@ -471,11 +471,14 @@ to avoid many instances of a 32MB buffer on heap.</p>
 
 <ul>
 <li><em>notes:</em> Clear all named entries from the per-thread map.</li>
+<li><em>ex:</em> <code>Clear()</code> - <em>clear all thread-local variables</em></li>
 </ul></li>
 <li>long -&gt; Clear(String[]&hellip;: names) -&gt; long
 
 <ul>
 <li><em>notes:</em> Clear the specified names from the per-thread map.</li>
+<li><em>ex:</em> <code>Clear('foo')</code> - <em>clear the thread-local variable &lsquo;foo&rsquo;</em></li>
+<li><em>ex:</em> <code>Clear('foo','bar')</code> - <em>clear the thread-local variables &lsquo;foo&rsquo; and &lsquo;bar&rsquo;</em></li>
 </ul></li>
 </ul>
 
@@ -527,24 +530,6 @@ number).</p>
 <ul>
 <li><em>notes:</em> Sets the minimum and maximum value of the cycle range.</li>
 </ul></li>
-</ul>
-
-<h2 id="datetimeformats">DateTimeFormats</h2>
-
-<p>The valid formats, in joda specifier form are documented in DateTimeFormats
-<ol>
-<li>yyyy-MM-dd HH:mm:ss.SSSZ, for example: 2015-02-28 23:30:15.223</li>
-<li>yyyy-MM-dd HH:mm:ss, for example 2015-02-28 23:30:15</li>
-<li>yyyyMMdd&rsquo;T&rsquo;HHmmss.SSSZ, for example: 20150228T233015.223</li>
-<li>yyyyMMdd&rsquo;T&rsquo;HHmmssZ, for example: 20150228T233015</li>
-<li>yyyy-MM-dd, for example: 2015-02-28</li>
-<li>yyyyMMdd, for example: 20150228</li>
-<li>yyyyMM, for example: 201502</li>
-<li>yyyy, for example: 2015</li>
-</ol></p>
-
-<ul>
-<li>null -&gt; DateTimeFormats() -&gt; null</li>
 </ul>
 
 <h2 id="directorylines">DirectoryLines</h2>
@@ -864,16 +849,32 @@ prifix prepended and the suffix appended to the final result.</li>
 
 <h2 id="load">Load</h2>
 
-<p>Load a named value from the per-thread state map.
-The previous input value will be forgotten, and the named value will replace it
-before the next function in the chain.</p>
+<ul>
+<li>long -&gt; Load(String: name) -&gt; long
 
 <ul>
-<li>long -&gt; Load(String: name) -&gt; long</li>
-<li>int -&gt; Load(String: name) -&gt; int</li>
-<li>Object -&gt; Load(String: name) -&gt; Object</li>
-<li>double -&gt; Load(String: name) -&gt; double</li>
-<li>String -&gt; Load(String: name) -&gt; String</li>
+<li><em>ex:</em> <code>Load('foo')</code> - <em>load a long value from the named variable for this thread</em></li>
+</ul></li>
+<li>int -&gt; Load(String: name) -&gt; int
+
+<ul>
+<li><em>ex:</em> <code>Load('foo')</code> - <em>load an int value from the named variable for this thread</em></li>
+</ul></li>
+<li>Object -&gt; Load(String: name) -&gt; Object
+
+<ul>
+<li><em>ex:</em> <code>Load('foo')</code> - <em>load a Object value from the named variable for this thread</em></li>
+</ul></li>
+<li>double -&gt; Load(String: name) -&gt; double
+
+<ul>
+<li><em>ex:</em> <code>Load('foo')</code> - <em>load a double value from the named variable for this thread</em></li>
+</ul></li>
+<li>String -&gt; Load(String: name) -&gt; String
+
+<ul>
+<li><em>ex:</em> <code>Load('foo')</code> - <em>load a String value from the named variable for this thread</em></li>
+</ul></li>
 </ul>
 
 <h2 id="longtobyte">LongToByte</h2>
@@ -1022,12 +1023,35 @@ before the next function in the chain.</p>
 
 <h2 id="save">Save</h2>
 
+<p>Save the current input value at this point in the function chain to a thread-local variable name.
+The input value is unchanged, and available for the next function in the chain to use as-is.</p>
+
 <ul>
-<li>String -&gt; Save(String: name) -&gt; String</li>
-<li>Object -&gt; Save(String: name) -&gt; Object</li>
-<li>long -&gt; Save(String: name) -&gt; long</li>
-<li>int -&gt; Save(String: name) -&gt; int</li>
-<li>double -&gt; Save(String: name) -&gt; double</li>
+<li>String -&gt; Save(String: name) -&gt; String
+
+<ul>
+<li><em>ex:</em> <code>Save('foo')</code> - <em>save the current String value to the name &lsquo;foo&rsquo; in this thread</em></li>
+</ul></li>
+<li>Object -&gt; Save(String: name) -&gt; Object
+
+<ul>
+<li><em>ex:</em> <code>Save('foo')</code> - <em>save the current input object value to the name &lsquo;foo&rsquo; in this thread</em></li>
+</ul></li>
+<li>long -&gt; Save(String: name) -&gt; long
+
+<ul>
+<li><em>ex:</em> <code>Save('foo')</code> - <em>save the current long value to the name &lsquo;foo&rsquo; in this thread</em></li>
+</ul></li>
+<li>int -&gt; Save(String: name) -&gt; int
+
+<ul>
+<li><em>ex:</em> <code>Save('foo')</code> - <em>save the current int value to the name &lsquo;foo&rsquo; in this thread</em></li>
+</ul></li>
+<li>double -&gt; Save(String: name) -&gt; double
+
+<ul>
+<li><em>ex:</em> <code>Save('foo')</code> - <em>save the current double value to the name &lsquo;foo&rsquo; in this thread</em></li>
+</ul></li>
 </ul>
 
 <h2 id="scale">Scale</h2>
@@ -1042,9 +1066,20 @@ before the next function in the chain.</p>
 
 <h2 id="show">Show</h2>
 
+<p>Show diagnostic values for the thread-local variable map.</p>
+
 <ul>
-<li>Object -&gt; Show() -&gt; String</li>
-<li>Object -&gt; Show(String[]&hellip;: names) -&gt; String</li>
+<li>Object -&gt; Show() -&gt; String
+
+<ul>
+<li><em>ex:</em> <code>Show()</code> - <em>Show all values in a json-like format</em></li>
+</ul></li>
+<li>Object -&gt; Show(String[]&hellip;: names) -&gt; String
+
+<ul>
+<li><em>ex:</em> <code>Show('foo')</code> - <em>Show only the &lsquo;foo&rsquo; value in a json-like format</em></li>
+<li><em>ex:</em> <code>Show('foo','bar')</code> - <em>Show the &lsquo;foo&rsquo; and &lsquo;bar&rsquo; values in a json-like format</em></li>
+</ul></li>
 </ul>
 
 <h2 id="shuffle">Shuffle</h2>
@@ -1520,6 +1555,14 @@ an effective range of Long.MAX_VALUE/8, given the loss of 3 digits of precision.
 <ul>
 <li>long -&gt; ToUUID() -&gt; java.util.UUID</li>
 <li>long -&gt; ToUUID(long: msbs) -&gt; java.util.UUID</li>
+</ul>
+
+<h2 id="typeof">TypeOf</h2>
+
+<p>Yields the class of the resulting type in String form.</p>
+
+<ul>
+<li>Object -&gt; TypeOf() -&gt; String</li>
 </ul>
 
 <h2 id="weightedstrings">WeightedStrings</h2>
