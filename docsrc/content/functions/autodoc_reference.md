@@ -103,8 +103,11 @@ Clears the per-thread map which is used by the Expr function.
 
 - long -> Clear() -> long
   - *notes:* Clear all named entries from the per-thread map.
+  - *ex:* `Clear()` - *clear all thread-local variables*
 - long -> Clear(String[]...: names) -> long
   - *notes:* Clear the specified names from the per-thread map.
+  - *ex:* `Clear('foo')` - *clear the thread-local variable 'foo'*
+  - *ex:* `Clear('foo','bar')` - *clear the thread-local variables 'foo' and 'bar'*
 
 ## Combinations
 
@@ -142,22 +145,6 @@ Yields a value within a specified range, which rolls over continuously.
   - *ex:* `CycleRange(34)` - *add a rotating value between 0 and 34 to the input*
 - int -> CycleRange(int: minValue, int: maxValue) -> int
   - *notes:* Sets the minimum and maximum value of the cycle range.
-
-## DateTimeFormats
-
-The valid formats, in joda specifier form are documented in DateTimeFormats
-<ol>
-<li>yyyy-MM-dd HH:mm:ss.SSSZ, for example: 2015-02-28 23:30:15.223</li>
-<li>yyyy-MM-dd HH:mm:ss, for example 2015-02-28 23:30:15</li>
-<li>yyyyMMdd'T'HHmmss.SSSZ, for example: 20150228T233015.223</li>
-<li>yyyyMMdd'T'HHmmssZ, for example: 20150228T233015</li>
-<li>yyyy-MM-dd, for example: 2015-02-28</li>
-<li>yyyyMMdd, for example: 20150228</li>
-<li>yyyyMM, for example: 201502</li>
-<li>yyyy, for example: 2015</li>
-</ol>
-
-- null -> DateTimeFormats() -> null
 
 ## DirectoryLines
 
@@ -392,15 +379,16 @@ prifix prepended and the suffix appended to the final result.
 
 ## Load
 
-Load a named value from the per-thread state map.
-The previous input value will be forgotten, and the named value will replace it
-before the next function in the chain.
-
 - long -> Load(String: name) -> long
+  - *ex:* `Load('foo')` - *load a long value from the named variable for this thread*
 - int -> Load(String: name) -> int
+  - *ex:* `Load('foo')` - *load an int value from the named variable for this thread*
 - Object -> Load(String: name) -> Object
+  - *ex:* `Load('foo')` - *load a Object value from the named variable for this thread*
 - double -> Load(String: name) -> double
+  - *ex:* `Load('foo')` - *load a double value from the named variable for this thread*
 - String -> Load(String: name) -> String
+  - *ex:* `Load('foo')` - *load a String value from the named variable for this thread*
 
 ## LongToByte
 
@@ -503,11 +491,19 @@ Created by sebastianestevez on 8/28/17.
 
 ## Save
 
+Save the current input value at this point in the function chain to a thread-local variable name.
+The input value is unchanged, and available for the next function in the chain to use as-is.
+
 - String -> Save(String: name) -> String
+  - *ex:* `Save('foo')` - *save the current String value to the name 'foo' in this thread*
 - Object -> Save(String: name) -> Object
+  - *ex:* `Save('foo')` - *save the current input object value to the name 'foo' in this thread*
 - long -> Save(String: name) -> long
+  - *ex:* `Save('foo')` - *save the current long value to the name 'foo' in this thread*
 - int -> Save(String: name) -> int
+  - *ex:* `Save('foo')` - *save the current int value to the name 'foo' in this thread*
 - double -> Save(String: name) -> double
+  - *ex:* `Save('foo')` - *save the current double value to the name 'foo' in this thread*
 
 ## Scale
 
@@ -519,8 +515,13 @@ Scale the input to the
 
 ## Show
 
+Show diagnostic values for the thread-local variable map.
+
 - Object -> Show() -> String
+  - *ex:* `Show()` - *Show all values in a json-like format*
 - Object -> Show(String[]...: names) -> String
+  - *ex:* `Show('foo')` - *Show only the 'foo' value in a json-like format*
+  - *ex:* `Show('foo','bar')` - *Show the 'foo' and 'bar' values in a json-like format*
 
 ## Shuffle
 
@@ -879,6 +880,12 @@ an effective range of Long.MAX_VALUE/8, given the loss of 3 digits of precision.
 
 - long -> ToUUID() -> java.util.UUID
 - long -> ToUUID(long: msbs) -> java.util.UUID
+
+## TypeOf
+
+Yields the class of the resulting type in String form.
+
+- Object -> TypeOf() -> String
 
 ## WeightedStrings
 
