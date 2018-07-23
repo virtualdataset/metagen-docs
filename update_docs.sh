@@ -42,7 +42,7 @@ for ref in funcref_*.md
 do
 
  category=$(grep '# CATEGORY ' $ref |cut -d' ' -f3)
- cat <<EOF2 > docsrc/content/functions/$ref
+ cat <<EOF2 >docsrc/content/functions/$ref
 ---
 date: 2018-06-18
 title: $category
@@ -54,7 +54,7 @@ menu:
     weight: 52
 ---
 EOF2
-grep -v '# CATEGORY' $ref >> docsrc/content/functions/$ref
+grep -v '# CATEGORY' $ref >>docsrc/content/functions/$ref
  
 done
 

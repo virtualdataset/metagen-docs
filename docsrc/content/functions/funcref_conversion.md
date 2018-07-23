@@ -17,6 +17,8 @@ masked away.
 
 ## LongToShort
 
+Convert the input value from long to short.
+
 - long -> LongToShort() -> Short
 
 ## ModuloToBigDecimal
@@ -62,8 +64,20 @@ Convert the input value to a {@code BigInteger}
 Convert the input value to a {@code boolean}
 
 - long -> ToBoolean() -> Boolean
+- long -> ToBoolean() -> Boolean
+- long -> ToBoolean() -> Boolean
+- long -> ToBoolean() -> Boolean
+- Double -> ToBoolean() -> Boolean
+- Double -> ToBoolean() -> Boolean
+- Double -> ToBoolean() -> Boolean
 - Double -> ToBoolean() -> Boolean
 - Float -> ToBoolean() -> Boolean
+- Float -> ToBoolean() -> Boolean
+- Float -> ToBoolean() -> Boolean
+- Float -> ToBoolean() -> Boolean
+- Integer -> ToBoolean() -> Boolean
+- Integer -> ToBoolean() -> Boolean
+- Integer -> ToBoolean() -> Boolean
 - Integer -> ToBoolean() -> Boolean
 
 ## ToByte
@@ -72,14 +86,69 @@ Convert the input value to a {@code Byte}.
 
 - double -> ToByte() -> Byte
 - double -> ToByte(int: modulo) -> Byte
+- double -> ToByte() -> Byte
+- double -> ToByte(int: modulo) -> Byte
+- double -> ToByte() -> Byte
+- double -> ToByte(int: modulo) -> Byte
+- double -> ToByte() -> Byte
+- double -> ToByte(int: modulo) -> Byte
+- double -> ToByte() -> Byte
+- double -> ToByte(int: modulo) -> Byte
+- double -> ToByte() -> Byte
+- double -> ToByte(int: modulo) -> Byte
+- Float -> ToByte() -> Byte
+- Float -> ToByte(int: modulo) -> Byte
+- Float -> ToByte() -> Byte
+- Float -> ToByte(int: modulo) -> Byte
+- Float -> ToByte() -> Byte
+- Float -> ToByte(int: modulo) -> Byte
+- Float -> ToByte() -> Byte
+- Float -> ToByte(int: modulo) -> Byte
+- Float -> ToByte() -> Byte
+- Float -> ToByte(int: modulo) -> Byte
 - Float -> ToByte() -> Byte
 - Float -> ToByte(int: modulo) -> Byte
 - int -> ToByte() -> Byte
 - int -> ToByte(int: modulo) -> Byte
+- int -> ToByte() -> Byte
+- int -> ToByte(int: modulo) -> Byte
+- int -> ToByte() -> Byte
+- int -> ToByte(int: modulo) -> Byte
+- int -> ToByte() -> Byte
+- int -> ToByte(int: modulo) -> Byte
+- int -> ToByte() -> Byte
+- int -> ToByte(int: modulo) -> Byte
+- int -> ToByte() -> Byte
+- int -> ToByte(int: modulo) -> Byte
+- long -> ToByte() -> Byte
+- long -> ToByte(int: modulo) -> Byte
+- long -> ToByte() -> Byte
+- long -> ToByte(int: modulo) -> Byte
+- long -> ToByte() -> Byte
+- long -> ToByte(int: modulo) -> Byte
+- long -> ToByte() -> Byte
+- long -> ToByte(int: modulo) -> Byte
+- long -> ToByte() -> Byte
+- long -> ToByte(int: modulo) -> Byte
 - long -> ToByte() -> Byte
 - long -> ToByte(int: modulo) -> Byte
 - Short -> ToByte(int: scale) -> Byte
 - Short -> ToByte() -> Byte
+- Short -> ToByte(int: scale) -> Byte
+- Short -> ToByte() -> Byte
+- Short -> ToByte(int: scale) -> Byte
+- Short -> ToByte() -> Byte
+- Short -> ToByte(int: scale) -> Byte
+- Short -> ToByte() -> Byte
+- Short -> ToByte(int: scale) -> Byte
+- Short -> ToByte() -> Byte
+- Short -> ToByte(int: scale) -> Byte
+- Short -> ToByte() -> Byte
+- String -> ToByte() -> Byte
+- String -> ToByte() -> Byte
+- String -> ToByte() -> Byte
+- String -> ToByte() -> Byte
+- String -> ToByte() -> Byte
 - String -> ToByte() -> Byte
 
 ## ToByteBuffer
@@ -87,10 +156,40 @@ Convert the input value to a {@code Byte}.
 Convert the input value to a {@code ByteBuffer}
 
 - double -> ToByteBuffer() -> java.nio.ByteBuffer
+- double -> ToByteBuffer() -> java.nio.ByteBuffer
+- double -> ToByteBuffer() -> java.nio.ByteBuffer
+- double -> ToByteBuffer() -> java.nio.ByteBuffer
+- double -> ToByteBuffer() -> java.nio.ByteBuffer
+- double -> ToByteBuffer() -> java.nio.ByteBuffer
+- Float -> ToByteBuffer() -> java.nio.ByteBuffer
+- Float -> ToByteBuffer() -> java.nio.ByteBuffer
+- Float -> ToByteBuffer() -> java.nio.ByteBuffer
+- Float -> ToByteBuffer() -> java.nio.ByteBuffer
+- Float -> ToByteBuffer() -> java.nio.ByteBuffer
 - Float -> ToByteBuffer() -> java.nio.ByteBuffer
 - int -> ToByteBuffer() -> java.nio.ByteBuffer
+- int -> ToByteBuffer() -> java.nio.ByteBuffer
+- int -> ToByteBuffer() -> java.nio.ByteBuffer
+- int -> ToByteBuffer() -> java.nio.ByteBuffer
+- int -> ToByteBuffer() -> java.nio.ByteBuffer
+- int -> ToByteBuffer() -> java.nio.ByteBuffer
+- long -> ToByteBuffer() -> java.nio.ByteBuffer
+- long -> ToByteBuffer() -> java.nio.ByteBuffer
+- long -> ToByteBuffer() -> java.nio.ByteBuffer
+- long -> ToByteBuffer() -> java.nio.ByteBuffer
+- long -> ToByteBuffer() -> java.nio.ByteBuffer
 - long -> ToByteBuffer() -> java.nio.ByteBuffer
 - Short -> ToByteBuffer() -> java.nio.ByteBuffer
+- Short -> ToByteBuffer() -> java.nio.ByteBuffer
+- Short -> ToByteBuffer() -> java.nio.ByteBuffer
+- Short -> ToByteBuffer() -> java.nio.ByteBuffer
+- Short -> ToByteBuffer() -> java.nio.ByteBuffer
+- Short -> ToByteBuffer() -> java.nio.ByteBuffer
+- String -> ToByteBuffer() -> java.nio.ByteBuffer
+- String -> ToByteBuffer() -> java.nio.ByteBuffer
+- String -> ToByteBuffer() -> java.nio.ByteBuffer
+- String -> ToByteBuffer() -> java.nio.ByteBuffer
+- String -> ToByteBuffer() -> java.nio.ByteBuffer
 - String -> ToByteBuffer() -> java.nio.ByteBuffer
 
 ## ToDouble
@@ -105,11 +204,43 @@ Convert the input value into a float.
 
 - double -> ToFloat(double: scale) -> Float
 - double -> ToFloat() -> Float
+- double -> ToFloat(double: scale) -> Float
+- double -> ToFloat() -> Float
+- double -> ToFloat(double: scale) -> Float
+- double -> ToFloat() -> Float
+- double -> ToFloat(double: scale) -> Float
+- double -> ToFloat() -> Float
+- double -> ToFloat(double: scale) -> Float
+- double -> ToFloat() -> Float
+- int -> ToFloat(int: scale) -> Float
+- int -> ToFloat() -> Float
+- int -> ToFloat(int: scale) -> Float
+- int -> ToFloat() -> Float
+- int -> ToFloat(int: scale) -> Float
+- int -> ToFloat() -> Float
+- int -> ToFloat(int: scale) -> Float
+- int -> ToFloat() -> Float
 - int -> ToFloat(int: scale) -> Float
 - int -> ToFloat() -> Float
 - long -> ToFloat(long: scale) -> Float
 - long -> ToFloat() -> Float
+- long -> ToFloat(long: scale) -> Float
+- long -> ToFloat() -> Float
+- long -> ToFloat(long: scale) -> Float
+- long -> ToFloat() -> Float
+- long -> ToFloat(long: scale) -> Float
+- long -> ToFloat() -> Float
+- long -> ToFloat(long: scale) -> Float
+- long -> ToFloat() -> Float
 - Short -> ToFloat() -> Float
+- Short -> ToFloat() -> Float
+- Short -> ToFloat() -> Float
+- Short -> ToFloat() -> Float
+- Short -> ToFloat() -> Float
+- String -> ToFloat() -> Float
+- String -> ToFloat() -> Float
+- String -> ToFloat() -> Float
+- String -> ToFloat() -> Float
 - String -> ToFloat() -> Float
 
 ## ToInetAddress
@@ -123,19 +254,70 @@ Convert the input value to a {@code java.net.InetAddress}
 Convert the input value to a long.
 
 - long -> ToInt() -> int
+- long -> ToInt() -> int
+- long -> ToInt() -> int
+- long -> ToInt() -> int
+- long -> ToInt() -> int
+- long -> ToInt() -> int
 - Object -> ToInt() -> Integer
+- Object -> ToInt() -> Integer
+- Object -> ToInt() -> Integer
+- Object -> ToInt() -> Integer
+- Object -> ToInt() -> Integer
+- Object -> ToInt() -> Integer
+- double -> ToInt(int: scale) -> int
+- double -> ToInt() -> int
+- double -> ToInt(int: scale) -> int
+- double -> ToInt() -> int
+- double -> ToInt(int: scale) -> int
+- double -> ToInt() -> int
+- double -> ToInt(int: scale) -> int
+- double -> ToInt() -> int
+- double -> ToInt(int: scale) -> int
+- double -> ToInt() -> int
 - double -> ToInt(int: scale) -> int
 - double -> ToInt() -> int
 - Double -> ToInt(int: scale) -> Integer
 - Double -> ToInt() -> Integer
+- Double -> ToInt(int: scale) -> Integer
+- Double -> ToInt() -> Integer
+- Double -> ToInt(int: scale) -> Integer
+- Double -> ToInt() -> Integer
+- Double -> ToInt(int: scale) -> Integer
+- Double -> ToInt() -> Integer
+- Double -> ToInt(int: scale) -> Integer
+- Double -> ToInt() -> Integer
+- Double -> ToInt(int: scale) -> Integer
+- Double -> ToInt() -> Integer
 - long -> ToInt(int: scale) -> int
 - long -> ToInt() -> int
+- long -> ToInt(int: scale) -> int
+- long -> ToInt() -> int
+- long -> ToInt(int: scale) -> int
+- long -> ToInt() -> int
+- long -> ToInt(int: scale) -> int
+- long -> ToInt() -> int
+- long -> ToInt(int: scale) -> int
+- long -> ToInt() -> int
+- long -> ToInt(int: scale) -> int
+- long -> ToInt() -> int
+- String -> ToInt() -> Integer
+- String -> ToInt() -> Integer
+- String -> ToInt() -> Integer
+- String -> ToInt() -> Integer
+- String -> ToInt() -> Integer
 - String -> ToInt() -> Integer
 
 ## ToLong
 
+Convert the input value to a long.
+
 - double -> ToLong(long: scale) -> long
 - double -> ToLong() -> long
+- double -> ToLong(long: scale) -> long
+- double -> ToLong() -> long
+- Float -> ToLong(long: scale) -> Long
+- Float -> ToLong() -> Long
 - Float -> ToLong(long: scale) -> Long
 - Float -> ToLong() -> Long
 
@@ -145,18 +327,67 @@ Convert the input value to a short.
 
 - double -> ToShort() -> Short
 - double -> ToShort(int: modulo) -> Short
+- double -> ToShort() -> Short
+- double -> ToShort(int: modulo) -> Short
+- double -> ToShort() -> Short
+- double -> ToShort(int: modulo) -> Short
+- double -> ToShort() -> Short
+- double -> ToShort(int: modulo) -> Short
+- double -> ToShort() -> Short
+- double -> ToShort(int: modulo) -> Short
 - Float -> ToShort() -> Short
 - Float -> ToShort(int: modulo) -> Short
+- Float -> ToShort() -> Short
+- Float -> ToShort(int: modulo) -> Short
+- Float -> ToShort() -> Short
+- Float -> ToShort(int: modulo) -> Short
+- Float -> ToShort() -> Short
+- Float -> ToShort(int: modulo) -> Short
+- Float -> ToShort() -> Short
+- Float -> ToShort(int: modulo) -> Short
+- int -> ToShort() -> Short
+- int -> ToShort(int: scale) -> Short
+- int -> ToShort() -> Short
+- int -> ToShort(int: scale) -> Short
+- int -> ToShort() -> Short
+- int -> ToShort(int: scale) -> Short
+- int -> ToShort() -> Short
+- int -> ToShort(int: scale) -> Short
 - int -> ToShort() -> Short
 - int -> ToShort(int: scale) -> Short
 - long -> ToShort() -> Short
 - long -> ToShort(int: wrapat) -> Short
   - *notes:* This form allows for limiting the short values at a lower limit than Short.MAX_VALUE.
+- long -> ToShort() -> Short
+- long -> ToShort(int: wrapat) -> Short
+  - *notes:* This form allows for limiting the short values at a lower limit than Short.MAX_VALUE.
+- long -> ToShort() -> Short
+- long -> ToShort(int: wrapat) -> Short
+  - *notes:* This form allows for limiting the short values at a lower limit than Short.MAX_VALUE.
+- long -> ToShort() -> Short
+- long -> ToShort(int: wrapat) -> Short
+  - *notes:* This form allows for limiting the short values at a lower limit than Short.MAX_VALUE.
+- long -> ToShort() -> Short
+- long -> ToShort(int: wrapat) -> Short
+  - *notes:* This form allows for limiting the short values at a lower limit than Short.MAX_VALUE.
+- String -> ToShort() -> Short
+- String -> ToShort() -> Short
+- String -> ToShort() -> Short
+- String -> ToShort() -> Short
 - String -> ToShort() -> Short
 
 ## ToString
 
+- Object -> ToString() -> String
+- Object -> ToString() -> String
+- Object -> ToString() -> String
+- Float -> ToString() -> String
+- Float -> ToString() -> String
 - Float -> ToString() -> String
 - int -> ToString() -> String
+- int -> ToString() -> String
+- int -> ToString() -> String
+- long -> ToString() -> String
+- long -> ToString() -> String
 - long -> ToString() -> String
 

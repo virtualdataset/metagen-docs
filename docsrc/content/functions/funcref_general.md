@@ -48,21 +48,198 @@ Create an alpha-numeric string of the specified length, character-by-character.
 
 ## Beta
 
+@see <a href="https://en.wikipedia.org/wiki/Beta_distribution">Wikipedia: Beta distribution</a>
+
+@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/BetaDistribution.html">Commons JavaDoc: BetaDistribution</a>
+
+ Generate samples according to the specified probability density.
+
+ The input value consists of a long between 0L and Long.MAX_VALUE.
+ This value is scaled to the unit interval (0.0, 1.0) as
+ an index into a sampling function. The method used is
+ inverse cumulative density sampling.
+
+ <H3>Sampling Mode</H3>
+
+ The curve can be sampled in either map or hash mode. Map mode
+ simply indexes into the probability curve in the order that
+ it would appear on a density plot. Hash mode applies a
+ murmur3 hash to the input value before scaling from the
+ range of longs to the unit interval, thus providing a pseudo-random
+ sample of a value from the curve. This is usually what you want,
+ so hash mode is the default.  To enable map mode, simply provide
+ "map" as one of the modifiers as explained below.
+
+ <H3>Interpolation</H3>
+
+ The curve can be computed from the sampling function for each value
+ generated, or it can be provided via interpolation with a lookup table.
+ Using interpolation makes all the generator functions perform the
+ same. This is almost always what you want, so interpolation is
+ enabled by default. In order to compute the value for every sample
+ instead, simply provide "compute" as one of the modifiers as explained
+ below.
+
+ You can add optional modifiers after the distribution parameters.
+ You can add one of 'hash' or 'map' but not both. If neither of these is
+ added, 'hash' is implied as a default.
+ You can add one of 'interpolate' or 'compute' but not both. If neither
+ of these is added, 'interpolate' is implied as a default.
+
+ At times, it might be useful to add 'hash', 'interpolate' to your
+ specifiers as a form of verbosity or explicit specification.
+
+- int -> Beta(double: alpha, double: beta, String[]...: mods) -> double
 - long -> Beta(double: alpha, double: beta, String[]...: mods) -> double
 
 ## Binomial
 
+@see <a href="http://en.wikipedia.org/wiki/Binomial_distribution">Wikipedia: Binomial distribution</a>
+@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/BinomialDistribution.html">Commons JavaDoc: BinomialDistribution</a>
+
+ Generate samples according to the specified probability density.
+
+ The input value consists of a long between 0L and Long.MAX_VALUE.
+ This value is scaled to the unit interval (0.0, 1.0) as
+ an index into a sampling function based on inverse cumulative
+ density sampling.
+
+ <H3>Sampling Mode</H3>
+
+ The curve can be sampled in either map or hash mode. Map mode
+ simply indexes into the probability curve in the order that
+ it would appear on a density plot. Hash mode applies a
+ murmur3 hash to the input value before scaling from the
+ range of longs to the unit interval, thus providing a pseudo-random
+ sample of a value from the curve. This is usually what you want,
+ so hash mode is the default.  To enable map mode, simply provide
+ "map" as one of the modifiers as explained below.
+
+ <H3>Interpolation</H3>
+
+ The curve can be computed from the sampling function for each value
+ generated, or it can be provided via interpolation with a lookup table.
+ Using interpolation makes all the generator functions perform the
+ same. This is almost always what you want, so interpolation is
+ enabled by default. In order to compute the value for every sample
+ instead, simply provide "compute" as one of the modifiers as explained
+ below.
+
+ You can add optional modifiers after the distribution parameters.
+ You can add one of 'hash' or 'map' but not both. If neither of these is
+ added, 'hash' is implied as a default.
+ You can add one of 'interpolate' or 'compute' but not both. If neither
+ of these is added, 'interpolate' is implied as a default.
+
+ At times, it might be useful to add 'hash', 'interpolate' to your
+ specifiers as a form of verbosity or explicit specification.
+
+- int -> Binomial(int: trials, double: p, String[]...: modslist) -> int
 - int -> Binomial(int: trials, double: p, String[]...: modslist) -> long
 - long -> Binomial(int: trials, double: p, String[]...: modslist) -> int
 - long -> Binomial(int: trials, double: p, String[]...: modslist) -> long
 
 ## Cauchy
 
+@see <a href="http://en.wikipedia.org/wiki/Cauchy_distribution">Wikipedia: Cauchy_distribution</a>
+@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/CauchyDistribution.html">Commons Javadoc: CauchyDistribution</a>
+
+ Generate samples according to the specified probability density.
+
+ The input value consists of a long between 0L and Long.MAX_VALUE.
+ This value is scaled to the unit interval (0.0, 1.0) as
+ an index into a sampling function. The method used is
+ inverse cumulative density sampling.
+
+ <H3>Sampling Mode</H3>
+
+ The curve can be sampled in either map or hash mode. Map mode
+ simply indexes into the probability curve in the order that
+ it would appear on a density plot. Hash mode applies a
+ murmur3 hash to the input value before scaling from the
+ range of longs to the unit interval, thus providing a pseudo-random
+ sample of a value from the curve. This is usually what you want,
+ so hash mode is the default.  To enable map mode, simply provide
+ "map" as one of the modifiers as explained below.
+
+ <H3>Interpolation</H3>
+
+ The curve can be computed from the sampling function for each value
+ generated, or it can be provided via interpolation with a lookup table.
+ Using interpolation makes all the generator functions perform the
+ same. This is almost always what you want, so interpolation is
+ enabled by default. In order to compute the value for every sample
+ instead, simply provide "compute" as one of the modifiers as explained
+ below.
+
+ You can add optional modifiers after the distribution parameters.
+ You can add one of 'hash' or 'map' but not both. If neither of these is
+ added, 'hash' is implied as a default.
+ You can add one of 'interpolate' or 'compute' but not both. If neither
+ of these is added, 'interpolate' is implied as a default.
+
+ At times, it might be useful to add 'hash', 'interpolate' to your
+ specifiers as a form of verbosity or explicit specification.
+
+- int -> Cauchy(double: median, double: scale, String[]...: mods) -> double
 - long -> Cauchy(double: median, double: scale, String[]...: mods) -> double
 
 ## ChiSquared
 
+@see <a href="https://en.wikipedia.org/wiki/Chi-squared_distribution">Wikipedia: Chi-squared distribution</a>
+@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/ChiSquaredDistribution.html">Commons JavaDoc: ChiSquaredDistribution</a>
+
+ Generate samples according to the specified probability density.
+
+ The input value consists of a long between 0L and Long.MAX_VALUE.
+ This value is scaled to the unit interval (0.0, 1.0) as
+ an index into a sampling function. The method used is
+ inverse cumulative density sampling.
+
+ <H3>Sampling Mode</H3>
+
+ The curve can be sampled in either map or hash mode. Map mode
+ simply indexes into the probability curve in the order that
+ it would appear on a density plot. Hash mode applies a
+ murmur3 hash to the input value before scaling from the
+ range of longs to the unit interval, thus providing a pseudo-random
+ sample of a value from the curve. This is usually what you want,
+ so hash mode is the default.  To enable map mode, simply provide
+ "map" as one of the modifiers as explained below.
+
+ <H3>Interpolation</H3>
+
+ The curve can be computed from the sampling function for each value
+ generated, or it can be provided via interpolation with a lookup table.
+ Using interpolation makes all the generator functions perform the
+ same. This is almost always what you want, so interpolation is
+ enabled by default. In order to compute the value for every sample
+ instead, simply provide "compute" as one of the modifiers as explained
+ below.
+
+ You can add optional modifiers after the distribution parameters.
+ You can add one of 'hash' or 'map' but not both. If neither of these is
+ added, 'hash' is implied as a default.
+ You can add one of 'interpolate' or 'compute' but not both. If neither
+ of these is added, 'interpolate' is implied as a default.
+
+ At times, it might be useful to add 'hash', 'interpolate' to your
+ specifiers as a form of verbosity or explicit specification.
+
+- int -> ChiSquared(double: degreesOfFreedom, String[]...: mods) -> double
 - long -> ChiSquared(double: degreesOfFreedom, String[]...: mods) -> double
+
+## Clear
+
+Clears the per-thread map which is used by the Expr function.
+
+- long -> Clear() -> long
+  - *notes:* Clear all named entries from the per-thread map.
+  - *ex:* `Clear()` - *clear all thread-local variables*
+- long -> Clear(String[]...: names) -> long
+  - *notes:* Clear the specified names from the per-thread map.
+  - *ex:* `Clear('foo')` - *clear the thread-local variable 'foo'*
+  - *ex:* `Clear('foo','bar')` - *clear the thread-local variables 'foo' and 'bar'*
 
 ## Combinations
 
@@ -88,6 +265,47 @@ which can be represented in a long value. (This is a very high number).
 
 ## ConstantContinuous
 
+Always yields the same value
+@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/ConstantContinuousDistribution.html">Commons JavaDoc: ConstantContinuousDistribution</a>
+
+ Generate samples according to the specified probability density.
+
+ The input value consists of a long between 0L and Long.MAX_VALUE.
+ This value is scaled to the unit interval (0.0, 1.0) as
+ an index into a sampling function. The method used is
+ inverse cumulative density sampling.
+
+ <H3>Sampling Mode</H3>
+
+ The curve can be sampled in either map or hash mode. Map mode
+ simply indexes into the probability curve in the order that
+ it would appear on a density plot. Hash mode applies a
+ murmur3 hash to the input value before scaling from the
+ range of longs to the unit interval, thus providing a pseudo-random
+ sample of a value from the curve. This is usually what you want,
+ so hash mode is the default.  To enable map mode, simply provide
+ "map" as one of the modifiers as explained below.
+
+ <H3>Interpolation</H3>
+
+ The curve can be computed from the sampling function for each value
+ generated, or it can be provided via interpolation with a lookup table.
+ Using interpolation makes all the generator functions perform the
+ same. This is almost always what you want, so interpolation is
+ enabled by default. In order to compute the value for every sample
+ instead, simply provide "compute" as one of the modifiers as explained
+ below.
+
+ You can add optional modifiers after the distribution parameters.
+ You can add one of 'hash' or 'map' but not both. If neither of these is
+ added, 'hash' is implied as a default.
+ You can add one of 'interpolate' or 'compute' but not both. If neither
+ of these is added, 'interpolate' is implied as a default.
+
+ At times, it might be useful to add 'hash', 'interpolate' to your
+ specifiers as a form of verbosity or explicit specification.
+
+- int -> ConstantContinuous(double: value, String[]...: mods) -> double
 - long -> ConstantContinuous(double: value, String[]...: mods) -> double
 
 ## CycleRange
@@ -144,12 +362,98 @@ Convert the input double value to the closest float value.
 
 ## Enumerated
 
+Creates a probability density given the values and optional weights provided, in "value:weight value:weight ..." form.
+The weight can be elided for any value to use the default weight of 1.0d.
+
+@see <a href="http://commons.apache.org/proper/commons-math/apidocs/org/apache/commons/math4/distribution/EnumeratedRealDistribution.html">Commons JavaDoc: EnumeratedRealDistribution</a>
+
+ Generate samples according to the specified probability density.
+
+ The input value consists of a long between 0L and Long.MAX_VALUE.
+ This value is scaled to the unit interval (0.0, 1.0) as
+ an index into a sampling function. The method used is
+ inverse cumulative density sampling.
+
+ <H3>Sampling Mode</H3>
+
+ The curve can be sampled in either map or hash mode. Map mode
+ simply indexes into the probability curve in the order that
+ it would appear on a density plot. Hash mode applies a
+ murmur3 hash to the input value before scaling from the
+ range of longs to the unit interval, thus providing a pseudo-random
+ sample of a value from the curve. This is usually what you want,
+ so hash mode is the default.  To enable map mode, simply provide
+ "map" as one of the modifiers as explained below.
+
+ <H3>Interpolation</H3>
+
+ The curve can be computed from the sampling function for each value
+ generated, or it can be provided via interpolation with a lookup table.
+ Using interpolation makes all the generator functions perform the
+ same. This is almost always what you want, so interpolation is
+ enabled by default. In order to compute the value for every sample
+ instead, simply provide "compute" as one of the modifiers as explained
+ below.
+
+ You can add optional modifiers after the distribution parameters.
+ You can add one of 'hash' or 'map' but not both. If neither of these is
+ added, 'hash' is implied as a default.
+ You can add one of 'interpolate' or 'compute' but not both. If neither
+ of these is added, 'interpolate' is implied as a default.
+
+ At times, it might be useful to add 'hash', 'interpolate' to your
+ specifiers as a form of verbosity or explicit specification.
+
+- int -> Enumerated(String: data, String[]...: mods) -> double
+  - *ex:* `Enumerated('1 2 3 4 5 6')` - *a fair six-sided die roll*
+  - *ex:* `Enumerated('1:2.0 2 3 4 5 6')` - *an unfair six-sided die roll, where 1 has probability mass 2.0, and everything else has only 1.0*
 - long -> Enumerated(String: data, String[]...: mods) -> double
   - *ex:* `Enumerated('1 2 3 4 5 6')` - *a fair 6-sided die*
   - *ex:* `Enumerated('1:2.0 2 3 4 5:0.5 6:0.5')` - *an unfair fair 6-sided die, where ones are twice as likely, and fives and sixes are half as likely*
 
 ## Exponential
 
+@see <a href="https://en.wikipedia.org/wiki/Exponential_distribution">Wikipedia: Exponential distribution</a>
+@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/ExponentialDistribution.html">Commons JavaDoc: ExponentialDistribution</a>
+
+ Generate samples according to the specified probability density.
+
+ The input value consists of a long between 0L and Long.MAX_VALUE.
+ This value is scaled to the unit interval (0.0, 1.0) as
+ an index into a sampling function. The method used is
+ inverse cumulative density sampling.
+
+ <H3>Sampling Mode</H3>
+
+ The curve can be sampled in either map or hash mode. Map mode
+ simply indexes into the probability curve in the order that
+ it would appear on a density plot. Hash mode applies a
+ murmur3 hash to the input value before scaling from the
+ range of longs to the unit interval, thus providing a pseudo-random
+ sample of a value from the curve. This is usually what you want,
+ so hash mode is the default.  To enable map mode, simply provide
+ "map" as one of the modifiers as explained below.
+
+ <H3>Interpolation</H3>
+
+ The curve can be computed from the sampling function for each value
+ generated, or it can be provided via interpolation with a lookup table.
+ Using interpolation makes all the generator functions perform the
+ same. This is almost always what you want, so interpolation is
+ enabled by default. In order to compute the value for every sample
+ instead, simply provide "compute" as one of the modifiers as explained
+ below.
+
+ You can add optional modifiers after the distribution parameters.
+ You can add one of 'hash' or 'map' but not both. If neither of these is
+ added, 'hash' is implied as a default.
+ You can add one of 'interpolate' or 'compute' but not both. If neither
+ of these is added, 'interpolate' is implied as a default.
+
+ At times, it might be useful to add 'hash', 'interpolate' to your
+ specifiers as a form of verbosity or explicit specification.
+
+- int -> Exponential(double: mean, String[]...: mods) -> double
 - long -> Exponential(double: mean, String[]...: mods) -> double
 
 ## Expr
@@ -170,6 +474,48 @@ the current input value.
 
 ## F
 
+@see <a href="https://en.wikipedia.org/wiki/F-distribution">Wikipedia: F-distribution</a>
+@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/FDistribution.html">Commons JavaDoc: FDistribution</a>
+@see <a href="http://mathworld.wolfram.com/F-Distribution.html">Mathworld: F-Distribution</a>
+
+ Generate samples according to the specified probability density.
+
+ The input value consists of a long between 0L and Long.MAX_VALUE.
+ This value is scaled to the unit interval (0.0, 1.0) as
+ an index into a sampling function. The method used is
+ inverse cumulative density sampling.
+
+ <H3>Sampling Mode</H3>
+
+ The curve can be sampled in either map or hash mode. Map mode
+ simply indexes into the probability curve in the order that
+ it would appear on a density plot. Hash mode applies a
+ murmur3 hash to the input value before scaling from the
+ range of longs to the unit interval, thus providing a pseudo-random
+ sample of a value from the curve. This is usually what you want,
+ so hash mode is the default.  To enable map mode, simply provide
+ "map" as one of the modifiers as explained below.
+
+ <H3>Interpolation</H3>
+
+ The curve can be computed from the sampling function for each value
+ generated, or it can be provided via interpolation with a lookup table.
+ Using interpolation makes all the generator functions perform the
+ same. This is almost always what you want, so interpolation is
+ enabled by default. In order to compute the value for every sample
+ instead, simply provide "compute" as one of the modifiers as explained
+ below.
+
+ You can add optional modifiers after the distribution parameters.
+ You can add one of 'hash' or 'map' but not both. If neither of these is
+ added, 'hash' is implied as a default.
+ You can add one of 'interpolate' or 'compute' but not both. If neither
+ of these is added, 'interpolate' is implied as a default.
+
+ At times, it might be useful to add 'hash', 'interpolate' to your
+ specifiers as a form of verbosity or explicit specification.
+
+- int -> F(double: numeratorDegreesOfFreedom, double: denominatorDegreesOfFreedom, String[]...: mods) -> double
 - long -> F(double: numeratorDegreesOfFreedom, double: denominatorDegreesOfFreedom, String[]...: mods) -> double
 
 ## FieldExtractor
@@ -180,6 +526,16 @@ The
 
 - String -> FieldExtractor(String: fields) -> String
   - *ex:* `FieldExtractor('|,2,16')` - *extract fields 2 and 16 from the input data with '|' as the delimiter*
+
+## FirstNames
+
+Return a pseudo-randomly sampled first name from the last US census data on first names
+occurring more than 100 times. Both male and female names are combined in this function.
+
+- long -> FirstNames() -> String
+  - *ex:* `FirstNames()` - *select a random first name based on the chance of seeing it in the census data*
+- long -> FirstNames(String: modifier) -> String
+  - *ex:* `FirstNames('map')` - *select over the first names by probability as input varies from 1L to Long.MAX_VALUE*
 
 ## FixedValue
 
@@ -219,18 +575,149 @@ It does not return the absolute value, as Hash does.
 
 - long -> FullHash() -> long
 
+## FullNames
+
+Combines the FirstNames and LastNames functions into one that
+simply concatenates them with a space between.
+This function is a shorthand equivalent of {@code Template('{} {}', FirstNames(), LastNames())}
+
+- long -> FullNames() -> String
+
 ## Gamma
 
+@see <a href="https://en.wikipedia.org/wiki/Gamma_distribution">Wikipedia: Gamma distribution</a>
+@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/GammaDistribution.html">Commons JavaDoc: GammaDistribution</a>
+
+ Generate samples according to the specified probability density.
+
+ The input value consists of a long between 0L and Long.MAX_VALUE.
+ This value is scaled to the unit interval (0.0, 1.0) as
+ an index into a sampling function. The method used is
+ inverse cumulative density sampling.
+
+ <H3>Sampling Mode</H3>
+
+ The curve can be sampled in either map or hash mode. Map mode
+ simply indexes into the probability curve in the order that
+ it would appear on a density plot. Hash mode applies a
+ murmur3 hash to the input value before scaling from the
+ range of longs to the unit interval, thus providing a pseudo-random
+ sample of a value from the curve. This is usually what you want,
+ so hash mode is the default.  To enable map mode, simply provide
+ "map" as one of the modifiers as explained below.
+
+ <H3>Interpolation</H3>
+
+ The curve can be computed from the sampling function for each value
+ generated, or it can be provided via interpolation with a lookup table.
+ Using interpolation makes all the generator functions perform the
+ same. This is almost always what you want, so interpolation is
+ enabled by default. In order to compute the value for every sample
+ instead, simply provide "compute" as one of the modifiers as explained
+ below.
+
+ You can add optional modifiers after the distribution parameters.
+ You can add one of 'hash' or 'map' but not both. If neither of these is
+ added, 'hash' is implied as a default.
+ You can add one of 'interpolate' or 'compute' but not both. If neither
+ of these is added, 'interpolate' is implied as a default.
+
+ At times, it might be useful to add 'hash', 'interpolate' to your
+ specifiers as a form of verbosity or explicit specification.
+
+- int -> Gamma(double: shape, double: scale, String[]...: mods) -> double
 - long -> Gamma(double: shape, double: scale, String[]...: mods) -> double
 
 ## Geometric
 
+@see <a href="http://en.wikipedia.org/wiki/Geometric_distribution">Wikipedia: Geometric distribution</a>
+@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/GeometricDistribution.html">Commons JavaDoc: GeometricDistribution</a>
+
+ Generate samples according to the specified probability density.
+
+ The input value consists of a long between 0L and Long.MAX_VALUE.
+ This value is scaled to the unit interval (0.0, 1.0) as
+ an index into a sampling function based on inverse cumulative
+ density sampling.
+
+ <H3>Sampling Mode</H3>
+
+ The curve can be sampled in either map or hash mode. Map mode
+ simply indexes into the probability curve in the order that
+ it would appear on a density plot. Hash mode applies a
+ murmur3 hash to the input value before scaling from the
+ range of longs to the unit interval, thus providing a pseudo-random
+ sample of a value from the curve. This is usually what you want,
+ so hash mode is the default.  To enable map mode, simply provide
+ "map" as one of the modifiers as explained below.
+
+ <H3>Interpolation</H3>
+
+ The curve can be computed from the sampling function for each value
+ generated, or it can be provided via interpolation with a lookup table.
+ Using interpolation makes all the generator functions perform the
+ same. This is almost always what you want, so interpolation is
+ enabled by default. In order to compute the value for every sample
+ instead, simply provide "compute" as one of the modifiers as explained
+ below.
+
+ You can add optional modifiers after the distribution parameters.
+ You can add one of 'hash' or 'map' but not both. If neither of these is
+ added, 'hash' is implied as a default.
+ You can add one of 'interpolate' or 'compute' but not both. If neither
+ of these is added, 'interpolate' is implied as a default.
+
+ At times, it might be useful to add 'hash', 'interpolate' to your
+ specifiers as a form of verbosity or explicit specification.
+
+- int -> Geometric(double: p, String[]...: modslist) -> int
 - int -> Geometric(double: p, String[]...: modslist) -> long
 - long -> Geometric(double: p, String[]...: modslist) -> int
 - long -> Geometric(double: p, String[]...: modslist) -> long
 
 ## Gumbel
 
+@see <a href="https://en.wikipedia.org/wiki/Gumbel_distribution">Wikipedia: Gumbel distribution</a>
+@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/GumbelDistribution.html">Commons JavaDoc: GumbelDistribution</a>
+
+ Generate samples according to the specified probability density.
+
+ The input value consists of a long between 0L and Long.MAX_VALUE.
+ This value is scaled to the unit interval (0.0, 1.0) as
+ an index into a sampling function. The method used is
+ inverse cumulative density sampling.
+
+ <H3>Sampling Mode</H3>
+
+ The curve can be sampled in either map or hash mode. Map mode
+ simply indexes into the probability curve in the order that
+ it would appear on a density plot. Hash mode applies a
+ murmur3 hash to the input value before scaling from the
+ range of longs to the unit interval, thus providing a pseudo-random
+ sample of a value from the curve. This is usually what you want,
+ so hash mode is the default.  To enable map mode, simply provide
+ "map" as one of the modifiers as explained below.
+
+ <H3>Interpolation</H3>
+
+ The curve can be computed from the sampling function for each value
+ generated, or it can be provided via interpolation with a lookup table.
+ Using interpolation makes all the generator functions perform the
+ same. This is almost always what you want, so interpolation is
+ enabled by default. In order to compute the value for every sample
+ instead, simply provide "compute" as one of the modifiers as explained
+ below.
+
+ You can add optional modifiers after the distribution parameters.
+ You can add one of 'hash' or 'map' but not both. If neither of these is
+ added, 'hash' is implied as a default.
+ You can add one of 'interpolate' or 'compute' but not both. If neither
+ of these is added, 'interpolate' is implied as a default.
+
+ At times, it might be useful to add 'hash', 'interpolate' to your
+ specifiers as a form of verbosity or explicit specification.
+
+- int -> Gumbel(double: mu, double: beta, String[]...: mods) -> double
 - long -> Gumbel(double: mu, double: beta, String[]...: mods) -> double
 
 ## Hash
@@ -259,6 +746,8 @@ with a minimum value added.
 - int -> HashRange(int: minValue, int: maxValue) -> int
 
 ## HashRangeScaled
+
+Return a pseudo-random value which can only be as large as the input.
 
 - long -> HashRangeScaled() -> int
 - long -> HashRangeScaled() -> long
@@ -297,6 +786,25 @@ the specified file.
 
 - long -> HashedLineToString(String: filename) -> String
 
+## HashedLineToStringList
+
+- long -> HashedLineToStringList(String: filename, int: minSize, int: maxSize) -> java.util.List
+
+## HashedLineToStringSet
+
+Return a pseudo-randomly created Set from the values in
+the specified file.
+
+- long -> HashedLineToStringSet(String: filename, int: minSize, int: maxSize) -> java.util.Set<String>
+  - *ex:* `HashedLineToStringSet('data/variable_words.txt',2,10)` - *Create a set of words sized between 2 and 10 elements*
+
+## HashedLineToStringStringMap
+
+Create a String-String map from the specified file, ranging in size
+from 0 to the specified maximum.
+
+- long -> HashedLineToStringStringMap(String: paramFile, int: maxSize) -> java.util.Map<String,String>
+
 ## HashedLinesToKeyValueString
 
 Generate a string in the format key1:value1;key2:value2;... from the words
@@ -310,6 +818,12 @@ Provide a text extract from the full lorem ipsum text, between the specified
 minimum and maximum size.
 
 - long -> HashedLoremExtractToString(int: minsize, int: maxsize) -> String
+
+## HashedRangeToLongList
+
+Create a list of longs.
+
+- long -> HashedRangeToLongList(int: minVal, int: maxVal, int: minSize, int: maxSize) -> java.util.List<Long>
 
 ## HashedRangedToNonuniformDouble
 
@@ -331,6 +845,47 @@ boundary;
 
 ## Hypergeometric
 
+@see <a href="http://en.wikipedia.org/wiki/Hypergeometric_distribution">Wikipedia: Hypergeometric distribution</a>
+@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/HypergeometricDistribution.html">Commons JavaDoc: HypergeometricDistribution</a>
+
+ Generate samples according to the specified probability density.
+
+ The input value consists of a long between 0L and Long.MAX_VALUE.
+ This value is scaled to the unit interval (0.0, 1.0) as
+ an index into a sampling function based on inverse cumulative
+ density sampling.
+
+ <H3>Sampling Mode</H3>
+
+ The curve can be sampled in either map or hash mode. Map mode
+ simply indexes into the probability curve in the order that
+ it would appear on a density plot. Hash mode applies a
+ murmur3 hash to the input value before scaling from the
+ range of longs to the unit interval, thus providing a pseudo-random
+ sample of a value from the curve. This is usually what you want,
+ so hash mode is the default.  To enable map mode, simply provide
+ "map" as one of the modifiers as explained below.
+
+ <H3>Interpolation</H3>
+
+ The curve can be computed from the sampling function for each value
+ generated, or it can be provided via interpolation with a lookup table.
+ Using interpolation makes all the generator functions perform the
+ same. This is almost always what you want, so interpolation is
+ enabled by default. In order to compute the value for every sample
+ instead, simply provide "compute" as one of the modifiers as explained
+ below.
+
+ You can add optional modifiers after the distribution parameters.
+ You can add one of 'hash' or 'map' but not both. If neither of these is
+ added, 'hash' is implied as a default.
+ You can add one of 'interpolate' or 'compute' but not both. If neither
+ of these is added, 'interpolate' is implied as a default.
+
+ At times, it might be useful to add 'hash', 'interpolate' to your
+ specifiers as a form of verbosity or explicit specification.
+
+- int -> Hypergeometric(int: populationSize, int: numberOfSuccesses, int: sampleSize, String[]...: modslist) -> int
 - int -> Hypergeometric(int: populationSize, int: numberOfSuccesses, int: sampleSize, String[]...: modslist) -> long
 - long -> Hypergeometric(int: populationSize, int: numberOfSuccesses, int: sampleSize, String[]...: modslist) -> int
 - long -> Hypergeometric(int: populationSize, int: numberOfSuccesses, int: sampleSize, String[]...: modslist) -> long
@@ -381,10 +936,102 @@ specified delimiter and optional prefix and suffix.
 
 ## Laplace
 
+@see <a href="https://en.wikipedia.org/wiki/Laplace_distribution">Wikipedia: Laplace distribution</a>
+@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/LaplaceDistribution.html">Commons JavaDoc: LaplaceDistribution</a>
+
+ Generate samples according to the specified probability density.
+
+ The input value consists of a long between 0L and Long.MAX_VALUE.
+ This value is scaled to the unit interval (0.0, 1.0) as
+ an index into a sampling function. The method used is
+ inverse cumulative density sampling.
+
+ <H3>Sampling Mode</H3>
+
+ The curve can be sampled in either map or hash mode. Map mode
+ simply indexes into the probability curve in the order that
+ it would appear on a density plot. Hash mode applies a
+ murmur3 hash to the input value before scaling from the
+ range of longs to the unit interval, thus providing a pseudo-random
+ sample of a value from the curve. This is usually what you want,
+ so hash mode is the default.  To enable map mode, simply provide
+ "map" as one of the modifiers as explained below.
+
+ <H3>Interpolation</H3>
+
+ The curve can be computed from the sampling function for each value
+ generated, or it can be provided via interpolation with a lookup table.
+ Using interpolation makes all the generator functions perform the
+ same. This is almost always what you want, so interpolation is
+ enabled by default. In order to compute the value for every sample
+ instead, simply provide "compute" as one of the modifiers as explained
+ below.
+
+ You can add optional modifiers after the distribution parameters.
+ You can add one of 'hash' or 'map' but not both. If neither of these is
+ added, 'hash' is implied as a default.
+ You can add one of 'interpolate' or 'compute' but not both. If neither
+ of these is added, 'interpolate' is implied as a default.
+
+ At times, it might be useful to add 'hash', 'interpolate' to your
+ specifiers as a form of verbosity or explicit specification.
+
+- int -> Laplace(double: mu, double: beta, String[]...: mods) -> double
 - long -> Laplace(double: mu, double: beta, String[]...: mods) -> double
+
+## LastNames
+
+Return a pseudo-randomly sampled last name from the last US census data on last names
+occurring more than 100 times.
+
+- long -> LastNames() -> String
+  - *ex:* `LastNames()` - *select a random last name based on the chance of seeing it in the census data*
+- long -> LastNames(String: modifier) -> String
+  - *ex:* `LastNames('map')` - *select over the last names by probability as input varies from 1L to Long.MAX_VALUE*
 
 ## Levy
 
+@see <a href="https://en.wikipedia.org/wiki/L%C3%A9vy_distribution">Wikipedia: Lévy distribution</a>
+@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/LevyDistribution.html">Commons JavaDoc: LevyDistribution</a>
+
+ Generate samples according to the specified probability density.
+
+ The input value consists of a long between 0L and Long.MAX_VALUE.
+ This value is scaled to the unit interval (0.0, 1.0) as
+ an index into a sampling function. The method used is
+ inverse cumulative density sampling.
+
+ <H3>Sampling Mode</H3>
+
+ The curve can be sampled in either map or hash mode. Map mode
+ simply indexes into the probability curve in the order that
+ it would appear on a density plot. Hash mode applies a
+ murmur3 hash to the input value before scaling from the
+ range of longs to the unit interval, thus providing a pseudo-random
+ sample of a value from the curve. This is usually what you want,
+ so hash mode is the default.  To enable map mode, simply provide
+ "map" as one of the modifiers as explained below.
+
+ <H3>Interpolation</H3>
+
+ The curve can be computed from the sampling function for each value
+ generated, or it can be provided via interpolation with a lookup table.
+ Using interpolation makes all the generator functions perform the
+ same. This is almost always what you want, so interpolation is
+ enabled by default. In order to compute the value for every sample
+ instead, simply provide "compute" as one of the modifiers as explained
+ below.
+
+ You can add optional modifiers after the distribution parameters.
+ You can add one of 'hash' or 'map' but not both. If neither of these is
+ added, 'hash' is implied as a default.
+ You can add one of 'interpolate' or 'compute' but not both. If neither
+ of these is added, 'interpolate' is implied as a default.
+
+ At times, it might be useful to add 'hash', 'interpolate' to your
+ specifiers as a form of verbosity or explicit specification.
+
+- int -> Levy(double: mu, double: c, String[]...: mods) -> double
 - long -> Levy(double: mu, double: c, String[]...: mods) -> double
 
 ## ListTemplate
@@ -399,18 +1046,123 @@ between elements.
 
 ## Load
 
+Load a named value from the per-thread state map.
+The previous input value will be forgotten, and the named value will replace it
+before the next function in the chain.
+
 - double -> Load(String: name) -> double
   - *ex:* `Load('foo')` - *load a double value from the named variable for this thread*
+- long -> Load(String: name) -> long
+  - *ex:* `Load('foo')` - *load a long value from the named variable for this thread*
+- Object -> Load(String: name) -> Object
+  - *ex:* `Load('foo')` - *load a Object value from the named variable for this thread*
 - int -> Load(String: name) -> int
   - *ex:* `Load('foo')` - *load an int value from the named variable for this thread*
+- String -> Load(String: name) -> String
+  - *ex:* `Load('foo')` - *load a String value from the named variable for this thread*
 
 ## LogNormal
 
+@see <a href="https://en.wikipedia.org/wiki/Log-normal_distribution">Wikipedia: Log-normal distribution</a>
+@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/LogNormalDistribution.html">Commons JavaDoc: LogNormalDistribution</a>
+
+ Generate samples according to the specified probability density.
+
+ The input value consists of a long between 0L and Long.MAX_VALUE.
+ This value is scaled to the unit interval (0.0, 1.0) as
+ an index into a sampling function. The method used is
+ inverse cumulative density sampling.
+
+ <H3>Sampling Mode</H3>
+
+ The curve can be sampled in either map or hash mode. Map mode
+ simply indexes into the probability curve in the order that
+ it would appear on a density plot. Hash mode applies a
+ murmur3 hash to the input value before scaling from the
+ range of longs to the unit interval, thus providing a pseudo-random
+ sample of a value from the curve. This is usually what you want,
+ so hash mode is the default.  To enable map mode, simply provide
+ "map" as one of the modifiers as explained below.
+
+ <H3>Interpolation</H3>
+
+ The curve can be computed from the sampling function for each value
+ generated, or it can be provided via interpolation with a lookup table.
+ Using interpolation makes all the generator functions perform the
+ same. This is almost always what you want, so interpolation is
+ enabled by default. In order to compute the value for every sample
+ instead, simply provide "compute" as one of the modifiers as explained
+ below.
+
+ You can add optional modifiers after the distribution parameters.
+ You can add one of 'hash' or 'map' but not both. If neither of these is
+ added, 'hash' is implied as a default.
+ You can add one of 'interpolate' or 'compute' but not both. If neither
+ of these is added, 'interpolate' is implied as a default.
+
+ At times, it might be useful to add 'hash', 'interpolate' to your
+ specifiers as a form of verbosity or explicit specification.
+
+- int -> LogNormal(double: scale, double: shape, String[]...: mods) -> double
 - long -> LogNormal(double: scale, double: shape, String[]...: mods) -> double
 
 ## Logistic
 
+@see <a href="https://en.wikipedia.org/wiki/Logistic_distribution">Wikipedia: Logistic distribution</a>
+@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/LogisticDistribution.html">Commons JavaDoc: LogisticDistribution</a>
+
+ Generate samples according to the specified probability density.
+
+ The input value consists of a long between 0L and Long.MAX_VALUE.
+ This value is scaled to the unit interval (0.0, 1.0) as
+ an index into a sampling function. The method used is
+ inverse cumulative density sampling.
+
+ <H3>Sampling Mode</H3>
+
+ The curve can be sampled in either map or hash mode. Map mode
+ simply indexes into the probability curve in the order that
+ it would appear on a density plot. Hash mode applies a
+ murmur3 hash to the input value before scaling from the
+ range of longs to the unit interval, thus providing a pseudo-random
+ sample of a value from the curve. This is usually what you want,
+ so hash mode is the default.  To enable map mode, simply provide
+ "map" as one of the modifiers as explained below.
+
+ <H3>Interpolation</H3>
+
+ The curve can be computed from the sampling function for each value
+ generated, or it can be provided via interpolation with a lookup table.
+ Using interpolation makes all the generator functions perform the
+ same. This is almost always what you want, so interpolation is
+ enabled by default. In order to compute the value for every sample
+ instead, simply provide "compute" as one of the modifiers as explained
+ below.
+
+ You can add optional modifiers after the distribution parameters.
+ You can add one of 'hash' or 'map' but not both. If neither of these is
+ added, 'hash' is implied as a default.
+ You can add one of 'interpolate' or 'compute' but not both. If neither
+ of these is added, 'interpolate' is implied as a default.
+
+ At times, it might be useful to add 'hash', 'interpolate' to your
+ specifiers as a form of verbosity or explicit specification.
+
+- int -> Logistic(double: mu, double: scale, String[]...: mods) -> double
 - long -> Logistic(double: mu, double: scale, String[]...: mods) -> double
+
+## LongToByte
+
+Convert the input long value to a byte, with negative values
+masked away.
+
+- long -> LongToByte() -> Byte
+
+## LongToShort
+
+Convert the input value from long to short.
+
+- long -> LongToShort() -> Short
 
 ## LongToString
 
@@ -461,6 +1213,32 @@ of lines in the file.
 
 - long -> ModuloLineToString(String: filename) -> String
 
+## ModuloToBigDecimal
+
+Return a {@code BigDecimal} value as the result of modulo division with the specified divisor.
+
+- long -> ModuloToBigDecimal() -> java.math.BigDecimal
+- long -> ModuloToBigDecimal(long: modulo) -> java.math.BigDecimal
+
+## ModuloToBigInt
+
+Return a {@code BigInteger} value as the result of modulo division with the specified divisor.
+
+- long -> ModuloToBigInt() -> java.math.BigInteger
+- long -> ModuloToBigInt(long: modulo) -> java.math.BigInteger
+
+## ModuloToBoolean
+
+Return a boolean value as the result of modulo division with the specified divisor.
+
+- long -> ModuloToBoolean() -> Boolean
+
+## ModuloToByte
+
+Return a byte value as the result of modulo division with the specified divisor.
+
+- long -> ModuloToByte(long: modulo) -> Byte
+
 ## ModuloToInteger
 
 Return an integer value as the result of modulo division with the specified divisor.
@@ -472,6 +1250,12 @@ Return an integer value as the result of modulo division with the specified divi
 Return a long value as the result of modulo division with the specified divisor.
 
 - long -> ModuloToLong(long: modulo) -> long
+
+## ModuloToShort
+
+Return a boolean value as the result of modulo division with the specified divisor.
+
+- long -> ModuloToShort(long: modulo) -> Short
 
 ## Mul
 
@@ -498,10 +1282,92 @@ with the specified divisor to long and then converting the value to String.
 
 ## Nakagami
 
+@see <a href="https://en.wikipedia.org/wiki/Nakagami_distribution">Wikipedia: Nakagami distribution</a>
+@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/NakagamiDistribution.html">Commons JavaDoc: NakagamiDistribution</a>
+
+ Generate samples according to the specified probability density.
+
+ The input value consists of a long between 0L and Long.MAX_VALUE.
+ This value is scaled to the unit interval (0.0, 1.0) as
+ an index into a sampling function. The method used is
+ inverse cumulative density sampling.
+
+ <H3>Sampling Mode</H3>
+
+ The curve can be sampled in either map or hash mode. Map mode
+ simply indexes into the probability curve in the order that
+ it would appear on a density plot. Hash mode applies a
+ murmur3 hash to the input value before scaling from the
+ range of longs to the unit interval, thus providing a pseudo-random
+ sample of a value from the curve. This is usually what you want,
+ so hash mode is the default.  To enable map mode, simply provide
+ "map" as one of the modifiers as explained below.
+
+ <H3>Interpolation</H3>
+
+ The curve can be computed from the sampling function for each value
+ generated, or it can be provided via interpolation with a lookup table.
+ Using interpolation makes all the generator functions perform the
+ same. This is almost always what you want, so interpolation is
+ enabled by default. In order to compute the value for every sample
+ instead, simply provide "compute" as one of the modifiers as explained
+ below.
+
+ You can add optional modifiers after the distribution parameters.
+ You can add one of 'hash' or 'map' but not both. If neither of these is
+ added, 'hash' is implied as a default.
+ You can add one of 'interpolate' or 'compute' but not both. If neither
+ of these is added, 'interpolate' is implied as a default.
+
+ At times, it might be useful to add 'hash', 'interpolate' to your
+ specifiers as a form of verbosity or explicit specification.
+
+- int -> Nakagami(double: mu, double: omega, String[]...: mods) -> double
 - long -> Nakagami(double: mu, double: omega, String[]...: mods) -> double
 
 ## Normal
 
+@see <a href="https://en.wikipedia.org/wiki/Normal_distribution">Wikipedia: Normal distribution</a>
+@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/NormalDistribution.html">Commons JavaDoc: NormalDistribution</a>
+
+ Generate samples according to the specified probability density.
+
+ The input value consists of a long between 0L and Long.MAX_VALUE.
+ This value is scaled to the unit interval (0.0, 1.0) as
+ an index into a sampling function. The method used is
+ inverse cumulative density sampling.
+
+ <H3>Sampling Mode</H3>
+
+ The curve can be sampled in either map or hash mode. Map mode
+ simply indexes into the probability curve in the order that
+ it would appear on a density plot. Hash mode applies a
+ murmur3 hash to the input value before scaling from the
+ range of longs to the unit interval, thus providing a pseudo-random
+ sample of a value from the curve. This is usually what you want,
+ so hash mode is the default.  To enable map mode, simply provide
+ "map" as one of the modifiers as explained below.
+
+ <H3>Interpolation</H3>
+
+ The curve can be computed from the sampling function for each value
+ generated, or it can be provided via interpolation with a lookup table.
+ Using interpolation makes all the generator functions perform the
+ same. This is almost always what you want, so interpolation is
+ enabled by default. In order to compute the value for every sample
+ instead, simply provide "compute" as one of the modifiers as explained
+ below.
+
+ You can add optional modifiers after the distribution parameters.
+ You can add one of 'hash' or 'map' but not both. If neither of these is
+ added, 'hash' is implied as a default.
+ You can add one of 'interpolate' or 'compute' but not both. If neither
+ of these is added, 'interpolate' is implied as a default.
+
+ At times, it might be useful to add 'hash', 'interpolate' to your
+ specifiers as a form of verbosity or explicit specification.
+
+- int -> Normal(double: mean, double: sd, String[]...: mods) -> double
 - long -> Normal(double: mean, double: sd, String[]...: mods) -> double
 
 ## NumberNameToString
@@ -510,16 +1376,139 @@ with the specified divisor to long and then converting the value to String.
 
 ## Pareto
 
+@see <a href="https://en.wikipedia.org/wiki/Pareto_distribution">Wikipedia: Pareto distribution</a>
+@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/ParetoDistribution.html">Commons JavaDoc: ParetoDistribution</a>
+
+ Generate samples according to the specified probability density.
+
+ The input value consists of a long between 0L and Long.MAX_VALUE.
+ This value is scaled to the unit interval (0.0, 1.0) as
+ an index into a sampling function. The method used is
+ inverse cumulative density sampling.
+
+ <H3>Sampling Mode</H3>
+
+ The curve can be sampled in either map or hash mode. Map mode
+ simply indexes into the probability curve in the order that
+ it would appear on a density plot. Hash mode applies a
+ murmur3 hash to the input value before scaling from the
+ range of longs to the unit interval, thus providing a pseudo-random
+ sample of a value from the curve. This is usually what you want,
+ so hash mode is the default.  To enable map mode, simply provide
+ "map" as one of the modifiers as explained below.
+
+ <H3>Interpolation</H3>
+
+ The curve can be computed from the sampling function for each value
+ generated, or it can be provided via interpolation with a lookup table.
+ Using interpolation makes all the generator functions perform the
+ same. This is almost always what you want, so interpolation is
+ enabled by default. In order to compute the value for every sample
+ instead, simply provide "compute" as one of the modifiers as explained
+ below.
+
+ You can add optional modifiers after the distribution parameters.
+ You can add one of 'hash' or 'map' but not both. If neither of these is
+ added, 'hash' is implied as a default.
+ You can add one of 'interpolate' or 'compute' but not both. If neither
+ of these is added, 'interpolate' is implied as a default.
+
+ At times, it might be useful to add 'hash', 'interpolate' to your
+ specifiers as a form of verbosity or explicit specification.
+
+- int -> Pareto(double: scale, double: shape, String[]...: mods) -> double
 - long -> Pareto(double: scale, double: shape, String[]...: mods) -> double
 
 ## Pascal
 
+@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/PascalDistribution.html">Commons JavaDoc: PascalDistribution</a>
+@see <a href="https://en.wikipedia.org/wiki/Negative_binomial_distribution">Wikipedia: Negative binomial distribution</a>
+
+ Generate samples according to the specified probability density.
+
+ The input value consists of a long between 0L and Long.MAX_VALUE.
+ This value is scaled to the unit interval (0.0, 1.0) as
+ an index into a sampling function based on inverse cumulative
+ density sampling.
+
+ <H3>Sampling Mode</H3>
+
+ The curve can be sampled in either map or hash mode. Map mode
+ simply indexes into the probability curve in the order that
+ it would appear on a density plot. Hash mode applies a
+ murmur3 hash to the input value before scaling from the
+ range of longs to the unit interval, thus providing a pseudo-random
+ sample of a value from the curve. This is usually what you want,
+ so hash mode is the default.  To enable map mode, simply provide
+ "map" as one of the modifiers as explained below.
+
+ <H3>Interpolation</H3>
+
+ The curve can be computed from the sampling function for each value
+ generated, or it can be provided via interpolation with a lookup table.
+ Using interpolation makes all the generator functions perform the
+ same. This is almost always what you want, so interpolation is
+ enabled by default. In order to compute the value for every sample
+ instead, simply provide "compute" as one of the modifiers as explained
+ below.
+
+ You can add optional modifiers after the distribution parameters.
+ You can add one of 'hash' or 'map' but not both. If neither of these is
+ added, 'hash' is implied as a default.
+ You can add one of 'interpolate' or 'compute' but not both. If neither
+ of these is added, 'interpolate' is implied as a default.
+
+ At times, it might be useful to add 'hash', 'interpolate' to your
+ specifiers as a form of verbosity or explicit specification.
+
+- int -> Pascal(int: r, double: p, String[]...: modslist) -> int
 - int -> Pascal(int: r, double: p, String[]...: modslist) -> long
 - long -> Pascal(int: r, double: p, String[]...: modslist) -> int
 - long -> Pascal(int: r, double: p, String[]...: modslist) -> long
 
 ## Poisson
 
+@see <a href="http://en.wikipedia.org/wiki/Poisson_distribution">Wikipedia: Poisson distribution</a>
+@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/PoissonDistribution.html">Commons JavaDoc: PoissonDistribution</a>
+
+ Generate samples according to the specified probability density.
+
+ The input value consists of a long between 0L and Long.MAX_VALUE.
+ This value is scaled to the unit interval (0.0, 1.0) as
+ an index into a sampling function based on inverse cumulative
+ density sampling.
+
+ <H3>Sampling Mode</H3>
+
+ The curve can be sampled in either map or hash mode. Map mode
+ simply indexes into the probability curve in the order that
+ it would appear on a density plot. Hash mode applies a
+ murmur3 hash to the input value before scaling from the
+ range of longs to the unit interval, thus providing a pseudo-random
+ sample of a value from the curve. This is usually what you want,
+ so hash mode is the default.  To enable map mode, simply provide
+ "map" as one of the modifiers as explained below.
+
+ <H3>Interpolation</H3>
+
+ The curve can be computed from the sampling function for each value
+ generated, or it can be provided via interpolation with a lookup table.
+ Using interpolation makes all the generator functions perform the
+ same. This is almost always what you want, so interpolation is
+ enabled by default. In order to compute the value for every sample
+ instead, simply provide "compute" as one of the modifiers as explained
+ below.
+
+ You can add optional modifiers after the distribution parameters.
+ You can add one of 'hash' or 'map' but not both. If neither of these is
+ added, 'hash' is implied as a default.
+ You can add one of 'interpolate' or 'compute' but not both. If neither
+ of these is added, 'interpolate' is implied as a default.
+
+ At times, it might be useful to add 'hash', 'interpolate' to your
+ specifiers as a form of verbosity or explicit specification.
+
+- int -> Poisson(double: p, String[]...: modslist) -> int
 - int -> Poisson(double: p, String[]...: modslist) -> long
 - long -> Poisson(double: p, String[]...: modslist) -> int
 - long -> Poisson(double: p, String[]...: modslist) -> long
@@ -533,8 +1522,19 @@ Add the specified prefix String to the input value and return the result.
 
 ## Save
 
+Save the current input value at this point in the function chain to a thread-local variable name.
+The input value is unchanged, and available for the next function in the chain to use as-is.
+
 - double -> Save(String: name) -> double
   - *ex:* `Save('foo')` - *save the current double value to the name 'foo' in this thread*
+- long -> Save(String: name) -> long
+  - *ex:* `Save('foo')` - *save the current long value to the name 'foo' in this thread*
+- Object -> Save(String: name) -> Object
+  - *ex:* `Save('foo')` - *save the current input object value to the name 'foo' in this thread*
+- int -> Save(String: name) -> int
+  - *ex:* `Save('foo')` - *save the current int value to the name 'foo' in this thread*
+- String -> Save(String: name) -> String
+  - *ex:* `Save('foo')` - *save the current String value to the name 'foo' in this thread*
 
 ## Scale
 
@@ -542,6 +1542,16 @@ Scale the input to the
 
 - long -> Scale(double: scaleFactor) -> int
 - int -> Scale(double: scaleFactor) -> int
+
+## Show
+
+Show diagnostic values for the thread-local variable map.
+
+- Object -> Show() -> String
+  - *ex:* `Show()` - *Show all values in a json-like format*
+- Object -> Show(String[]...: names) -> String
+  - *ex:* `Show('foo')` - *Show only the 'foo' value in a json-like format*
+  - *ex:* `Show('foo','bar')` - *Show the 'foo' and 'bar' values in a json-like format*
 
 ## Shuffle
 
@@ -565,9 +1575,27 @@ This function *does* yield values that are deterministic.
 
 ## SignedHash
 
+This uses the Murmur3F (64-bit optimized) version of Murmur3,
+not as a checksum, but as a simple hash. It doesn't bother
+pushing the high-64 bits of input, since it only uses the lower
+64 bits of output.
+
+Unlike the other hash functions, this one may return positive
+as well as negative values.
+
 - long -> SignedHash() -> int
 - long -> SignedHash() -> long
 - int -> SignedHash() -> int
+
+## StartingEpochMillis
+
+This function sets the minimum long value to the equivalent
+unix epoch time in milliseconds. It simply adds the input
+value to this base value as determined by the provided
+time specifier. It wraps any overflow within this range as well.
+
+- long -> StartingEpochMillis(String: baseTimeSpec) -> long
+  - *ex:* `StartingEpochMillis('2017-01-01 23:59:59')` - *add the millisecond epoch time of 2017-01-01 23:59:59 to all input values*
 
 ## StaticStringMapper
 
@@ -588,6 +1616,47 @@ Add the specified prefix String to the input value and return the result.
 
 ## T
 
+@see <a href="https://en.wikipedia.org/wiki/Student's_t-distribution">Wikipedia: Student's t-distribution</a>
+@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/TDistribution.html">Commons JavaDoc: TDistribution</a>
+
+ Generate samples according to the specified probability density.
+
+ The input value consists of a long between 0L and Long.MAX_VALUE.
+ This value is scaled to the unit interval (0.0, 1.0) as
+ an index into a sampling function. The method used is
+ inverse cumulative density sampling.
+
+ <H3>Sampling Mode</H3>
+
+ The curve can be sampled in either map or hash mode. Map mode
+ simply indexes into the probability curve in the order that
+ it would appear on a density plot. Hash mode applies a
+ murmur3 hash to the input value before scaling from the
+ range of longs to the unit interval, thus providing a pseudo-random
+ sample of a value from the curve. This is usually what you want,
+ so hash mode is the default.  To enable map mode, simply provide
+ "map" as one of the modifiers as explained below.
+
+ <H3>Interpolation</H3>
+
+ The curve can be computed from the sampling function for each value
+ generated, or it can be provided via interpolation with a lookup table.
+ Using interpolation makes all the generator functions perform the
+ same. This is almost always what you want, so interpolation is
+ enabled by default. In order to compute the value for every sample
+ instead, simply provide "compute" as one of the modifiers as explained
+ below.
+
+ You can add optional modifiers after the distribution parameters.
+ You can add one of 'hash' or 'map' but not both. If neither of these is
+ added, 'hash' is implied as a default.
+ You can add one of 'interpolate' or 'compute' but not both. If neither
+ of these is added, 'interpolate' is implied as a default.
+
+ At times, it might be useful to add 'hash', 'interpolate' to your
+ specifiers as a form of verbosity or explicit specification.
+
+- int -> T(double: degreesOfFreedom, String[]...: mods) -> double
 - long -> T(double: degreesOfFreedom, String[]...: mods) -> double
 
 ## Template
@@ -634,6 +1703,219 @@ you can't change the thread name and get an updated value.
 
 - long -> ThreadNumToLong() -> long
 
+## ToBigInt
+
+Convert the input value to a {@code BigInteger}
+
+- long -> ToBigInt() -> java.math.BigInteger
+
+## ToBoolean
+
+Convert the input value to a {@code boolean}
+
+- long -> ToBoolean() -> Boolean
+- Double -> ToBoolean() -> Boolean
+- Float -> ToBoolean() -> Boolean
+- Integer -> ToBoolean() -> Boolean
+
+## ToByte
+
+Convert the input value to a {@code Byte}.
+
+- double -> ToByte() -> Byte
+- double -> ToByte(int: modulo) -> Byte
+- Float -> ToByte() -> Byte
+- Float -> ToByte(int: modulo) -> Byte
+- int -> ToByte() -> Byte
+- int -> ToByte(int: modulo) -> Byte
+- long -> ToByte() -> Byte
+- long -> ToByte(int: modulo) -> Byte
+- Short -> ToByte(int: scale) -> Byte
+- Short -> ToByte() -> Byte
+- String -> ToByte() -> Byte
+
+## ToByteBuffer
+
+Convert the input value to a {@code ByteBuffer}
+
+- double -> ToByteBuffer() -> java.nio.ByteBuffer
+- Float -> ToByteBuffer() -> java.nio.ByteBuffer
+- int -> ToByteBuffer() -> java.nio.ByteBuffer
+- long -> ToByteBuffer() -> java.nio.ByteBuffer
+- Short -> ToByteBuffer() -> java.nio.ByteBuffer
+- String -> ToByteBuffer() -> java.nio.ByteBuffer
+
+## ToDate
+
+Convert the input value to a {@code Date}
+
+- long -> ToDate(int: spacing, int: repeat_count) -> java.util.Date
+- long -> ToDate(int: spacing) -> java.util.Date
+- long -> ToDate() -> java.util.Date
+
+## ToDateTime
+
+Convert the input value to a {@code org.joda.time.DateTime}
+
+- long -> ToDateTime(int: spacing, int: repeat_count) -> org.joda.time.DateTime
+- long -> ToDateTime(String: spacing) -> org.joda.time.DateTime
+- long -> ToDateTime() -> org.joda.time.DateTime
+
+## ToDouble
+
+Convert the input value to a double.
+
+- long -> ToDouble() -> double
+
+## ToEpochTimeUUID
+
+Converts a long UTC timestamp in epoch millis form into a Version 1 TimeUUID
+according to <a href="https://www.ietf.org/rfc/rfc4122.txt">RFC 4122</a>.
+This means that only one unique value for a timeuuid can be generated for
+each epoch milli value, even though version 1 TimeUUIDs can normally represent
+up to 10000 distinct values per millisecond. If you need to access this
+level of resolution for testing purposes, use ToFinestTimeUUID
+instead. This method is to support simple mapping to natural timestamps
+as we often find in the real world.
+
+For the variants that have a String argument in the constructor, this is
+a parsable datetime that is used as the base time for all produced values.
+Setting this allows you to set the start of the time range for all timeuuid
+values produced. All times are parsed for UTC. All time use ISO date ordering,
+meaning that the most significant fields always go before the others.
+
+The valid formats, in joda specifier form are:
+<ol>
+<li>yyyy-MM-dd HH:mm:ss.SSSZ, for example: 2015-02-28 23:30:15.223</li>
+<li>yyyy-MM-dd HH:mm:ss, for example 2015-02-28 23:30:15</li>
+<li>yyyyMMdd'T'HHmmss.SSSZ, for example: 20150228T233015.223</li>
+<li>yyyyMMdd'T'HHmmssZ, for example: 20150228T233015</li>
+<li>yyyy-MM-dd, for example: 2015-02-28</li>
+<li>yyyyMMdd, for example: 20150228</li>
+<li>yyyyMM, for example: 201502</li>
+<li>yyyy, for example: 2015</li>
+</ol>
+
+- long -> ToEpochTimeUUID() -> java.util.UUID
+  - *notes:* Create version 1 timeuuids with a per-host node and empty clock data.
+The node and clock components are seeded from network interface data. In this case,
+the clock data is not seeded uniquely.
+  - *ex:* `ToEpochTimeUUID()` - *basetime 0, computed node data, empty clock data*
+- long -> ToEpochTimeUUID(long: node) -> java.util.UUID
+  - *notes:* Create version 1 timeuuids with a specific static node and empty clock data.
+This is useful for testing so that you can know that values are verifiable, even though
+in non-testing practice, you would rely on some form of entropy per-system to provide
+more practical dispersion of values over reboots, etc.
+
+  - *ex:* `ToEpochTimeUUID(5234)` - *basetime 0, specified node data (5234), empty clock data*
+- long -> ToEpochTimeUUID(long: node, long: clock) -> java.util.UUID
+  - *notes:* Create version 1 timeuuids with a specific static node and specific clock data.
+This is useful for testing so that you can know that values are verifiable, even though
+in non-testing practice, you would rely on some form of entropy per-system to provide
+more practical dispersion of values over reboots, etc.
+
+  - *ex:* `ToEpochTimeUUID(31,337)` - *basetime 0, specified node data (31) and clock data (337)*
+- long -> ToEpochTimeUUID(String: baseSpec) -> java.util.UUID
+  - *notes:* Create version 1 timeuuids with a per-host node and empty clock data.
+The node and clock components are seeded from network interface data. In this case,
+the clock data is not seeded uniquely.
+
+  - *ex:* `ToEpochTimeUUID('2017-01-01T23:59:59')` - *specified basetime, computed node data, empty clock data*
+- long -> ToEpochTimeUUID(String: baseSpec, long: node) -> java.util.UUID
+  - *notes:* Create version 1 timeuuids with a specific static node and empty clock data.
+This is useful for testing so that you can know that values are verifiable, even though
+in non-testing practice, you would rely on some form of entropy per-system to provide
+more practical dispersion of values over reboots, etc.
+
+  - *ex:* `ToEpochTimeUUID('2012',12345)` - *basetime at start if 2012, with node data 12345, empty clock data*
+- long -> ToEpochTimeUUID(String: baseSpec, long: node, long: clock) -> java.util.UUID
+  - *notes:* Create version 1 timeuuids with a specific static node and specific clock data.
+This is useful for testing so that you can know that values are verifiable, even though
+in non-testing practice, you would rely on some form of entropy per-system to provide
+more practical dispersion of values over reboots, etc.
+
+  - *ex:* `ToEpochTimeUUID('20171231T1015.243',123,456)` - *ms basetime, specified node and clock data*
+
+## ToFinestTimeUUID
+
+Converts a count of 100ns intervals from 1582 Julian to a Type1 TimeUUID
+according to <a href="https://www.ietf.org/rfc/rfc4122.txt">RFC 4122</a>.
+This allows you to access the finest unit of resolution for the
+purposes of simulating a large set of unique timeuuid values. This offers
+10000 times more unique values per ms than ToEpochTimeUUID.
+
+For the variants that have a String argument in the constructor, this is
+a parsable datetime that is used as the base time for all produced values.
+Setting this allows you to set the start of the time range for all timeuuid
+values produced. All times are parsed for UTC. All time use ISO date ordering,
+meaning that the most significant fields always go before the others.
+
+The valid formats, in joda specifier form are:
+
+<ol>
+<li>yyyy-MM-dd HH:mm:ss.SSSZ, for example: 2015-02-28 23:30:15.223</li>
+<li>yyyy-MM-dd HH:mm:ss, for example 2015-02-28 23:30:15</li>
+<li>yyyyMMdd'T'HHmmss.SSSZ, for example: 20150228T233015.223</li>
+<li>yyyyMMdd'T'HHmmssZ, for example: 20150228T233015</li>
+<li>yyyy-MM-dd, for example: 2015-02-28</li>
+<li>yyyyMMdd, for example: 20150228</li>
+<li>yyyyMM, for example: 201502</li>
+<li>yyyy, for example: 2015</li>
+</ol>
+
+- long -> ToFinestTimeUUID() -> java.util.UUID
+  - *notes:* Create version 1 timeuuids with a per-host node and empty clock data.
+The node and clock components are seeded from network interface data. In this case,
+the clock data is not seeded uniquely.
+  - *ex:* `ToFinestTimeUUID()` - *basetime 0, computed node data, empty clock data*
+- long -> ToFinestTimeUUID(long: node) -> java.util.UUID
+  - *notes:* Create version 1 timeuuids with a specific static node and empty clock data.
+This is useful for testing so that you can know that values are verifiable, even though
+in non-testing practice, you would rely on some form of entropy per-system to provide
+more practical dispersion of values over reboots, etc.
+
+  - *ex:* `ToFinestTimeUUID(5234)` - *basetime 0, specified node data (5234), empty clock data*
+- long -> ToFinestTimeUUID(long: node, long: clock) -> java.util.UUID
+  - *notes:* Create version 1 timeuuids with a specific static node and specific clock data.
+This is useful for testing so that you can know that values are verifiable, even though
+in non-testing practice, you would rely on some form of entropy per-system to provide
+more practical dispersion of values over reboots, etc.
+
+  - *ex:* `ToFinestTimeUUID(31,337)` - *basetime 0, specified node data (31) and clock data (337)*
+- long -> ToFinestTimeUUID(String: baseTimeSpec) -> java.util.UUID
+  - *notes:* Create version 1 timeuuids with a per-host node and empty clock data.
+The node and clock components are seeded from network interface data. In this case,
+the clock data is not seeded uniquely.
+
+  - *ex:* `ToFinestTimeUUID('2017-01-01T23:59:59')` - *specified basetime, computed node data, empty clock data*
+- long -> ToFinestTimeUUID(String: baseTimeSpec, long: node) -> java.util.UUID
+  - *notes:* Create version 1 timeuuids with a specific static node and empty clock data.
+This is useful for testing so that you can know that values are verifiable, even though
+in non-testing practice, you would rely on some form of entropy per-system to provide
+more practical dispersion of values over reboots, etc.
+
+  - *ex:* `ToFinestTimeUUID('2012',12345)` - *basetime at start if 2012, with node data 12345, empty clock data*
+- long -> ToFinestTimeUUID(String: baseTimeSpec, long: node, long: clock) -> java.util.UUID
+  - *notes:* Create version 1 timeuuids with a specific static node and specific clock data.
+This is useful for testing so that you can know that values are verifiable, even though
+in non-testing practice, you would rely on some form of entropy per-system to provide
+more practical dispersion of values over reboots, etc.
+
+  - *ex:* `ToFinestTimeUUID('20171231T1015.243',123,456)` - *ms basetime, specified node and clock data*
+
+## ToFloat
+
+Convert the input value into a float.
+
+- double -> ToFloat(double: scale) -> Float
+- double -> ToFloat() -> Float
+- int -> ToFloat(int: scale) -> Float
+- int -> ToFloat() -> Float
+- long -> ToFloat(long: scale) -> Float
+- long -> ToFloat() -> Float
+- Short -> ToFloat() -> Float
+- String -> ToFloat() -> Float
+
 ## ToHashedUUID
 
 This function provides a stable hashing of the input value to
@@ -641,11 +1923,100 @@ a version 4 (Random) UUID.
 
 - long -> ToHashedUUID() -> java.util.UUID
 
+## ToInetAddress
+
+Convert the input value to a {@code java.net.InetAddress}
+
+- long -> ToInetAddress() -> java.net.InetAddress
+
+## ToInt
+
+Convert the input value to a long.
+
+- long -> ToInt() -> int
+- Object -> ToInt() -> Integer
+- double -> ToInt(int: scale) -> int
+- double -> ToInt() -> int
+- Double -> ToInt(int: scale) -> Integer
+- Double -> ToInt() -> Integer
+- long -> ToInt(int: scale) -> int
+- long -> ToInt() -> int
+- String -> ToInt() -> Integer
+
+## ToJodaDateTime
+
+Convert the input value to a {@code org.joda.time.DateTime}
+
+- long -> ToJodaDateTime(int: spacing, int: repeat_count) -> org.joda.time.DateTime
+- long -> ToJodaDateTime(String: spacing) -> org.joda.time.DateTime
+- long -> ToJodaDateTime() -> org.joda.time.DateTime
+
+## ToLong
+
+Convert the input value to a long.
+
+- double -> ToLong(long: scale) -> long
+- double -> ToLong() -> long
+- Float -> ToLong(long: scale) -> Long
+- Float -> ToLong() -> Long
+
+## ToLongFunction
+
+Adapts any compatible FunctionalInterface type to a LongFunction,
+for use with higher-order functions, when they require a
+LongFunction as an argument. Some of the higher-order functions within
+this library specifically require a LongFunction as an argument, while
+some of the other functions are provided in semantically equivalent
+forms with compatible types which can't be converted directly or
+automatically by Java.
+
+In such cases, those types of functions can be wrapped with the forms
+described here in order to allow the inner and outer functions to work together.
+
+- long -> ToLongFunction(java.util.function.LongUnaryOperator: op) -> Object
+- long -> ToLongFunction(java.util.function.Function<Long,Long>: op) -> Object
+- long -> ToLongFunction(java.util.function.LongToIntFunction: op) -> Object
+- long -> ToLongFunction(java.util.function.LongToDoubleFunction: op) -> Object
+- long -> ToLongFunction(java.util.function.LongFunction<?>: func) -> Object
+
+## ToLongUnaryOperator
+
+Adapts any compatible FunctionalInterface type to a LongUnaryOperator,
+for use with higher-order functions, when they require a
+LongUnaryOperator as an argument. Some of the higher-order functions within
+this library specifically require a LongUnaryOperator as an argument, while
+some of the other functions are provided in semantically equivalent
+forms with compatible types which can't be converted directly or
+automatically by Java.
+
+In such cases, those types of functions can be wrapped with the forms
+described here in order to allow the inner and outer functions to work together.
+
+- long -> ToLongUnaryOperator(java.util.function.LongFunction<Long>: f) -> long
+- long -> ToLongUnaryOperator(java.util.function.Function<Long,Long>: f) -> long
+- long -> ToLongUnaryOperator(java.util.function.LongUnaryOperator: f) -> long
+
+## ToShort
+
+Convert the input value to a short.
+
+- double -> ToShort() -> Short
+- double -> ToShort(int: modulo) -> Short
+- Float -> ToShort() -> Short
+- Float -> ToShort(int: modulo) -> Short
+- int -> ToShort() -> Short
+- int -> ToShort(int: scale) -> Short
+- long -> ToShort() -> Short
+- long -> ToShort(int: wrapat) -> Short
+  - *notes:* This form allows for limiting the short values at a lower limit than Short.MAX_VALUE.
+- String -> ToShort() -> Short
+
 ## ToString
 
-Converts the input to the most obvious string representation with String.valueOf(...).
-
 - Object -> ToString() -> String
+- Float -> ToString() -> String
+- int -> ToString() -> String
+- long -> ToString() -> String
 
 ## ToUUID
 
@@ -672,17 +2043,148 @@ specify a different long value to pre-fill it with.
 
 ## Triangular
 
+@see <a href="https://en.wikipedia.org/wiki/Triangular_distribution">Wikipedia: Triangular distribution</a>
+@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/TriangularDistribution.html">Commons JavaDoc: TriangularDistribution</a>
+
+ Generate samples according to the specified probability density.
+
+ The input value consists of a long between 0L and Long.MAX_VALUE.
+ This value is scaled to the unit interval (0.0, 1.0) as
+ an index into a sampling function. The method used is
+ inverse cumulative density sampling.
+
+ <H3>Sampling Mode</H3>
+
+ The curve can be sampled in either map or hash mode. Map mode
+ simply indexes into the probability curve in the order that
+ it would appear on a density plot. Hash mode applies a
+ murmur3 hash to the input value before scaling from the
+ range of longs to the unit interval, thus providing a pseudo-random
+ sample of a value from the curve. This is usually what you want,
+ so hash mode is the default.  To enable map mode, simply provide
+ "map" as one of the modifiers as explained below.
+
+ <H3>Interpolation</H3>
+
+ The curve can be computed from the sampling function for each value
+ generated, or it can be provided via interpolation with a lookup table.
+ Using interpolation makes all the generator functions perform the
+ same. This is almost always what you want, so interpolation is
+ enabled by default. In order to compute the value for every sample
+ instead, simply provide "compute" as one of the modifiers as explained
+ below.
+
+ You can add optional modifiers after the distribution parameters.
+ You can add one of 'hash' or 'map' but not both. If neither of these is
+ added, 'hash' is implied as a default.
+ You can add one of 'interpolate' or 'compute' but not both. If neither
+ of these is added, 'interpolate' is implied as a default.
+
+ At times, it might be useful to add 'hash', 'interpolate' to your
+ specifiers as a form of verbosity or explicit specification.
+
+- int -> Triangular(double: a, double: c, double: b, String[]...: mods) -> double
 - long -> Triangular(double: a, double: c, double: b, String[]...: mods) -> double
+
+## TypeOf
+
+Yields the class of the resulting type in String form.
+
+- Object -> TypeOf() -> String
 
 ## Uniform
 
+@see <a href="https://en.wikipedia.org/wiki/Uniform_distribution_(continuous)">Wikipedia: Uniform distribution (continuous)</a>
+@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/UniformContinuousDistribution.html">Commons JavaDoc: UniformContinuousDistribution</a>
+
+ Generate samples according to the specified probability density.
+
+ The input value consists of a long between 0L and Long.MAX_VALUE.
+ This value is scaled to the unit interval (0.0, 1.0) as
+ an index into a sampling function. The method used is
+ inverse cumulative density sampling.
+
+ <H3>Sampling Mode</H3>
+
+ The curve can be sampled in either map or hash mode. Map mode
+ simply indexes into the probability curve in the order that
+ it would appear on a density plot. Hash mode applies a
+ murmur3 hash to the input value before scaling from the
+ range of longs to the unit interval, thus providing a pseudo-random
+ sample of a value from the curve. This is usually what you want,
+ so hash mode is the default.  To enable map mode, simply provide
+ "map" as one of the modifiers as explained below.
+
+ <H3>Interpolation</H3>
+
+ The curve can be computed from the sampling function for each value
+ generated, or it can be provided via interpolation with a lookup table.
+ Using interpolation makes all the generator functions perform the
+ same. This is almost always what you want, so interpolation is
+ enabled by default. In order to compute the value for every sample
+ instead, simply provide "compute" as one of the modifiers as explained
+ below.
+
+ You can add optional modifiers after the distribution parameters.
+ You can add one of 'hash' or 'map' but not both. If neither of these is
+ added, 'hash' is implied as a default.
+ You can add one of 'interpolate' or 'compute' but not both. If neither
+ of these is added, 'interpolate' is implied as a default.
+
+ At times, it might be useful to add 'hash', 'interpolate' to your
+ specifiers as a form of verbosity or explicit specification.
+
+- int -> Uniform(double: lower, double: upper, String[]...: mods) -> double
 - long -> Uniform(double: lower, double: upper, String[]...: mods) -> double
+- int -> Uniform(int: lower, int: upper, String[]...: modslist) -> int
 - int -> Uniform(int: lower, int: upper, String[]...: modslist) -> long
 - long -> Uniform(int: lower, int: upper, String[]...: modslist) -> int
 - long -> Uniform(int: lower, int: upper, String[]...: modslist) -> long
 
 ## Weibull
 
+@see <a href="https://en.wikipedia.org/wiki/Weibull_distribution">Wikipedia: Weibull distribution</a>
+@see <a href="http://mathworld.wolfram.com/WeibullDistribution.html">Wolfram Mathworld: Weibull Distribution</a>
+@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/WeibullDistribution.html">Commons Javadoc: WeibullDistribution</a>
+
+ Generate samples according to the specified probability density.
+
+ The input value consists of a long between 0L and Long.MAX_VALUE.
+ This value is scaled to the unit interval (0.0, 1.0) as
+ an index into a sampling function. The method used is
+ inverse cumulative density sampling.
+
+ <H3>Sampling Mode</H3>
+
+ The curve can be sampled in either map or hash mode. Map mode
+ simply indexes into the probability curve in the order that
+ it would appear on a density plot. Hash mode applies a
+ murmur3 hash to the input value before scaling from the
+ range of longs to the unit interval, thus providing a pseudo-random
+ sample of a value from the curve. This is usually what you want,
+ so hash mode is the default.  To enable map mode, simply provide
+ "map" as one of the modifiers as explained below.
+
+ <H3>Interpolation</H3>
+
+ The curve can be computed from the sampling function for each value
+ generated, or it can be provided via interpolation with a lookup table.
+ Using interpolation makes all the generator functions perform the
+ same. This is almost always what you want, so interpolation is
+ enabled by default. In order to compute the value for every sample
+ instead, simply provide "compute" as one of the modifiers as explained
+ below.
+
+ You can add optional modifiers after the distribution parameters.
+ You can add one of 'hash' or 'map' but not both. If neither of these is
+ added, 'hash' is implied as a default.
+ You can add one of 'interpolate' or 'compute' but not both. If neither
+ of these is added, 'interpolate' is implied as a default.
+
+ At times, it might be useful to add 'hash', 'interpolate' to your
+ specifiers as a form of verbosity or explicit specification.
+
+- int -> Weibull(double: alpha, double: beta, String[]...: mods) -> double
 - long -> Weibull(double: alpha, double: beta, String[]...: mods) -> double
 
 ## WeightedStrings
@@ -694,6 +2196,47 @@ as its first line.
 
 ## Zipf
 
+@see <a href="https://en.wikipedia.org/wiki/Zipf's_law">Wikipedia: Zipf's Law</a>
+@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/ZipfDistribution.html">Commons JavaDoc: ZipfDistribution</a>
+
+ Generate samples according to the specified probability density.
+
+ The input value consists of a long between 0L and Long.MAX_VALUE.
+ This value is scaled to the unit interval (0.0, 1.0) as
+ an index into a sampling function based on inverse cumulative
+ density sampling.
+
+ <H3>Sampling Mode</H3>
+
+ The curve can be sampled in either map or hash mode. Map mode
+ simply indexes into the probability curve in the order that
+ it would appear on a density plot. Hash mode applies a
+ murmur3 hash to the input value before scaling from the
+ range of longs to the unit interval, thus providing a pseudo-random
+ sample of a value from the curve. This is usually what you want,
+ so hash mode is the default.  To enable map mode, simply provide
+ "map" as one of the modifiers as explained below.
+
+ <H3>Interpolation</H3>
+
+ The curve can be computed from the sampling function for each value
+ generated, or it can be provided via interpolation with a lookup table.
+ Using interpolation makes all the generator functions perform the
+ same. This is almost always what you want, so interpolation is
+ enabled by default. In order to compute the value for every sample
+ instead, simply provide "compute" as one of the modifiers as explained
+ below.
+
+ You can add optional modifiers after the distribution parameters.
+ You can add one of 'hash' or 'map' but not both. If neither of these is
+ added, 'hash' is implied as a default.
+ You can add one of 'interpolate' or 'compute' but not both. If neither
+ of these is added, 'interpolate' is implied as a default.
+
+ At times, it might be useful to add 'hash', 'interpolate' to your
+ specifiers as a form of verbosity or explicit specification.
+
+- int -> Zipf(int: numberOfElements, double: exponent, String[]...: modslist) -> int
 - int -> Zipf(int: numberOfElements, double: exponent, String[]...: modslist) -> long
 - long -> Zipf(int: numberOfElements, double: exponent, String[]...: modslist) -> int
 - long -> Zipf(int: numberOfElements, double: exponent, String[]...: modslist) -> long

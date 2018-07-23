@@ -52,6 +52,7 @@ menu:
  specifiers as a form of verbosity or explicit specification.
 
 - int -> Beta(double: alpha, double: beta, String[]...: mods) -> double
+- long -> Beta(double: alpha, double: beta, String[]...: mods) -> double
 
 ## Binomial
 
@@ -96,6 +97,9 @@ menu:
  specifiers as a form of verbosity or explicit specification.
 
 - int -> Binomial(int: trials, double: p, String[]...: modslist) -> int
+- int -> Binomial(int: trials, double: p, String[]...: modslist) -> long
+- long -> Binomial(int: trials, double: p, String[]...: modslist) -> int
+- long -> Binomial(int: trials, double: p, String[]...: modslist) -> long
 
 ## Cauchy
 
@@ -140,6 +144,7 @@ menu:
  specifiers as a form of verbosity or explicit specification.
 
 - int -> Cauchy(double: median, double: scale, String[]...: mods) -> double
+- long -> Cauchy(double: median, double: scale, String[]...: mods) -> double
 
 ## ChiSquared
 
@@ -184,6 +189,7 @@ menu:
  specifiers as a form of verbosity or explicit specification.
 
 - int -> ChiSquared(double: degreesOfFreedom, String[]...: mods) -> double
+- long -> ChiSquared(double: degreesOfFreedom, String[]...: mods) -> double
 
 ## ConstantContinuous
 
@@ -228,6 +234,7 @@ Always yields the same value
  specifiers as a form of verbosity or explicit specification.
 
 - int -> ConstantContinuous(double: value, String[]...: mods) -> double
+- long -> ConstantContinuous(double: value, String[]...: mods) -> double
 
 ## Enumerated
 
@@ -276,6 +283,9 @@ The weight can be elided for any value to use the default weight of 1.0d.
 - int -> Enumerated(String: data, String[]...: mods) -> double
   - *ex:* `Enumerated('1 2 3 4 5 6')` - *a fair six-sided die roll*
   - *ex:* `Enumerated('1:2.0 2 3 4 5 6')` - *an unfair six-sided die roll, where 1 has probability mass 2.0, and everything else has only 1.0*
+- long -> Enumerated(String: data, String[]...: mods) -> double
+  - *ex:* `Enumerated('1 2 3 4 5 6')` - *a fair 6-sided die*
+  - *ex:* `Enumerated('1:2.0 2 3 4 5:0.5 6:0.5')` - *an unfair fair 6-sided die, where ones are twice as likely, and fives and sixes are half as likely*
 
 ## Exponential
 
@@ -320,6 +330,7 @@ The weight can be elided for any value to use the default weight of 1.0d.
  specifiers as a form of verbosity or explicit specification.
 
 - int -> Exponential(double: mean, String[]...: mods) -> double
+- long -> Exponential(double: mean, String[]...: mods) -> double
 
 ## F
 
@@ -365,6 +376,7 @@ The weight can be elided for any value to use the default weight of 1.0d.
  specifiers as a form of verbosity or explicit specification.
 
 - int -> F(double: numeratorDegreesOfFreedom, double: denominatorDegreesOfFreedom, String[]...: mods) -> double
+- long -> F(double: numeratorDegreesOfFreedom, double: denominatorDegreesOfFreedom, String[]...: mods) -> double
 
 ## Gamma
 
@@ -409,6 +421,7 @@ The weight can be elided for any value to use the default weight of 1.0d.
  specifiers as a form of verbosity or explicit specification.
 
 - int -> Gamma(double: shape, double: scale, String[]...: mods) -> double
+- long -> Gamma(double: shape, double: scale, String[]...: mods) -> double
 
 ## Geometric
 
@@ -453,6 +466,9 @@ The weight can be elided for any value to use the default weight of 1.0d.
  specifiers as a form of verbosity or explicit specification.
 
 - int -> Geometric(double: p, String[]...: modslist) -> int
+- int -> Geometric(double: p, String[]...: modslist) -> long
+- long -> Geometric(double: p, String[]...: modslist) -> int
+- long -> Geometric(double: p, String[]...: modslist) -> long
 
 ## Gumbel
 
@@ -497,6 +513,7 @@ The weight can be elided for any value to use the default weight of 1.0d.
  specifiers as a form of verbosity or explicit specification.
 
 - int -> Gumbel(double: mu, double: beta, String[]...: mods) -> double
+- long -> Gumbel(double: mu, double: beta, String[]...: mods) -> double
 
 ## Hypergeometric
 
@@ -541,6 +558,9 @@ The weight can be elided for any value to use the default weight of 1.0d.
  specifiers as a form of verbosity or explicit specification.
 
 - int -> Hypergeometric(int: populationSize, int: numberOfSuccesses, int: sampleSize, String[]...: modslist) -> int
+- int -> Hypergeometric(int: populationSize, int: numberOfSuccesses, int: sampleSize, String[]...: modslist) -> long
+- long -> Hypergeometric(int: populationSize, int: numberOfSuccesses, int: sampleSize, String[]...: modslist) -> int
+- long -> Hypergeometric(int: populationSize, int: numberOfSuccesses, int: sampleSize, String[]...: modslist) -> long
 
 ## Laplace
 
@@ -585,6 +605,7 @@ The weight can be elided for any value to use the default weight of 1.0d.
  specifiers as a form of verbosity or explicit specification.
 
 - int -> Laplace(double: mu, double: beta, String[]...: mods) -> double
+- long -> Laplace(double: mu, double: beta, String[]...: mods) -> double
 
 ## Levy
 
@@ -629,6 +650,7 @@ The weight can be elided for any value to use the default weight of 1.0d.
  specifiers as a form of verbosity or explicit specification.
 
 - int -> Levy(double: mu, double: c, String[]...: mods) -> double
+- long -> Levy(double: mu, double: c, String[]...: mods) -> double
 
 ## LogNormal
 
@@ -673,6 +695,7 @@ The weight can be elided for any value to use the default weight of 1.0d.
  specifiers as a form of verbosity or explicit specification.
 
 - int -> LogNormal(double: scale, double: shape, String[]...: mods) -> double
+- long -> LogNormal(double: scale, double: shape, String[]...: mods) -> double
 
 ## Logistic
 
@@ -717,6 +740,7 @@ The weight can be elided for any value to use the default weight of 1.0d.
  specifiers as a form of verbosity or explicit specification.
 
 - int -> Logistic(double: mu, double: scale, String[]...: mods) -> double
+- long -> Logistic(double: mu, double: scale, String[]...: mods) -> double
 
 ## Nakagami
 
@@ -761,6 +785,7 @@ The weight can be elided for any value to use the default weight of 1.0d.
  specifiers as a form of verbosity or explicit specification.
 
 - int -> Nakagami(double: mu, double: omega, String[]...: mods) -> double
+- long -> Nakagami(double: mu, double: omega, String[]...: mods) -> double
 
 ## Normal
 
@@ -805,6 +830,7 @@ The weight can be elided for any value to use the default weight of 1.0d.
  specifiers as a form of verbosity or explicit specification.
 
 - int -> Normal(double: mean, double: sd, String[]...: mods) -> double
+- long -> Normal(double: mean, double: sd, String[]...: mods) -> double
 
 ## Pareto
 
@@ -849,6 +875,7 @@ The weight can be elided for any value to use the default weight of 1.0d.
  specifiers as a form of verbosity or explicit specification.
 
 - int -> Pareto(double: scale, double: shape, String[]...: mods) -> double
+- long -> Pareto(double: scale, double: shape, String[]...: mods) -> double
 
 ## Pascal
 
@@ -893,6 +920,9 @@ The weight can be elided for any value to use the default weight of 1.0d.
  specifiers as a form of verbosity or explicit specification.
 
 - int -> Pascal(int: r, double: p, String[]...: modslist) -> int
+- int -> Pascal(int: r, double: p, String[]...: modslist) -> long
+- long -> Pascal(int: r, double: p, String[]...: modslist) -> int
+- long -> Pascal(int: r, double: p, String[]...: modslist) -> long
 
 ## Poisson
 
@@ -937,6 +967,9 @@ The weight can be elided for any value to use the default weight of 1.0d.
  specifiers as a form of verbosity or explicit specification.
 
 - int -> Poisson(double: p, String[]...: modslist) -> int
+- int -> Poisson(double: p, String[]...: modslist) -> long
+- long -> Poisson(double: p, String[]...: modslist) -> int
+- long -> Poisson(double: p, String[]...: modslist) -> long
 
 ## T
 
@@ -981,6 +1014,7 @@ The weight can be elided for any value to use the default weight of 1.0d.
  specifiers as a form of verbosity or explicit specification.
 
 - int -> T(double: degreesOfFreedom, String[]...: mods) -> double
+- long -> T(double: degreesOfFreedom, String[]...: mods) -> double
 
 ## Triangular
 
@@ -1025,11 +1059,62 @@ The weight can be elided for any value to use the default weight of 1.0d.
  specifiers as a form of verbosity or explicit specification.
 
 - int -> Triangular(double: a, double: c, double: b, String[]...: mods) -> double
+- long -> Triangular(double: a, double: c, double: b, String[]...: mods) -> double
 
 ## Uniform
 
+@see <a href="https://en.wikipedia.org/wiki/Uniform_distribution_(continuous)">Wikipedia: Uniform distribution (continuous)</a>
+@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/UniformContinuousDistribution.html">Commons JavaDoc: UniformContinuousDistribution</a>
+
+ Generate samples according to the specified probability density.
+
+ The input value consists of a long between 0L and Long.MAX_VALUE.
+ This value is scaled to the unit interval (0.0, 1.0) as
+ an index into a sampling function. The method used is
+ inverse cumulative density sampling.
+
+ <H3>Sampling Mode</H3>
+
+ The curve can be sampled in either map or hash mode. Map mode
+ simply indexes into the probability curve in the order that
+ it would appear on a density plot. Hash mode applies a
+ murmur3 hash to the input value before scaling from the
+ range of longs to the unit interval, thus providing a pseudo-random
+ sample of a value from the curve. This is usually what you want,
+ so hash mode is the default.  To enable map mode, simply provide
+ "map" as one of the modifiers as explained below.
+
+ <H3>Interpolation</H3>
+
+ The curve can be computed from the sampling function for each value
+ generated, or it can be provided via interpolation with a lookup table.
+ Using interpolation makes all the generator functions perform the
+ same. This is almost always what you want, so interpolation is
+ enabled by default. In order to compute the value for every sample
+ instead, simply provide "compute" as one of the modifiers as explained
+ below.
+
+ You can add optional modifiers after the distribution parameters.
+ You can add one of 'hash' or 'map' but not both. If neither of these is
+ added, 'hash' is implied as a default.
+ You can add one of 'interpolate' or 'compute' but not both. If neither
+ of these is added, 'interpolate' is implied as a default.
+
+ At times, it might be useful to add 'hash', 'interpolate' to your
+ specifiers as a form of verbosity or explicit specification.
+
 - int -> Uniform(double: lower, double: upper, String[]...: mods) -> double
+- int -> Uniform(double: lower, double: upper, String[]...: mods) -> double
+- long -> Uniform(double: lower, double: upper, String[]...: mods) -> double
+- long -> Uniform(double: lower, double: upper, String[]...: mods) -> double
 - int -> Uniform(int: lower, int: upper, String[]...: modslist) -> int
+- int -> Uniform(int: lower, int: upper, String[]...: modslist) -> int
+- int -> Uniform(int: lower, int: upper, String[]...: modslist) -> long
+- int -> Uniform(int: lower, int: upper, String[]...: modslist) -> long
+- long -> Uniform(int: lower, int: upper, String[]...: modslist) -> int
+- long -> Uniform(int: lower, int: upper, String[]...: modslist) -> int
+- long -> Uniform(int: lower, int: upper, String[]...: modslist) -> long
+- long -> Uniform(int: lower, int: upper, String[]...: modslist) -> long
 
 ## Weibull
 
@@ -1075,6 +1160,7 @@ The weight can be elided for any value to use the default weight of 1.0d.
  specifiers as a form of verbosity or explicit specification.
 
 - int -> Weibull(double: alpha, double: beta, String[]...: mods) -> double
+- long -> Weibull(double: alpha, double: beta, String[]...: mods) -> double
 
 ## Zipf
 
@@ -1119,4 +1205,7 @@ The weight can be elided for any value to use the default weight of 1.0d.
  specifiers as a form of verbosity or explicit specification.
 
 - int -> Zipf(int: numberOfElements, double: exponent, String[]...: modslist) -> int
+- int -> Zipf(int: numberOfElements, double: exponent, String[]...: modslist) -> long
+- long -> Zipf(int: numberOfElements, double: exponent, String[]...: modslist) -> int
+- long -> Zipf(int: numberOfElements, double: exponent, String[]...: modslist) -> long
 
