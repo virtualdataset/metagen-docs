@@ -1104,16 +1104,10 @@ The weight can be elided for any value to use the default weight of 1.0d.
  specifiers as a form of verbosity or explicit specification.
 
 - int -> Uniform(double: lower, double: upper, String[]...: mods) -> double
-- int -> Uniform(double: lower, double: upper, String[]...: mods) -> double
-- long -> Uniform(double: lower, double: upper, String[]...: mods) -> double
 - long -> Uniform(double: lower, double: upper, String[]...: mods) -> double
 - int -> Uniform(int: lower, int: upper, String[]...: modslist) -> int
-- int -> Uniform(int: lower, int: upper, String[]...: modslist) -> int
-- int -> Uniform(int: lower, int: upper, String[]...: modslist) -> long
 - int -> Uniform(int: lower, int: upper, String[]...: modslist) -> long
 - long -> Uniform(int: lower, int: upper, String[]...: modslist) -> int
-- long -> Uniform(int: lower, int: upper, String[]...: modslist) -> int
-- long -> Uniform(int: lower, int: upper, String[]...: modslist) -> long
 - long -> Uniform(int: lower, int: upper, String[]...: modslist) -> long
 
 ## Weibull
