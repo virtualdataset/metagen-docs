@@ -9,16 +9,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
-    <title> - VirtualDataSet</title>
+    <title>Typography - VirtualDataSet</title>
     <meta name="generator" content="Hugo 0.31" />
 
     
     <meta name="description" content="VirtualDataSet Docs">
     
-    <link rel="canonical" href="http://docs.virtdata.io/src/matter/glossary/">
+    <link rel="canonical" href="http://docs.virtdata.io/siteinfo/typography/">
     
 
-    <meta property="og:url" content="http://docs.virtdata.io/src/matter/glossary/">
+    <meta property="og:url" content="http://docs.virtdata.io/siteinfo/typography/">
     <meta property="og:title" content="VirtualDataSet">
     <meta property="og:image" content="/images/virtdata_128.png">
     <meta name="apple-mobile-web-app-title" content="VirtualDataSet">
@@ -89,11 +89,31 @@
 
     
     
-
+    <link href="http://docs.virtdata.io//modules/jsxgraph/jsxgraph.css" type="text/css" rel="stylesheet"/>
+    <script src="http://docs.virtdata.io//modules/jsxgraph//jsxgraphcore.js"></script>
     
     
 
     
+    
+    <link href="http://docs.virtdata.io//modules/mermaid/mermaid.css" type="text/css" rel="stylesheet"/>
+    <script src="http://docs.virtdata.io//modules/mermaid/mermaid.js"></script>
+    <script>mermaid.initialize({startOnLoad:true});</script>
+    
+
+    
+    
+    <script src="http://docs.virtdata.io//modules/nomnoml/lodash.min.js"></script>
+    <script src="http://docs.virtdata.io//modules/nomnoml/dagre.min.js"></script>
+    <script src="http://docs.virtdata.io//modules/nomnoml/skanaar.util.js"></script>
+    <script src="http://docs.virtdata.io//modules/nomnoml/skanaar.svg.js"></script>
+    <script src="http://docs.virtdata.io//modules/nomnoml/skanaar.vector.js"></script>
+    <script src="http://docs.virtdata.io//modules/nomnoml/skanaar.canvas.js"></script>
+    <script src="http://docs.virtdata.io//modules/nomnoml/nomnoml.jison.js"></script>
+    <script src="http://docs.virtdata.io//modules/nomnoml/nomnoml.parser.js"></script>
+    <script src="http://docs.virtdata.io//modules/nomnoml/nomnoml.layouter.js"></script>
+    <script src="http://docs.virtdata.io//modules/nomnoml/nomnoml.renderer.js"></script>
+    <script src="http://docs.virtdata.io//modules/nomnoml/nomnoml.js"></script>
     
     
     
@@ -127,7 +147,7 @@
     </div>
     <div class="stretch">
       <div class="title">
-        
+        Typography
       </div>
     </div>
 
@@ -459,34 +479,100 @@
 
 	<article class="article">
 		<div class="wrapper">
-			<h1> </h1>
+			<h1>Typography </h1>
 
 			
 
-<h1 id="glossary">Glossary</h1>
+<p>This book includes some diagrams that are rendered<br />
+on the client side from various graphical markup systems.</p>
 
-<dl>
+<p>This page lets you verify that you can read the glyph and diagrams correctly. If
+you do not see two of everything, then you will not be able to see some of the
+diagrams in the book. In that case, please report the
+<a href="https://github.com/virtualdataset/virtdata-docs/issues">issue</a>.</p>
 
- <dt>Data Model</dt>
- <dd>
- A model that describes the types of data that may be stored in a data set, logical or physical. It includes the types, and in some cases, the implied set of operations which are valid for accessing and manipulationg the data.
- </dd>
- 
- <dt>Dataset</dt>
- <dd>
- A dataset is simply a named set of content which can be consumed, and/or modified, generally for a particular purpose. A dataset can be described by a generative model
-  or it can be actual data that
-  has been simulated or captured
-  from a real world activity.
- </dd>
- 
- <dt>Dataset Model</dt>
- <dd>
- A model that describes the content
- of a dataset, including data types, relative cardinalites, and estimates or measurements of the distribution of the data.
- </dd>
+<p>In each of the rendering checks below, the dynamically rendered element is shown
+first, followed by a reference image.</p>
 
-</dl>
+<h3 id="jsxgraph-rendering">jsxgraph rendering</h3>
+
+<p>courtesy of <a href="http://jsxgraph.uni-bayreuth.de/wp/index.html">jsxgraph</a></p>
+
+<div title="dynamically rendered" align="middle">
+
+
+<div
+ id="jsxtest"
+ class="jxgbox"
+ style="width:250px; height:250px;"
+><script type="text/javascript">
+
+  var brd = JXG.JSXGraph.initBoard('jsxtest', { boundingbox:[-10,10,10,-10], axis:true, showCopyright: false});
+//  brd.suspendUpdate(); 
+  var axisx = brd.create('axis', [[0,0], [1,0]],    
+  {
+    firstArrow: true,
+    lastArrow: true, 
+    ticks: {
+      drawZero: true,
+      ticksDistance: 1,
+      majorHeight: 30,
+      tickEndings: [1,1],
+      minorTicks: 0
+    }  
+  });
+
+</script>
+</div>
+</div>
+
+<div title="reference image" align="middle">  
+<img src="http://docs.virtdata.io/siteinfo/jsxgraph.png"></img> 
+</div>
+
+<h3 id="mermaid-js-rendering">Mermaid.js rendering</h3>
+
+<p>courtesy of <a href="https://knsv.github.io/mermaid/">mermaid.js</a></p>
+
+<div title="rendered dynamically" align="middle">
+
+
+
+<div class="mermaid">
+graph LR
+A--&gt;B
+B--&gt;C
+C--&gt;A
+</div>
+
+
+
+</div>
+
+<div title="reference image" align="middle">
+<img src="http://docs.virtdata.io/siteinfo/mermaid_abc.png"></img>
+</div>
+
+<h3 id="nomnoml-rendering">nomnoml rendering</h3>
+
+<p>courtesy of <a href="http://nomnoml.com/">nomnoml.com</a></p>
+
+<div title="rendered dynamically" align="middle">
+
+
+<div align="center" class="nomnoml-text"><div><pre>
+ #direction: right
+ [A] -&gt; [B]
+ [B] -&gt;  [C]
+ [C] -&gt; [A]
+</pre></div></div>
+<script type="text/javascript" src="http://docs.virtdata.io/modules/nomnoml/inithook-nomnoml.js"></script>
+
+</div>
+
+<div title="reference image" align="middle">
+<div><img src="http://docs.virtdata.io/siteinfo/nomnoml_abc.png"></img> 
+</div>
 
 
 			<aside class="copyright" role="note">
@@ -505,7 +591,7 @@
 <nav class="pagination" aria-label="Footer">
   <div class="previous">
   
-      <a href="http://docs.virtdata.io/src/extending_virtdata/library_structure/" title="">
+      <a href="http://docs.virtdata.io/modeling_datasets/set_relationships/" title="Set Relationships">
         <span class="direction">
           Previous
         </span>
@@ -515,7 +601,7 @@
           </div>
           <div class="stretch">
             <div class="title">
-              
+              Set Relationships
             </div>
           </div>
         </div>
@@ -525,14 +611,14 @@
 
   <div class="next">
   
-      <a href="http://docs.virtdata.io/src/nomnoml_test/" title="">
+      <a href="http://docs.virtdata.io/functions/funcref_collections/" title="collections">
         <span class="direction">
           Next
         </span>
         <div class="page">
           <div class="stretch">
             <div class="title">
-              
+              collections
             </div>
           </div>
           <div class="button button-next" role="button" aria-label="Next">

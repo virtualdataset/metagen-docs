@@ -9,16 +9,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
-    <title> - VirtualDataSet</title>
+    <title>state - VirtualDataSet</title>
     <meta name="generator" content="Hugo 0.31" />
 
     
     <meta name="description" content="VirtualDataSet Docs">
     
-    <link rel="canonical" href="http://docs.virtdata.io/src/matter/glossary/">
+    <link rel="canonical" href="http://docs.virtdata.io/functions/funcref_state/">
     
 
-    <meta property="og:url" content="http://docs.virtdata.io/src/matter/glossary/">
+    <meta property="og:url" content="http://docs.virtdata.io/functions/funcref_state/">
     <meta property="og:title" content="VirtualDataSet">
     <meta property="og:image" content="/images/virtdata_128.png">
     <meta name="apple-mobile-web-app-title" content="VirtualDataSet">
@@ -127,7 +127,7 @@
     </div>
     <div class="stretch">
       <div class="title">
-        
+        state
       </div>
     </div>
 
@@ -459,34 +459,95 @@
 
 	<article class="article">
 		<div class="wrapper">
-			<h1> </h1>
+			<h1>state </h1>
 
 			
 
-<h1 id="glossary">Glossary</h1>
+<h2 id="clear">Clear</h2>
 
-<dl>
+<p>Clears the per-thread map which is used by the Expr function.</p>
 
- <dt>Data Model</dt>
- <dd>
- A model that describes the types of data that may be stored in a data set, logical or physical. It includes the types, and in some cases, the implied set of operations which are valid for accessing and manipulationg the data.
- </dd>
- 
- <dt>Dataset</dt>
- <dd>
- A dataset is simply a named set of content which can be consumed, and/or modified, generally for a particular purpose. A dataset can be described by a generative model
-  or it can be actual data that
-  has been simulated or captured
-  from a real world activity.
- </dd>
- 
- <dt>Dataset Model</dt>
- <dd>
- A model that describes the content
- of a dataset, including data types, relative cardinalites, and estimates or measurements of the distribution of the data.
- </dd>
+<ul>
+<li>long -&gt; Clear() -&gt; long
 
-</dl>
+<ul>
+<li><em>notes:</em> Clear all named entries from the per-thread map.</li>
+<li><em>ex:</em> <code>Clear()</code> - <em>clear all thread-local variables</em></li>
+</ul></li>
+<li>long -&gt; Clear(String[]&hellip;: names) -&gt; long
+
+<ul>
+<li><em>notes:</em> Clear the specified names from the per-thread map.</li>
+<li><em>ex:</em> <code>Clear('foo')</code> - <em>clear the thread-local variable &lsquo;foo&rsquo;</em></li>
+<li><em>ex:</em> <code>Clear('foo','bar')</code> - <em>clear the thread-local variables &lsquo;foo&rsquo; and &lsquo;bar&rsquo;</em></li>
+</ul></li>
+</ul>
+
+<h2 id="load">Load</h2>
+
+<ul>
+<li>long -&gt; Load(String: name) -&gt; long
+
+<ul>
+<li><em>ex:</em> <code>Load('foo')</code> - <em>load a long value from the named variable for this thread</em></li>
+</ul></li>
+<li>Object -&gt; Load(String: name) -&gt; Object
+
+<ul>
+<li><em>ex:</em> <code>Load('foo')</code> - <em>load a Object value from the named variable for this thread</em></li>
+</ul></li>
+<li>String -&gt; Load(String: name) -&gt; String
+
+<ul>
+<li><em>ex:</em> <code>Load('foo')</code> - <em>load a String value from the named variable for this thread</em></li>
+</ul></li>
+</ul>
+
+<h2 id="save">Save</h2>
+
+<p>Save the current input value at this point in the function chain to a thread-local variable name.
+The input value is unchanged, and available for the next function in the chain to use as-is.</p>
+
+<ul>
+<li>long -&gt; Save(String: name) -&gt; long
+
+<ul>
+<li><em>ex:</em> <code>Save('foo')</code> - <em>save the current long value to the name &lsquo;foo&rsquo; in this thread</em></li>
+</ul></li>
+<li>Object -&gt; Save(String: name) -&gt; Object
+
+<ul>
+<li><em>ex:</em> <code>Save('foo')</code> - <em>save the current input object value to the name &lsquo;foo&rsquo; in this thread</em></li>
+</ul></li>
+<li>int -&gt; Save(String: name) -&gt; int
+
+<ul>
+<li><em>ex:</em> <code>Save('foo')</code> - <em>save the current int value to the name &lsquo;foo&rsquo; in this thread</em></li>
+</ul></li>
+<li>String -&gt; Save(String: name) -&gt; String
+
+<ul>
+<li><em>ex:</em> <code>Save('foo')</code> - <em>save the current String value to the name &lsquo;foo&rsquo; in this thread</em></li>
+</ul></li>
+</ul>
+
+<h2 id="show">Show</h2>
+
+<p>Show diagnostic values for the thread-local variable map.</p>
+
+<ul>
+<li>Object -&gt; Show() -&gt; String
+
+<ul>
+<li><em>ex:</em> <code>Show()</code> - <em>Show all values in a json-like format</em></li>
+</ul></li>
+<li>Object -&gt; Show(String[]&hellip;: names) -&gt; String
+
+<ul>
+<li><em>ex:</em> <code>Show('foo')</code> - <em>Show only the &lsquo;foo&rsquo; value in a json-like format</em></li>
+<li><em>ex:</em> <code>Show('foo','bar')</code> - <em>Show the &lsquo;foo&rsquo; and &lsquo;bar&rsquo; values in a json-like format</em></li>
+</ul></li>
+</ul>
 
 
 			<aside class="copyright" role="note">
@@ -505,7 +566,7 @@
 <nav class="pagination" aria-label="Footer">
   <div class="previous">
   
-      <a href="http://docs.virtdata.io/src/extending_virtdata/library_structure/" title="">
+      <a href="http://docs.virtdata.io/functions/funcref_premade/" title="premade">
         <span class="direction">
           Previous
         </span>
@@ -515,7 +576,7 @@
           </div>
           <div class="stretch">
             <div class="title">
-              
+              premade
             </div>
           </div>
         </div>
@@ -525,7 +586,7 @@
 
   <div class="next">
   
-      <a href="http://docs.virtdata.io/src/nomnoml_test/" title="">
+      <a href="http://docs.virtdata.io/src/extending_virtdata/adding_libraries/" title="">
         <span class="direction">
           Next
         </span>

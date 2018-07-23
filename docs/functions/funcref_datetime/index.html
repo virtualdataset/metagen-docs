@@ -1,0 +1,825 @@
+<!DOCTYPE html>
+  
+  
+  
+  
+   <html class="no-js"> 
+
+  <head lang="en-us">
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
+    <meta http-equiv="X-UA-Compatible" content="IE=10" />
+    <title>datetime - VirtualDataSet</title>
+    <meta name="generator" content="Hugo 0.31" />
+
+    
+    <meta name="description" content="VirtualDataSet Docs">
+    
+    <link rel="canonical" href="http://docs.virtdata.io/functions/funcref_datetime/">
+    
+
+    <meta property="og:url" content="http://docs.virtdata.io/functions/funcref_datetime/">
+    <meta property="og:title" content="VirtualDataSet">
+    <meta property="og:image" content="/images/virtdata_128.png">
+    <meta name="apple-mobile-web-app-title" content="VirtualDataSet">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+    <link rel="shortcut icon" type="image/x-icon" href="http://docs.virtdata.io/images/engineblock_32.png">
+    <link rel="icon" type="image/x-icon" href="http://docs.virtdata.io/images/engineblock_32.png">
+
+    <style>
+      @font-face {
+        font-family: 'Icon';
+        src: url('/fonts/icon.eot?52m981');
+        src: url('/fonts/icon.eot?#iefix52m981')
+               format('embedded-opentype'),
+             url('/fonts/icon.woff?52m981')
+               format('woff'),
+             url('/fonts/icon.ttf?52m981')
+               format('truetype'),
+             url('/fonts/icon.svg?52m981#icon')
+               format('svg');
+        font-weight: normal;
+        font-style: normal;
+      }
+    </style>
+
+    <link rel="stylesheet" href="http://docs.virtdata.io/stylesheets/application.css">
+    <link rel="stylesheet" href="http://docs.virtdata.io/stylesheets/temporary.css">
+    <link rel="stylesheet" href="http://docs.virtdata.io/stylesheets/palettes.css">
+    <link rel="stylesheet" href="http://docs.virtdata.io/stylesheets/images.css">
+
+    <link rel="stylesheet" href="http://docs.virtdata.io/stylesheets/highlight/highlight.css">
+
+    
+    
+    
+    <link rel="stylesheet" href="//fonts.googleapis.com/css?family=Roboto:400,700|Roboto&#43;Mono">
+    <style>
+      body, input {
+        font-family: 'Roboto', Helvetica, Arial, sans-serif;
+      }
+      pre, code {
+        font-family: 'Roboto Mono', 'Courier New', 'Courier', monospace;
+      }
+    </style>
+
+    
+    <script src="http://docs.virtdata.io/javascripts/modernizr.js"></script>
+
+    
+
+  
+    
+
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+
+    
+    
+    
+    
+    
+
+    
+    
+
+
+  </head>
+  <body class="palette-primary-grey palette-accent-teal">
+
+
+
+
+<div class="backdrop">
+	<div class="backdrop-paper"></div>
+</div>
+
+<input class="toggle" type="checkbox" id="toggle-drawer">
+<input class="toggle" type="checkbox" id="toggle-search">
+<label class="toggle-button overlay" for="toggle-drawer"></label>
+
+<header class="header">
+	<nav aria-label="Header">
+  <div class="bar default">
+    <div class="button button-menu" role="button" aria-label="Menu">
+      <label class="toggle-button icon icon-menu" for="toggle-drawer">
+        <span></span>
+      </label>
+    </div>
+    <div class="stretch">
+      <div class="title">
+        datetime
+      </div>
+    </div>
+
+    
+
+    
+    <div class="button button-github" role="button" aria-label="GitHub">
+      <a href="https://github.com/virtualdataset/metagen-java" title="@virtualdataset/metagen-java on GitHub" target="_blank" class="toggle-button icon icon-github"></a>
+    </div>
+    
+    
+        
+  </div>
+  <div class="bar search">
+    <div class="button button-close" role="button" aria-label="Close">
+      <label class="toggle-button icon icon-back" for="toggle-search"></label>
+    </div>
+    <div class="stretch">
+      <div class="field">
+        <input class="query" type="text" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck>
+      </div>
+    </div>
+    <div class="button button-reset" role="button" aria-label="Search">
+      <button class="toggle-button icon icon-close" id="reset-search"></button>
+    </div>
+  </div>
+</nav>
+</header>
+
+<main class="main">
+	<div class="drawer">
+		<nav aria-label="Navigation">
+  <a href="http://docs.virtdata.io/" class="project">
+    <div class="banner">
+      
+        <div class="logo">
+          <img src="http://docs.virtdata.io/images/virtdata_128.png">
+        </div>
+      
+      <div class="name">
+        <strong>VirtualDataSet </strong>
+        
+      </div>
+    </div>
+  </a>
+
+  <div class="scrollable">
+    <div class="wrapper">
+      
+
+      <div class="toc">
+        
+        <ul>
+          
+
+
+
+
+<li>
+  
+    <span class="section">Introduction</span>
+    <ul>
+      
+        
+        
+
+
+
+<a  title="Why VirtData?" href="http://docs.virtdata.io/why_virtdata/why_virtdata/">
+	
+	Why VirtData?
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+
+<li>
+  
+    <span class="section">Concepts</span>
+    <ul>
+      
+        
+        
+
+
+
+<a  title="Mapping Functions" href="http://docs.virtdata.io/concepts/mapping_functions/">
+	
+	Mapping Functions
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Function Graphs" href="http://docs.virtdata.io/concepts/function_graphs/">
+	
+	Function Graphs
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+
+<li>
+  
+    <span class="section">Modeling Datasets</span>
+    <ul>
+      
+        
+        
+
+
+
+<a  title="Cardinality" href="http://docs.virtdata.io/modeling_datasets/modeling_cardinality/">
+	
+	Cardinality
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="Set Relationships" href="http://docs.virtdata.io/modeling_datasets/set_relationships/">
+	
+	Set Relationships
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+
+<li>
+  
+    <span class="section">Syntax Reference</span>
+    <ul>
+      
+        
+        
+
+
+
+<a  title="Syntax Reference" href="http://docs.virtdata.io/syntax/syntax_overview/">
+	
+	Syntax Reference
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+
+<li>
+  
+    <span class="section">Function Reference</span>
+    <ul>
+      
+        
+        
+
+
+
+<a  title="collections" href="http://docs.virtdata.io/functions/funcref_collections/">
+	
+	collections
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="conversion" href="http://docs.virtdata.io/functions/funcref_conversion/">
+	
+	conversion
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="datetime" href="http://docs.virtdata.io/functions/funcref_datetime/">
+	
+	datetime
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="diagnostics" href="http://docs.virtdata.io/functions/funcref_diagnostics/">
+	
+	diagnostics
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="distributions" href="http://docs.virtdata.io/functions/funcref_distributions/">
+	
+	distributions
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="general" href="http://docs.virtdata.io/functions/funcref_general/">
+	
+	general
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="premade" href="http://docs.virtdata.io/functions/funcref_premade/">
+	
+	premade
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="state" href="http://docs.virtdata.io/functions/funcref_state/">
+	
+	state
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+
+<li>
+  
+    <span class="section">Site Info</span>
+    <ul>
+      
+        
+        
+
+
+
+<a  title="Typography" href="http://docs.virtdata.io/siteinfo/typography/">
+	
+	Typography
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+        </ul>
+        
+
+        
+      </div>
+    </div>
+  </div>
+</nav>
+
+	</div>
+
+	<article class="article">
+		<div class="wrapper">
+			<h1>datetime </h1>
+
+			
+
+<h2 id="startingepochmillis">StartingEpochMillis</h2>
+
+<p>This function sets the minimum long value to the equivalent
+unix epoch time in milliseconds. It simply adds the input
+value to this base value as determined by the provided
+time specifier. It wraps any overflow within this range as well.</p>
+
+<ul>
+<li>long -&gt; StartingEpochMillis(String: baseTimeSpec) -&gt; long
+
+<ul>
+<li><em>ex:</em> <code>StartingEpochMillis('2017-01-01 23:59:59')</code> - <em>add the millisecond epoch time of 2017-01-01 23:59:59 to all input values</em></li>
+</ul></li>
+</ul>
+
+<h2 id="todate">ToDate</h2>
+
+<p>Convert the input value to a {@code Date}</p>
+
+<ul>
+<li>long -&gt; ToDate(int: spacing, int: repeat_count) -&gt; java.util.Date</li>
+<li>long -&gt; ToDate(int: spacing) -&gt; java.util.Date</li>
+<li>long -&gt; ToDate() -&gt; java.util.Date</li>
+</ul>
+
+<h2 id="todatetime">ToDateTime</h2>
+
+<p>Convert the input value to a {@code org.joda.time.DateTime}</p>
+
+<ul>
+<li>long -&gt; ToDateTime(int: spacing, int: repeat_count) -&gt; org.joda.time.DateTime</li>
+<li>long -&gt; ToDateTime(String: spacing) -&gt; org.joda.time.DateTime</li>
+<li>long -&gt; ToDateTime() -&gt; org.joda.time.DateTime</li>
+</ul>
+
+<h2 id="toepochtimeuuid">ToEpochTimeUUID</h2>
+
+<p>Converts a long UTC timestamp in epoch millis form into a Version 1 TimeUUID
+according to <a href="https://www.ietf.org/rfc/rfc4122.txt">RFC 4122</a>.
+This means that only one unique value for a timeuuid can be generated for
+each epoch milli value, even though version 1 TimeUUIDs can normally represent
+up to 10000 distinct values per millisecond. If you need to access this
+level of resolution for testing purposes, use ToFinestTimeUUID
+instead. This method is to support simple mapping to natural timestamps
+as we often find in the real world.</p>
+
+<p>For the variants that have a String argument in the constructor, this is
+a parsable datetime that is used as the base time for all produced values.
+Setting this allows you to set the start of the time range for all timeuuid
+values produced. All times are parsed for UTC. All time use ISO date ordering,
+meaning that the most significant fields always go before the others.</p>
+
+<p>The valid formats, in joda specifier form are:
+<ol>
+<li>yyyy-MM-dd HH:mm:ss.SSSZ, for example: 2015-02-28 23:30:15.223</li>
+<li>yyyy-MM-dd HH:mm:ss, for example 2015-02-28 23:30:15</li>
+<li>yyyyMMdd&rsquo;T&rsquo;HHmmss.SSSZ, for example: 20150228T233015.223</li>
+<li>yyyyMMdd&rsquo;T&rsquo;HHmmssZ, for example: 20150228T233015</li>
+<li>yyyy-MM-dd, for example: 2015-02-28</li>
+<li>yyyyMMdd, for example: 20150228</li>
+<li>yyyyMM, for example: 201502</li>
+<li>yyyy, for example: 2015</li>
+</ol></p>
+
+<ul>
+<li>long -&gt; ToEpochTimeUUID() -&gt; java.util.UUID
+
+<ul>
+<li><em>notes:</em> Create version 1 timeuuids with a per-host node and empty clock data.
+The node and clock components are seeded from network interface data. In this case,
+the clock data is not seeded uniquely.</li>
+<li><em>ex:</em> <code>ToEpochTimeUUID()</code> - <em>basetime 0, computed node data, empty clock data</em></li>
+</ul></li>
+
+<li><p>long -&gt; ToEpochTimeUUID(long: node) -&gt; java.util.UUID</p>
+
+<ul>
+<li><p><em>notes:</em> Create version 1 timeuuids with a specific static node and empty clock data.
+This is useful for testing so that you can know that values are verifiable, even though
+in non-testing practice, you would rely on some form of entropy per-system to provide
+more practical dispersion of values over reboots, etc.</p></li>
+
+<li><p><em>ex:</em> <code>ToEpochTimeUUID(5234)</code> - <em>basetime 0, specified node data (5234), empty clock data</em></p></li>
+</ul></li>
+
+<li><p>long -&gt; ToEpochTimeUUID(long: node, long: clock) -&gt; java.util.UUID</p>
+
+<ul>
+<li><p><em>notes:</em> Create version 1 timeuuids with a specific static node and specific clock data.
+This is useful for testing so that you can know that values are verifiable, even though
+in non-testing practice, you would rely on some form of entropy per-system to provide
+more practical dispersion of values over reboots, etc.</p></li>
+
+<li><p><em>ex:</em> <code>ToEpochTimeUUID(31,337)</code> - <em>basetime 0, specified node data (31) and clock data (337)</em></p></li>
+</ul></li>
+
+<li><p>long -&gt; ToEpochTimeUUID(String: baseSpec) -&gt; java.util.UUID</p>
+
+<ul>
+<li><p><em>notes:</em> Create version 1 timeuuids with a per-host node and empty clock data.
+The node and clock components are seeded from network interface data. In this case,
+the clock data is not seeded uniquely.</p></li>
+
+<li><p><em>ex:</em> <code>ToEpochTimeUUID('2017-01-01T23:59:59')</code> - <em>specified basetime, computed node data, empty clock data</em></p></li>
+</ul></li>
+
+<li><p>long -&gt; ToEpochTimeUUID(String: baseSpec, long: node) -&gt; java.util.UUID</p>
+
+<ul>
+<li><p><em>notes:</em> Create version 1 timeuuids with a specific static node and empty clock data.
+This is useful for testing so that you can know that values are verifiable, even though
+in non-testing practice, you would rely on some form of entropy per-system to provide
+more practical dispersion of values over reboots, etc.</p></li>
+
+<li><p><em>ex:</em> <code>ToEpochTimeUUID('2012',12345)</code> - <em>basetime at start if 2012, with node data 12345, empty clock data</em></p></li>
+</ul></li>
+
+<li><p>long -&gt; ToEpochTimeUUID(String: baseSpec, long: node, long: clock) -&gt; java.util.UUID</p>
+
+<ul>
+<li><p><em>notes:</em> Create version 1 timeuuids with a specific static node and specific clock data.
+This is useful for testing so that you can know that values are verifiable, even though
+in non-testing practice, you would rely on some form of entropy per-system to provide
+more practical dispersion of values over reboots, etc.</p></li>
+
+<li><p><em>ex:</em> <code>ToEpochTimeUUID('20171231T1015.243',123,456)</code> - <em>ms basetime, specified node and clock data</em></p></li>
+</ul></li>
+</ul>
+
+<h2 id="tofinesttimeuuid">ToFinestTimeUUID</h2>
+
+<p>Converts a count of 100ns intervals from 1582 Julian to a Type1 TimeUUID
+according to <a href="https://www.ietf.org/rfc/rfc4122.txt">RFC 4122</a>.
+This allows you to access the finest unit of resolution for the
+purposes of simulating a large set of unique timeuuid values. This offers
+10000 times more unique values per ms than ToEpochTimeUUID.</p>
+
+<p>For the variants that have a String argument in the constructor, this is
+a parsable datetime that is used as the base time for all produced values.
+Setting this allows you to set the start of the time range for all timeuuid
+values produced. All times are parsed for UTC. All time use ISO date ordering,
+meaning that the most significant fields always go before the others.</p>
+
+<p>The valid formats, in joda specifier form are:</p>
+
+<ol>
+<li>yyyy-MM-dd HH:mm:ss.SSSZ, for example: 2015-02-28 23:30:15.223</li>
+<li>yyyy-MM-dd HH:mm:ss, for example 2015-02-28 23:30:15</li>
+<li>yyyyMMdd'T'HHmmss.SSSZ, for example: 20150228T233015.223</li>
+<li>yyyyMMdd'T'HHmmssZ, for example: 20150228T233015</li>
+<li>yyyy-MM-dd, for example: 2015-02-28</li>
+<li>yyyyMMdd, for example: 20150228</li>
+<li>yyyyMM, for example: 201502</li>
+<li>yyyy, for example: 2015</li>
+</ol>
+
+<ul>
+<li>long -&gt; ToFinestTimeUUID() -&gt; java.util.UUID
+
+<ul>
+<li><em>notes:</em> Create version 1 timeuuids with a per-host node and empty clock data.
+The node and clock components are seeded from network interface data. In this case,
+the clock data is not seeded uniquely.</li>
+<li><em>ex:</em> <code>ToFinestTimeUUID()</code> - <em>basetime 0, computed node data, empty clock data</em></li>
+</ul></li>
+
+<li><p>long -&gt; ToFinestTimeUUID(long: node) -&gt; java.util.UUID</p>
+
+<ul>
+<li><p><em>notes:</em> Create version 1 timeuuids with a specific static node and empty clock data.
+This is useful for testing so that you can know that values are verifiable, even though
+in non-testing practice, you would rely on some form of entropy per-system to provide
+more practical dispersion of values over reboots, etc.</p></li>
+
+<li><p><em>ex:</em> <code>ToFinestTimeUUID(5234)</code> - <em>basetime 0, specified node data (5234), empty clock data</em></p></li>
+</ul></li>
+
+<li><p>long -&gt; ToFinestTimeUUID(long: node, long: clock) -&gt; java.util.UUID</p>
+
+<ul>
+<li><p><em>notes:</em> Create version 1 timeuuids with a specific static node and specific clock data.
+This is useful for testing so that you can know that values are verifiable, even though
+in non-testing practice, you would rely on some form of entropy per-system to provide
+more practical dispersion of values over reboots, etc.</p></li>
+
+<li><p><em>ex:</em> <code>ToFinestTimeUUID(31,337)</code> - <em>basetime 0, specified node data (31) and clock data (337)</em></p></li>
+</ul></li>
+
+<li><p>long -&gt; ToFinestTimeUUID(String: baseTimeSpec) -&gt; java.util.UUID</p>
+
+<ul>
+<li><p><em>notes:</em> Create version 1 timeuuids with a per-host node and empty clock data.
+The node and clock components are seeded from network interface data. In this case,
+the clock data is not seeded uniquely.</p></li>
+
+<li><p><em>ex:</em> <code>ToFinestTimeUUID('2017-01-01T23:59:59')</code> - <em>specified basetime, computed node data, empty clock data</em></p></li>
+</ul></li>
+
+<li><p>long -&gt; ToFinestTimeUUID(String: baseTimeSpec, long: node) -&gt; java.util.UUID</p>
+
+<ul>
+<li><p><em>notes:</em> Create version 1 timeuuids with a specific static node and empty clock data.
+This is useful for testing so that you can know that values are verifiable, even though
+in non-testing practice, you would rely on some form of entropy per-system to provide
+more practical dispersion of values over reboots, etc.</p></li>
+
+<li><p><em>ex:</em> <code>ToFinestTimeUUID('2012',12345)</code> - <em>basetime at start if 2012, with node data 12345, empty clock data</em></p></li>
+</ul></li>
+
+<li><p>long -&gt; ToFinestTimeUUID(String: baseTimeSpec, long: node, long: clock) -&gt; java.util.UUID</p>
+
+<ul>
+<li><p><em>notes:</em> Create version 1 timeuuids with a specific static node and specific clock data.
+This is useful for testing so that you can know that values are verifiable, even though
+in non-testing practice, you would rely on some form of entropy per-system to provide
+more practical dispersion of values over reboots, etc.</p></li>
+
+<li><p><em>ex:</em> <code>ToFinestTimeUUID('20171231T1015.243',123,456)</code> - <em>ms basetime, specified node and clock data</em></p></li>
+</ul></li>
+</ul>
+
+<h2 id="tojodadatetime">ToJodaDateTime</h2>
+
+<p>Convert the input value to a {@code org.joda.time.DateTime}</p>
+
+<ul>
+<li>long -&gt; ToJodaDateTime(int: spacing, int: repeat_count) -&gt; org.joda.time.DateTime</li>
+<li>long -&gt; ToJodaDateTime(String: spacing) -&gt; org.joda.time.DateTime</li>
+<li>long -&gt; ToJodaDateTime() -&gt; org.joda.time.DateTime</li>
+</ul>
+
+
+			<aside class="copyright" role="note">
+				
+				&copy; 2018 APL 2.0 &ndash;
+				
+				Documentation built with
+				<a href="https://www.gohugo.io" target="_blank">Hugo</a>
+				using the
+				<a href="http://github.com/digitalcraftsman/hugo-material-docs" target="_blank">Material</a> theme.
+			</aside>
+
+			<footer class="footer">
+				
+
+<nav class="pagination" aria-label="Footer">
+  <div class="previous">
+  
+      <a href="http://docs.virtdata.io/functions/funcref_conversion/" title="conversion">
+        <span class="direction">
+          Previous
+        </span>
+        <div class="page">
+          <div class="button button-previous" role="button" aria-label="Previous">
+            <i class="icon icon-back"></i>
+          </div>
+          <div class="stretch">
+            <div class="title">
+              conversion
+            </div>
+          </div>
+        </div>
+      </a>
+  
+  </div>
+
+  <div class="next">
+  
+      <a href="http://docs.virtdata.io/functions/funcref_diagnostics/" title="diagnostics">
+        <span class="direction">
+          Next
+        </span>
+        <div class="page">
+          <div class="stretch">
+            <div class="title">
+              diagnostics
+            </div>
+          </div>
+          <div class="button button-next" role="button" aria-label="Next">
+            <i class="icon icon-forward"></i>
+          </div>
+        </div>
+      </a>
+  
+  </div>
+</nav>
+
+
+
+
+
+			</footer>
+		</div>
+	</article>
+
+	<div class="results" role="status" aria-live="polite">
+		<div class="scrollable">
+			<div class="wrapper">
+				<div class="meta"></div>
+				<div class="list"></div>
+			</div>
+		</div>
+	</div>
+</main>
+
+    <script>
+    
+      var base_url = '';
+      var repo_id  = '';
+    
+    </script>
+
+    <script src="http://docs.virtdata.io/javascripts/application.js"></script>
+    
+
+    <script>
+      /* Add headers to scrollspy */
+      var headers   = document.getElementsByTagName("h2");
+      var scrollspy = document.getElementById('scrollspy');
+
+      if(scrollspy) {
+        if(headers.length > 0) {
+          for(var i = 0; i < headers.length; i++) {
+            var li = document.createElement("li");
+            li.setAttribute("class", "anchor");
+
+            var a  = document.createElement("a");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", headers[i].innerHTML);
+            a.innerHTML = headers[i].innerHTML;
+
+            li.appendChild(a)
+            scrollspy.appendChild(li);
+          }
+        } else {
+          scrollspy.parentElement.removeChild(scrollspy)
+        }
+
+
+        /* Add permanent link next to the headers */
+        var headers = document.querySelectorAll("h1, h2, h3, h4, h5, h6");
+
+        for(var i = 0; i < headers.length; i++) {
+            var a = document.createElement("a");
+            a.setAttribute("class", "headerlink");
+            a.setAttribute("href", "#" + headers[i].id);
+            a.setAttribute("title", "Permanent link")
+            a.innerHTML = "¶";
+            headers[i].appendChild(a);
+        }
+      }
+    </script>
+
+    
+
+    <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.8.0/highlight.min.js"></script>
+    <script>hljs.initHighlightingOnLoad();</script>
+  </body>
+</html>
+

@@ -9,16 +9,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
-    <title> - VirtualDataSet</title>
+    <title>collections - VirtualDataSet</title>
     <meta name="generator" content="Hugo 0.31" />
 
     
     <meta name="description" content="VirtualDataSet Docs">
     
-    <link rel="canonical" href="http://docs.virtdata.io/src/matter/glossary/">
+    <link rel="canonical" href="http://docs.virtdata.io/functions/funcref_collections/">
     
 
-    <meta property="og:url" content="http://docs.virtdata.io/src/matter/glossary/">
+    <meta property="og:url" content="http://docs.virtdata.io/functions/funcref_collections/">
     <meta property="og:title" content="VirtualDataSet">
     <meta property="og:image" content="/images/virtdata_128.png">
     <meta name="apple-mobile-web-app-title" content="VirtualDataSet">
@@ -127,7 +127,7 @@
     </div>
     <div class="stretch">
       <div class="title">
-        
+        collections
       </div>
     </div>
 
@@ -459,34 +459,45 @@
 
 	<article class="article">
 		<div class="wrapper">
-			<h1> </h1>
+			<h1>collections </h1>
 
 			
 
-<h1 id="glossary">Glossary</h1>
+<h2 id="hashedlinetostringlist">HashedLineToStringList</h2>
 
-<dl>
+<ul>
+<li>long -&gt; HashedLineToStringList(String: filename, int: minSize, int: maxSize) -&gt; java.util.List</li>
+</ul>
 
- <dt>Data Model</dt>
- <dd>
- A model that describes the types of data that may be stored in a data set, logical or physical. It includes the types, and in some cases, the implied set of operations which are valid for accessing and manipulationg the data.
- </dd>
- 
- <dt>Dataset</dt>
- <dd>
- A dataset is simply a named set of content which can be consumed, and/or modified, generally for a particular purpose. A dataset can be described by a generative model
-  or it can be actual data that
-  has been simulated or captured
-  from a real world activity.
- </dd>
- 
- <dt>Dataset Model</dt>
- <dd>
- A model that describes the content
- of a dataset, including data types, relative cardinalites, and estimates or measurements of the distribution of the data.
- </dd>
+<h2 id="hashedlinetostringset">HashedLineToStringSet</h2>
 
-</dl>
+<p>Return a pseudo-randomly created Set from the values in
+the specified file.</p>
+
+<ul>
+<li>long -&gt; HashedLineToStringSet(String: filename, int: minSize, int: maxSize) -&gt; java.util.Set<String>
+
+<ul>
+<li><em>ex:</em> <code>HashedLineToStringSet('data/variable_words.txt',2,10)</code> - <em>Create a set of words sized between 2 and 10 elements</em></li>
+</ul></li>
+</ul>
+
+<h2 id="hashedlinetostringstringmap">HashedLineToStringStringMap</h2>
+
+<p>Create a String-String map from the specified file, ranging in size
+from 0 to the specified maximum.</p>
+
+<ul>
+<li>long -&gt; HashedLineToStringStringMap(String: paramFile, int: maxSize) -&gt; java.util.Map<String,String></li>
+</ul>
+
+<h2 id="hashedrangetolonglist">HashedRangeToLongList</h2>
+
+<p>Create a list of longs.</p>
+
+<ul>
+<li>long -&gt; HashedRangeToLongList(int: minVal, int: maxVal, int: minSize, int: maxSize) -&gt; java.util.List<Long></li>
+</ul>
 
 
 			<aside class="copyright" role="note">
@@ -505,7 +516,7 @@
 <nav class="pagination" aria-label="Footer">
   <div class="previous">
   
-      <a href="http://docs.virtdata.io/src/extending_virtdata/library_structure/" title="">
+      <a href="http://docs.virtdata.io/siteinfo/typography/" title="Typography">
         <span class="direction">
           Previous
         </span>
@@ -515,7 +526,7 @@
           </div>
           <div class="stretch">
             <div class="title">
-              
+              Typography
             </div>
           </div>
         </div>
@@ -525,14 +536,14 @@
 
   <div class="next">
   
-      <a href="http://docs.virtdata.io/src/nomnoml_test/" title="">
+      <a href="http://docs.virtdata.io/functions/funcref_conversion/" title="conversion">
         <span class="direction">
           Next
         </span>
         <div class="page">
           <div class="stretch">
             <div class="title">
-              
+              conversion
             </div>
           </div>
           <div class="button button-next" role="button" aria-label="Next">

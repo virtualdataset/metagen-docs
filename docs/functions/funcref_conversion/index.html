@@ -9,16 +9,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
-    <title> - VirtualDataSet</title>
+    <title>conversion - VirtualDataSet</title>
     <meta name="generator" content="Hugo 0.31" />
 
     
     <meta name="description" content="VirtualDataSet Docs">
     
-    <link rel="canonical" href="http://docs.virtdata.io/todo/rendercheck/typography/">
+    <link rel="canonical" href="http://docs.virtdata.io/functions/funcref_conversion/">
     
 
-    <meta property="og:url" content="http://docs.virtdata.io/todo/rendercheck/typography/">
+    <meta property="og:url" content="http://docs.virtdata.io/functions/funcref_conversion/">
     <meta property="og:title" content="VirtualDataSet">
     <meta property="og:image" content="/images/virtdata_128.png">
     <meta name="apple-mobile-web-app-title" content="VirtualDataSet">
@@ -127,7 +127,7 @@
     </div>
     <div class="stretch">
       <div class="title">
-        
+        conversion
       </div>
     </div>
 
@@ -318,9 +318,124 @@
 
 
 
-<a  title="All Functions" href="http://docs.virtdata.io/functions/autodoc_reference/">
+<a  title="collections" href="http://docs.virtdata.io/functions/funcref_collections/">
 	
-	All Functions
+	collections
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="conversion" href="http://docs.virtdata.io/functions/funcref_conversion/">
+	
+	conversion
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="datetime" href="http://docs.virtdata.io/functions/funcref_datetime/">
+	
+	datetime
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="diagnostics" href="http://docs.virtdata.io/functions/funcref_diagnostics/">
+	
+	diagnostics
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="distributions" href="http://docs.virtdata.io/functions/funcref_distributions/">
+	
+	distributions
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="general" href="http://docs.virtdata.io/functions/funcref_general/">
+	
+	general
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="premade" href="http://docs.virtdata.io/functions/funcref_premade/">
+	
+	premade
+</a>
+
+
+
+      
+        
+        
+
+
+
+<a  title="state" href="http://docs.virtdata.io/functions/funcref_state/">
+	
+	state
+</a>
+
+
+
+      
+    </ul>
+  
+</li>
+
+
+
+<li>
+  
+    <span class="section">Site Info</span>
+    <ul>
+      
+        
+        
+
+
+
+<a  title="Typography" href="http://docs.virtdata.io/siteinfo/typography/">
+	
+	Typography
 </a>
 
 
@@ -344,107 +459,200 @@
 
 	<article class="article">
 		<div class="wrapper">
-			<h1> </h1>
+			<h1>conversion </h1>
 
 			
 
-<h1 id="typography">Typography</h1>
+<h2 id="longtobyte">LongToByte</h2>
 
-<p>This book includes some diagrams that are rendered
-on the client side from various graphical markup systems.</p>
+<p>Convert the input long value to a byte, with negative values
+masked away.</p>
 
-<p>This page lets you verify that you can read the glyph and diagrams correctly. If
-you do not see two of everything, then you will not be able to see some of the
-diagrams in the book. In that case, please report the
-<a href="https://github.com/virtualdataset/virtdata-docs/issues">issue</a>.</p>
+<ul>
+<li>long -&gt; LongToByte() -&gt; Byte</li>
+</ul>
 
-<p>In each of the rendering checks below, the dynamically rendered element is shown
-first, followed by a reference image.</p>
+<h2 id="longtoshort">LongToShort</h2>
 
-<h3 id="jsxgraph-rendering">jsxgraph rendering</h3>
+<ul>
+<li>long -&gt; LongToShort() -&gt; Short</li>
+</ul>
 
-<p>courtesy of <a href="http://jsxgraph.uni-bayreuth.de/wp/index.html">jsxgraph</a></p>
+<h2 id="modulotobigdecimal">ModuloToBigDecimal</h2>
 
-<div title="dynamically rendered" align="middle">
-<div id="jsxtest" class="jxgbox" style="width:250px; height:250px;"><br> </div> 
-{{#jsxgraph
-  var brd = JXG.JSXGraph.initBoard('jsxtest', 
-   {
-    boundingbox:[-10,10,10,-10], 
-    keepaspectratio: true, 
-    axis:true,
-    showCopyright: false
-   }
-  ); 
-  var axisx = brd.create('axis', [[0,0], [1,0]],    
-  {
-    firstArrow: true,
-    lastArrow: true, 
-    ticks: {
-      drawZero: true,
-      ticksDistance: 1,
-      majorHeight: 30,
-      tickEndings: [1,1],
-      minorTicks: 0
-    }  
-  });
-  var p = brd.create('glider', [2.2, 0, axisx], {});    
-}}
-</div>
-<div title="reference image" align="middle">  
-<img src="rendercheck/jsxgraph.png"></img> 
-</div>
+<p>Return a {@code BigDecimal} value as the result of modulo division with the specified divisor.</p>
 
-<h3 id="mermaid-js-rendering">Mermaid.js rendering</h3>
+<ul>
+<li>long -&gt; ModuloToBigDecimal() -&gt; java.math.BigDecimal</li>
+<li>long -&gt; ModuloToBigDecimal(long: modulo) -&gt; java.math.BigDecimal</li>
+</ul>
 
-<p>courtesy of <a href="https://knsv.github.io/mermaid/">mermaid.js</a></p>
+<h2 id="modulotobigint">ModuloToBigInt</h2>
 
-<div title="rendered dynamically" align="middle">
-{{#mermaid
-graph LR
-A-->B
-B-->C
-C-->A
-}} 
-</div>
+<p>Return a {@code BigInteger} value as the result of modulo division with the specified divisor.</p>
 
-<div title="reference image" align="middle">
-<img src="rendercheck/mermaid_abc.png"></img>
-</div>
+<ul>
+<li>long -&gt; ModuloToBigInt() -&gt; java.math.BigInteger</li>
+<li>long -&gt; ModuloToBigInt(long: modulo) -&gt; java.math.BigInteger</li>
+</ul>
 
-<h3 id="nomnoml-rendering">nomnoml rendering</h3>
+<h2 id="modulotoboolean">ModuloToBoolean</h2>
 
-<p>courtesy of <a href="http://nomnoml.com/">nomnoml.com</a></p>
+<p>Return a boolean value as the result of modulo division with the specified divisor.</p>
 
-<div title="rendered dynamically" align="middle">
- {{#nomnoml
- #direction: right
- [A] -> [B]
- [B] ->  [C]
- [C] -> [A]
- }} 
-</div>
+<ul>
+<li>long -&gt; ModuloToBoolean() -&gt; Boolean</li>
+</ul>
 
-<div title="reference image" align="middle">
-<div><img src="rendercheck/nomnoml_abc.png"></img> 
-</div>
+<h2 id="modulotobyte">ModuloToByte</h2>
 
-<h3 id="mathjax-rendering">mathjax rendering</h3>
+<p>Return a byte value as the result of modulo division with the specified divisor.</p>
 
-<p>courtesy of <a href="https://mathjax.org">mathjax.org</a></p>
+<ul>
+<li>long -&gt; ModuloToByte(long: modulo) -&gt; Byte</li>
+</ul>
 
-<p>An inline \( \int x = \frac{x^2}{2} \) equation, with a reference image:
-<img src="rendercheck/mathjax_inline.png"></img>. The images should match.</p>
+<h2 id="modulotoshort">ModuloToShort</h2>
 
-<p>A block equation:</p>
+<p>Return a boolean value as the result of modulo division with the specified divisor.</p>
 
-<p>\[ \mu = \frac{1}{N} \sum_{i=0} x_i \]</p>
+<ul>
+<li>long -&gt; ModuloToShort(long: modulo) -&gt; Short</li>
+</ul>
 
-<p>The above equation should look like the reference image below:</p>
+<h2 id="tobigint">ToBigInt</h2>
 
-<div align="middle">
-<img src="rendercheck/mathjax_block.png"></img> 
-</div> 
+<p>Convert the input value to a {@code BigInteger}</p>
+
+<ul>
+<li>long -&gt; ToBigInt() -&gt; java.math.BigInteger</li>
+</ul>
+
+<h2 id="toboolean">ToBoolean</h2>
+
+<p>Convert the input value to a {@code boolean}</p>
+
+<ul>
+<li>long -&gt; ToBoolean() -&gt; Boolean</li>
+<li>Double -&gt; ToBoolean() -&gt; Boolean</li>
+<li>Float -&gt; ToBoolean() -&gt; Boolean</li>
+<li>Integer -&gt; ToBoolean() -&gt; Boolean</li>
+</ul>
+
+<h2 id="tobyte">ToByte</h2>
+
+<p>Convert the input value to a {@code Byte}.</p>
+
+<ul>
+<li>double -&gt; ToByte() -&gt; Byte</li>
+<li>double -&gt; ToByte(int: modulo) -&gt; Byte</li>
+<li>Float -&gt; ToByte() -&gt; Byte</li>
+<li>Float -&gt; ToByte(int: modulo) -&gt; Byte</li>
+<li>int -&gt; ToByte() -&gt; Byte</li>
+<li>int -&gt; ToByte(int: modulo) -&gt; Byte</li>
+<li>long -&gt; ToByte() -&gt; Byte</li>
+<li>long -&gt; ToByte(int: modulo) -&gt; Byte</li>
+<li>Short -&gt; ToByte(int: scale) -&gt; Byte</li>
+<li>Short -&gt; ToByte() -&gt; Byte</li>
+<li>String -&gt; ToByte() -&gt; Byte</li>
+</ul>
+
+<h2 id="tobytebuffer">ToByteBuffer</h2>
+
+<p>Convert the input value to a {@code ByteBuffer}</p>
+
+<ul>
+<li>double -&gt; ToByteBuffer() -&gt; java.nio.ByteBuffer</li>
+<li>Float -&gt; ToByteBuffer() -&gt; java.nio.ByteBuffer</li>
+<li>int -&gt; ToByteBuffer() -&gt; java.nio.ByteBuffer</li>
+<li>long -&gt; ToByteBuffer() -&gt; java.nio.ByteBuffer</li>
+<li>Short -&gt; ToByteBuffer() -&gt; java.nio.ByteBuffer</li>
+<li>String -&gt; ToByteBuffer() -&gt; java.nio.ByteBuffer</li>
+</ul>
+
+<h2 id="todouble">ToDouble</h2>
+
+<p>Convert the input value to a double.</p>
+
+<ul>
+<li>long -&gt; ToDouble() -&gt; double</li>
+</ul>
+
+<h2 id="tofloat">ToFloat</h2>
+
+<p>Convert the input value into a float.</p>
+
+<ul>
+<li>double -&gt; ToFloat(double: scale) -&gt; Float</li>
+<li>double -&gt; ToFloat() -&gt; Float</li>
+<li>int -&gt; ToFloat(int: scale) -&gt; Float</li>
+<li>int -&gt; ToFloat() -&gt; Float</li>
+<li>long -&gt; ToFloat(long: scale) -&gt; Float</li>
+<li>long -&gt; ToFloat() -&gt; Float</li>
+<li>Short -&gt; ToFloat() -&gt; Float</li>
+<li>String -&gt; ToFloat() -&gt; Float</li>
+</ul>
+
+<h2 id="toinetaddress">ToInetAddress</h2>
+
+<p>Convert the input value to a {@code java.net.InetAddress}</p>
+
+<ul>
+<li>long -&gt; ToInetAddress() -&gt; java.net.InetAddress</li>
+</ul>
+
+<h2 id="toint">ToInt</h2>
+
+<p>Convert the input value to a long.</p>
+
+<ul>
+<li>long -&gt; ToInt() -&gt; int</li>
+<li>Object -&gt; ToInt() -&gt; Integer</li>
+<li>double -&gt; ToInt(int: scale) -&gt; int</li>
+<li>double -&gt; ToInt() -&gt; int</li>
+<li>Double -&gt; ToInt(int: scale) -&gt; Integer</li>
+<li>Double -&gt; ToInt() -&gt; Integer</li>
+<li>long -&gt; ToInt(int: scale) -&gt; int</li>
+<li>long -&gt; ToInt() -&gt; int</li>
+<li>String -&gt; ToInt() -&gt; Integer</li>
+</ul>
+
+<h2 id="tolong">ToLong</h2>
+
+<ul>
+<li>double -&gt; ToLong(long: scale) -&gt; long</li>
+<li>double -&gt; ToLong() -&gt; long</li>
+<li>Float -&gt; ToLong(long: scale) -&gt; Long</li>
+<li>Float -&gt; ToLong() -&gt; Long</li>
+</ul>
+
+<h2 id="toshort">ToShort</h2>
+
+<p>Convert the input value to a short.</p>
+
+<ul>
+<li>double -&gt; ToShort() -&gt; Short</li>
+<li>double -&gt; ToShort(int: modulo) -&gt; Short</li>
+<li>Float -&gt; ToShort() -&gt; Short</li>
+<li>Float -&gt; ToShort(int: modulo) -&gt; Short</li>
+<li>int -&gt; ToShort() -&gt; Short</li>
+<li>int -&gt; ToShort(int: scale) -&gt; Short</li>
+<li>long -&gt; ToShort() -&gt; Short</li>
+<li>long -&gt; ToShort(int: wrapat) -&gt; Short
+
+<ul>
+<li><em>notes:</em> This form allows for limiting the short values at a lower limit than Short.MAX_VALUE.</li>
+</ul></li>
+<li>String -&gt; ToShort() -&gt; Short</li>
+</ul>
+
+<h2 id="tostring">ToString</h2>
+
+<ul>
+<li>Float -&gt; ToString() -&gt; String</li>
+<li>int -&gt; ToString() -&gt; String</li>
+<li>long -&gt; ToString() -&gt; String</li>
+</ul>
 
 
 			<aside class="copyright" role="note">
@@ -463,7 +671,7 @@ C-->A
 <nav class="pagination" aria-label="Footer">
   <div class="previous">
   
-      <a href="http://docs.virtdata.io/todo/" title="">
+      <a href="http://docs.virtdata.io/functions/funcref_collections/" title="collections">
         <span class="direction">
           Previous
         </span>
@@ -473,7 +681,7 @@ C-->A
           </div>
           <div class="stretch">
             <div class="title">
-              
+              collections
             </div>
           </div>
         </div>
@@ -483,14 +691,14 @@ C-->A
 
   <div class="next">
   
-      <a href="http://docs.virtdata.io/todo/using_virtdata/common_recipes/" title="">
+      <a href="http://docs.virtdata.io/functions/funcref_datetime/" title="datetime">
         <span class="direction">
           Next
         </span>
         <div class="page">
           <div class="stretch">
             <div class="title">
-              
+              datetime
             </div>
           </div>
           <div class="button button-next" role="button" aria-label="Next">

@@ -9,16 +9,16 @@
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width,user-scalable=no,initial-scale=1,maximum-scale=1">
     <meta http-equiv="X-UA-Compatible" content="IE=10" />
-    <title> - VirtualDataSet</title>
+    <title>diagnostics - VirtualDataSet</title>
     <meta name="generator" content="Hugo 0.31" />
 
     
     <meta name="description" content="VirtualDataSet Docs">
     
-    <link rel="canonical" href="http://docs.virtdata.io/src/matter/glossary/">
+    <link rel="canonical" href="http://docs.virtdata.io/functions/funcref_diagnostics/">
     
 
-    <meta property="og:url" content="http://docs.virtdata.io/src/matter/glossary/">
+    <meta property="og:url" content="http://docs.virtdata.io/functions/funcref_diagnostics/">
     <meta property="og:title" content="VirtualDataSet">
     <meta property="og:image" content="/images/virtdata_128.png">
     <meta name="apple-mobile-web-app-title" content="VirtualDataSet">
@@ -127,7 +127,7 @@
     </div>
     <div class="stretch">
       <div class="title">
-        
+        diagnostics
       </div>
     </div>
 
@@ -459,34 +459,75 @@
 
 	<article class="article">
 		<div class="wrapper">
-			<h1> </h1>
+			<h1>diagnostics </h1>
 
 			
 
-<h1 id="glossary">Glossary</h1>
+<h2 id="show">Show</h2>
 
-<dl>
+<p>Show diagnostic values for the thread-local variable map.</p>
 
- <dt>Data Model</dt>
- <dd>
- A model that describes the types of data that may be stored in a data set, logical or physical. It includes the types, and in some cases, the implied set of operations which are valid for accessing and manipulationg the data.
- </dd>
- 
- <dt>Dataset</dt>
- <dd>
- A dataset is simply a named set of content which can be consumed, and/or modified, generally for a particular purpose. A dataset can be described by a generative model
-  or it can be actual data that
-  has been simulated or captured
-  from a real world activity.
- </dd>
- 
- <dt>Dataset Model</dt>
- <dd>
- A model that describes the content
- of a dataset, including data types, relative cardinalites, and estimates or measurements of the distribution of the data.
- </dd>
+<ul>
+<li>Object -&gt; Show() -&gt; String
 
-</dl>
+<ul>
+<li><em>ex:</em> <code>Show()</code> - <em>Show all values in a json-like format</em></li>
+</ul></li>
+<li>Object -&gt; Show(String[]&hellip;: names) -&gt; String
+
+<ul>
+<li><em>ex:</em> <code>Show('foo')</code> - <em>Show only the &lsquo;foo&rsquo; value in a json-like format</em></li>
+<li><em>ex:</em> <code>Show('foo','bar')</code> - <em>Show the &lsquo;foo&rsquo; and &lsquo;bar&rsquo; values in a json-like format</em></li>
+</ul></li>
+</ul>
+
+<h2 id="tolongfunction">ToLongFunction</h2>
+
+<p>Adapts any compatible FunctionalInterface type to a LongFunction,
+for use with higher-order functions, when they require a
+LongFunction as an argument. Some of the higher-order functions within
+this library specifically require a LongFunction as an argument, while
+some of the other functions are provided in semantically equivalent
+forms with compatible types which can&rsquo;t be converted directly or
+automatically by Java.</p>
+
+<p>In such cases, those types of functions can be wrapped with the forms
+described here in order to allow the inner and outer functions to work together.</p>
+
+<ul>
+<li>long -&gt; ToLongFunction(java.util.function.LongUnaryOperator: op) -&gt; Object</li>
+<li>long -&gt; ToLongFunction(java.util.function.Function<Long,Long>: op) -&gt; Object</li>
+<li>long -&gt; ToLongFunction(java.util.function.LongToIntFunction: op) -&gt; Object</li>
+<li>long -&gt; ToLongFunction(java.util.function.LongToDoubleFunction: op) -&gt; Object</li>
+<li>long -&gt; ToLongFunction(java.util.function.LongFunction&lt;?&gt;: func) -&gt; Object</li>
+</ul>
+
+<h2 id="tolongunaryoperator">ToLongUnaryOperator</h2>
+
+<p>Adapts any compatible FunctionalInterface type to a LongUnaryOperator,
+for use with higher-order functions, when they require a
+LongUnaryOperator as an argument. Some of the higher-order functions within
+this library specifically require a LongUnaryOperator as an argument, while
+some of the other functions are provided in semantically equivalent
+forms with compatible types which can&rsquo;t be converted directly or
+automatically by Java.</p>
+
+<p>In such cases, those types of functions can be wrapped with the forms
+described here in order to allow the inner and outer functions to work together.</p>
+
+<ul>
+<li>long -&gt; ToLongUnaryOperator(java.util.function.LongFunction<Long>: f) -&gt; long</li>
+<li>long -&gt; ToLongUnaryOperator(java.util.function.Function<Long,Long>: f) -&gt; long</li>
+<li>long -&gt; ToLongUnaryOperator(java.util.function.LongUnaryOperator: f) -&gt; long</li>
+</ul>
+
+<h2 id="typeof">TypeOf</h2>
+
+<p>Yields the class of the resulting type in String form.</p>
+
+<ul>
+<li>Object -&gt; TypeOf() -&gt; String</li>
+</ul>
 
 
 			<aside class="copyright" role="note">
@@ -505,7 +546,7 @@
 <nav class="pagination" aria-label="Footer">
   <div class="previous">
   
-      <a href="http://docs.virtdata.io/src/extending_virtdata/library_structure/" title="">
+      <a href="http://docs.virtdata.io/functions/funcref_datetime/" title="datetime">
         <span class="direction">
           Previous
         </span>
@@ -515,7 +556,7 @@
           </div>
           <div class="stretch">
             <div class="title">
-              
+              datetime
             </div>
           </div>
         </div>
@@ -525,14 +566,14 @@
 
   <div class="next">
   
-      <a href="http://docs.virtdata.io/src/nomnoml_test/" title="">
+      <a href="http://docs.virtdata.io/functions/funcref_distributions/" title="distributions">
         <span class="direction">
           Next
         </span>
         <div class="page">
           <div class="stretch">
             <div class="title">
-              
+              distributions
             </div>
           </div>
           <div class="button button-next" role="button" aria-label="Next">

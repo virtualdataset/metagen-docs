@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes" ?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Siteinfos on VirtualDataSet</title>
+    <link>http://docs.virtdata.io/siteinfo/</link>
+    <description>Recent content in Siteinfos on VirtualDataSet</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>APL 2.0</copyright>
+    <lastBuildDate>Sat, 16 Dec 2017 00:00:00 +0000</lastBuildDate>
+    
+	<atom:link href="http://docs.virtdata.io/siteinfo/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Typography</title>
+      <link>http://docs.virtdata.io/siteinfo/typography/</link>
+      <pubDate>Sat, 16 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://docs.virtdata.io/siteinfo/typography/</guid>
+      <description>This book includes some diagrams that are rendered
+on the client side from various graphical markup systems.
+This page lets you verify that you can read the glyph and diagrams correctly. If you do not see two of everything, then you will not be able to see some of the diagrams in the book. In that case, please report the issue.
+In each of the rendering checks below, the dynamically rendered element is shown first, followed by a reference image.</description>
+    </item>
+    
+  </channel>
+</rss>

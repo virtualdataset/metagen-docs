@@ -13,17 +13,6 @@
     
     <item>
       <title></title>
-      <link>http://docs.virtdata.io/todo/rendercheck/typography/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      
-      <guid>http://docs.virtdata.io/todo/rendercheck/typography/</guid>
-      <description>Typography This book includes some diagrams that are rendered on the client side from various graphical markup systems.
-This page lets you verify that you can read the glyph and diagrams correctly. If you do not see two of everything, then you will not be able to see some of the diagrams in the book. In that case, please report the issue.
-In each of the rendering checks below, the dynamically rendered element is shown first, followed by a reference image.</description>
-    </item>
-    
-    <item>
-      <title></title>
       <link>http://docs.virtdata.io/todo/using_virtdata/common_recipes/</link>
       <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
       

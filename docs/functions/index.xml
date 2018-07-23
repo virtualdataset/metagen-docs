@@ -13,24 +13,89 @@
     
     
     <item>
-      <title>All Functions</title>
-      <link>http://docs.virtdata.io/functions/autodoc_reference/</link>
+      <title>collections</title>
+      <link>http://docs.virtdata.io/functions/funcref_collections/</link>
       <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://docs.virtdata.io/functions/autodoc_reference/</guid>
-      <description>Reference Format
-Each heading in this page is the name of a function. The description of the function in general is provided, if any after it.
-The details that follow show all of the forms of the function which are available, according to different input, out, and argument signatures. For each form, examples and notes are provided if available under ex: and notes:.
-Here is a fake documentation entry that visually explains the layout:</description>
+      <guid>http://docs.virtdata.io/functions/funcref_collections/</guid>
+      <description>HashedLineToStringList  long -&amp;gt; HashedLineToStringList(String: filename, int: minSize, int: maxSize) -&amp;gt; java.util.List  HashedLineToStringSet Return a pseudo-randomly created Set from the values in the specified file.
+ long -&amp;gt; HashedLineToStringSet(String: filename, int: minSize, int: maxSize) -&amp;gt; java.util.Set  ex: HashedLineToStringSet(&#39;data/variable_words.txt&#39;,2,10) - Create a set of words sized between 2 and 10 elements   HashedLineToStringStringMap Create a String-String map from the specified file, ranging in size from 0 to the specified maximum.</description>
     </item>
     
     <item>
-      <title></title>
-      <link>http://docs.virtdata.io/functions/functions_reference2/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <title>conversion</title>
+      <link>http://docs.virtdata.io/functions/funcref_conversion/</link>
+      <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://docs.virtdata.io/functions/functions_reference2/</guid>
-      <description>mapto_hypergeometric mapto_compute_hypergeometric compute_hypergeometric uniform_integer mapto_uniform_integer mapto_compute_uniform_integer compute_uniform_integer geometric mapto_geometric mapto_compute_geometric compute_geometric poisson mapto_poisson mapto_compute_poisson compute_poisson zipf mapto_zipf mapto_compute_zipf compute_zipf binomial mapto_binomial mapto_compute_binomial compute_binomial pascal mapto_pascal mapto_compute_pascal compute_pascal levy mapto_levy mapto_compute_levy compute_levy nakagami mapto_nakagami mapto_compute_nakagami compute_nakagami triangular mapto_triangular mapto_compute_triangular compute_triangular exponential mapto_exponential mapto_compute_exponential compute_exponential logistic mapto_logistic mapto_compute_logistic compute_logistic enumerated_real mapto_enumerated_real mapto_compute_enumerated_real compute_enumerated_real laplace mapto_laplace mapto_compute_laplace compute_laplace log_normal mapto_log_normal mapto_compute_log_normal compute_log_normal cauchy mapto_cauchy mapto_compute_cauchy compute_cauchy f mapto_f mapto_compute_f compute_f t mapto_t mapto_compute_t compute_t empirical mapto_empirical mapto_compute_empirical compute_empirical normal mapto_normal mapto_compute_normal compute_normal weibull mapto_weibull mapto_compute_weibull compute_weibull chi_squared mapto_chi_squared mapto_compute_chi_squared compute_chi_squared gumbel mapto_gumbel mapto_compute_gumbel compute_gumbel beta mapto_beta mapto_compute_beta compute_beta pareto mapto_pareto mapto_compute_pareto compute_pareto gamma mapto_gamma mapto_compute_gamma compute_gamma uniform_real mapto_uniform_real mapto_compute_uniform_real compute_uniform_real Add available forms:</description>
+      <guid>http://docs.virtdata.io/functions/funcref_conversion/</guid>
+      <description>LongToByte Convert the input long value to a byte, with negative values masked away.
+ long -&amp;gt; LongToByte() -&amp;gt; Byte  LongToShort  long -&amp;gt; LongToShort() -&amp;gt; Short  ModuloToBigDecimal Return a {@code BigDecimal} value as the result of modulo division with the specified divisor.
+ long -&amp;gt; ModuloToBigDecimal() -&amp;gt; java.math.BigDecimal long -&amp;gt; ModuloToBigDecimal(long: modulo) -&amp;gt; java.math.BigDecimal  ModuloToBigInt Return a {@code BigInteger} value as the result of modulo division with the specified divisor.</description>
+    </item>
+    
+    <item>
+      <title>datetime</title>
+      <link>http://docs.virtdata.io/functions/funcref_datetime/</link>
+      <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://docs.virtdata.io/functions/funcref_datetime/</guid>
+      <description>StartingEpochMillis This function sets the minimum long value to the equivalent unix epoch time in milliseconds. It simply adds the input value to this base value as determined by the provided time specifier. It wraps any overflow within this range as well.
+ long -&amp;gt; StartingEpochMillis(String: baseTimeSpec) -&amp;gt; long  ex: StartingEpochMillis(&#39;2017-01-01 23:59:59&#39;) - add the millisecond epoch time of 2017-01-01 23:59:59 to all input values   ToDate Convert the input value to a {@code Date}</description>
+    </item>
+    
+    <item>
+      <title>diagnostics</title>
+      <link>http://docs.virtdata.io/functions/funcref_diagnostics/</link>
+      <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://docs.virtdata.io/functions/funcref_diagnostics/</guid>
+      <description>Show Show diagnostic values for the thread-local variable map.
+ Object -&amp;gt; Show() -&amp;gt; String  ex: Show() - Show all values in a json-like format  Object -&amp;gt; Show(String[]&amp;hellip;: names) -&amp;gt; String  ex: Show(&#39;foo&#39;) - Show only the &amp;lsquo;foo&amp;rsquo; value in a json-like format ex: Show(&#39;foo&#39;,&#39;bar&#39;) - Show the &amp;lsquo;foo&amp;rsquo; and &amp;lsquo;bar&amp;rsquo; values in a json-like format   ToLongFunction Adapts any compatible FunctionalInterface type to a LongFunction, for use with higher-order functions, when they require a LongFunction as an argument.</description>
+    </item>
+    
+    <item>
+      <title>distributions</title>
+      <link>http://docs.virtdata.io/functions/funcref_distributions/</link>
+      <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://docs.virtdata.io/functions/funcref_distributions/</guid>
+      <description>Beta @see Wikipedia: Beta distribution
+@see Commons JavaDoc: BetaDistribution
+Generate samples according to the specified probability density.
+The input value consists of a long between 0L and Long.MAX_VALUE. This value is scaled to the unit interval (0.0, 1.0) as an index into a sampling function. The method used is inverse cumulative density sampling.
+Sampling Mode
+The curve can be sampled in either map or hash mode. Map mode simply indexes into the probability curve in the order that it would appear on a density plot.</description>
+    </item>
+    
+    <item>
+      <title>general</title>
+      <link>http://docs.virtdata.io/functions/funcref_general/</link>
+      <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://docs.virtdata.io/functions/funcref_general/</guid>
+      <description>Add Adds a value to the input.
+ double -&amp;gt; Add(double: addend) -&amp;gt; double long -&amp;gt; Add(long: addend) -&amp;gt; int long -&amp;gt; Add(long: addend) -&amp;gt; long int -&amp;gt; Add(int: addend) -&amp;gt; int  ex: Add(23) - adds integer 23 to the input integer value   AddCycleRange Adds a cycle range to the input, producing an increasing sawtooth-like output.
+ long -&amp;gt; AddCycleRange(long: maxValue) -&amp;gt; int long -&amp;gt; AddCycleRange(long: minValue, long: maxValue) -&amp;gt; int long -&amp;gt; AddCycleRange(long: maxValue) -&amp;gt; long long -&amp;gt; AddCycleRange(long: minValue, long: maxValue) -&amp;gt; long int -&amp;gt; AddCycleRange(int: maxValue) -&amp;gt; int int -&amp;gt; AddCycleRange(int: minValue, int: maxValue) -&amp;gt; int  AddHashRange Adds a pseudo-random value within the specified range to the input.</description>
+    </item>
+    
+    <item>
+      <title>premade</title>
+      <link>http://docs.virtdata.io/functions/funcref_premade/</link>
+      <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://docs.virtdata.io/functions/funcref_premade/</guid>
+      <description>FirstNames Return a pseudo-randomly sampled first name from the last US census data on first names occurring more than 100 times. Both male and female names are combined in this function.
+ long -&amp;gt; FirstNames() -&amp;gt; String  ex: FirstNames() - select a random first name based on the chance of seeing it in the census data  long -&amp;gt; FirstNames(String: modifier) -&amp;gt; String  ex: FirstNames(&#39;map&#39;) - select over the first names by probability as input varies from 1L to Long.</description>
+    </item>
+    
+    <item>
+      <title>state</title>
+      <link>http://docs.virtdata.io/functions/funcref_state/</link>
+      <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
+      
+      <guid>http://docs.virtdata.io/functions/funcref_state/</guid>
+      <description>Clear Clears the per-thread map which is used by the Expr function.
+ long -&amp;gt; Clear() -&amp;gt; long  notes: Clear all named entries from the per-thread map. ex: Clear() - clear all thread-local variables  long -&amp;gt; Clear(String[]&amp;hellip;: names) -&amp;gt; long  notes: Clear the specified names from the per-thread map. ex: Clear(&#39;foo&#39;) - clear the thread-local variable &amp;lsquo;foo&amp;rsquo; ex: Clear(&#39;foo&#39;,&#39;bar&#39;) - clear the thread-local variables &amp;lsquo;foo&amp;rsquo; and &amp;lsquo;bar&amp;rsquo;   Load  long -&amp;gt; Load(String: name) -&amp;gt; long  ex: Load(&#39;foo&#39;) - load a long value from the named variable for this thread  Object -&amp;gt; Load(String: name) -&amp;gt; Object  ex: Load(&#39;foo&#39;) - load a Object value from the named variable for this thread  String -&amp;gt; Load(String: name) -&amp;gt; String  ex: Load(&#39;foo&#39;) - load a String value from the named variable for this thread   Save Save the current input value at this point in the function chain to a thread-local variable name.</description>
     </item>
     
   </channel>
