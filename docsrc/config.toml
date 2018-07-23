@@ -3,7 +3,7 @@ languageCode = "en-us"
 title = "VirtualDataSet"
 theme = "hugo-material-docs"
 metadataformat = "yaml"
-canonifyurls = true
+canonifyurls = false
 
 [params]
 	# General information
