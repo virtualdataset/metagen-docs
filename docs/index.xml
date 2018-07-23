@@ -115,7 +115,8 @@ In each of the rendering checks below, the dynamically rendered element is shown
       
       <guid>http://docs.virtdata.io/functions/funcref_conversion/</guid>
       <description>LongToByte Convert the input long value to a byte, with negative values masked away.
- long -&amp;gt; LongToByte() -&amp;gt; Byte  LongToShort  long -&amp;gt; LongToShort() -&amp;gt; Short  ModuloToBigDecimal Return a {@code BigDecimal} value as the result of modulo division with the specified divisor.
+ long -&amp;gt; LongToByte() -&amp;gt; Byte  LongToShort Convert the input value from long to short.
+ long -&amp;gt; LongToShort() -&amp;gt; Short  ModuloToBigDecimal Return a {@code BigDecimal} value as the result of modulo division with the specified divisor.
  long -&amp;gt; ModuloToBigDecimal() -&amp;gt; java.math.BigDecimal long -&amp;gt; ModuloToBigDecimal(long: modulo) -&amp;gt; java.math.BigDecimal  ModuloToBigInt Return a {@code BigInteger} value as the result of modulo division with the specified divisor.</description>
     </item>
     
@@ -181,7 +182,7 @@ The curve can be sampled in either map or hash mode. Map mode simply indexes int
       
       <guid>http://docs.virtdata.io/functions/funcref_state/</guid>
       <description>Clear Clears the per-thread map which is used by the Expr function.
- long -&amp;gt; Clear() -&amp;gt; long  notes: Clear all named entries from the per-thread map. ex: Clear() - clear all thread-local variables  long -&amp;gt; Clear(String[]&amp;hellip;: names) -&amp;gt; long  notes: Clear the specified names from the per-thread map. ex: Clear(&#39;foo&#39;) - clear the thread-local variable &amp;lsquo;foo&amp;rsquo; ex: Clear(&#39;foo&#39;,&#39;bar&#39;) - clear the thread-local variables &amp;lsquo;foo&amp;rsquo; and &amp;lsquo;bar&amp;rsquo;   Load  long -&amp;gt; Load(String: name) -&amp;gt; long  ex: Load(&#39;foo&#39;) - load a long value from the named variable for this thread  Object -&amp;gt; Load(String: name) -&amp;gt; Object  ex: Load(&#39;foo&#39;) - load a Object value from the named variable for this thread  String -&amp;gt; Load(String: name) -&amp;gt; String  ex: Load(&#39;foo&#39;) - load a String value from the named variable for this thread   Save Save the current input value at this point in the function chain to a thread-local variable name.</description>
+ long -&amp;gt; Clear() -&amp;gt; long  notes: Clear all named entries from the per-thread map. ex: Clear() - clear all thread-local variables  long -&amp;gt; Clear(String[]&amp;hellip;: names) -&amp;gt; long  notes: Clear the specified names from the per-thread map. ex: Clear(&#39;foo&#39;) - clear the thread-local variable &amp;lsquo;foo&amp;rsquo; ex: Clear(&#39;foo&#39;,&#39;bar&#39;) - clear the thread-local variables &amp;lsquo;foo&amp;rsquo; and &amp;lsquo;bar&amp;rsquo;   Load Load a named value from the per-thread state map.</description>
     </item>
     
     <item>

@@ -485,7 +485,16 @@
 
 <h2 id="load">Load</h2>
 
+<p>Load a named value from the per-thread state map.
+The previous input value will be forgotten, and the named value will replace it
+before the next function in the chain.</p>
+
 <ul>
+<li>double -&gt; Load(String: name) -&gt; double
+
+<ul>
+<li><em>ex:</em> <code>Load('foo')</code> - <em>load a double value from the named variable for this thread</em></li>
+</ul></li>
 <li>long -&gt; Load(String: name) -&gt; long
 
 <ul>
@@ -495,6 +504,11 @@
 
 <ul>
 <li><em>ex:</em> <code>Load('foo')</code> - <em>load a Object value from the named variable for this thread</em></li>
+</ul></li>
+<li>int -&gt; Load(String: name) -&gt; int
+
+<ul>
+<li><em>ex:</em> <code>Load('foo')</code> - <em>load an int value from the named variable for this thread</em></li>
 </ul></li>
 <li>String -&gt; Load(String: name) -&gt; String
 
@@ -509,6 +523,41 @@
 The input value is unchanged, and available for the next function in the chain to use as-is.</p>
 
 <ul>
+<li>double -&gt; Save(String: name) -&gt; double
+
+<ul>
+<li><em>ex:</em> <code>Save('foo')</code> - <em>save the current double value to the name &lsquo;foo&rsquo; in this thread</em></li>
+</ul></li>
+<li>double -&gt; Save(String: name) -&gt; double
+
+<ul>
+<li><em>ex:</em> <code>Save('foo')</code> - <em>save the current double value to the name &lsquo;foo&rsquo; in this thread</em></li>
+</ul></li>
+<li>double -&gt; Save(String: name) -&gt; double
+
+<ul>
+<li><em>ex:</em> <code>Save('foo')</code> - <em>save the current double value to the name &lsquo;foo&rsquo; in this thread</em></li>
+</ul></li>
+<li>double -&gt; Save(String: name) -&gt; double
+
+<ul>
+<li><em>ex:</em> <code>Save('foo')</code> - <em>save the current double value to the name &lsquo;foo&rsquo; in this thread</em></li>
+</ul></li>
+<li>long -&gt; Save(String: name) -&gt; long
+
+<ul>
+<li><em>ex:</em> <code>Save('foo')</code> - <em>save the current long value to the name &lsquo;foo&rsquo; in this thread</em></li>
+</ul></li>
+<li>long -&gt; Save(String: name) -&gt; long
+
+<ul>
+<li><em>ex:</em> <code>Save('foo')</code> - <em>save the current long value to the name &lsquo;foo&rsquo; in this thread</em></li>
+</ul></li>
+<li>long -&gt; Save(String: name) -&gt; long
+
+<ul>
+<li><em>ex:</em> <code>Save('foo')</code> - <em>save the current long value to the name &lsquo;foo&rsquo; in this thread</em></li>
+</ul></li>
 <li>long -&gt; Save(String: name) -&gt; long
 
 <ul>
@@ -519,10 +568,55 @@ The input value is unchanged, and available for the next function in the chain t
 <ul>
 <li><em>ex:</em> <code>Save('foo')</code> - <em>save the current input object value to the name &lsquo;foo&rsquo; in this thread</em></li>
 </ul></li>
+<li>Object -&gt; Save(String: name) -&gt; Object
+
+<ul>
+<li><em>ex:</em> <code>Save('foo')</code> - <em>save the current input object value to the name &lsquo;foo&rsquo; in this thread</em></li>
+</ul></li>
+<li>Object -&gt; Save(String: name) -&gt; Object
+
+<ul>
+<li><em>ex:</em> <code>Save('foo')</code> - <em>save the current input object value to the name &lsquo;foo&rsquo; in this thread</em></li>
+</ul></li>
+<li>Object -&gt; Save(String: name) -&gt; Object
+
+<ul>
+<li><em>ex:</em> <code>Save('foo')</code> - <em>save the current input object value to the name &lsquo;foo&rsquo; in this thread</em></li>
+</ul></li>
 <li>int -&gt; Save(String: name) -&gt; int
 
 <ul>
 <li><em>ex:</em> <code>Save('foo')</code> - <em>save the current int value to the name &lsquo;foo&rsquo; in this thread</em></li>
+</ul></li>
+<li>int -&gt; Save(String: name) -&gt; int
+
+<ul>
+<li><em>ex:</em> <code>Save('foo')</code> - <em>save the current int value to the name &lsquo;foo&rsquo; in this thread</em></li>
+</ul></li>
+<li>int -&gt; Save(String: name) -&gt; int
+
+<ul>
+<li><em>ex:</em> <code>Save('foo')</code> - <em>save the current int value to the name &lsquo;foo&rsquo; in this thread</em></li>
+</ul></li>
+<li>int -&gt; Save(String: name) -&gt; int
+
+<ul>
+<li><em>ex:</em> <code>Save('foo')</code> - <em>save the current int value to the name &lsquo;foo&rsquo; in this thread</em></li>
+</ul></li>
+<li>String -&gt; Save(String: name) -&gt; String
+
+<ul>
+<li><em>ex:</em> <code>Save('foo')</code> - <em>save the current String value to the name &lsquo;foo&rsquo; in this thread</em></li>
+</ul></li>
+<li>String -&gt; Save(String: name) -&gt; String
+
+<ul>
+<li><em>ex:</em> <code>Save('foo')</code> - <em>save the current String value to the name &lsquo;foo&rsquo; in this thread</em></li>
+</ul></li>
+<li>String -&gt; Save(String: name) -&gt; String
+
+<ul>
+<li><em>ex:</em> <code>Save('foo')</code> - <em>save the current String value to the name &lsquo;foo&rsquo; in this thread</em></li>
 </ul></li>
 <li>String -&gt; Save(String: name) -&gt; String
 
