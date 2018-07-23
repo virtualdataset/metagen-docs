@@ -62,6 +62,11 @@ canonifyurls = true
 	name   = "Function Reference"
 	url    = "/functions"
 	weight = 60
+[[menu.main]]
+	name   = "Site Info"
+	url    = "/siteinfo"
+	weight = 60
+
 
 #[[menu.main]]
 #    name   = "Design Sketches"

@@ -1,6 +1,15 @@
-# Typography
+---
+date: 2017-12-16
+title: Typography
+weight: 51
+menu:
+  main:
+    parent: "Site Info" 
+    identifier: siteinfo
+    weight: 51
+---
 
-This book includes some diagrams that are rendered 
+This book includes some diagrams that are rendered  
 on the client side from various graphical markup systems.
 
 This page lets you verify that you can read the glyph and diagrams correctly. If
@@ -16,16 +25,9 @@ first, followed by a reference image.
 courtesy of [jsxgraph](http://jsxgraph.uni-bayreuth.de/wp/index.html)
 
 <div title="dynamically rendered" align="middle">
-<div id="jsxtest" class="jxgbox" style="width:250px; height:250px;"><br> </div> 
-{{#jsxgraph
-  var brd = JXG.JSXGraph.initBoard('jsxtest', 
-   {
-    boundingbox:[-10,10,10,-10], 
-    keepaspectratio: true, 
-    axis:true,
-    showCopyright: false
-   }
-  ); 
+{{< jsxgraph id="jsxtest">}}
+  var brd = JXG.JSXGraph.initBoard('jsxtest', { boundingbox:[-10,10,10,-10], axis:true, showCopyright: false});
+//  brd.suspendUpdate(); 
   var axisx = brd.create('axis', [[0,0], [1,0]],    
   {
     firstArrow: true,
@@ -38,11 +40,11 @@ courtesy of [jsxgraph](http://jsxgraph.uni-bayreuth.de/wp/index.html)
       minorTicks: 0
     }  
   });
-  var p = brd.create('glider', [2.2, 0, axisx], {});    
-}}
+{{</ jsxgraph >}}
 </div>
+
 <div title="reference image" align="middle">  
-<img src="rendercheck/jsxgraph.png"></img> 
+<img src="/siteinfo/jsxgraph.png"></img> 
 </div>
 
 ### Mermaid.js rendering  
@@ -50,16 +52,18 @@ courtesy of [jsxgraph](http://jsxgraph.uni-bayreuth.de/wp/index.html)
 courtesy of [mermaid.js](https://knsv.github.io/mermaid/) 
 
 <div title="rendered dynamically" align="middle">
-{{#mermaid
+
+{{< mermaid >}}
 graph LR
 A-->B
 B-->C
 C-->A
-}} 
+{{</ mermaid >}}
+
 </div>
 
 <div title="reference image" align="middle">
-<img src="rendercheck/mermaid_abc.png"></img>
+<img src="/siteinfo/mermaid_abc.png"></img>
 </div>
 
 ### nomnoml rendering
@@ -67,31 +71,15 @@ C-->A
 courtesy of [nomnoml.com](http://nomnoml.com/)
 
 <div title="rendered dynamically" align="middle">
- {{#nomnoml
+{{< nomnoml >}}
  #direction: right
  [A] -> [B]
  [B] ->  [C]
  [C] -> [A]
- }} 
+{{</ nomnoml >}}
 </div>
 
 <div title="reference image" align="middle">
-<div><img src="rendercheck/nomnoml_abc.png"></img> 
+<div><img src="/siteinfo/nomnoml_abc.png"></img> 
 </div>
 
-### mathjax rendering
-
-courtesy of [mathjax.org](https://mathjax.org)
-
-An inline \\( \int x = \frac{x^2}{2} \\) equation, with a reference image: 
-<img src="rendercheck/mathjax_inline.png"></img>. The images should match.
-
-A block equation:
-
-\\[ \mu = \frac{1}{N} \sum_{i=0} x_i \\]
-
-The above equation should look like the reference image below:
-
-<div align="middle">
-<img src="rendercheck/mathjax_block.png"></img> 
-</div> 

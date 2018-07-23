@@ -131,7 +131,7 @@ it is easy to demonstrate on a coordinate plane as well using standard plotting 
 First, by using a floor function to visually illustrate the discrete mapping:
 
 <div id="fpthrees1" style="width: 400px; height: 200px;"> 
-{{< jsxgraph >}}
+{{< jsxgraph id="fpthrees" >}}
  brd = JXG.JSXGraph.initBoard('fpthrees1', {boundingbox: [-1, 4, 20, -1], axis:true, showCopyright: false});
  brd.suspendUpdate();
  var c1 = brd.create('functiongraph', [function(x){ return (Math.floor(x) % 3); }],
@@ -146,7 +146,7 @@ And second, the continuous analog, to show the relative slope
 and repeating patterns at every 9th interval:
 
 <div id="fpthrees2" style="width: 400px; height: 200px;"> 
-{{< jsxgraph >}}
+{{< jsxgraph id="fpthrees2" >}}
  brd = JXG.JSXGraph.initBoard('fpthrees2', {boundingbox: [-1, 4, 20, -1], axis:true, showCopyright: false});
  brd.suspendUpdate();
  var c3 = brd.create('functiongraph', [function(x){ return (x % 3); }],

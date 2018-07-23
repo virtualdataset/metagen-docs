@@ -5,7 +5,7 @@ type: index
 weight: 5
 ---
 
-[![Latest Release](https://maven-badges.herokuapp.com/maven-central/io.virtdata/metagen/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.virtdata/metagen/) [![Build Status](https://travis-ci.org/virtualdataset/metagen-java.svg?branch=master)](https://travis-ci.org/virtualdataset/metagen-java)
+[![Latest Release](https://maven-badges.herokuapp.com/maven-central/io.virtdata/metagen/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.virtdata/metagen/) [![Build Status](https://travis-ci.org/virtualdataset/virtdata-java.svg?branch=master)](https://travis-ci.org/virtualdataset/virtdata-java)
 
 
 **Please stand by while we bring the docs online...**
@@ -46,7 +46,7 @@ If you have requests for topics to include in this book, please submit them at t
 
 This book serves as the primary documentation for the
 Virtual DataSet projects, namely 
-[Metagen-Java](https://github.com/virtualdataset/metagen-java)
+[VirtData-Java](https://github.com/virtualdataset/virtdata-java)
 If you have requests, please submit them at the 
 
 [Issue Tracker](https://github.com/virtualdataset/virtdata-docs/issues).
