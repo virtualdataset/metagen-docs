@@ -3,7 +3,7 @@ date: 2017-11-27
 title: Function Graphs
 weight: 34
 menu:
-  main:
+  main: 
     parent: Concepts
     identifier: function-graphs
     weight: 34
@@ -12,7 +12,7 @@ menu:
 This section should be useful to new users as well as experienced developers.
 Here, we explain how and why we use functions for building data mapping recipes.
 If you are planning to do so, this section is essential reading.
-
+ 
 ## Mapping Functions
 
 A function represents a mapping between one set of values and another. Consider
