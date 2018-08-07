@@ -203,6 +203,6 @@ function compositor will make a best-effort conversion in order to combine
 functions in a flexible way. Flows which must rely on this capability are
 not as performant as those which have good type alignment in between
 function stages. Consult the function library reference on the available
-types and conversions if you want to keep things as fast as they coudl be.
+types and conversions if you want to keep things fast.
 
 
