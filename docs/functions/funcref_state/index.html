@@ -281,9 +281,24 @@
 
 
 
-<a  title="Resolving Functions" href="../../concepts/resolving_functions/">
+<a  title="Modeling Cardinality" href="../../concepts/modeling_cardinality/">
 	
-	Resolving Functions
+	Modeling Cardinality
+</a>
+
+
+
+
+
+      
+        
+        
+
+
+
+<a  title="Modeling Set Relationships" href="../../concepts/set_relationships/">
+	
+	Modeling Set Relationships
 </a>
 
 
@@ -299,7 +314,7 @@
 
 <li>
   
-    <span class="section">Modeling Datasets</span>
+    <span class="section">Using VirtData</span>
     <ul>
       
         
@@ -307,9 +322,9 @@
 
 
 
-<a  title="Cardinality" href="../../modeling_datasets/modeling_cardinality/">
+<a  title="Function Flows" href="../../users_guide/resolving_functions/">
 	
-	Cardinality
+	Function Flows
 </a>
 
 
@@ -322,35 +337,9 @@
 
 
 
-<a  title="Set Relationships" href="../../modeling_datasets/set_relationships/">
+<a  title="VirtData Syntax" href="../../users_guide/syntax_overview/">
 	
-	Set Relationships
-</a>
-
-
-
-
-
-      
-    </ul>
-  
-</li>
-
-
-
-<li>
-  
-    <span class="section">Syntax Reference</span>
-    <ul>
-      
-        
-        
-
-
-
-<a  title="Syntax Reference" href="../../syntax/syntax_overview/">
-	
-	Syntax Reference
+	VirtData Syntax
 </a>
 
 
@@ -537,6 +526,11 @@
 
 			
 
+<p>Functions in the state category allow you to do things with
+side-effects in the function flow. Specifically, they allow
+you to save or load values of named variables to thread-local
+registers.</p>
+
 <h2 id="clear">Clear</h2>
 
 <p>Clears the per-thread map which is used by the Expr function.</p>
@@ -548,7 +542,7 @@
 <li><em>notes:</em> Clear all named entries from the per-thread map.</li>
 <li><em>ex:</em> <code>Clear()</code> - <em>clear all thread-local variables</em></li>
 </ul></li>
-<li>long -&gt; Clear(String[]&hellip;: names) -&gt; long
+<li>long -&gt; Clear(String&hellip; names) -&gt; long
 
 <ul>
 <li><em>notes:</em> Clear the specified names from the per-thread map.</li>
@@ -634,7 +628,7 @@ The input value is unchanged, and available for the next function in the chain t
 <ul>
 <li><em>ex:</em> <code>Show()</code> - <em>Show all values in a json-like format</em></li>
 </ul></li>
-<li>Object -&gt; Show(String[]&hellip;: names) -&gt; String
+<li>Object -&gt; Show(String&hellip; names) -&gt; String
 
 <ul>
 <li><em>ex:</em> <code>Show('foo')</code> - <em>Show only the &lsquo;foo&rsquo; value in a json-like format</em></li>

@@ -43,43 +43,43 @@ Mapping Functions A function represents a mapping between one set of values and 
     </item>
     
     <item>
-      <title>Syntax Reference</title>
-      <link>http://docs.virtdata.io/syntax/syntax_overview/</link>
+      <title>VirtData Syntax</title>
+      <link>http://docs.virtdata.io/users_guide/syntax_overview/</link>
       <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
       
-      <guid>http://docs.virtdata.io/syntax/syntax_overview/</guid>
+      <guid>http://docs.virtdata.io/users_guide/syntax_overview/</guid>
       <description>This is a railroad schematic of the currently supported VirtData recipe syntax.
 If this is your first time reading this guide, it is best to start at the top and read in order. Once you are familiar with the page, it can be used as a handy reference.
  Conventions In this documentation, CAPITALIZED := sections refer directly to a syntax type, for reference purposes. Other sections accompany the syntax diagrams, and are more explanatory in nature.</description>
     </item>
     
     <item>
-      <title>Resolving Functions</title>
-      <link>http://docs.virtdata.io/concepts/resolving_functions/</link>
+      <title>Function Flows</title>
+      <link>http://docs.virtdata.io/users_guide/resolving_functions/</link>
       <pubDate>Mon, 27 Nov 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://docs.virtdata.io/concepts/resolving_functions/</guid>
+      <guid>http://docs.virtdata.io/users_guide/resolving_functions/</guid>
       <description>When using VirtData to craft procedural data generation recipes, you can combine multiple functions in a chain, as described in Composition and Dataflow in ../function_graphs.
 This section explains how the library finds and selects specific functions before composing them together in a lambda. It also explains how to read the detailed documentation as described in the function reference section.
 Function Signatures There are several parts to a typical function signature in VirtData.</description>
     </item>
     
     <item>
-      <title>Cardinality</title>
-      <link>http://docs.virtdata.io/modeling_datasets/modeling_cardinality/</link>
+      <title>Modeling Cardinality</title>
+      <link>http://docs.virtdata.io/concepts/modeling_cardinality/</link>
       <pubDate>Sat, 16 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://docs.virtdata.io/modeling_datasets/modeling_cardinality/</guid>
+      <guid>http://docs.virtdata.io/concepts/modeling_cardinality/</guid>
       <description>Data Types and Values Given that our values are all bits on some level, there is no basic fixed size data type that has an unlimited range of values. Even the floating point types have finite range, although it is represented and handled differently than that of the whole number types.
 Standard Types For a 64-bit data type, there are \( 64^2 \) different distinct values that can be represented.</description>
     </item>
     
     <item>
-      <title>Set Relationships</title>
-      <link>http://docs.virtdata.io/modeling_datasets/set_relationships/</link>
+      <title>Modeling Set Relationships</title>
+      <link>http://docs.virtdata.io/concepts/set_relationships/</link>
       <pubDate>Sat, 16 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://docs.virtdata.io/modeling_datasets/set_relationships/</guid>
+      <guid>http://docs.virtdata.io/concepts/set_relationships/</guid>
       <description>This section will talk about how to model relative cardinality between different types of entities. Before reading this, you should already be familiar with data mapping and cardinality functions.
 Suppose you have two different sets of things in your virtual dataset:
  #zoom:0.75 #direction:right #.data: fill=#FFFFFF visual=frame [entity type A| [&amp;lt;data&amp;gt; &amp;#34;foo&amp;#34;] [&amp;lt;data&amp;gt; &amp;#34;bar&amp;#34;] [&amp;lt;data&amp;gt; &amp;#34;baz&amp;#34;] ]    #zoom:0.75 #direction:right #.data: fill=#FFFFFF visual=frame [entity type B| [&amp;lt;data&amp;gt; &amp;#34;X&amp;#34;] [&amp;lt;data&amp;gt; &amp;#34;Y&amp;#34;] [&amp;lt;data&amp;gt; &amp;#34;Z&amp;#34;] ]   It may be the case that there is no association between elements of the first set to the second set, as illustrated above.</description>
@@ -103,8 +103,9 @@ In each of the rendering checks below, the dynamically rendered element is shown
       <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>http://docs.virtdata.io/functions/funcref_collections/</guid>
-      <description>HashedLineToStringList  long -&amp;gt; HashedLineToStringList(String: filename, int: minSize, int: maxSize) -&amp;gt; java.util.List  HashedLineToStringSet Return a pseudo-randomly created Set from the values in the specified file.
- long -&amp;gt; HashedLineToStringSet(String: filename, int: minSize, int: maxSize) -&amp;gt; java.util.Set  ex: HashedLineToStringSet(&#39;data/variable_words.txt&#39;,2,10) - Create a set of words sized between 2 and 10 elements   HashedLineToStringStringMap Create a String-String map from the specified file, ranging in size from 0 to the specified maximum.</description>
+      <description>Collection functions allow you to construct Java Lists, Maps or Sets. These functions often take the form of a higher-order function, where the inner function definitions are called to determine the size of the collection, the individual values to be added, etc.
+HashedLineToStringList  long -&amp;gt; HashedLineToStringList(String: filename, int: minSize, int: maxSize) -&amp;gt; java.util.List  HashedLineToStringSet Return a pseudo-randomly created Set from the values in the specified file.
+ long -&amp;gt; HashedLineToStringSet(String: filename, int: minSize, int: maxSize) -&amp;gt; java.</description>
     </item>
     
     <item>
@@ -113,10 +114,10 @@ In each of the rendering checks below, the dynamically rendered element is shown
       <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>http://docs.virtdata.io/functions/funcref_conversion/</guid>
-      <description>LongToByte Convert the input long value to a byte, with negative values masked away.
+      <description>Conversion functions simply allow values of one type to be converted to another type in an obvious way.
+LongToByte Convert the input long value to a byte, with negative values masked away.
  long -&amp;gt; LongToByte() -&amp;gt; Byte  LongToShort Convert the input value from long to short.
- long -&amp;gt; LongToShort() -&amp;gt; Short  ModuloToBigDecimal Return a {@code BigDecimal} value as the result of modulo division with the specified divisor.
- long -&amp;gt; ModuloToBigDecimal() -&amp;gt; java.math.BigDecimal long -&amp;gt; ModuloToBigDecimal(long: modulo) -&amp;gt; java.math.BigDecimal  ModuloToBigInt Return a {@code BigInteger} value as the result of modulo division with the specified divisor.</description>
+ long -&amp;gt; LongToShort() -&amp;gt; Short  ModuloToBigDecimal Return a {@code BigDecimal} value as the result of modulo division with the specified divisor.</description>
     </item>
     
     <item>
@@ -125,8 +126,9 @@ In each of the rendering checks below, the dynamically rendered element is shown
       <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>http://docs.virtdata.io/functions/funcref_datetime/</guid>
-      <description>StartingEpochMillis This function sets the minimum long value to the equivalent unix epoch time in milliseconds. It simply adds the input value to this base value as determined by the provided time specifier. It wraps any overflow within this range as well.
- long -&amp;gt; StartingEpochMillis(String: baseTimeSpec) -&amp;gt; long  ex: StartingEpochMillis(&#39;2017-01-01 23:59:59&#39;) - add the millisecond epoch time of 2017-01-01 23:59:59 to all input values   ToDate Convert the input value to a {@code Date}</description>
+      <description>Functions in this category know about times and dates, datetimes, seconds or millisecond epoch times, and so forth.
+Some of the function in this category are designed to allow testing of UUID types which were designed to avoid determinism. This makes it possible to test systems which depend on UUIDs but which require determinism in test data.
+StartingEpochMillis This function sets the minimum long value to the equivalent unix epoch time in milliseconds.</description>
     </item>
     
     <item>
@@ -135,8 +137,9 @@ In each of the rendering checks below, the dynamically rendered element is shown
       <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>http://docs.virtdata.io/functions/funcref_diagnostics/</guid>
-      <description>Show Show diagnostic values for the thread-local variable map.
- Object -&amp;gt; Show() -&amp;gt; String  ex: Show() - Show all values in a json-like format  Object -&amp;gt; Show(String[]&amp;hellip;: names) -&amp;gt; String  ex: Show(&#39;foo&#39;) - Show only the &amp;lsquo;foo&amp;rsquo; value in a json-like format ex: Show(&#39;foo&#39;,&#39;bar&#39;) - Show the &amp;lsquo;foo&amp;rsquo; and &amp;lsquo;bar&amp;rsquo; values in a json-like format   ToLongFunction Adapts any compatible FunctionalInterface type to a LongFunction, for use with higher-order functions, when they require a LongFunction as an argument.</description>
+      <description>Diagnostic functions can be used to help you construct the right VirtData recipe.
+Show Show diagnostic values for the thread-local variable map.
+ Object -&amp;gt; Show() -&amp;gt; String  ex: Show() - Show all values in a json-like format  Object -&amp;gt; Show(String&amp;hellip; names) -&amp;gt; String  ex: Show(&#39;foo&#39;) - Show only the &amp;lsquo;foo&amp;rsquo; value in a json-like format ex: Show(&#39;foo&#39;,&#39;bar&#39;) - Show the &amp;lsquo;foo&amp;rsquo; and &amp;lsquo;bar&amp;rsquo; values in a json-like format   ToLongFunction Adapts any compatible FunctionalInterface type to a LongFunction, for use with higher-order functions, when they require a LongFunction as an argument.</description>
     </item>
     
     <item>
@@ -145,12 +148,9 @@ In each of the rendering checks below, the dynamically rendered element is shown
       <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>http://docs.virtdata.io/functions/funcref_distributions/</guid>
-      <description>Beta @see Wikipedia: Beta distribution
-@see Commons JavaDoc: BetaDistribution
-Generate samples according to the specified probability density.
-The input value consists of a long between 0L and Long.MAX_VALUE. This value is scaled to the unit interval (0.0, 1.0) as an index into a sampling function. The method used is inverse cumulative density sampling.
-Sampling Mode
-The curve can be sampled in either map or hash mode. Map mode simply indexes into the probability curve in the order that it would appear on a density plot.</description>
+      <description>All of the distributions that are provided in the Apache Commons Math project are supported here, in multiple forms.
+Continuous or Discrete These distributions break down into two main categories:
+Continuous Distributions These are distributions over real numbers like 23.4323, with continuity across the values. Each of the continuous distributions can provide samples that fall on an interval of the real number line. Continuous probability distributions include the Normal distribution, and the Exponential distribution, among many others.</description>
     </item>
     
     <item>
@@ -159,9 +159,9 @@ The curve can be sampled in either map or hash mode. Map mode simply indexes int
       <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>http://docs.virtdata.io/functions/funcref_general/</guid>
-      <description>Add Adds a value to the input.
- double -&amp;gt; Add(double: addend) -&amp;gt; double long -&amp;gt; Add(long: addend) -&amp;gt; int long -&amp;gt; Add(long: addend) -&amp;gt; long int -&amp;gt; Add(int: addend) -&amp;gt; int  ex: Add(23) - adds integer 23 to the input integer value   AddCycleRange Adds a cycle range to the input, producing an increasing sawtooth-like output.
- long -&amp;gt; AddCycleRange(long: maxValue) -&amp;gt; int long -&amp;gt; AddCycleRange(long: minValue, long: maxValue) -&amp;gt; int long -&amp;gt; AddCycleRange(long: maxValue) -&amp;gt; long long -&amp;gt; AddCycleRange(long: minValue, long: maxValue) -&amp;gt; long int -&amp;gt; AddCycleRange(int: maxValue) -&amp;gt; int int -&amp;gt; AddCycleRange(int: minValue, int: maxValue) -&amp;gt; int  AddHashRange Adds a pseudo-random value within the specified range to the input.</description>
+      <description>These functions have no particular category, so they ended up here by default. This is where the bulk of basic functions can be found.
+Add Adds a value to the input.
+ double -&amp;gt; Add(double: addend) -&amp;gt; double long -&amp;gt; Add(long: addend) -&amp;gt; int long -&amp;gt; Add(long: addend) -&amp;gt; long int -&amp;gt; Add(int: addend) -&amp;gt; int  ex: Add(23) - adds integer 23 to the input integer value   AddCycleRange Adds a cycle range to the input, producing an increasing sawtooth-like output.</description>
     </item>
     
     <item>
@@ -170,7 +170,8 @@ The curve can be sampled in either map or hash mode. Map mode simply indexes int
       <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>http://docs.virtdata.io/functions/funcref_premade/</guid>
-      <description>FirstNames Return a pseudo-randomly sampled first name from the last US census data on first names occurring more than 100 times. Both male and female names are combined in this function.
+      <description>Functions in this category are meant to provide easy grab-and-go functions that are tailored for real-world simulation. This library will grow over time.
+FirstNames Return a pseudo-randomly sampled first name from the last US census data on first names occurring more than 100 times. Both male and female names are combined in this function.
  long -&amp;gt; FirstNames() -&amp;gt; String  ex: FirstNames() - select a random first name based on the chance of seeing it in the census data  long -&amp;gt; FirstNames(String: modifier) -&amp;gt; String  ex: FirstNames(&#39;map&#39;) - select over the first names by probability as input varies from 1L to Long.</description>
     </item>
     
@@ -180,8 +181,9 @@ The curve can be sampled in either map or hash mode. Map mode simply indexes int
       <pubDate>Mon, 18 Jun 2018 00:00:00 +0000</pubDate>
       
       <guid>http://docs.virtdata.io/functions/funcref_state/</guid>
-      <description>Clear Clears the per-thread map which is used by the Expr function.
- long -&amp;gt; Clear() -&amp;gt; long  notes: Clear all named entries from the per-thread map. ex: Clear() - clear all thread-local variables  long -&amp;gt; Clear(String[]&amp;hellip;: names) -&amp;gt; long  notes: Clear the specified names from the per-thread map. ex: Clear(&#39;foo&#39;) - clear the thread-local variable &amp;lsquo;foo&amp;rsquo; ex: Clear(&#39;foo&#39;,&#39;bar&#39;) - clear the thread-local variables &amp;lsquo;foo&amp;rsquo; and &amp;lsquo;bar&amp;rsquo;   Load Load a named value from the per-thread state map.</description>
+      <description>Functions in the state category allow you to do things with side-effects in the function flow. Specifically, they allow you to save or load values of named variables to thread-local registers.
+Clear Clears the per-thread map which is used by the Expr function.
+ long -&amp;gt; Clear() -&amp;gt; long  notes: Clear all named entries from the per-thread map. ex: Clear() - clear all thread-local variables  long -&amp;gt; Clear(String&amp;hellip; names) -&amp;gt; long  notes: Clear the specified names from the per-thread map.</description>
     </item>
     
     <item>

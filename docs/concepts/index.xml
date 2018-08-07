@@ -32,14 +32,24 @@ Mapping Functions A function represents a mapping between one set of values and 
     </item>
     
     <item>
-      <title>Resolving Functions</title>
-      <link>http://docs.virtdata.io/concepts/resolving_functions/</link>
-      <pubDate>Mon, 27 Nov 2017 00:00:00 +0000</pubDate>
+      <title>Modeling Cardinality</title>
+      <link>http://docs.virtdata.io/concepts/modeling_cardinality/</link>
+      <pubDate>Sat, 16 Dec 2017 00:00:00 +0000</pubDate>
       
-      <guid>http://docs.virtdata.io/concepts/resolving_functions/</guid>
-      <description>When using VirtData to craft procedural data generation recipes, you can combine multiple functions in a chain, as described in Composition and Dataflow in ../function_graphs.
-This section explains how the library finds and selects specific functions before composing them together in a lambda. It also explains how to read the detailed documentation as described in the function reference section.
-Function Signatures There are several parts to a typical function signature in VirtData.</description>
+      <guid>http://docs.virtdata.io/concepts/modeling_cardinality/</guid>
+      <description>Data Types and Values Given that our values are all bits on some level, there is no basic fixed size data type that has an unlimited range of values. Even the floating point types have finite range, although it is represented and handled differently than that of the whole number types.
+Standard Types For a 64-bit data type, there are \( 64^2 \) different distinct values that can be represented.</description>
+    </item>
+    
+    <item>
+      <title>Modeling Set Relationships</title>
+      <link>http://docs.virtdata.io/concepts/set_relationships/</link>
+      <pubDate>Sat, 16 Dec 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://docs.virtdata.io/concepts/set_relationships/</guid>
+      <description>This section will talk about how to model relative cardinality between different types of entities. Before reading this, you should already be familiar with data mapping and cardinality functions.
+Suppose you have two different sets of things in your virtual dataset:
+ #zoom:0.75 #direction:right #.data: fill=#FFFFFF visual=frame [entity type A| [&amp;lt;data&amp;gt; &amp;#34;foo&amp;#34;] [&amp;lt;data&amp;gt; &amp;#34;bar&amp;#34;] [&amp;lt;data&amp;gt; &amp;#34;baz&amp;#34;] ]    #zoom:0.75 #direction:right #.data: fill=#FFFFFF visual=frame [entity type B| [&amp;lt;data&amp;gt; &amp;#34;X&amp;#34;] [&amp;lt;data&amp;gt; &amp;#34;Y&amp;#34;] [&amp;lt;data&amp;gt; &amp;#34;Z&amp;#34;] ]   It may be the case that there is no association between elements of the first set to the second set, as illustrated above.</description>
     </item>
     
   </channel>

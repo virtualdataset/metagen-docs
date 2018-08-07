@@ -281,9 +281,24 @@
 
 
 
-<a  title="Resolving Functions" href="../../concepts/resolving_functions/">
+<a  title="Modeling Cardinality" href="../../concepts/modeling_cardinality/">
 	
-	Resolving Functions
+	Modeling Cardinality
+</a>
+
+
+
+
+
+      
+        
+        
+
+
+
+<a  title="Modeling Set Relationships" href="../../concepts/set_relationships/">
+	
+	Modeling Set Relationships
 </a>
 
 
@@ -299,7 +314,7 @@
 
 <li>
   
-    <span class="section">Modeling Datasets</span>
+    <span class="section">Using VirtData</span>
     <ul>
       
         
@@ -307,9 +322,9 @@
 
 
 
-<a  title="Cardinality" href="../../modeling_datasets/modeling_cardinality/">
+<a  title="Function Flows" href="../../users_guide/resolving_functions/">
 	
-	Cardinality
+	Function Flows
 </a>
 
 
@@ -322,35 +337,9 @@
 
 
 
-<a  title="Set Relationships" href="../../modeling_datasets/set_relationships/">
+<a  title="VirtData Syntax" href="../../users_guide/syntax_overview/">
 	
-	Set Relationships
-</a>
-
-
-
-
-
-      
-    </ul>
-  
-</li>
-
-
-
-<li>
-  
-    <span class="section">Syntax Reference</span>
-    <ul>
-      
-        
-        
-
-
-
-<a  title="Syntax Reference" href="../../syntax/syntax_overview/">
-	
-	Syntax Reference
+	VirtData Syntax
 </a>
 
 
@@ -536,6 +525,9 @@
 			<h1>general </h1>
 
 			
+
+<p>These functions have no particular category, so they ended up here
+by default. This is where the bulk of basic functions can be found.</p>
 
 <h2 id="add">Add</h2>
 
@@ -738,8 +730,8 @@ The</p>
 increases.</p>
 
 <ul>
-<li>long -&gt; FixedValues(int[]&hellip;: values) -&gt; int</li>
-<li>long -&gt; FixedValues(long[]&hellip;: values) -&gt; long
+<li>long -&gt; FixedValues(int&hellip; values) -&gt; int</li>
+<li>long -&gt; FixedValues(long&hellip; values) -&gt; long
 
 <ul>
 <li><em>ex:</em> <code>FixedValues(3L,53L,73L)</code> - <em>Yield 3L, 53L, 73L, 3L, 53L, 73L, 3L, &hellip;</em></li>
@@ -749,7 +741,7 @@ increases.</p>
 <h2 id="format">Format</h2>
 
 <p>Apply the Java String.format method to an incoming object.
-@see <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html#syntax">Java 8 String.format(&hellip;) javadoc</a>
+See <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html#syntax">Java 8 String.format(&hellip;) javadoc</a>
 Note: This function can often be quite slow, so more direct methods are generally preferrable.</p>
 
 <ul>
@@ -922,20 +914,20 @@ This means that if you want to combine interpolation on this curve with the effe
 pseudo-random sampling, you need to put a hash function ahead of it in the flow.</p>
 
 <ul>
-<li>long -&gt; Interpolate(double[]&hellip;: value) -&gt; double
+<li>long -&gt; Interpolate(double&hellip; value) -&gt; double
 
 <ul>
 <li><em>ex:</em> <code>Interpolate(0.0d,100.0d)</code> - <em>return a uniform double value between 0.0d and 100.0d</em></li>
 <li><em>ex:</em> <code>Interpolate(0.0d,90.0d,95.0d,98.0d,100.0d)</code> - <em>return a weighted double value where the first second and third quartiles are 90.0D, 95.0D, and 98.0D</em></li>
 </ul></li>
 <li>long -&gt; Interpolate(int: resolution, double[]: lut) -&gt; double</li>
-<li>long -&gt; Interpolate(double[]&hellip;: value) -&gt; long
+<li>long -&gt; Interpolate(double&hellip; value) -&gt; long
 
 <ul>
 <li><em>ex:</em> <code>Interpolate(0.0d,100.0d)</code> - <em>return a uniform long value between 0L and 100L</em></li>
 <li><em>ex:</em> <code>Interpolate(0.0d,90.0d,95.0d,98.0d,100.0d)</code> - <em>return a weighted long value where the first second and third quartiles are 90.0D, 95.0D, and 98.0D</em></li>
 </ul></li>
-<li>long -&gt; Interpolate(long[]&hellip;: value) -&gt; long</li>
+<li>long -&gt; Interpolate(long&hellip; value) -&gt; long</li>
 <li>long -&gt; Interpolate(int: resolution, double[]: lut) -&gt; long</li>
 </ul>
 
@@ -945,17 +937,17 @@ pseudo-random sampling, you need to put a hash function ahead of it in the flow.
 specified delimiter and optional prefix and suffix.</p>
 
 <ul>
-<li>long -&gt; JoinTemplate(String: delimiter, java.util.function.LongFunction&lt;?&gt;[]&hellip;: funcs) -&gt; String
+<li>long -&gt; JoinTemplate(String: delimiter, java.util.function.LongFunction&lt;?&gt;&hellip; funcs) -&gt; String
 
 <ul>
 <li><em>ex:</em> <code>JoinTemplate('--',NumberNameToString(),NumberNameToString())</code> - <em>create values like <code>one--one</code>, <code>two-two</code>, &hellip;</em></li>
 </ul></li>
-<li>long -&gt; JoinTemplate(String: prefix, String: delimiter, String: suffix, java.util.function.LongFunction&lt;?&gt;[]&hellip;: funcs) -&gt; String
+<li>long -&gt; JoinTemplate(String: prefix, String: delimiter, String: suffix, java.util.function.LongFunction&lt;?&gt;&hellip; funcs) -&gt; String
 
 <ul>
 <li><em>ex:</em> <code>JoinTemplate('{',',','}',NumberNameToString(),LastNames())</code> - <em>create values like &lsquo;{one,Farrel}&rsquo;, &lsquo;{two,Haskell}&rsquo;, &hellip;</em></li>
 </ul></li>
-<li>long -&gt; JoinTemplate(java.util.function.LongUnaryOperator: iterop, String: prefix, String: delimiter, String: suffix, java.util.function.LongFunction&lt;?&gt;[]&hellip;: funcs) -&gt; String
+<li>long -&gt; JoinTemplate(java.util.function.LongUnaryOperator: iterop, String: prefix, String: delimiter, String: suffix, java.util.function.LongFunction&lt;?&gt;&hellip; funcs) -&gt; String
 
 <ul>
 <li><em>ex:</em> <code>JoinTemplate(Add(3),'[',';',']',NumberNameToString(),NumberNameToString(),NumberNameToString())</code> - <em>create values like &lsquo;[zero;three,six]&lsquo;, &lsquo;[one;four,seven]&lsquo;, &hellip;</em></li>
@@ -1198,12 +1190,12 @@ value used is automatically incremented by one for each function, starting with
 the initial input value.</p>
 
 <ul>
-<li>long -&gt; Template(String: template, java.util.function.LongFunction&lt;?&gt;[]&hellip;: funcs) -&gt; String
+<li>long -&gt; Template(String: template, java.util.function.LongFunction&lt;?&gt;&hellip; funcs) -&gt; String
 
 <ul>
 <li><em>ex:</em> <code>Template('{}-{}',Add(10),Hash())</code> - <em>concatenate input+10, &lsquo;-&rsquo;, and a pseudo-random long</em></li>
 </ul></li>
-<li>long -&gt; Template(java.util.function.LongUnaryOperator: iterOp, String: template, java.util.function.LongFunction&lt;?&gt;[]&hellip;: funcs) -&gt; String
+<li>long -&gt; Template(java.util.function.LongUnaryOperator: iterOp, String: template, java.util.function.LongFunction&lt;?&gt;&hellip; funcs) -&gt; String
 
 <ul>
 <li><em>notes:</em> If an operator is provided, it is used to change the function input value in an additional way before each function.</li>
@@ -1283,7 +1275,7 @@ specify a different long value to pre-fill it with.</p>
 
 <ul>
 <li>long -&gt; WeightedStrings(String: valuesAndWeights) -&gt; String</li>
-<li>long -&gt; WeightedStrings(String: valueColumn, String: weightColumn, String[]&hellip;: filenames) -&gt; String
+<li>long -&gt; WeightedStrings(String: valueColumn, String: weightColumn, String&hellip; filenames) -&gt; String
 
 <ul>
 <li><em>notes:</em> Create a sampler of strings from the given CSV file. The CSV file must have plain CSV headers
