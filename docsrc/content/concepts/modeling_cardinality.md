@@ -1,10 +1,10 @@
 ---
 date: 2017-12-16
-title: Cardinality
+title: Modeling Cardinality
 weight: 51
 menu:
   main:
-    parent: "Modeling Datasets" 
+    parent: "Concepts" 
     identifier: modeling-cardinality
     weight: 51
 ---

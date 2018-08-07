@@ -54,6 +54,14 @@ menu:
     weight: 52
 ---
 EOF2
+blurbfile="docsrc/blurbs/${ref}"
+if [ -f "$blurbfile" ]
+then
+ printf "Found blurb file %s\n" ${blurbfile}
+ cat ${blurbfile} >>docsrc/content/functions/$ref
+else
+ printf "NO blurb file: %s\n" ${blurbfile}
+fi
 grep -v '# CATEGORY' $ref >>docsrc/content/functions/$ref
 rm $ref
  

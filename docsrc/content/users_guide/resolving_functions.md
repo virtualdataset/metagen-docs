@@ -1,10 +1,10 @@
 ---
 date: 2017-11-27
-title: Resolving Functions
+title: Function Flows
 weight: 40
 menu:
   main:
-    parent: Concepts
+    parent: "Using VirtData"
     identifier: resolving-functions
     weight: 40
 ---

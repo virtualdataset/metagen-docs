@@ -8,6 +8,9 @@ menu:
     identifier: reference-general
     weight: 52
 ---
+These functions have no particular category, so they ended up here
+by default. This is where the bulk of basic functions can be found.
+
 ## Add
 
 Adds a value to the input.
@@ -158,14 +161,14 @@ Yield a fixed value.
 Yield one of the specified values, rotating through them as the input value
 increases.
 
-- long -> FixedValues(int[]...: values) -> int
-- long -> FixedValues(long[]...: values) -> long
+- long -> FixedValues(int... values) -> int
+- long -> FixedValues(long... values) -> long
   - *ex:* `FixedValues(3L,53L,73L)` - *Yield 3L, 53L, 73L, 3L, 53L, 73L, 3L, ...*
 
 ## Format
 
 Apply the Java String.format method to an incoming object.
-@see <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html#syntax">Java 8 String.format(...) javadoc</a>
+See <a href="https://docs.oracle.com/javase/8/docs/api/java/util/Formatter.html#syntax">Java 8 String.format(...) javadoc</a>
 Note: This function can often be quite slow, so more direct methods are generally preferrable.
 
 - Object -> Format(String: format) -> String
@@ -303,14 +306,14 @@ based on the valid range of positive long values, between 0L and Long.MAX_VALUE 
 This means that if you want to combine interpolation on this curve with the effect of
 pseudo-random sampling, you need to put a hash function ahead of it in the flow.
 
-- long -> Interpolate(double[]...: value) -> double
+- long -> Interpolate(double... value) -> double
   - *ex:* `Interpolate(0.0d,100.0d)` - *return a uniform double value between 0.0d and 100.0d*
   - *ex:* `Interpolate(0.0d,90.0d,95.0d,98.0d,100.0d)` - *return a weighted double value where the first second and third quartiles are 90.0D, 95.0D, and 98.0D*
 - long -> Interpolate(int: resolution, double[]: lut) -> double
-- long -> Interpolate(double[]...: value) -> long
+- long -> Interpolate(double... value) -> long
   - *ex:* `Interpolate(0.0d,100.0d)` - *return a uniform long value between 0L and 100L*
   - *ex:* `Interpolate(0.0d,90.0d,95.0d,98.0d,100.0d)` - *return a weighted long value where the first second and third quartiles are 90.0D, 95.0D, and 98.0D*
-- long -> Interpolate(long[]...: value) -> long
+- long -> Interpolate(long... value) -> long
 - long -> Interpolate(int: resolution, double[]: lut) -> long
 
 ## JoinTemplate
@@ -318,11 +321,11 @@ pseudo-random sampling, you need to put a hash function ahead of it in the flow.
 Combine the result of the specified functions together with the
 specified delimiter and optional prefix and suffix.
 
-- long -> JoinTemplate(String: delimiter, java.util.function.LongFunction<?>[]...: funcs) -> String
+- long -> JoinTemplate(String: delimiter, java.util.function.LongFunction<?>... funcs) -> String
   - *ex:* `JoinTemplate('--',NumberNameToString(),NumberNameToString())` - *create values like `one--one`, `two-two`, ...*
-- long -> JoinTemplate(String: prefix, String: delimiter, String: suffix, java.util.function.LongFunction<?>[]...: funcs) -> String
+- long -> JoinTemplate(String: prefix, String: delimiter, String: suffix, java.util.function.LongFunction<?>... funcs) -> String
   - *ex:* `JoinTemplate('{',',','}',NumberNameToString(),LastNames())` - *create values like '{one,Farrel}', '{two,Haskell}', ...*
-- long -> JoinTemplate(java.util.function.LongUnaryOperator: iterop, String: prefix, String: delimiter, String: suffix, java.util.function.LongFunction<?>[]...: funcs) -> String
+- long -> JoinTemplate(java.util.function.LongUnaryOperator: iterop, String: prefix, String: delimiter, String: suffix, java.util.function.LongFunction<?>... funcs) -> String
   - *ex:* `JoinTemplate(Add(3),'[',';',']',NumberNameToString(),NumberNameToString(),NumberNameToString())` - *create values like '[zero;three,six]', '[one;four,seven]', ...*
 
 ## ListTemplate
@@ -499,9 +502,9 @@ To provide differing values for similarly defined functions in the list, the inp
 value used is automatically incremented by one for each function, starting with
 the initial input value.
 
-- long -> Template(String: template, java.util.function.LongFunction<?>[]...: funcs) -> String
+- long -> Template(String: template, java.util.function.LongFunction<?>... funcs) -> String
   - *ex:* `Template('{}-{}',Add(10),Hash())` - *concatenate input+10, '-', and a pseudo-random long*
-- long -> Template(java.util.function.LongUnaryOperator: iterOp, String: template, java.util.function.LongFunction<?>[]...: funcs) -> String
+- long -> Template(java.util.function.LongUnaryOperator: iterOp, String: template, java.util.function.LongFunction<?>... funcs) -> String
   - *notes:* If an operator is provided, it is used to change the function input value in an additional way before each function.
 
 ## ThreadNum
@@ -565,7 +568,7 @@ specify a different long value to pre-fill it with.
 ## WeightedStrings
 
 - long -> WeightedStrings(String: valuesAndWeights) -> String
-- long -> WeightedStrings(String: valueColumn, String: weightColumn, String[]...: filenames) -> String
+- long -> WeightedStrings(String: valueColumn, String: weightColumn, String... filenames) -> String
   - *notes:* Create a sampler of strings from the given CSV file. The CSV file must have plain CSV headers
 as its first line.
 

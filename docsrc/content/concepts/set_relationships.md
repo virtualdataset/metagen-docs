@@ -1,10 +1,10 @@
 ---
 date: 2017-12-16
-title: Set Relationships
+title: Modeling Set Relationships
 weight: 51
 menu:
   main:
-    parent: "Modeling Datasets" 
+    parent: "Concepts" 
     identifier: modeling-set-relationships
     weight: 51
 ---

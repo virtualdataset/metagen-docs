@@ -8,6 +8,9 @@ menu:
     identifier: reference-conversion
     weight: 52
 ---
+Conversion functions simply allow values of one type
+to be converted to another type in an obvious way.
+
 ## LongToByte
 
 Convert the input long value to a byte, with negative values

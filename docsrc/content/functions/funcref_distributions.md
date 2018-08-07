@@ -8,1198 +8,350 @@ menu:
     identifier: reference-distributions
     weight: 52
 ---
+All of the distributions that are provided in the Apache Commons Math
+project are supported here, in multiple forms. 
+
+
+## Continuous or Discrete
+
+These distributions break down into two main categories:
+
+### Continuous Distributions
+
+These are distributions over real numbers like 23.4323, with
+continuity across the values. Each of the continuous distributions can
+provide samples that fall on an interval of the real number line.
+Continuous probability distributions include the *Normal* distribution,
+and the *Exponential* distribution, among many others.
+
+### Discrete Distributions
+
+Discrete distributions, also known as *integer distributions* have only
+whole-number valued samples. These distributions include the *Binomial*
+distribution, the *Zipf* distribution, and the *Poisson* distribution,
+among others.
+
+## Hashed or Mapped
+
+### hashed samples
+
+Generally, you will want to "randomly sample" from a probability distribution.
+This is handled automatically by the functions below if you do not override the
+defaults. **The `hash` mode is the default sampling mode for probability
+distributions.** This is accomplished by computing an internal on the unit
+interval variate input before using the resulting value to map into the sampling
+curve. This is called the `hash` sampling mode by VirtData. You can put `hash`
+into the modifiers as explained below if you want to document it explicitly.
+
+### mapped samples
+
+The method used to sample from these distributions depends on a mathematical
+function called the cumulative probability function, or more specifically
+the inverse of it. Having this function computed over some interval allows
+one to sample the shape of a distribution progressively if desired. In
+other words, it allows for some *percentile-like* view of values within
+a given probability distribution. This mode of using the inverse cumulative
+density function is known as the `map` mode in VirtData, as it allows one
+to map a unit interval variate in a deterministic way to a density 
+sampling curve. To enable this mode, simply pass `map` as one of the
+function modifiers for any function in this category.
+
+## Interpolated or Computed Samples
+
+When sampling from mathematical models of probability densities, performance
+between different densities can vary drastically. This means that you may
+end up perturbing the results of your test in an unexpected way simply
+by changing parameters of your testing distributions. Even worse, some
+densities have painful corner cases in performance, like 'Zipf', which
+can make tests unbearably slow and flawed as they chew up CPU resources.
+
+### Interpolated Samples
+ 
+For this reason, interpolation is built-in to these sampling functions.
+**The default mode is `interpolate`.** This means that the sampling
+function is pre-computed over 1000 equidistant points in the unit interval,
+and the result is shared among all threads as a look-up-table for
+interpolation. This makes all statistical sampling functions perform nearly
+identically at runtime (after initialization, a one time cost).
+This does have the minor side effect of a little loss in accuracy, but
+the difference is generally negligible for nearly all performance testing
+cases.
+
+### Computed Samples
+
+Conversely, `compute` mode sampling calls the sampling function every
+time a sample is needed. This affords a little more accuracy, but is generally
+not preferable to the default interpolated mode. You'll know if you need
+computed samples. Otherwise, it's best to stick with interpolation so that
+you spend more time testing your target system and less time testing
+your data generation functions.
+
+## Input Range
+
+All of these functions take a long as the input value for sampling. This
+is similar to how the unit interval (0.0,1.0) is used in mathematics
+and statistics, but more tailored to modern system capabilities. Instead
+of using the unit interval, we simply use the interval of all positive
+longs. This provides more compatibility with other functions in VirtData,
+including hashing functions.
+
+
 ## Beta
 
-@see <a href="https://en.wikipedia.org/wiki/Beta_distribution">Wikipedia: Beta distribution</a>
+See <a href="https://en.wikipedia.org/wiki/Beta_distribution">Wikipedia: Beta distribution</a>
 
-@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/BetaDistribution.html">Commons JavaDoc: BetaDistribution</a>
+See <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/BetaDistribution.html">Commons JavaDoc: BetaDistribution</a>
 
- Generate samples according to the specified probability density.
-
- The input value consists of a long between 0L and Long.MAX_VALUE.
- This value is scaled to the unit interval (0.0, 1.0) as
- an index into a sampling function. The method used is
- inverse cumulative density sampling.
-
- <H3>Sampling Mode</H3>
-
- The curve can be sampled in either map or hash mode. Map mode
- simply indexes into the probability curve in the order that
- it would appear on a density plot. Hash mode applies a
- murmur3 hash to the input value before scaling from the
- range of longs to the unit interval, thus providing a pseudo-random
- sample of a value from the curve. This is usually what you want,
- so hash mode is the default.  To enable map mode, simply provide
- "map" as one of the modifiers as explained below.
-
- <H3>Interpolation</H3>
-
- The curve can be computed from the sampling function for each value
- generated, or it can be provided via interpolation with a lookup table.
- Using interpolation makes all the generator functions perform the
- same. This is almost always what you want, so interpolation is
- enabled by default. In order to compute the value for every sample
- instead, simply provide "compute" as one of the modifiers as explained
- below.
-
- You can add optional modifiers after the distribution parameters.
- You can add one of 'hash' or 'map' but not both. If neither of these is
- added, 'hash' is implied as a default.
- You can add one of 'interpolate' or 'compute' but not both. If neither
- of these is added, 'interpolate' is implied as a default.
-
- At times, it might be useful to add 'hash', 'interpolate' to your
- specifiers as a form of verbosity or explicit specification.
-
-- int -> Beta(double: alpha, double: beta, String[]...: mods) -> double
-- long -> Beta(double: alpha, double: beta, String[]...: mods) -> double
+- int -> Beta(double: alpha, double: beta, String... mods) -> double
+- long -> Beta(double: alpha, double: beta, String... mods) -> double
 
 ## Binomial
 
-@see <a href="http://en.wikipedia.org/wiki/Binomial_distribution">Wikipedia: Binomial distribution</a>
-@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/BinomialDistribution.html">Commons JavaDoc: BinomialDistribution</a>
+See <a href="http://en.wikipedia.org/wiki/Binomial_distribution">Wikipedia: Binomial distribution</a>
 
- Generate samples according to the specified probability density.
+See <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/BinomialDistribution.html">Commons JavaDoc: BinomialDistribution</a>
 
- The input value consists of a long between 0L and Long.MAX_VALUE.
- This value is scaled to the unit interval (0.0, 1.0) as
- an index into a sampling function based on inverse cumulative
- density sampling.
-
- <H3>Sampling Mode</H3>
-
- The curve can be sampled in either map or hash mode. Map mode
- simply indexes into the probability curve in the order that
- it would appear on a density plot. Hash mode applies a
- murmur3 hash to the input value before scaling from the
- range of longs to the unit interval, thus providing a pseudo-random
- sample of a value from the curve. This is usually what you want,
- so hash mode is the default.  To enable map mode, simply provide
- "map" as one of the modifiers as explained below.
-
- <H3>Interpolation</H3>
-
- The curve can be computed from the sampling function for each value
- generated, or it can be provided via interpolation with a lookup table.
- Using interpolation makes all the generator functions perform the
- same. This is almost always what you want, so interpolation is
- enabled by default. In order to compute the value for every sample
- instead, simply provide "compute" as one of the modifiers as explained
- below.
-
- You can add optional modifiers after the distribution parameters.
- You can add one of 'hash' or 'map' but not both. If neither of these is
- added, 'hash' is implied as a default.
- You can add one of 'interpolate' or 'compute' but not both. If neither
- of these is added, 'interpolate' is implied as a default.
-
- At times, it might be useful to add 'hash', 'interpolate' to your
- specifiers as a form of verbosity or explicit specification.
-
-- int -> Binomial(int: trials, double: p, String[]...: modslist) -> int
-- int -> Binomial(int: trials, double: p, String[]...: modslist) -> long
-- long -> Binomial(int: trials, double: p, String[]...: modslist) -> int
-- long -> Binomial(int: trials, double: p, String[]...: modslist) -> long
+- int -> Binomial(int: trials, double: p, String... modslist) -> int
+- int -> Binomial(int: trials, double: p, String... modslist) -> long
+- long -> Binomial(int: trials, double: p, String... modslist) -> int
+- long -> Binomial(int: trials, double: p, String... modslist) -> long
 
 ## Cauchy
 
-@see <a href="http://en.wikipedia.org/wiki/Cauchy_distribution">Wikipedia: Cauchy_distribution</a>
-@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/CauchyDistribution.html">Commons Javadoc: CauchyDistribution</a>
+See <a href="http://en.wikipedia.org/wiki/Cauchy_distribution">Wikipedia: Cauchy_distribution</a>
 
- Generate samples according to the specified probability density.
+See <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/CauchyDistribution.html">Commons Javadoc: CauchyDistribution</a>
 
- The input value consists of a long between 0L and Long.MAX_VALUE.
- This value is scaled to the unit interval (0.0, 1.0) as
- an index into a sampling function. The method used is
- inverse cumulative density sampling.
-
- <H3>Sampling Mode</H3>
-
- The curve can be sampled in either map or hash mode. Map mode
- simply indexes into the probability curve in the order that
- it would appear on a density plot. Hash mode applies a
- murmur3 hash to the input value before scaling from the
- range of longs to the unit interval, thus providing a pseudo-random
- sample of a value from the curve. This is usually what you want,
- so hash mode is the default.  To enable map mode, simply provide
- "map" as one of the modifiers as explained below.
-
- <H3>Interpolation</H3>
-
- The curve can be computed from the sampling function for each value
- generated, or it can be provided via interpolation with a lookup table.
- Using interpolation makes all the generator functions perform the
- same. This is almost always what you want, so interpolation is
- enabled by default. In order to compute the value for every sample
- instead, simply provide "compute" as one of the modifiers as explained
- below.
-
- You can add optional modifiers after the distribution parameters.
- You can add one of 'hash' or 'map' but not both. If neither of these is
- added, 'hash' is implied as a default.
- You can add one of 'interpolate' or 'compute' but not both. If neither
- of these is added, 'interpolate' is implied as a default.
-
- At times, it might be useful to add 'hash', 'interpolate' to your
- specifiers as a form of verbosity or explicit specification.
-
-- int -> Cauchy(double: median, double: scale, String[]...: mods) -> double
-- long -> Cauchy(double: median, double: scale, String[]...: mods) -> double
+- int -> Cauchy(double: median, double: scale, String... mods) -> double
+- long -> Cauchy(double: median, double: scale, String... mods) -> double
 
 ## ChiSquared
 
-@see <a href="https://en.wikipedia.org/wiki/Chi-squared_distribution">Wikipedia: Chi-squared distribution</a>
-@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/ChiSquaredDistribution.html">Commons JavaDoc: ChiSquaredDistribution</a>
+See <a href="https://en.wikipedia.org/wiki/Chi-squared_distribution">Wikipedia: Chi-squared distribution</a>
 
- Generate samples according to the specified probability density.
+See <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/ChiSquaredDistribution.html">Commons JavaDoc: ChiSquaredDistribution</a>
 
- The input value consists of a long between 0L and Long.MAX_VALUE.
- This value is scaled to the unit interval (0.0, 1.0) as
- an index into a sampling function. The method used is
- inverse cumulative density sampling.
-
- <H3>Sampling Mode</H3>
-
- The curve can be sampled in either map or hash mode. Map mode
- simply indexes into the probability curve in the order that
- it would appear on a density plot. Hash mode applies a
- murmur3 hash to the input value before scaling from the
- range of longs to the unit interval, thus providing a pseudo-random
- sample of a value from the curve. This is usually what you want,
- so hash mode is the default.  To enable map mode, simply provide
- "map" as one of the modifiers as explained below.
-
- <H3>Interpolation</H3>
-
- The curve can be computed from the sampling function for each value
- generated, or it can be provided via interpolation with a lookup table.
- Using interpolation makes all the generator functions perform the
- same. This is almost always what you want, so interpolation is
- enabled by default. In order to compute the value for every sample
- instead, simply provide "compute" as one of the modifiers as explained
- below.
-
- You can add optional modifiers after the distribution parameters.
- You can add one of 'hash' or 'map' but not both. If neither of these is
- added, 'hash' is implied as a default.
- You can add one of 'interpolate' or 'compute' but not both. If neither
- of these is added, 'interpolate' is implied as a default.
-
- At times, it might be useful to add 'hash', 'interpolate' to your
- specifiers as a form of verbosity or explicit specification.
-
-- int -> ChiSquared(double: degreesOfFreedom, String[]...: mods) -> double
-- long -> ChiSquared(double: degreesOfFreedom, String[]...: mods) -> double
+- int -> ChiSquared(double: degreesOfFreedom, String... mods) -> double
+- long -> ChiSquared(double: degreesOfFreedom, String... mods) -> double
 
 ## ConstantContinuous
 
-Always yields the same value
-@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/ConstantContinuousDistribution.html">Commons JavaDoc: ConstantContinuousDistribution</a>
+Always yields the same value.
 
- Generate samples according to the specified probability density.
+See <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/ConstantContinuousDistribution.html">Commons JavaDoc: ConstantContinuousDistribution</a>
 
- The input value consists of a long between 0L and Long.MAX_VALUE.
- This value is scaled to the unit interval (0.0, 1.0) as
- an index into a sampling function. The method used is
- inverse cumulative density sampling.
-
- <H3>Sampling Mode</H3>
-
- The curve can be sampled in either map or hash mode. Map mode
- simply indexes into the probability curve in the order that
- it would appear on a density plot. Hash mode applies a
- murmur3 hash to the input value before scaling from the
- range of longs to the unit interval, thus providing a pseudo-random
- sample of a value from the curve. This is usually what you want,
- so hash mode is the default.  To enable map mode, simply provide
- "map" as one of the modifiers as explained below.
-
- <H3>Interpolation</H3>
-
- The curve can be computed from the sampling function for each value
- generated, or it can be provided via interpolation with a lookup table.
- Using interpolation makes all the generator functions perform the
- same. This is almost always what you want, so interpolation is
- enabled by default. In order to compute the value for every sample
- instead, simply provide "compute" as one of the modifiers as explained
- below.
-
- You can add optional modifiers after the distribution parameters.
- You can add one of 'hash' or 'map' but not both. If neither of these is
- added, 'hash' is implied as a default.
- You can add one of 'interpolate' or 'compute' but not both. If neither
- of these is added, 'interpolate' is implied as a default.
-
- At times, it might be useful to add 'hash', 'interpolate' to your
- specifiers as a form of verbosity or explicit specification.
-
-- int -> ConstantContinuous(double: value, String[]...: mods) -> double
-- long -> ConstantContinuous(double: value, String[]...: mods) -> double
+- int -> ConstantContinuous(double: value, String... mods) -> double
+- long -> ConstantContinuous(double: value, String... mods) -> double
 
 ## Enumerated
 
 Creates a probability density given the values and optional weights provided, in "value:weight value:weight ..." form.
 The weight can be elided for any value to use the default weight of 1.0d.
 
-@see <a href="http://commons.apache.org/proper/commons-math/apidocs/org/apache/commons/math4/distribution/EnumeratedRealDistribution.html">Commons JavaDoc: EnumeratedRealDistribution</a>
+See <a href="http://commons.apache.org/proper/commons-math/apidocs/org/apache/commons/math4/distribution/EnumeratedRealDistribution.html">Commons JavaDoc: EnumeratedRealDistribution</a>
 
- Generate samples according to the specified probability density.
-
- The input value consists of a long between 0L and Long.MAX_VALUE.
- This value is scaled to the unit interval (0.0, 1.0) as
- an index into a sampling function. The method used is
- inverse cumulative density sampling.
-
- <H3>Sampling Mode</H3>
-
- The curve can be sampled in either map or hash mode. Map mode
- simply indexes into the probability curve in the order that
- it would appear on a density plot. Hash mode applies a
- murmur3 hash to the input value before scaling from the
- range of longs to the unit interval, thus providing a pseudo-random
- sample of a value from the curve. This is usually what you want,
- so hash mode is the default.  To enable map mode, simply provide
- "map" as one of the modifiers as explained below.
-
- <H3>Interpolation</H3>
-
- The curve can be computed from the sampling function for each value
- generated, or it can be provided via interpolation with a lookup table.
- Using interpolation makes all the generator functions perform the
- same. This is almost always what you want, so interpolation is
- enabled by default. In order to compute the value for every sample
- instead, simply provide "compute" as one of the modifiers as explained
- below.
-
- You can add optional modifiers after the distribution parameters.
- You can add one of 'hash' or 'map' but not both. If neither of these is
- added, 'hash' is implied as a default.
- You can add one of 'interpolate' or 'compute' but not both. If neither
- of these is added, 'interpolate' is implied as a default.
-
- At times, it might be useful to add 'hash', 'interpolate' to your
- specifiers as a form of verbosity or explicit specification.
-
-- int -> Enumerated(String: data, String[]...: mods) -> double
+- int -> Enumerated(String: data, String... mods) -> double
   - *ex:* `Enumerated('1 2 3 4 5 6')` - *a fair six-sided die roll*
   - *ex:* `Enumerated('1:2.0 2 3 4 5 6')` - *an unfair six-sided die roll, where 1 has probability mass 2.0, and everything else has only 1.0*
-- long -> Enumerated(String: data, String[]...: mods) -> double
+- long -> Enumerated(String: data, String... mods) -> double
   - *ex:* `Enumerated('1 2 3 4 5 6')` - *a fair 6-sided die*
   - *ex:* `Enumerated('1:2.0 2 3 4 5:0.5 6:0.5')` - *an unfair fair 6-sided die, where ones are twice as likely, and fives and sixes are half as likely*
 
 ## Exponential
 
-@see <a href="https://en.wikipedia.org/wiki/Exponential_distribution">Wikipedia: Exponential distribution</a>
-@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/ExponentialDistribution.html">Commons JavaDoc: ExponentialDistribution</a>
+See <a href="https://en.wikipedia.org/wiki/Exponential_distribution">Wikipedia: Exponential distribution</a>
 
- Generate samples according to the specified probability density.
+See <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/ExponentialDistribution.html">Commons JavaDoc: ExponentialDistribution</a>
 
- The input value consists of a long between 0L and Long.MAX_VALUE.
- This value is scaled to the unit interval (0.0, 1.0) as
- an index into a sampling function. The method used is
- inverse cumulative density sampling.
-
- <H3>Sampling Mode</H3>
-
- The curve can be sampled in either map or hash mode. Map mode
- simply indexes into the probability curve in the order that
- it would appear on a density plot. Hash mode applies a
- murmur3 hash to the input value before scaling from the
- range of longs to the unit interval, thus providing a pseudo-random
- sample of a value from the curve. This is usually what you want,
- so hash mode is the default.  To enable map mode, simply provide
- "map" as one of the modifiers as explained below.
-
- <H3>Interpolation</H3>
-
- The curve can be computed from the sampling function for each value
- generated, or it can be provided via interpolation with a lookup table.
- Using interpolation makes all the generator functions perform the
- same. This is almost always what you want, so interpolation is
- enabled by default. In order to compute the value for every sample
- instead, simply provide "compute" as one of the modifiers as explained
- below.
-
- You can add optional modifiers after the distribution parameters.
- You can add one of 'hash' or 'map' but not both. If neither of these is
- added, 'hash' is implied as a default.
- You can add one of 'interpolate' or 'compute' but not both. If neither
- of these is added, 'interpolate' is implied as a default.
-
- At times, it might be useful to add 'hash', 'interpolate' to your
- specifiers as a form of verbosity or explicit specification.
-
-- int -> Exponential(double: mean, String[]...: mods) -> double
-- long -> Exponential(double: mean, String[]...: mods) -> double
+- int -> Exponential(double: mean, String... mods) -> double
+- long -> Exponential(double: mean, String... mods) -> double
 
 ## F
 
-@see <a href="https://en.wikipedia.org/wiki/F-distribution">Wikipedia: F-distribution</a>
-@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/FDistribution.html">Commons JavaDoc: FDistribution</a>
-@see <a href="http://mathworld.wolfram.com/F-Distribution.html">Mathworld: F-Distribution</a>
+See <a href="https://en.wikipedia.org/wiki/F-distribution">Wikipedia: F-distribution</a>
 
- Generate samples according to the specified probability density.
+See <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/FDistribution.html">Commons JavaDoc: FDistribution</a>
 
- The input value consists of a long between 0L and Long.MAX_VALUE.
- This value is scaled to the unit interval (0.0, 1.0) as
- an index into a sampling function. The method used is
- inverse cumulative density sampling.
+See <a href="http://mathworld.wolfram.com/F-Distribution.html">Mathworld: F-Distribution</a>
 
- <H3>Sampling Mode</H3>
-
- The curve can be sampled in either map or hash mode. Map mode
- simply indexes into the probability curve in the order that
- it would appear on a density plot. Hash mode applies a
- murmur3 hash to the input value before scaling from the
- range of longs to the unit interval, thus providing a pseudo-random
- sample of a value from the curve. This is usually what you want,
- so hash mode is the default.  To enable map mode, simply provide
- "map" as one of the modifiers as explained below.
-
- <H3>Interpolation</H3>
-
- The curve can be computed from the sampling function for each value
- generated, or it can be provided via interpolation with a lookup table.
- Using interpolation makes all the generator functions perform the
- same. This is almost always what you want, so interpolation is
- enabled by default. In order to compute the value for every sample
- instead, simply provide "compute" as one of the modifiers as explained
- below.
-
- You can add optional modifiers after the distribution parameters.
- You can add one of 'hash' or 'map' but not both. If neither of these is
- added, 'hash' is implied as a default.
- You can add one of 'interpolate' or 'compute' but not both. If neither
- of these is added, 'interpolate' is implied as a default.
-
- At times, it might be useful to add 'hash', 'interpolate' to your
- specifiers as a form of verbosity or explicit specification.
-
-- int -> F(double: numeratorDegreesOfFreedom, double: denominatorDegreesOfFreedom, String[]...: mods) -> double
-- long -> F(double: numeratorDegreesOfFreedom, double: denominatorDegreesOfFreedom, String[]...: mods) -> double
+- int -> F(double: numeratorDegreesOfFreedom, double: denominatorDegreesOfFreedom, String... mods) -> double
+- long -> F(double: numeratorDegreesOfFreedom, double: denominatorDegreesOfFreedom, String... mods) -> double
 
 ## Gamma
 
-@see <a href="https://en.wikipedia.org/wiki/Gamma_distribution">Wikipedia: Gamma distribution</a>
-@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/GammaDistribution.html">Commons JavaDoc: GammaDistribution</a>
+See <a href="https://en.wikipedia.org/wiki/Gamma_distribution">Wikipedia: Gamma distribution</a>
 
- Generate samples according to the specified probability density.
+See <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/GammaDistribution.html">Commons JavaDoc: GammaDistribution</a>
 
- The input value consists of a long between 0L and Long.MAX_VALUE.
- This value is scaled to the unit interval (0.0, 1.0) as
- an index into a sampling function. The method used is
- inverse cumulative density sampling.
-
- <H3>Sampling Mode</H3>
-
- The curve can be sampled in either map or hash mode. Map mode
- simply indexes into the probability curve in the order that
- it would appear on a density plot. Hash mode applies a
- murmur3 hash to the input value before scaling from the
- range of longs to the unit interval, thus providing a pseudo-random
- sample of a value from the curve. This is usually what you want,
- so hash mode is the default.  To enable map mode, simply provide
- "map" as one of the modifiers as explained below.
-
- <H3>Interpolation</H3>
-
- The curve can be computed from the sampling function for each value
- generated, or it can be provided via interpolation with a lookup table.
- Using interpolation makes all the generator functions perform the
- same. This is almost always what you want, so interpolation is
- enabled by default. In order to compute the value for every sample
- instead, simply provide "compute" as one of the modifiers as explained
- below.
-
- You can add optional modifiers after the distribution parameters.
- You can add one of 'hash' or 'map' but not both. If neither of these is
- added, 'hash' is implied as a default.
- You can add one of 'interpolate' or 'compute' but not both. If neither
- of these is added, 'interpolate' is implied as a default.
-
- At times, it might be useful to add 'hash', 'interpolate' to your
- specifiers as a form of verbosity or explicit specification.
-
-- int -> Gamma(double: shape, double: scale, String[]...: mods) -> double
-- long -> Gamma(double: shape, double: scale, String[]...: mods) -> double
+- int -> Gamma(double: shape, double: scale, String... mods) -> double
+- long -> Gamma(double: shape, double: scale, String... mods) -> double
 
 ## Geometric
 
-@see <a href="http://en.wikipedia.org/wiki/Geometric_distribution">Wikipedia: Geometric distribution</a>
-@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/GeometricDistribution.html">Commons JavaDoc: GeometricDistribution</a>
+See <a href="http://en.wikipedia.org/wiki/Geometric_distribution">Wikipedia: Geometric distribution</a>
 
- Generate samples according to the specified probability density.
+See <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/GeometricDistribution.html">Commons JavaDoc: GeometricDistribution</a>
 
- The input value consists of a long between 0L and Long.MAX_VALUE.
- This value is scaled to the unit interval (0.0, 1.0) as
- an index into a sampling function based on inverse cumulative
- density sampling.
-
- <H3>Sampling Mode</H3>
-
- The curve can be sampled in either map or hash mode. Map mode
- simply indexes into the probability curve in the order that
- it would appear on a density plot. Hash mode applies a
- murmur3 hash to the input value before scaling from the
- range of longs to the unit interval, thus providing a pseudo-random
- sample of a value from the curve. This is usually what you want,
- so hash mode is the default.  To enable map mode, simply provide
- "map" as one of the modifiers as explained below.
-
- <H3>Interpolation</H3>
-
- The curve can be computed from the sampling function for each value
- generated, or it can be provided via interpolation with a lookup table.
- Using interpolation makes all the generator functions perform the
- same. This is almost always what you want, so interpolation is
- enabled by default. In order to compute the value for every sample
- instead, simply provide "compute" as one of the modifiers as explained
- below.
-
- You can add optional modifiers after the distribution parameters.
- You can add one of 'hash' or 'map' but not both. If neither of these is
- added, 'hash' is implied as a default.
- You can add one of 'interpolate' or 'compute' but not both. If neither
- of these is added, 'interpolate' is implied as a default.
-
- At times, it might be useful to add 'hash', 'interpolate' to your
- specifiers as a form of verbosity or explicit specification.
-
-- int -> Geometric(double: p, String[]...: modslist) -> int
-- int -> Geometric(double: p, String[]...: modslist) -> long
-- long -> Geometric(double: p, String[]...: modslist) -> int
-- long -> Geometric(double: p, String[]...: modslist) -> long
+- int -> Geometric(double: p, String... modslist) -> int
+- int -> Geometric(double: p, String... modslist) -> long
+- long -> Geometric(double: p, String... modslist) -> int
+- long -> Geometric(double: p, String... modslist) -> long
 
 ## Gumbel
 
-@see <a href="https://en.wikipedia.org/wiki/Gumbel_distribution">Wikipedia: Gumbel distribution</a>
-@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/GumbelDistribution.html">Commons JavaDoc: GumbelDistribution</a>
+See <a href="https://en.wikipedia.org/wiki/Gumbel_distribution">Wikipedia: Gumbel distribution</a>
 
- Generate samples according to the specified probability density.
+See <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/GumbelDistribution.html">Commons JavaDoc: GumbelDistribution</a>
 
- The input value consists of a long between 0L and Long.MAX_VALUE.
- This value is scaled to the unit interval (0.0, 1.0) as
- an index into a sampling function. The method used is
- inverse cumulative density sampling.
-
- <H3>Sampling Mode</H3>
-
- The curve can be sampled in either map or hash mode. Map mode
- simply indexes into the probability curve in the order that
- it would appear on a density plot. Hash mode applies a
- murmur3 hash to the input value before scaling from the
- range of longs to the unit interval, thus providing a pseudo-random
- sample of a value from the curve. This is usually what you want,
- so hash mode is the default.  To enable map mode, simply provide
- "map" as one of the modifiers as explained below.
-
- <H3>Interpolation</H3>
-
- The curve can be computed from the sampling function for each value
- generated, or it can be provided via interpolation with a lookup table.
- Using interpolation makes all the generator functions perform the
- same. This is almost always what you want, so interpolation is
- enabled by default. In order to compute the value for every sample
- instead, simply provide "compute" as one of the modifiers as explained
- below.
-
- You can add optional modifiers after the distribution parameters.
- You can add one of 'hash' or 'map' but not both. If neither of these is
- added, 'hash' is implied as a default.
- You can add one of 'interpolate' or 'compute' but not both. If neither
- of these is added, 'interpolate' is implied as a default.
-
- At times, it might be useful to add 'hash', 'interpolate' to your
- specifiers as a form of verbosity or explicit specification.
-
-- int -> Gumbel(double: mu, double: beta, String[]...: mods) -> double
-- long -> Gumbel(double: mu, double: beta, String[]...: mods) -> double
+- int -> Gumbel(double: mu, double: beta, String... mods) -> double
+- long -> Gumbel(double: mu, double: beta, String... mods) -> double
 
 ## Hypergeometric
 
-@see <a href="http://en.wikipedia.org/wiki/Hypergeometric_distribution">Wikipedia: Hypergeometric distribution</a>
-@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/HypergeometricDistribution.html">Commons JavaDoc: HypergeometricDistribution</a>
+See <a href="http://en.wikipedia.org/wiki/Hypergeometric_distribution">Wikipedia: Hypergeometric distribution</a>
 
- Generate samples according to the specified probability density.
+See <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/HypergeometricDistribution.html">Commons JavaDoc: HypergeometricDistribution</a>
 
- The input value consists of a long between 0L and Long.MAX_VALUE.
- This value is scaled to the unit interval (0.0, 1.0) as
- an index into a sampling function based on inverse cumulative
- density sampling.
-
- <H3>Sampling Mode</H3>
-
- The curve can be sampled in either map or hash mode. Map mode
- simply indexes into the probability curve in the order that
- it would appear on a density plot. Hash mode applies a
- murmur3 hash to the input value before scaling from the
- range of longs to the unit interval, thus providing a pseudo-random
- sample of a value from the curve. This is usually what you want,
- so hash mode is the default.  To enable map mode, simply provide
- "map" as one of the modifiers as explained below.
-
- <H3>Interpolation</H3>
-
- The curve can be computed from the sampling function for each value
- generated, or it can be provided via interpolation with a lookup table.
- Using interpolation makes all the generator functions perform the
- same. This is almost always what you want, so interpolation is
- enabled by default. In order to compute the value for every sample
- instead, simply provide "compute" as one of the modifiers as explained
- below.
-
- You can add optional modifiers after the distribution parameters.
- You can add one of 'hash' or 'map' but not both. If neither of these is
- added, 'hash' is implied as a default.
- You can add one of 'interpolate' or 'compute' but not both. If neither
- of these is added, 'interpolate' is implied as a default.
-
- At times, it might be useful to add 'hash', 'interpolate' to your
- specifiers as a form of verbosity or explicit specification.
-
-- int -> Hypergeometric(int: populationSize, int: numberOfSuccesses, int: sampleSize, String[]...: modslist) -> int
-- int -> Hypergeometric(int: populationSize, int: numberOfSuccesses, int: sampleSize, String[]...: modslist) -> long
-- long -> Hypergeometric(int: populationSize, int: numberOfSuccesses, int: sampleSize, String[]...: modslist) -> int
-- long -> Hypergeometric(int: populationSize, int: numberOfSuccesses, int: sampleSize, String[]...: modslist) -> long
+- int -> Hypergeometric(int: populationSize, int: numberOfSuccesses, int: sampleSize, String... modslist) -> int
+- int -> Hypergeometric(int: populationSize, int: numberOfSuccesses, int: sampleSize, String... modslist) -> long
+- long -> Hypergeometric(int: populationSize, int: numberOfSuccesses, int: sampleSize, String... modslist) -> int
+- long -> Hypergeometric(int: populationSize, int: numberOfSuccesses, int: sampleSize, String... modslist) -> long
 
 ## Laplace
 
-@see <a href="https://en.wikipedia.org/wiki/Laplace_distribution">Wikipedia: Laplace distribution</a>
-@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/LaplaceDistribution.html">Commons JavaDoc: LaplaceDistribution</a>
+See <a href="https://en.wikipedia.org/wiki/Laplace_distribution">Wikipedia: Laplace distribution</a>
 
- Generate samples according to the specified probability density.
+See <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/LaplaceDistribution.html">Commons JavaDoc: LaplaceDistribution</a>
 
- The input value consists of a long between 0L and Long.MAX_VALUE.
- This value is scaled to the unit interval (0.0, 1.0) as
- an index into a sampling function. The method used is
- inverse cumulative density sampling.
-
- <H3>Sampling Mode</H3>
-
- The curve can be sampled in either map or hash mode. Map mode
- simply indexes into the probability curve in the order that
- it would appear on a density plot. Hash mode applies a
- murmur3 hash to the input value before scaling from the
- range of longs to the unit interval, thus providing a pseudo-random
- sample of a value from the curve. This is usually what you want,
- so hash mode is the default.  To enable map mode, simply provide
- "map" as one of the modifiers as explained below.
-
- <H3>Interpolation</H3>
-
- The curve can be computed from the sampling function for each value
- generated, or it can be provided via interpolation with a lookup table.
- Using interpolation makes all the generator functions perform the
- same. This is almost always what you want, so interpolation is
- enabled by default. In order to compute the value for every sample
- instead, simply provide "compute" as one of the modifiers as explained
- below.
-
- You can add optional modifiers after the distribution parameters.
- You can add one of 'hash' or 'map' but not both. If neither of these is
- added, 'hash' is implied as a default.
- You can add one of 'interpolate' or 'compute' but not both. If neither
- of these is added, 'interpolate' is implied as a default.
-
- At times, it might be useful to add 'hash', 'interpolate' to your
- specifiers as a form of verbosity or explicit specification.
-
-- int -> Laplace(double: mu, double: beta, String[]...: mods) -> double
-- long -> Laplace(double: mu, double: beta, String[]...: mods) -> double
+- int -> Laplace(double: mu, double: beta, String... mods) -> double
+- long -> Laplace(double: mu, double: beta, String... mods) -> double
 
 ## Levy
 
-@see <a href="https://en.wikipedia.org/wiki/L%C3%A9vy_distribution">Wikipedia: Lévy distribution</a>
-@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/LevyDistribution.html">Commons JavaDoc: LevyDistribution</a>
+See <a href="https://en.wikipedia.org/wiki/L%C3%A9vy_distribution">Wikipedia: Lévy distribution</a>
 
- Generate samples according to the specified probability density.
+See <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/LevyDistribution.html">Commons JavaDoc: LevyDistribution</a>
 
- The input value consists of a long between 0L and Long.MAX_VALUE.
- This value is scaled to the unit interval (0.0, 1.0) as
- an index into a sampling function. The method used is
- inverse cumulative density sampling.
-
- <H3>Sampling Mode</H3>
-
- The curve can be sampled in either map or hash mode. Map mode
- simply indexes into the probability curve in the order that
- it would appear on a density plot. Hash mode applies a
- murmur3 hash to the input value before scaling from the
- range of longs to the unit interval, thus providing a pseudo-random
- sample of a value from the curve. This is usually what you want,
- so hash mode is the default.  To enable map mode, simply provide
- "map" as one of the modifiers as explained below.
-
- <H3>Interpolation</H3>
-
- The curve can be computed from the sampling function for each value
- generated, or it can be provided via interpolation with a lookup table.
- Using interpolation makes all the generator functions perform the
- same. This is almost always what you want, so interpolation is
- enabled by default. In order to compute the value for every sample
- instead, simply provide "compute" as one of the modifiers as explained
- below.
-
- You can add optional modifiers after the distribution parameters.
- You can add one of 'hash' or 'map' but not both. If neither of these is
- added, 'hash' is implied as a default.
- You can add one of 'interpolate' or 'compute' but not both. If neither
- of these is added, 'interpolate' is implied as a default.
-
- At times, it might be useful to add 'hash', 'interpolate' to your
- specifiers as a form of verbosity or explicit specification.
-
-- int -> Levy(double: mu, double: c, String[]...: mods) -> double
-- long -> Levy(double: mu, double: c, String[]...: mods) -> double
+- int -> Levy(double: mu, double: c, String... mods) -> double
+- long -> Levy(double: mu, double: c, String... mods) -> double
 
 ## LogNormal
 
-@see <a href="https://en.wikipedia.org/wiki/Log-normal_distribution">Wikipedia: Log-normal distribution</a>
-@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/LogNormalDistribution.html">Commons JavaDoc: LogNormalDistribution</a>
+See <a href="https://en.wikipedia.org/wiki/Log-normal_distribution">Wikipedia: Log-normal distribution</a>
 
- Generate samples according to the specified probability density.
+See <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/LogNormalDistribution.html">Commons JavaDoc: LogNormalDistribution</a>
 
- The input value consists of a long between 0L and Long.MAX_VALUE.
- This value is scaled to the unit interval (0.0, 1.0) as
- an index into a sampling function. The method used is
- inverse cumulative density sampling.
-
- <H3>Sampling Mode</H3>
-
- The curve can be sampled in either map or hash mode. Map mode
- simply indexes into the probability curve in the order that
- it would appear on a density plot. Hash mode applies a
- murmur3 hash to the input value before scaling from the
- range of longs to the unit interval, thus providing a pseudo-random
- sample of a value from the curve. This is usually what you want,
- so hash mode is the default.  To enable map mode, simply provide
- "map" as one of the modifiers as explained below.
-
- <H3>Interpolation</H3>
-
- The curve can be computed from the sampling function for each value
- generated, or it can be provided via interpolation with a lookup table.
- Using interpolation makes all the generator functions perform the
- same. This is almost always what you want, so interpolation is
- enabled by default. In order to compute the value for every sample
- instead, simply provide "compute" as one of the modifiers as explained
- below.
-
- You can add optional modifiers after the distribution parameters.
- You can add one of 'hash' or 'map' but not both. If neither of these is
- added, 'hash' is implied as a default.
- You can add one of 'interpolate' or 'compute' but not both. If neither
- of these is added, 'interpolate' is implied as a default.
-
- At times, it might be useful to add 'hash', 'interpolate' to your
- specifiers as a form of verbosity or explicit specification.
-
-- int -> LogNormal(double: scale, double: shape, String[]...: mods) -> double
-- long -> LogNormal(double: scale, double: shape, String[]...: mods) -> double
+- int -> LogNormal(double: scale, double: shape, String... mods) -> double
+- long -> LogNormal(double: scale, double: shape, String... mods) -> double
 
 ## Logistic
 
-@see <a href="https://en.wikipedia.org/wiki/Logistic_distribution">Wikipedia: Logistic distribution</a>
-@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/LogisticDistribution.html">Commons JavaDoc: LogisticDistribution</a>
+See <a href="https://en.wikipedia.org/wiki/Logistic_distribution">Wikipedia: Logistic distribution</a>
 
- Generate samples according to the specified probability density.
+See <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/LogisticDistribution.html">Commons JavaDoc: LogisticDistribution</a>
 
- The input value consists of a long between 0L and Long.MAX_VALUE.
- This value is scaled to the unit interval (0.0, 1.0) as
- an index into a sampling function. The method used is
- inverse cumulative density sampling.
-
- <H3>Sampling Mode</H3>
-
- The curve can be sampled in either map or hash mode. Map mode
- simply indexes into the probability curve in the order that
- it would appear on a density plot. Hash mode applies a
- murmur3 hash to the input value before scaling from the
- range of longs to the unit interval, thus providing a pseudo-random
- sample of a value from the curve. This is usually what you want,
- so hash mode is the default.  To enable map mode, simply provide
- "map" as one of the modifiers as explained below.
-
- <H3>Interpolation</H3>
-
- The curve can be computed from the sampling function for each value
- generated, or it can be provided via interpolation with a lookup table.
- Using interpolation makes all the generator functions perform the
- same. This is almost always what you want, so interpolation is
- enabled by default. In order to compute the value for every sample
- instead, simply provide "compute" as one of the modifiers as explained
- below.
-
- You can add optional modifiers after the distribution parameters.
- You can add one of 'hash' or 'map' but not both. If neither of these is
- added, 'hash' is implied as a default.
- You can add one of 'interpolate' or 'compute' but not both. If neither
- of these is added, 'interpolate' is implied as a default.
-
- At times, it might be useful to add 'hash', 'interpolate' to your
- specifiers as a form of verbosity or explicit specification.
-
-- int -> Logistic(double: mu, double: scale, String[]...: mods) -> double
-- long -> Logistic(double: mu, double: scale, String[]...: mods) -> double
+- int -> Logistic(double: mu, double: scale, String... mods) -> double
+- long -> Logistic(double: mu, double: scale, String... mods) -> double
 
 ## Nakagami
 
-@see <a href="https://en.wikipedia.org/wiki/Nakagami_distribution">Wikipedia: Nakagami distribution</a>
-@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/NakagamiDistribution.html">Commons JavaDoc: NakagamiDistribution</a>
+See <a href="https://en.wikipedia.org/wiki/Nakagami_distribution">Wikipedia: Nakagami distribution</a>
 
- Generate samples according to the specified probability density.
+See <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/NakagamiDistribution.html">Commons JavaDoc: NakagamiDistribution</a>
 
- The input value consists of a long between 0L and Long.MAX_VALUE.
- This value is scaled to the unit interval (0.0, 1.0) as
- an index into a sampling function. The method used is
- inverse cumulative density sampling.
-
- <H3>Sampling Mode</H3>
-
- The curve can be sampled in either map or hash mode. Map mode
- simply indexes into the probability curve in the order that
- it would appear on a density plot. Hash mode applies a
- murmur3 hash to the input value before scaling from the
- range of longs to the unit interval, thus providing a pseudo-random
- sample of a value from the curve. This is usually what you want,
- so hash mode is the default.  To enable map mode, simply provide
- "map" as one of the modifiers as explained below.
-
- <H3>Interpolation</H3>
-
- The curve can be computed from the sampling function for each value
- generated, or it can be provided via interpolation with a lookup table.
- Using interpolation makes all the generator functions perform the
- same. This is almost always what you want, so interpolation is
- enabled by default. In order to compute the value for every sample
- instead, simply provide "compute" as one of the modifiers as explained
- below.
-
- You can add optional modifiers after the distribution parameters.
- You can add one of 'hash' or 'map' but not both. If neither of these is
- added, 'hash' is implied as a default.
- You can add one of 'interpolate' or 'compute' but not both. If neither
- of these is added, 'interpolate' is implied as a default.
-
- At times, it might be useful to add 'hash', 'interpolate' to your
- specifiers as a form of verbosity or explicit specification.
-
-- int -> Nakagami(double: mu, double: omega, String[]...: mods) -> double
-- long -> Nakagami(double: mu, double: omega, String[]...: mods) -> double
+- int -> Nakagami(double: mu, double: omega, String... mods) -> double
+- long -> Nakagami(double: mu, double: omega, String... mods) -> double
 
 ## Normal
 
-@see <a href="https://en.wikipedia.org/wiki/Normal_distribution">Wikipedia: Normal distribution</a>
-@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/NormalDistribution.html">Commons JavaDoc: NormalDistribution</a>
+See <a href="https://en.wikipedia.org/wiki/Normal_distribution">Wikipedia: Normal distribution</a>
 
- Generate samples according to the specified probability density.
+See <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/NormalDistribution.html">Commons JavaDoc: NormalDistribution</a>
 
- The input value consists of a long between 0L and Long.MAX_VALUE.
- This value is scaled to the unit interval (0.0, 1.0) as
- an index into a sampling function. The method used is
- inverse cumulative density sampling.
-
- <H3>Sampling Mode</H3>
-
- The curve can be sampled in either map or hash mode. Map mode
- simply indexes into the probability curve in the order that
- it would appear on a density plot. Hash mode applies a
- murmur3 hash to the input value before scaling from the
- range of longs to the unit interval, thus providing a pseudo-random
- sample of a value from the curve. This is usually what you want,
- so hash mode is the default.  To enable map mode, simply provide
- "map" as one of the modifiers as explained below.
-
- <H3>Interpolation</H3>
-
- The curve can be computed from the sampling function for each value
- generated, or it can be provided via interpolation with a lookup table.
- Using interpolation makes all the generator functions perform the
- same. This is almost always what you want, so interpolation is
- enabled by default. In order to compute the value for every sample
- instead, simply provide "compute" as one of the modifiers as explained
- below.
-
- You can add optional modifiers after the distribution parameters.
- You can add one of 'hash' or 'map' but not both. If neither of these is
- added, 'hash' is implied as a default.
- You can add one of 'interpolate' or 'compute' but not both. If neither
- of these is added, 'interpolate' is implied as a default.
-
- At times, it might be useful to add 'hash', 'interpolate' to your
- specifiers as a form of verbosity or explicit specification.
-
-- int -> Normal(double: mean, double: sd, String[]...: mods) -> double
-- long -> Normal(double: mean, double: sd, String[]...: mods) -> double
+- int -> Normal(double: mean, double: sd, String... mods) -> double
+- long -> Normal(double: mean, double: sd, String... mods) -> double
 
 ## Pareto
 
-@see <a href="https://en.wikipedia.org/wiki/Pareto_distribution">Wikipedia: Pareto distribution</a>
-@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/ParetoDistribution.html">Commons JavaDoc: ParetoDistribution</a>
+See <a href="https://en.wikipedia.org/wiki/Pareto_distribution">Wikipedia: Pareto distribution</a>
 
- Generate samples according to the specified probability density.
+See <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/ParetoDistribution.html">Commons JavaDoc: ParetoDistribution</a>
 
- The input value consists of a long between 0L and Long.MAX_VALUE.
- This value is scaled to the unit interval (0.0, 1.0) as
- an index into a sampling function. The method used is
- inverse cumulative density sampling.
-
- <H3>Sampling Mode</H3>
-
- The curve can be sampled in either map or hash mode. Map mode
- simply indexes into the probability curve in the order that
- it would appear on a density plot. Hash mode applies a
- murmur3 hash to the input value before scaling from the
- range of longs to the unit interval, thus providing a pseudo-random
- sample of a value from the curve. This is usually what you want,
- so hash mode is the default.  To enable map mode, simply provide
- "map" as one of the modifiers as explained below.
-
- <H3>Interpolation</H3>
-
- The curve can be computed from the sampling function for each value
- generated, or it can be provided via interpolation with a lookup table.
- Using interpolation makes all the generator functions perform the
- same. This is almost always what you want, so interpolation is
- enabled by default. In order to compute the value for every sample
- instead, simply provide "compute" as one of the modifiers as explained
- below.
-
- You can add optional modifiers after the distribution parameters.
- You can add one of 'hash' or 'map' but not both. If neither of these is
- added, 'hash' is implied as a default.
- You can add one of 'interpolate' or 'compute' but not both. If neither
- of these is added, 'interpolate' is implied as a default.
-
- At times, it might be useful to add 'hash', 'interpolate' to your
- specifiers as a form of verbosity or explicit specification.
-
-- int -> Pareto(double: scale, double: shape, String[]...: mods) -> double
-- long -> Pareto(double: scale, double: shape, String[]...: mods) -> double
+- int -> Pareto(double: scale, double: shape, String... mods) -> double
+- long -> Pareto(double: scale, double: shape, String... mods) -> double
 
 ## Pascal
 
-@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/PascalDistribution.html">Commons JavaDoc: PascalDistribution</a>
-@see <a href="https://en.wikipedia.org/wiki/Negative_binomial_distribution">Wikipedia: Negative binomial distribution</a>
+See <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/PascalDistribution.html">Commons JavaDoc: PascalDistribution</a>
 
- Generate samples according to the specified probability density.
+See <a href="https://en.wikipedia.org/wiki/Negative_binomial_distribution">Wikipedia: Negative binomial distribution</a>
 
- The input value consists of a long between 0L and Long.MAX_VALUE.
- This value is scaled to the unit interval (0.0, 1.0) as
- an index into a sampling function based on inverse cumulative
- density sampling.
-
- <H3>Sampling Mode</H3>
-
- The curve can be sampled in either map or hash mode. Map mode
- simply indexes into the probability curve in the order that
- it would appear on a density plot. Hash mode applies a
- murmur3 hash to the input value before scaling from the
- range of longs to the unit interval, thus providing a pseudo-random
- sample of a value from the curve. This is usually what you want,
- so hash mode is the default.  To enable map mode, simply provide
- "map" as one of the modifiers as explained below.
-
- <H3>Interpolation</H3>
-
- The curve can be computed from the sampling function for each value
- generated, or it can be provided via interpolation with a lookup table.
- Using interpolation makes all the generator functions perform the
- same. This is almost always what you want, so interpolation is
- enabled by default. In order to compute the value for every sample
- instead, simply provide "compute" as one of the modifiers as explained
- below.
-
- You can add optional modifiers after the distribution parameters.
- You can add one of 'hash' or 'map' but not both. If neither of these is
- added, 'hash' is implied as a default.
- You can add one of 'interpolate' or 'compute' but not both. If neither
- of these is added, 'interpolate' is implied as a default.
-
- At times, it might be useful to add 'hash', 'interpolate' to your
- specifiers as a form of verbosity or explicit specification.
-
-- int -> Pascal(int: r, double: p, String[]...: modslist) -> int
-- int -> Pascal(int: r, double: p, String[]...: modslist) -> long
-- long -> Pascal(int: r, double: p, String[]...: modslist) -> int
-- long -> Pascal(int: r, double: p, String[]...: modslist) -> long
+- int -> Pascal(int: r, double: p, String... modslist) -> int
+- int -> Pascal(int: r, double: p, String... modslist) -> long
+- long -> Pascal(int: r, double: p, String... modslist) -> int
+- long -> Pascal(int: r, double: p, String... modslist) -> long
 
 ## Poisson
 
-@see <a href="http://en.wikipedia.org/wiki/Poisson_distribution">Wikipedia: Poisson distribution</a>
-@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/PoissonDistribution.html">Commons JavaDoc: PoissonDistribution</a>
+See <a href="http://en.wikipedia.org/wiki/Poisson_distribution">Wikipedia: Poisson distribution</a>
 
- Generate samples according to the specified probability density.
+See <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/PoissonDistribution.html">Commons JavaDoc: PoissonDistribution</a>
 
- The input value consists of a long between 0L and Long.MAX_VALUE.
- This value is scaled to the unit interval (0.0, 1.0) as
- an index into a sampling function based on inverse cumulative
- density sampling.
-
- <H3>Sampling Mode</H3>
-
- The curve can be sampled in either map or hash mode. Map mode
- simply indexes into the probability curve in the order that
- it would appear on a density plot. Hash mode applies a
- murmur3 hash to the input value before scaling from the
- range of longs to the unit interval, thus providing a pseudo-random
- sample of a value from the curve. This is usually what you want,
- so hash mode is the default.  To enable map mode, simply provide
- "map" as one of the modifiers as explained below.
-
- <H3>Interpolation</H3>
-
- The curve can be computed from the sampling function for each value
- generated, or it can be provided via interpolation with a lookup table.
- Using interpolation makes all the generator functions perform the
- same. This is almost always what you want, so interpolation is
- enabled by default. In order to compute the value for every sample
- instead, simply provide "compute" as one of the modifiers as explained
- below.
-
- You can add optional modifiers after the distribution parameters.
- You can add one of 'hash' or 'map' but not both. If neither of these is
- added, 'hash' is implied as a default.
- You can add one of 'interpolate' or 'compute' but not both. If neither
- of these is added, 'interpolate' is implied as a default.
-
- At times, it might be useful to add 'hash', 'interpolate' to your
- specifiers as a form of verbosity or explicit specification.
-
-- int -> Poisson(double: p, String[]...: modslist) -> int
-- int -> Poisson(double: p, String[]...: modslist) -> long
-- long -> Poisson(double: p, String[]...: modslist) -> int
-- long -> Poisson(double: p, String[]...: modslist) -> long
+- int -> Poisson(double: p, String... modslist) -> int
+- int -> Poisson(double: p, String... modslist) -> long
+- long -> Poisson(double: p, String... modslist) -> int
+- long -> Poisson(double: p, String... modslist) -> long
 
 ## T
 
-@see <a href="https://en.wikipedia.org/wiki/Student's_t-distribution">Wikipedia: Student's t-distribution</a>
-@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/TDistribution.html">Commons JavaDoc: TDistribution</a>
+See <a href="https://en.wikipedia.org/wiki/Student's_t-distribution">Wikipedia: Student's t-distribution</a>
 
- Generate samples according to the specified probability density.
+See <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/TDistribution.html">Commons JavaDoc: TDistribution</a>
 
- The input value consists of a long between 0L and Long.MAX_VALUE.
- This value is scaled to the unit interval (0.0, 1.0) as
- an index into a sampling function. The method used is
- inverse cumulative density sampling.
-
- <H3>Sampling Mode</H3>
-
- The curve can be sampled in either map or hash mode. Map mode
- simply indexes into the probability curve in the order that
- it would appear on a density plot. Hash mode applies a
- murmur3 hash to the input value before scaling from the
- range of longs to the unit interval, thus providing a pseudo-random
- sample of a value from the curve. This is usually what you want,
- so hash mode is the default.  To enable map mode, simply provide
- "map" as one of the modifiers as explained below.
-
- <H3>Interpolation</H3>
-
- The curve can be computed from the sampling function for each value
- generated, or it can be provided via interpolation with a lookup table.
- Using interpolation makes all the generator functions perform the
- same. This is almost always what you want, so interpolation is
- enabled by default. In order to compute the value for every sample
- instead, simply provide "compute" as one of the modifiers as explained
- below.
-
- You can add optional modifiers after the distribution parameters.
- You can add one of 'hash' or 'map' but not both. If neither of these is
- added, 'hash' is implied as a default.
- You can add one of 'interpolate' or 'compute' but not both. If neither
- of these is added, 'interpolate' is implied as a default.
-
- At times, it might be useful to add 'hash', 'interpolate' to your
- specifiers as a form of verbosity or explicit specification.
-
-- int -> T(double: degreesOfFreedom, String[]...: mods) -> double
-- long -> T(double: degreesOfFreedom, String[]...: mods) -> double
+- int -> T(double: degreesOfFreedom, String... mods) -> double
+- long -> T(double: degreesOfFreedom, String... mods) -> double
 
 ## Triangular
 
-@see <a href="https://en.wikipedia.org/wiki/Triangular_distribution">Wikipedia: Triangular distribution</a>
-@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/TriangularDistribution.html">Commons JavaDoc: TriangularDistribution</a>
+See <a href="https://en.wikipedia.org/wiki/Triangular_distribution">Wikipedia: Triangular distribution</a>
 
- Generate samples according to the specified probability density.
+See <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/TriangularDistribution.html">Commons JavaDoc: TriangularDistribution</a>
 
- The input value consists of a long between 0L and Long.MAX_VALUE.
- This value is scaled to the unit interval (0.0, 1.0) as
- an index into a sampling function. The method used is
- inverse cumulative density sampling.
-
- <H3>Sampling Mode</H3>
-
- The curve can be sampled in either map or hash mode. Map mode
- simply indexes into the probability curve in the order that
- it would appear on a density plot. Hash mode applies a
- murmur3 hash to the input value before scaling from the
- range of longs to the unit interval, thus providing a pseudo-random
- sample of a value from the curve. This is usually what you want,
- so hash mode is the default.  To enable map mode, simply provide
- "map" as one of the modifiers as explained below.
-
- <H3>Interpolation</H3>
-
- The curve can be computed from the sampling function for each value
- generated, or it can be provided via interpolation with a lookup table.
- Using interpolation makes all the generator functions perform the
- same. This is almost always what you want, so interpolation is
- enabled by default. In order to compute the value for every sample
- instead, simply provide "compute" as one of the modifiers as explained
- below.
-
- You can add optional modifiers after the distribution parameters.
- You can add one of 'hash' or 'map' but not both. If neither of these is
- added, 'hash' is implied as a default.
- You can add one of 'interpolate' or 'compute' but not both. If neither
- of these is added, 'interpolate' is implied as a default.
-
- At times, it might be useful to add 'hash', 'interpolate' to your
- specifiers as a form of verbosity or explicit specification.
-
-- int -> Triangular(double: a, double: c, double: b, String[]...: mods) -> double
-- long -> Triangular(double: a, double: c, double: b, String[]...: mods) -> double
+- int -> Triangular(double: a, double: c, double: b, String... mods) -> double
+- long -> Triangular(double: a, double: c, double: b, String... mods) -> double
 
 ## Uniform
 
-@see <a href="https://en.wikipedia.org/wiki/Uniform_distribution_(continuous)">Wikipedia: Uniform distribution (continuous)</a>
-@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/UniformContinuousDistribution.html">Commons JavaDoc: UniformContinuousDistribution</a>
+See <a href="https://en.wikipedia.org/wiki/Uniform_distribution_(continuous)">Wikipedia: Uniform distribution (continuous)</a>
 
- Generate samples according to the specified probability density.
+See <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/UniformContinuousDistribution.html">Commons JavaDoc: UniformContinuousDistribution</a>
 
- The input value consists of a long between 0L and Long.MAX_VALUE.
- This value is scaled to the unit interval (0.0, 1.0) as
- an index into a sampling function. The method used is
- inverse cumulative density sampling.
-
- <H3>Sampling Mode</H3>
-
- The curve can be sampled in either map or hash mode. Map mode
- simply indexes into the probability curve in the order that
- it would appear on a density plot. Hash mode applies a
- murmur3 hash to the input value before scaling from the
- range of longs to the unit interval, thus providing a pseudo-random
- sample of a value from the curve. This is usually what you want,
- so hash mode is the default.  To enable map mode, simply provide
- "map" as one of the modifiers as explained below.
-
- <H3>Interpolation</H3>
-
- The curve can be computed from the sampling function for each value
- generated, or it can be provided via interpolation with a lookup table.
- Using interpolation makes all the generator functions perform the
- same. This is almost always what you want, so interpolation is
- enabled by default. In order to compute the value for every sample
- instead, simply provide "compute" as one of the modifiers as explained
- below.
-
- You can add optional modifiers after the distribution parameters.
- You can add one of 'hash' or 'map' but not both. If neither of these is
- added, 'hash' is implied as a default.
- You can add one of 'interpolate' or 'compute' but not both. If neither
- of these is added, 'interpolate' is implied as a default.
-
- At times, it might be useful to add 'hash', 'interpolate' to your
- specifiers as a form of verbosity or explicit specification.
-
-- int -> Uniform(double: lower, double: upper, String[]...: mods) -> double
-- long -> Uniform(double: lower, double: upper, String[]...: mods) -> double
-- int -> Uniform(int: lower, int: upper, String[]...: modslist) -> int
-- int -> Uniform(int: lower, int: upper, String[]...: modslist) -> long
-- long -> Uniform(int: lower, int: upper, String[]...: modslist) -> int
-- long -> Uniform(int: lower, int: upper, String[]...: modslist) -> long
+- int -> Uniform(double: lower, double: upper, String... mods) -> double
+- long -> Uniform(double: lower, double: upper, String... mods) -> double
+- int -> Uniform(int: lower, int: upper, String... modslist) -> int
+- int -> Uniform(int: lower, int: upper, String... modslist) -> long
+- long -> Uniform(int: lower, int: upper, String... modslist) -> int
+- long -> Uniform(int: lower, int: upper, String... modslist) -> long
 
 ## Weibull
 
-@see <a href="https://en.wikipedia.org/wiki/Weibull_distribution">Wikipedia: Weibull distribution</a>
-@see <a href="http://mathworld.wolfram.com/WeibullDistribution.html">Wolfram Mathworld: Weibull Distribution</a>
-@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/WeibullDistribution.html">Commons Javadoc: WeibullDistribution</a>
+See <a href="https://en.wikipedia.org/wiki/Weibull_distribution">Wikipedia: Weibull distribution</a>
 
- Generate samples according to the specified probability density.
+See <a href="http://mathworld.wolfram.com/WeibullDistribution.html">Wolfram Mathworld: Weibull Distribution</a>
 
- The input value consists of a long between 0L and Long.MAX_VALUE.
- This value is scaled to the unit interval (0.0, 1.0) as
- an index into a sampling function. The method used is
- inverse cumulative density sampling.
+See <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/WeibullDistribution.html">Commons Javadoc: WeibullDistribution</a>
 
- <H3>Sampling Mode</H3>
-
- The curve can be sampled in either map or hash mode. Map mode
- simply indexes into the probability curve in the order that
- it would appear on a density plot. Hash mode applies a
- murmur3 hash to the input value before scaling from the
- range of longs to the unit interval, thus providing a pseudo-random
- sample of a value from the curve. This is usually what you want,
- so hash mode is the default.  To enable map mode, simply provide
- "map" as one of the modifiers as explained below.
-
- <H3>Interpolation</H3>
-
- The curve can be computed from the sampling function for each value
- generated, or it can be provided via interpolation with a lookup table.
- Using interpolation makes all the generator functions perform the
- same. This is almost always what you want, so interpolation is
- enabled by default. In order to compute the value for every sample
- instead, simply provide "compute" as one of the modifiers as explained
- below.
-
- You can add optional modifiers after the distribution parameters.
- You can add one of 'hash' or 'map' but not both. If neither of these is
- added, 'hash' is implied as a default.
- You can add one of 'interpolate' or 'compute' but not both. If neither
- of these is added, 'interpolate' is implied as a default.
-
- At times, it might be useful to add 'hash', 'interpolate' to your
- specifiers as a form of verbosity or explicit specification.
-
-- int -> Weibull(double: alpha, double: beta, String[]...: mods) -> double
-- long -> Weibull(double: alpha, double: beta, String[]...: mods) -> double
+- int -> Weibull(double: alpha, double: beta, String... mods) -> double
+- long -> Weibull(double: alpha, double: beta, String... mods) -> double
 
 ## Zipf
 
-@see <a href="https://en.wikipedia.org/wiki/Zipf's_law">Wikipedia: Zipf's Law</a>
-@see <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/ZipfDistribution.html">Commons JavaDoc: ZipfDistribution</a>
+See <a href="https://en.wikipedia.org/wiki/Zipf's_law">Wikipedia: Zipf's Law</a>
 
- Generate samples according to the specified probability density.
+See <a href="https://commons.apache.org/proper/commons-statistics/commons-statistics-distribution/apidocs/org/apache/commons/statistics/distribution/ZipfDistribution.html">Commons JavaDoc: ZipfDistribution</a>
 
- The input value consists of a long between 0L and Long.MAX_VALUE.
- This value is scaled to the unit interval (0.0, 1.0) as
- an index into a sampling function based on inverse cumulative
- density sampling.
-
- <H3>Sampling Mode</H3>
-
- The curve can be sampled in either map or hash mode. Map mode
- simply indexes into the probability curve in the order that
- it would appear on a density plot. Hash mode applies a
- murmur3 hash to the input value before scaling from the
- range of longs to the unit interval, thus providing a pseudo-random
- sample of a value from the curve. This is usually what you want,
- so hash mode is the default.  To enable map mode, simply provide
- "map" as one of the modifiers as explained below.
-
- <H3>Interpolation</H3>
-
- The curve can be computed from the sampling function for each value
- generated, or it can be provided via interpolation with a lookup table.
- Using interpolation makes all the generator functions perform the
- same. This is almost always what you want, so interpolation is
- enabled by default. In order to compute the value for every sample
- instead, simply provide "compute" as one of the modifiers as explained
- below.
-
- You can add optional modifiers after the distribution parameters.
- You can add one of 'hash' or 'map' but not both. If neither of these is
- added, 'hash' is implied as a default.
- You can add one of 'interpolate' or 'compute' but not both. If neither
- of these is added, 'interpolate' is implied as a default.
-
- At times, it might be useful to add 'hash', 'interpolate' to your
- specifiers as a form of verbosity or explicit specification.
-
-- int -> Zipf(int: numberOfElements, double: exponent, String[]...: modslist) -> int
-- int -> Zipf(int: numberOfElements, double: exponent, String[]...: modslist) -> long
-- long -> Zipf(int: numberOfElements, double: exponent, String[]...: modslist) -> int
-- long -> Zipf(int: numberOfElements, double: exponent, String[]...: modslist) -> long
+- int -> Zipf(int: numberOfElements, double: exponent, String... modslist) -> int
+- int -> Zipf(int: numberOfElements, double: exponent, String... modslist) -> long
+- long -> Zipf(int: numberOfElements, double: exponent, String... modslist) -> int
+- long -> Zipf(int: numberOfElements, double: exponent, String... modslist) -> long
 

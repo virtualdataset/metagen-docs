@@ -8,6 +8,11 @@ menu:
     identifier: reference-state
     weight: 52
 ---
+Functions in the state category allow you to do things with
+side-effects in the function flow. Specifically, they allow
+you to save or load values of named variables to thread-local
+registers.
+
 ## Clear
 
 Clears the per-thread map which is used by the Expr function.
@@ -15,7 +20,7 @@ Clears the per-thread map which is used by the Expr function.
 - long -> Clear() -> long
   - *notes:* Clear all named entries from the per-thread map.
   - *ex:* `Clear()` - *clear all thread-local variables*
-- long -> Clear(String[]...: names) -> long
+- long -> Clear(String... names) -> long
   - *notes:* Clear the specified names from the per-thread map.
   - *ex:* `Clear('foo')` - *clear the thread-local variable 'foo'*
   - *ex:* `Clear('foo','bar')` - *clear the thread-local variables 'foo' and 'bar'*
@@ -59,7 +64,7 @@ Show diagnostic values for the thread-local variable map.
 
 - Object -> Show() -> String
   - *ex:* `Show()` - *Show all values in a json-like format*
-- Object -> Show(String[]...: names) -> String
+- Object -> Show(String... names) -> String
   - *ex:* `Show('foo')` - *Show only the 'foo' value in a json-like format*
   - *ex:* `Show('foo','bar')` - *Show the 'foo' and 'bar' values in a json-like format*
 

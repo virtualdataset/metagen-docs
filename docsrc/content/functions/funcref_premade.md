@@ -8,6 +8,11 @@ menu:
     identifier: reference-premade
     weight: 52
 ---
+Functions in this category are meant to provide easy grab-and-go functions
+that are tailored for real-world simulation. This library will grow over
+time.
+
+
 ## FirstNames
 
 Return a pseudo-randomly sampled first name from the last US census data on first names

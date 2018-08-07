@@ -51,14 +51,9 @@ relativeURLs = true
 	weight = 30
 
 [[menu.main]]
-	name   = "Modeling Datasets"
-	url    = "/modeling_datasets"
+	name   = "Using VirtData"
+	url    = "/users_guide"
 	weight = 40
-
-[[menu.main]]
-    name   = "Syntax Reference"
-    url    = "/syntax"
-    weight = 50
 
 [[menu.main]]
 	name   = "Function Reference"

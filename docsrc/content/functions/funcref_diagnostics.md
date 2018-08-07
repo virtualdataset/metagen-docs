@@ -8,13 +8,16 @@ menu:
     identifier: reference-diagnostics
     weight: 52
 ---
+Diagnostic functions can be used to help you construct the right
+VirtData recipe.
+
 ## Show
 
 Show diagnostic values for the thread-local variable map.
 
 - Object -> Show() -> String
   - *ex:* `Show()` - *Show all values in a json-like format*
-- Object -> Show(String[]...: names) -> String
+- Object -> Show(String... names) -> String
   - *ex:* `Show('foo')` - *Show only the 'foo' value in a json-like format*
   - *ex:* `Show('foo','bar')` - *Show the 'foo' and 'bar' values in a json-like format*
 

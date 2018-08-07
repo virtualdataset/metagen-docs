@@ -1,10 +1,10 @@
 ---
 date: 2018-06-18
-title: Syntax Reference
+title: VirtData Syntax
 weight: 36
 menu:
   main:
-    parent: "Syntax Reference"
+    parent: "Using VirtData"
     identifier: "syntax-reference"
     weight: 61
 ---
