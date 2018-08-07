@@ -33,17 +33,38 @@ VirtData.
 In the reference section, this may appear as:
 ```
 int -> Add(int: addend) -> int
-```
-and in actual usage, this specific function would appear as:
-```
-int -> Add(5) -> int
+====== === ==== ======  ======
+^      ^   ^    ^          ^
+|      |   |    |          |
+|      |   |    |          + an output type
+|      |   |    + an initializer parameter name
+|      |   + an initializer parameter type
+|      +- the function name
++-- an input type
+
 ```
 
 While each specific function provided in the library
 has all of the above details, it is not always convenient
 to refer to them with the full description as shown.
 
-In fact, the name `Add(...)` refers not just a single
+In practical use, an *Add* function could be called upon
+using any of these forms:
+
+```
+# no input our output type qualifiers, just an intializer parameter:
+Add(5)
+
+# fully qualified input and output types:
+int -> Add(5) -> int
+
+# partially qualified input or output types:
+Add(5) -> int
+int -> Add(5)
+
+```
+
+The name `Add(...)` refers not just a single
 function, but four different functions in the library:
 
 - `double -> Add(double: addend) -> double`
@@ -82,48 +103,50 @@ input and output type qualifiers limit the library to
 considering *only* the matching functions. This is limited
 to only the fourth function in the list above. If you
 only use `Add(5)` with no input or output qualifiers,
-all four functions are considered. so what happens
-when you create a function chain like `Add(5); Mul(15)`?
+all four functions are considered.
+
+### Java Object Types
+
+If you use an output qualifier like `-> java.util.Date`, then
+VirtData will use this specific type to avoid considering
+any function that does not have the specified input
+or output type. This must be a canonical class name that
+can be used to resolve the class at runtime.
 
 ## Function Candidates
 
-With the example `Add(5); Mul(15)`, each contributing
-function specifier can refer to multiple candidate functions.
+So what when you create a function chain like `Add(5); Mul(15)`?
+Each contributing function specifier can refer to one ore more 
+candidate functions. With this basic description of a VirtData flow,
+the following list of candidates is constructed:
 
-`Add(5)` causes the library to *resolve* (find and
-instantiate) the following functions:
-
-- `int->Add(5)->int`
-- `long->Add(5L)->int`
-- `long->Add(5L)->long`
-
-And the `Mul(5)` specifier causes these functions
-to be resolved:
-
-- `int->Mul(15)->int`
-- `long->Mul(15L)->int`
-- `long->Mul(15L)->long`
+{{< nomnoml align="middle" >}}
+#zoom:0.75
+#direction:right
+#.value: fill=#D0FFD0 visual=frame
+#.function: fill=#E0FFE0 visual=sender
+[<value>long] -> [<function>int->Add(5)->int]
+[<value>long] -> [<function>long->Add(5)->int]
+[<value>long] -> [<function>long->Add(5)->long]
+[<function>int->Add(5)->int] -> [??]
+[<function>long->Add(5)->int] -> [??]
+[<function>long->Add(5)->long] -> [??]
+[??] -> [int->Mul(15)->int]
+[??] -> [long->Mul(15L)->int]
+[??] -> [long->Mul(15L)->long]
+[int->Mul(15)->int] -> [???]
+[long->Mul(15L)->int] -> [???]
+[long->Mul(15L)->long] -> [???]
+{{< /nomnoml >}}
 
 This represents the two sets of functions that could 
 possibly be used to construct a chain of single functions.
 
-## Type Compatibility
-
-When chaining functions together, type types that flow from
-the output of an upstream function to the input of the
-next function must be compatible in some way.
-
-There are different kinds of type compatibility with
-different levels of trade-offs:
-
-1. **same types** - The output of one function is exactly
-   the same type as the input of the next.
-2. **directly assignable types** - The types aren't
-   strictly the same, but the output can still be assigned
-   to the input. This includes widening type conversions
-   as well as assignment of compatible object types.
-3. **boxed assignable types** - assignable types with
-   the help of auto-boxing.
+The output type is not known in this case, since there was no
+trailing output type qualifier, and is represented by `???`.
+The intermediate type is not known yet, and is represented by `??`.
+By default, the required input type is always set to `long` if no
+other is specified.
 
 ## Function Reduction
 
@@ -152,17 +175,34 @@ the candidates down to one function per stage.
 In any case where a reduction rule would remove 
 *all* functions for a stage, that reduction is skipped.
 If any reduction is possible, then the process starts
-again.
+again at the top.
+
+Given this schematic above, it is possible to map 6 pathways through the
+functions, yielding 6 possible lambdas. In this case, the rules
+explained above will reduce the function candidates to the
+final chain of functions, containing only one remaining function per position:
+
+{{< nomnoml align="middle" >}}
+#zoom:0.75
+#direction:right
+#.value: fill=#D0FFD0 visual=frame
+#.function: fill=#E0FFE0 visual=sender
+[<function>long->Add(5)->long] -> [<function>long->Mul(15L)->long]
+{{< /nomnoml >}}
 
 ## Function Compositing
 
-VirtData will take the final chain of functions and
-construct a Java 8 lambda using the most obvious
-type conversions at each stage, even if the output
-type of an upstream function is not strictly assignable
-to the input type of the next function in the chain.
+The result of function reduction is passed to a lambda construction facility
+within VirtData known as the function compositor. The compositor builds a
+proper lambda in the Java runtime, yielding a final single function at runtime
+that "adds 5 and then multiplies the result by 15".
 
-The constructed lambdas which have strictly-aligned
-types between outputs and inputs will be more performant
-that those which must use autoboxing or strange type
-conversion.
+If the types of the remaining functions are not
+directly compatible according to Java casting and conversion rules, the
+function compositor will make a best-effort conversion in order to combine
+functions in a flexible way. Flows which must rely on this capability are
+not as performant as those which have good type alignment in between
+function stages. Consult the function library reference on the available
+types and conversions if you want to keep things as fast as they coudl be.
+
+

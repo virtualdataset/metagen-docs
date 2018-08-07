@@ -10,7 +10,7 @@ menu:
 ---
 
 This book includes some diagrams that are rendered  
-on the client side from various graphical markup systems.
+on the client side from various graphical markup systems. 
 
 This page lets you verify that you can read the glyph and diagrams correctly. If
 you do not see two of everything, then you will not be able to see some of the
@@ -80,6 +80,16 @@ courtesy of [nomnoml.com](http://nomnoml.com/)
 </div>
 
 <div title="reference image" align="middle">
-<div><img src="/siteinfo/nomnoml_abc.png"></img> 
+<img src="/siteinfo/nomnoml_abc.png"></img> 
+</div>
+
+### railroad diagram rendering
+
+courtesy of [railroad-diagrams](https://github.com/tabatkins/railroad-diagrams)
+
+<div align="middle">{{< rr align="middle">}}'<IDENTIFIER: name>'{{< /rr >}}</div>
+
+<div title="reference image" align="middle">
+<div><img src="/siteinfo/railroad_id.png" width="30%"></img>
 </div>
 

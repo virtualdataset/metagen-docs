@@ -3,6 +3,7 @@ date: 2017-05-19T21:52:39
 title: Virtual Data Set - User's Guide
 type: index
 weight: 5
+layout: single
 ---
 
 [![Latest Release](https://maven-badges.herokuapp.com/maven-central/io.virtdata/metagen/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.virtdata/metagen/) [![Build Status](https://travis-ci.org/virtualdataset/virtdata-java.svg?branch=master)](https://travis-ci.org/virtualdataset/virtdata-java)

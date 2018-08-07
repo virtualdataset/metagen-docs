@@ -55,6 +55,7 @@ menu:
 ---
 EOF2
 grep -v '# CATEGORY' $ref >>docsrc/content/functions/$ref
+rm $ref
  
 done
 
