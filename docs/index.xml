@@ -1,13 +1,12 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes" ?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>VirtualDataSet</title>
+    <title>Virtual Data Set - User&#39;s Guide on VirtualDataSet</title>
     <link>http://docs.virtdata.io/</link>
-    <description>Recent content on VirtualDataSet</description>
+    <description>Recent content in Virtual Data Set - User&#39;s Guide on VirtualDataSet</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>APL 2.0</copyright>
-    <lastBuildDate>Mon, 27 Nov 2017 00:00:00 +0000</lastBuildDate>
+    <lastBuildDate>Fri, 19 May 2017 21:52:39 +0000</lastBuildDate>
     
 	<atom:link href="http://docs.virtdata.io/index.xml" rel="self" type="application/rss+xml" />
     
@@ -21,17 +20,6 @@
       <description>If it is not real data, then what is the value of it? Virtual data is something that, when you need it, has no substitute.
 To explain why, let us consider the trade-offs in some basic simulation and testing challenges and what they mean.
 Speed Challenge: access large amounts of bulk data Actual Data - depends primarily on speed and efficiency of storage system - limited to size of storage system</description>
-    </item>
-    
-    <item>
-      <title>Virtual Data Set - User&#39;s Guide</title>
-      <link>http://docs.virtdata.io/</link>
-      <pubDate>Fri, 19 May 2017 21:52:39 +0000</pubDate>
-      
-      <guid>http://docs.virtdata.io/</guid>
-      <description>Please stand by while we bring the docs online&amp;hellip;
-This book serves as the primary documentation for VirtualDataSet projects.
-What is a Virtual DataSet? Virtual data can be described by a recipe. It can be created when you attempt to access it. Virtual Data is a lens into a set of data that may not exist yet, but which, once observed, is as tangible as stored data. Virtual data is what results when you apply a mapping function to a coordinate.</description>
     </item>
     
     <item>
@@ -63,6 +51,17 @@ Mapping Functions A function represents a mapping between one set of values and 
       <description>This is a railroad schematic of the currently supported VirtData recipe syntax.
 If this is your first time reading this guide, it is best to start at the top and read in order. Once you are familiar with the page, it can be used as a handy reference.
  Conventions In this documentation, CAPITALIZED := sections refer directly to a syntax type, for reference purposes. Other sections accompany the syntax diagrams, and are more explanatory in nature.</description>
+    </item>
+    
+    <item>
+      <title>Resolving Functions</title>
+      <link>http://docs.virtdata.io/concepts/resolving_functions/</link>
+      <pubDate>Mon, 27 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://docs.virtdata.io/concepts/resolving_functions/</guid>
+      <description>When using VirtData to craft procedural data generation recipes, you can combine multiple functions in a chain, as described in Composition and Dataflow in ../function_graphs.
+This section explains how the library finds and selects specific functions before composing them together in a lambda. It also explains how to read the detailed documentation as described in the function reference section.
+Function Signatures There are several parts to a typical function signature in VirtData.</description>
     </item>
     
     <item>

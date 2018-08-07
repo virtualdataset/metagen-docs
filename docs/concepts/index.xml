@@ -6,7 +6,6 @@
     <description>Recent content in Concepts on VirtualDataSet</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <copyright>APL 2.0</copyright>
     <lastBuildDate>Mon, 27 Nov 2017 00:00:00 +0000</lastBuildDate>
     
 	<atom:link href="http://docs.virtdata.io/concepts/index.xml" rel="self" type="application/rss+xml" />
@@ -30,6 +29,17 @@ Procedural Generation Procedural generation is a method of generating data by fe
       <guid>http://docs.virtdata.io/concepts/function_graphs/</guid>
       <description>This section should be useful to new users as well as experienced developers. Here, we explain how and why we use functions for building data mapping recipes. If you are planning to do so, this section is essential reading.
 Mapping Functions A function represents a mapping between one set of values and another. Consider a basic example in which the function N(i) maps an input number to text form.</description>
+    </item>
+    
+    <item>
+      <title>Resolving Functions</title>
+      <link>http://docs.virtdata.io/concepts/resolving_functions/</link>
+      <pubDate>Mon, 27 Nov 2017 00:00:00 +0000</pubDate>
+      
+      <guid>http://docs.virtdata.io/concepts/resolving_functions/</guid>
+      <description>When using VirtData to craft procedural data generation recipes, you can combine multiple functions in a chain, as described in Composition and Dataflow in ../function_graphs.
+This section explains how the library finds and selects specific functions before composing them together in a lambda. It also explains how to read the detailed documentation as described in the function reference section.
+Function Signatures There are several parts to a typical function signature in VirtData.</description>
     </item>
     
   </channel>

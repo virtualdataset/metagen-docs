@@ -28,6 +28,11 @@
   </url>
   
   <url>
+    <loc>http://docs.virtdata.io/concepts/resolving_functions/</loc>
+    <lastmod>2017-11-27T00:00:00+00:00</lastmod>
+  </url>
+  
+  <url>
     <loc>http://docs.virtdata.io/modeling_datasets/modeling_cardinality/</loc>
     <lastmod>2017-12-16T00:00:00+00:00</lastmod>
   </url>
@@ -165,12 +170,6 @@
   
   <url>
     <loc>http://docs.virtdata.io/todo/</loc>
-    <priority>0</priority>
-  </url>
-  
-  <url>
-    <loc>http://docs.virtdata.io/</loc>
-    <lastmod>2017-11-27T00:00:00+00:00</lastmod>
     <priority>0</priority>
   </url>
   
