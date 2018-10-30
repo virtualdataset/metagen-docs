@@ -578,6 +578,29 @@ by default. This is where the bulk of basic functions can be found.</p>
 <li>long -&gt; AlphaNumericString(int: length) -&gt; String</li>
 </ul>
 
+<h2 id="clamp">Clamp</h2>
+
+<p>Clamp the output values to be at least the minimum value and
+at most the maximum value.</p>
+
+<ul>
+<li>double -&gt; Clamp(double: min, double: max) -&gt; double
+
+<ul>
+<li><em>ex:</em> <code>Clamp(1.0D,9.0D)</code> - <em>clamp output values between the range [1.0D, 9.0D], inclusive</em></li>
+</ul></li>
+<li>long -&gt; Clamp(long: min, long: max) -&gt; long
+
+<ul>
+<li><em>ex:</em> <code>Clamp(4L,400L)</code> - <em>clamp the output values in the range [4L,400L], inclusive</em></li>
+</ul></li>
+<li>int -&gt; Clamp(int: min, int: max) -&gt; int
+
+<ul>
+<li><em>ex:</em> <code>Clamp(1,100)</code> - <em>clamp the output values in the range [1,100], inclusive</em></li>
+</ul></li>
+</ul>
+
 <h2 id="combinations">Combinations</h2>
 
 <p>Convert a numeric value into a code according to ASCII printable
@@ -969,6 +992,151 @@ between elements.</p>
 </ul></li>
 </ul>
 
+<h2 id="loaddouble">LoadDouble</h2>
+
+<p>Load a value from a named thread-local variable, where the variable
+name is fixed or a generated variable name from a provided function.
+If the named variable is not defined, then the default value is returned.</p>
+
+<ul>
+<li>Object -&gt; LoadDouble(String: name) -&gt; Double
+
+<ul>
+<li><em>ex:</em> <code>LoadDouble('foo')</code> - <em>for the current thread, load a double value from the named variable.</em></li>
+</ul></li>
+<li>Object -&gt; LoadDouble(String: name, double: defaultValue) -&gt; Double
+
+<ul>
+<li><em>ex:</em> <code>LoadDouble('foo',23D)</code> - <em>for the current thread, load a double value from the named variable,or the default value if the named variable is not defined.</em></li>
+</ul></li>
+<li>Object -&gt; LoadDouble(java.util.function.Function<Object,Object>: nameFunc) -&gt; Double
+
+<ul>
+<li><em>ex:</em> <code>LoadDouble(NumberNameToString())</code> - <em>for the current thread, load a double value from the named variable, where the variable name is provided by a function.</em></li>
+</ul></li>
+<li>Object -&gt; LoadDouble(java.util.function.Function<Object,Object>: nameFunc, double: defaultValue) -&gt; Double
+
+<ul>
+<li><em>ex:</em> <code>LoadDouble(NumberNameToString(),23D)</code> - <em>for the current thread, load a double value from the named variable,where the variable name is provided by a function, or the default value if the namedvariable is not defined.</em></li>
+</ul></li>
+</ul>
+
+<h2 id="loadfloat">LoadFloat</h2>
+
+<p>Load a value from a named thread-local variable, where the variable
+name is fixed or a generated variable name from a provided function.
+If the named variable is not defined, then the default value is returned.</p>
+
+<ul>
+<li>Object -&gt; LoadFloat(String: name) -&gt; Float
+
+<ul>
+<li><em>ex:</em> <code>LoadFloat('foo')</code> - <em>for the current thread, load a float value from the named variable.</em></li>
+</ul></li>
+<li>Object -&gt; LoadFloat(String: name, float: defaultValue) -&gt; Float
+
+<ul>
+<li><em>ex:</em> <code>LoadFloat('foo',23F)</code> - <em>for the current thread, load a float value from the named variable,or the default value if the named variable is not defined.</em></li>
+</ul></li>
+<li>Object -&gt; LoadFloat(java.util.function.Function<Object,Object>: nameFunc) -&gt; Float
+
+<ul>
+<li><em>ex:</em> <code>LoadFloat(NumberNameToString())</code> - <em>for the current thread, load a float value from the named variable,where the variable name is provided by a function.</em></li>
+</ul></li>
+<li>Object -&gt; LoadFloat(java.util.function.Function<Object,Object>: nameFunc, float: defaultValue) -&gt; Float
+
+<ul>
+<li><em>ex:</em> <code>LoadFloat(NumberNameToString(),23F)</code> - <em>for the current thread, load a float value from the named variable,where the variable name is provided by a function, or the default value if the namedvariable is not defined.</em></li>
+</ul></li>
+</ul>
+
+<h2 id="loadinteger">LoadInteger</h2>
+
+<p>Load a value from a named thread-local variable, where the variable
+name is fixed or a generated variable name from a provided function.
+If the named variable is not defined, then the default value is returned.</p>
+
+<ul>
+<li>Object -&gt; LoadInteger(String: name) -&gt; Integer
+
+<ul>
+<li><em>ex:</em> <code>LoadInteger('foo')</code> - <em>for the current thread, load an integer value from the named variable.</em></li>
+</ul></li>
+<li>Object -&gt; LoadInteger(String: name, int: defaultValue) -&gt; Integer
+
+<ul>
+<li><em>ex:</em> <code>LoadInteger('foo',42)</code> - <em>for the current thread, load an integer value from the named variable, or the default value if the named variable is not defined.</em></li>
+</ul></li>
+<li>Object -&gt; LoadInteger(java.util.function.Function<Object,Object>: nameFunc) -&gt; Integer
+
+<ul>
+<li><em>ex:</em> <code>LoadInteger(NumberNameToString())</code> - <em>for the current thread, load an integer value from the named variable,where the variable name is provided by a function.</em></li>
+</ul></li>
+<li>Object -&gt; LoadInteger(java.util.function.Function<Object,Object>: nameFunc, int: defaultValue) -&gt; Integer
+
+<ul>
+<li><em>ex:</em> <code>LoadInteger(NumberNameToString(),42)</code> - <em>for the current thread, load an integer value from the named variable,where the variable name is provided by a function, or the default value if the namedvariable is not defined.</em></li>
+</ul></li>
+</ul>
+
+<h2 id="loadlong">LoadLong</h2>
+
+<p>Load a value from a named thread-local variable, where the variable
+name is fixed or a generated variable name from a provided function.
+If the named variable is not defined, then the default value is returned.</p>
+
+<ul>
+<li>Object -&gt; LoadLong(String: name) -&gt; Long
+
+<ul>
+<li><em>ex:</em> <code>LoadLong('foo',42L)</code> - <em>for the current thread, load a long value from the named variable.</em></li>
+</ul></li>
+<li>Object -&gt; LoadLong(String: name, long: defaultValue) -&gt; Long
+
+<ul>
+<li><em>ex:</em> <code>LoadLong('foo',42L)</code> - <em>for the current thread, load a long value from the named variable, or the default value if the named variable is not defined.</em></li>
+</ul></li>
+<li>Object -&gt; LoadLong(java.util.function.Function<Object,Object>: nameFunc) -&gt; Long
+
+<ul>
+<li><em>ex:</em> <code>LoadLong(NumberNameToString(),42L)</code> - <em>for the current thread, load a long value from the named variable,where the variable name is provided by a function.</em></li>
+</ul></li>
+<li>Object -&gt; LoadLong(java.util.function.Function<Object,Object>: nameFunc, long: defaultValue) -&gt; Long
+
+<ul>
+<li><em>ex:</em> <code>LoadLong(NumberNameToString(),42L)</code> - <em>for the current thread, load a long value from the named variable,where the variable name is provided by a function, or the default value if the namedvariable is not defined.</em></li>
+</ul></li>
+</ul>
+
+<h2 id="loadstring">LoadString</h2>
+
+<p>Load a value from a named thread-local variable, where the variable
+name is fixed or a generated variable name from a provided function.
+If the named variable is not defined, then the default value is returned.</p>
+
+<ul>
+<li>Object -&gt; LoadString(String: name) -&gt; String
+
+<ul>
+<li><em>ex:</em> <code>LoadString('foo','examplevalue')</code> - <em>for the current thread, load a String value from the named variable.</em></li>
+</ul></li>
+<li>Object -&gt; LoadString(String: name, String: defaultValue) -&gt; String
+
+<ul>
+<li><em>ex:</em> <code>LoadString('foo','examplevalue')</code> - <em>for the current thread, load a String value from the named variable, or the default value if the named variable is not defined.</em></li>
+</ul></li>
+<li>Object -&gt; LoadString(java.util.function.Function<Object,Object>: nameFunc) -&gt; String
+
+<ul>
+<li><em>ex:</em> <code>LoadString(NumberNameToString(),'examplevalue')</code> - <em>for the current thread, load a String value from the named variable, or the default value if the named variable is not defined.</em></li>
+</ul></li>
+<li>Object -&gt; LoadString(java.util.function.Function<Object,Object>: nameFunc, String: defaultValue) -&gt; String
+
+<ul>
+<li><em>ex:</em> <code>LoadString(NumberNameToString(),'examplevalue')</code> - <em>for the current thread, load a String value from the named variable,where the variable name is provided by a function, or the default value if the namedvariable is not defined.</em></li>
+</ul></li>
+</ul>
+
 <h2 id="longtostring">LongToString</h2>
 
 <p>Return the string representation of the provided long.</p>
@@ -1025,6 +1193,20 @@ the input value is incremented.</p>
 <li>long -&gt; Mod(long: modulo) -&gt; int</li>
 <li>long -&gt; Mod(long: modulo) -&gt; long</li>
 <li>int -&gt; Mod(int: modulo) -&gt; int</li>
+</ul>
+
+<h2 id="modulocsvlinetostring">ModuloCSVLineToString</h2>
+
+<p>Select a value from a CSV file line by modulo division against the number
+of lines in the file. The second parameter is the field name, and this must
+be provided in the CSV header line as written.</p>
+
+<ul>
+<li>long -&gt; ModuloCSVLineToString(String: filename, String: fieldname) -&gt; String
+
+<ul>
+<li><em>ex:</em> <code>ModuloCSVLineToString('data/myfile.csv','lat')</code> - <em>load values for &lsquo;lat&rsquo; from the CSV file myfile.csv.</em></li>
+</ul></li>
 </ul>
 
 <h2 id="modulolinetostring">ModuloLineToString</h2>
@@ -1099,164 +1281,210 @@ with the specified divisor to long and then converting the value to String.</p>
 </ul></li>
 </ul>
 
-<h2 id="scale">Scale</h2>
+<h2 id="savedouble">SaveDouble</h2>
 
-<p>Scale the input to the</p>
+<p>Save a value to a named thread-local variable, where the variable
+name is fixed or a generated variable name from a provided function.
+Note that the input type is not that suitable for constructing names,
+so this is more likely to be used in an indirect naming pattern like
+`SaveDouble(Load(&lsquo;id&rsquo;))</p>
+
+<pre><code>- double -&gt; SaveDouble(String: name) -&gt; double
+  - *ex:* `Save('foo')` - *save the current double value to the name 'foo' in this thread*
+- double -&gt; SaveDouble(java.util.function.Function&lt;Object,Object&gt;: nameFunc) -&gt; double
+  - *ex:* `Save(NumberNameToString())` - *save a double value to a named variable in the current thread, where the variable name is provided by a function.*
+
+## SaveFloat
+
+Save a value to a named thread-local variable, where the variable
+name is fixed or a generated variable name from a provided function.
+Note that the input type is not that suitable for constructing names,
+so this is more likely to be used in an indirect naming pattern like
+`SaveDouble(Load('id'))
+</code></pre>
 
 <ul>
-<li>long -&gt; Scale(double: scaleFactor) -&gt; int</li>
-<li>int -&gt; Scale(double: scaleFactor) -&gt; int</li>
+<li>Float -&gt; SaveFloat(String: name) -&gt; Float
+
+<ul>
+<li><em>ex:</em> <code>SaveFloat('foo')</code> - <em>save the current float value to a named variable in this thread.</em></li>
+</ul></li>
+<li>Float -&gt; SaveFloat(java.util.function.Function<Object,Object>: nameFunc) -&gt; Float
+
+<ul>
+<li><em>ex:</em> <code>SaveFloat(NumberNameToString())</code> - <em>save the current float value to a named variable in this thread, where the variable name is provided by a function.</em></li>
+</ul></li>
 </ul>
 
-<h2 id="shuffle">Shuffle</h2>
+<h2 id="saveinteger">SaveInteger</h2>
 
-<p>This function provides a low-overhead shuffling effect without loading
+<p>Save a value to a named thread-local variable, where the variable
+name is fixed or a generated variable name from a provided function.
+Note that the input type is not that suitable for constructing names,
+so this is more likely to be used in an indirect naming pattern like
+`SaveDouble(Load(&lsquo;id&rsquo;))</p>
+
+<pre><code>- int -&gt; SaveInteger(String: name) -&gt; int
+  - *ex:* `SaveInteger('foo')` - *save the current integer value to a named variable in this thread.*
+- int -&gt; SaveInteger(java.util.function.Function&lt;Object,Object&gt;: nameFunc) -&gt; int
+  - *ex:* `SaveInteger(NumberNameToString())` - *save the current integer value to a named variable in this thread, where the variable name is provided by a function.*
+
+## SaveLong
+
+Save a value to a named thread-local variable, where the variable
+name is fixed or a generated variable name from a provided function.
+Note that the input type is not that suitable for constructing names,
+so this is more likely to be used in an indirect naming pattern like
+`SaveDouble(Load('id'))
+</code></pre>
+
+<ul>
+<li>long -&gt; SaveLong(String: name) -&gt; long
+
+<ul>
+<li><em>ex:</em> <code>SaveLong('foo')</code> - <em>save the current long value to a named variable in this thread.</em></li>
+</ul></li>
+<li>long -&gt; SaveLong(java.util.function.Function<Object,Object>: nameFunc) -&gt; long
+
+<ul>
+<li><em>ex:</em> <code>SaveLong(NumberNameToString())</code> - <em>save the current long value to a named variable in this thread, where the variable name is provided by a function.</em></li>
+</ul></li>
+</ul>
+
+<h2 id="savestring">SaveString</h2>
+
+<p>Save a value to a named thread-local variable, where the variable
+name is fixed or a generated variable name from a provided function.
+Note that the input type is not that suitable for constructing names,
+so this is more likely to be used in an indirect naming pattern like
+`SaveDouble(Load(&lsquo;id&rsquo;))</p>
+
+<pre><code>- String -&gt; SaveString(String: name) -&gt; String
+  - *ex:* `SaveString('foo')` - *save the current String value to a named variable in this thread.*
+- String -&gt; SaveString(java.util.function.Function&lt;Object,Object&gt;: nameFunc) -&gt; String
+  - *ex:* `SaveString(NumberNameToString())` - *save the current String value to a named variable in this thread, where the variable name is provided by a function.*
+
+## Scale
+
+Scale the input to the
+
+- long -&gt; Scale(double: scaleFactor) -&gt; int
+- int -&gt; Scale(double: scaleFactor) -&gt; int
+
+## Shuffle
+
+This function provides a low-overhead shuffling effect without loading
 elements into memory. It uses a bundled dataset of pre-computed
 Galois LFSR shift register configurations, along with a down-sampling
-method to provide amortized virtual shuffling with minimal memory usage.</p>
+method to provide amortized virtual shuffling with minimal memory usage.
 
-<p>Essentially, this guarantees that every value in the specified range will
+Essentially, this guarantees that every value in the specified range will
 be seen at least once before the cycle repeats. However, since the order
 of traversal of these values is dependent on the LFSR configuration, some
 orders will appear much more random than others depending on where you
-are in the traversal cycle.</p>
+are in the traversal cycle.
 
-<p>This function <em>does</em> yield values that are deterministic.</p>
+This function *does* yield values that are deterministic.
 
-<ul>
-<li>long -&gt; Shuffle(long: min, long: maxPlusOne) -&gt; long
+- long -&gt; Shuffle(long: min, long: maxPlusOne) -&gt; long
+  - *ex:* `Shuffle(11,99)` - *Provide all values between 11 and 98 inclusive, in some order, then repeat*
+- long -&gt; Shuffle(long: min, long: maxPlusOne, int: bankSelector) -&gt; long
+  - *ex:* `Shuffle(11,99,3)` - *Provide all values between 11 and 98 inclusive, in some different (and repeatable) order, then repeat*
 
-<ul>
-<li><em>ex:</em> <code>Shuffle(11,99)</code> - <em>Provide all values between 11 and 98 inclusive, in some order, then repeat</em></li>
-</ul></li>
-<li>long -&gt; Shuffle(long: min, long: maxPlusOne, int: bankSelector) -&gt; long
+## SignedHash
 
-<ul>
-<li><em>ex:</em> <code>Shuffle(11,99,3)</code> - <em>Provide all values between 11 and 98 inclusive, in some different (and repeatable) order, then repeat</em></li>
-</ul></li>
-</ul>
-
-<h2 id="signedhash">SignedHash</h2>
-
-<p>This uses the Murmur3F (64-bit optimized) version of Murmur3,
-not as a checksum, but as a simple hash. It doesn&rsquo;t bother
+This uses the Murmur3F (64-bit optimized) version of Murmur3,
+not as a checksum, but as a simple hash. It doesn't bother
 pushing the high-64 bits of input, since it only uses the lower
-64 bits of output.</p>
+64 bits of output.
 
-<p>Unlike the other hash functions, this one may return positive
-as well as negative values.</p>
+Unlike the other hash functions, this one may return positive
+as well as negative values.
 
-<ul>
-<li>long -&gt; SignedHash() -&gt; int</li>
-<li>long -&gt; SignedHash() -&gt; long</li>
-<li>int -&gt; SignedHash() -&gt; int</li>
-</ul>
+- long -&gt; SignedHash() -&gt; int
+- long -&gt; SignedHash() -&gt; long
+- int -&gt; SignedHash() -&gt; int
 
-<h2 id="staticstringmapper">StaticStringMapper</h2>
+## StaticStringMapper
 
-<p>Return a static String value.</p>
+Return a static String value.
 
-<ul>
-<li>long -&gt; StaticStringMapper(String: string) -&gt; String</li>
-</ul>
+- long -&gt; StaticStringMapper(String: string) -&gt; String
 
-<h2 id="stringdatewrapper">StringDateWrapper</h2>
+## StringDateWrapper
 
-<ul>
-<li>long -&gt; StringDateWrapper(String: format) -&gt; String</li>
-</ul>
+- long -&gt; StringDateWrapper(String: format) -&gt; String
 
-<h2 id="suffix">Suffix</h2>
+## Suffix
 
-<p>Add the specified prefix String to the input value and return the result.</p>
+Add the specified prefix String to the input value and return the result.
 
-<ul>
-<li>String -&gt; Suffix(String: suffix) -&gt; String
+- String -&gt; Suffix(String: suffix) -&gt; String
+  - *ex:* `Suffix('--Fin')` - *Append '--Fin' to every input value*
 
-<ul>
-<li><em>ex:</em> <code>Suffix('--Fin')</code> - <em>Append &lsquo;&ndash;Fin&rsquo; to every input value</em></li>
-</ul></li>
-</ul>
+## Template
 
-<h2 id="template">Template</h2>
+Creates a template function which will yield a string which fits the template
+provided, with all occurrences of `{}` substituted pair-wise with the
+result of the provided functions. The number of `{}` entries in the template
+must strictly match the number of functions or an error will be thrown.
 
-<p>Creates a template function which will yield a string which fits the template
-provided, with all occurrences of <code>{}</code> substituted pair-wise with the
-result of the provided functions. The number of <code>{}</code> entries in the template
-must strictly match the number of functions or an error will be thrown.</p>
-
-<p>To provide differing values for similarly defined functions in the list, the input
+To provide differing values for similarly defined functions in the list, the input
 value used is automatically incremented by one for each function, starting with
-the initial input value.</p>
+the initial input value.
 
-<ul>
-<li>long -&gt; Template(String: template, java.util.function.LongFunction&lt;?&gt;&hellip; funcs) -&gt; String
+- long -&gt; Template(String: template, java.util.function.LongFunction&lt;?&gt;... funcs) -&gt; String
+  - *ex:* `Template('{}-{}',Add(10),Hash())` - *concatenate input+10, '-', and a pseudo-random long*
+- long -&gt; Template(java.util.function.LongUnaryOperator: iterOp, String: template, java.util.function.LongFunction&lt;?&gt;... funcs) -&gt; String
+  - *notes:* If an operator is provided, it is used to change the function input value in an additional way before each function.
 
-<ul>
-<li><em>ex:</em> <code>Template('{}-{}',Add(10),Hash())</code> - <em>concatenate input+10, &lsquo;-&rsquo;, and a pseudo-random long</em></li>
-</ul></li>
-<li>long -&gt; Template(java.util.function.LongUnaryOperator: iterOp, String: template, java.util.function.LongFunction&lt;?&gt;&hellip; funcs) -&gt; String
+## ThreadNum
 
-<ul>
-<li><em>notes:</em> If an operator is provided, it is used to change the function input value in an additional way before each function.</li>
-</ul></li>
-</ul>
-
-<h2 id="threadnum">ThreadNum</h2>
-
-<p>Matches a digit sequence in the current thread name and caches it in a thread local.
+Matches a digit sequence in the current thread name and caches it in a thread local.
 This allows you to use any intentionally indexed thread factories to provide an analogue for
 concurrency. Note that once the thread number is cached, it will not be refreshed. This means
-you can&rsquo;t change the thread name and get an updated value.</p>
+you can't change the thread name and get an updated value.
 
-<ul>
-<li>long -&gt; ThreadNum() -&gt; int</li>
-<li>long -&gt; ThreadNum() -&gt; long</li>
-</ul>
+- long -&gt; ThreadNum() -&gt; int
+- long -&gt; ThreadNum() -&gt; long
 
-<h2 id="threadnumtointeger">ThreadNumToInteger</h2>
+## ThreadNumToInteger
 
-<p>Matches a digit sequence in the current thread name and caches it in a thread local.
+Matches a digit sequence in the current thread name and caches it in a thread local.
 This allows you to use any intentionally indexed thread factories to provide an analogue for
 concurrency. Note that once the thread number is cached, it will not be refreshed. This means
-you can&rsquo;t change the thread name and get an updated value.</p>
+you can't change the thread name and get an updated value.
 
-<ul>
-<li>long -&gt; ThreadNumToInteger() -&gt; Integer</li>
-</ul>
+- long -&gt; ThreadNumToInteger() -&gt; Integer
 
-<h2 id="threadnumtolong">ThreadNumToLong</h2>
+## ThreadNumToLong
 
-<p>Matches a digit sequence in the current thread name and caches it in a thread local.
+Matches a digit sequence in the current thread name and caches it in a thread local.
 This allows you to use any intentionally indexed thread factories to provide an analogue for
 concurrency. Note that once the thread number is cached, it will not be refreshed. This means
-you can&rsquo;t change the thread name and get an updated value.</p>
+you can't change the thread name and get an updated value.
 
-<ul>
-<li>long -&gt; ThreadNumToLong() -&gt; long</li>
-</ul>
+- long -&gt; ThreadNumToLong() -&gt; long
 
-<h2 id="tohasheduuid">ToHashedUUID</h2>
+## ToHashedUUID
 
-<p>This function provides a stable hashing of the input value to
-a version 4 (Random) UUID.</p>
+This function provides a stable hashing of the input value to
+a version 4 (Random) UUID.
 
-<ul>
-<li>long -&gt; ToHashedUUID() -&gt; java.util.UUID</li>
-</ul>
+- long -&gt; ToHashedUUID() -&gt; java.util.UUID
 
-<h2 id="touuid">ToUUID</h2>
+## ToUUID
 
-<p>This function creates a non-random UUID in the type 4 version (Random).
+This function creates a non-random UUID in the type 4 version (Random).
 It always puts the same value in the MSB position of the UUID format.
-The input value is put in the LSB position.</p>
-
-<pre><code>xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx
-mmmmmmmm-mmmm-Mmmm-Llll-llllllllllll
-              4    3
+The input value is put in the LSB position.
 </code></pre>
 
-<p>As shown above, the LSB position does not have the complication of having
+<p>xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx
+mmmmmmmm-mmmm-Mmmm-Llll-llllllllllll
+              4    3
+```
+As shown above, the LSB position does not have the complication of having
 a version identifier (position M) dividing the dynamic range of the data type.
 For this reason, only the LSB side is used for this mapper, which allows
 an effective range of Long.MAX_VALUE/8, given the loss of 3 digits of precision.</p>
@@ -1269,6 +1497,14 @@ specify a different long value to pre-fill it with.</p>
 <ul>
 <li>long -&gt; ToUUID() -&gt; java.util.UUID</li>
 <li>long -&gt; ToUUID(long: msbs) -&gt; java.util.UUID</li>
+</ul>
+
+<h2 id="trim">Trim</h2>
+
+<p>Trim the input value and return the result.</p>
+
+<ul>
+<li>String -&gt; Trim() -&gt; String</li>
 </ul>
 
 <h2 id="weightedstrings">WeightedStrings</h2>

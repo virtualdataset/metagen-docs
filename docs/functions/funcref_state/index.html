@@ -561,27 +561,102 @@ before the next function in the chain.</p>
 <li>double -&gt; Load(String: name) -&gt; double
 
 <ul>
-<li><em>ex:</em> <code>Load('foo')</code> - <em>load a double value from the named variable for this thread</em></li>
+<li><em>ex:</em> <code>Load('foo')</code> - <em>for the current thread, load a double value from the named variable</em></li>
+</ul></li>
+<li>double -&gt; Load(String: name, double: defaultValue) -&gt; double
+
+<ul>
+<li><em>ex:</em> <code>Load('foo',432.0D)</code> - <em>for the current thread, load a double value from the named variable, or the defaultvalue if it is not yet defined.</em></li>
+</ul></li>
+<li>double -&gt; Load(java.util.function.Function<Object,Object>: nameFunc) -&gt; double
+
+<ul>
+<li><em>ex:</em> <code>Load(NumberNameToString())</code> - <em>for the current thread, load a double value from the named variable, where the variablename is provided by a function.</em></li>
+</ul></li>
+<li>double -&gt; Load(java.util.function.Function<Object,Object>: nameFunc, double: defaultValue) -&gt; double
+
+<ul>
+<li><em>ex:</em> <code>Load(NumberNameToString(),1234.5D)</code> - <em>for the current thread, load a double value from the named variable, where the variablename is provided by a function, or the default value if the named value is not yet defined.</em></li>
 </ul></li>
 <li>long -&gt; Load(String: name) -&gt; long
 
 <ul>
-<li><em>ex:</em> <code>Load('foo')</code> - <em>load a long value from the named variable for this thread</em></li>
+<li><em>ex:</em> <code>Load('foo')</code> - <em>for the current thread, load a long value from the named variable</em></li>
+</ul></li>
+<li>long -&gt; Load(String: name, long: defaultValue) -&gt; long
+
+<ul>
+<li><em>ex:</em> <code>Load('foo', 423L)</code> - <em>for the current thread, load a long value from the named variable, or the default value if the variable is not yet defined</em></li>
+</ul></li>
+<li>long -&gt; Load(java.util.function.Function<Object,Object>: nameFunc) -&gt; long
+
+<ul>
+<li><em>ex:</em> <code>Load(NumberNameToString())</code> - <em>for the current thread, load a long value from the named variable, where the variable name is provided by the provided by a function.</em></li>
+</ul></li>
+<li>long -&gt; Load(java.util.function.Function<Object,Object>: nameFunc, long: defaultvalue) -&gt; long
+
+<ul>
+<li><em>ex:</em> <code>Load(NumberNameToString(),22L)</code> - <em>for the current thread, load a long value from the named variable, where the variable name is provided by the provided by a function, or the default value if the variable is not yet defined</em></li>
 </ul></li>
 <li>Object -&gt; Load(String: name) -&gt; Object
 
 <ul>
-<li><em>ex:</em> <code>Load('foo')</code> - <em>load a Object value from the named variable for this thread</em></li>
+<li><em>ex:</em> <code>Load('foo')</code> - <em>for the current thread, load an Object value from the named variable</em></li>
+</ul></li>
+<li>Object -&gt; Load(java.util.function.Function<Object,Object>: nameFunc) -&gt; Object
+
+<ul>
+<li><em>ex:</em> <code>Load(NumberNameToString())</code> - <em>for the current thread, load an Object value from the named variable, where the variable name is returned by the provided function</em></li>
+</ul></li>
+<li>Object -&gt; Load(String: name, Object: defaultValue) -&gt; Object
+
+<ul>
+<li><em>ex:</em> <code>Load('foo','testvalue')</code> - <em>for the current thread, load an Object value from the named variable, or the default value if the variable is not yet defined.</em></li>
+</ul></li>
+<li>Object -&gt; Load(java.util.function.Function<Object,Object>: nameFunc, Object: defaultValue) -&gt; Object
+
+<ul>
+<li><em>ex:</em> <code>Load(NumberNameToString(),'testvalue')</code> - <em>for the current thread, load an Object value from the named variable, where the variable name is returned by the provided function, or thedefault value if the variable is not yet defined.</em></li>
 </ul></li>
 <li>int -&gt; Load(String: name) -&gt; int
 
 <ul>
-<li><em>ex:</em> <code>Load('foo')</code> - <em>load an int value from the named variable for this thread</em></li>
+<li><em>ex:</em> <code>Load('foo')</code> - <em>for the current thread, load an int value from the named variable</em></li>
+</ul></li>
+<li>int -&gt; Load(String: name, int: defaultValue) -&gt; int
+
+<ul>
+<li><em>ex:</em> <code>Load('foo',42)</code> - <em>for the current thread, load an int value from the named variable, or return the default value if it is undefined.</em></li>
+</ul></li>
+<li>int -&gt; Load(java.util.function.Function<Object,Object>: nameFunc) -&gt; int
+
+<ul>
+<li><em>ex:</em> <code>Load(NumberNameToString())</code> - <em>for the current thread, load an int value from the named variable, where the variable name is provided by a function.</em></li>
+</ul></li>
+<li>int -&gt; Load(java.util.function.Function<Object,Object>: nameFunc, int: defaultValue) -&gt; int
+
+<ul>
+<li><em>ex:</em> <code>Load(NumberNameToString(),42)</code> - <em>for the current thread, load an int value from the named variable, where the variable name is provided by a function, or the default value if the named variable is undefined.</em></li>
 </ul></li>
 <li>String -&gt; Load(String: name) -&gt; String
 
 <ul>
-<li><em>ex:</em> <code>Load('foo')</code> - <em>load a String value from the named variable for this thread</em></li>
+<li><em>ex:</em> <code>Load('foo')</code> - <em>for the current thread, load a String value from the named variable</em></li>
+</ul></li>
+<li>String -&gt; Load(String: name, String: defaultvalue) -&gt; String
+
+<ul>
+<li><em>ex:</em> <code>Load('foo','track05')</code> - <em>for the current thread, load a String value from the named variable, or teh default value if the variable is not yet defined.</em></li>
+</ul></li>
+<li>String -&gt; Load(java.util.function.Function<Object,Object>: nameFunc) -&gt; String
+
+<ul>
+<li><em>ex:</em> <code>Load(NumberNameToString())</code> - <em>for the current thread, load a String value from the named variable, where the variable name is provided by a function</em></li>
+</ul></li>
+<li>String -&gt; Load(java.util.function.Function<Object,Object>: nameFunc, String: defaultValue) -&gt; String
+
+<ul>
+<li><em>ex:</em> <code>Load(NumberNameToString(),'track05')</code> - <em>for the current thread, load a String value from the named variable, where the variable name is provided by a function, or the default value if the variable is not yet defined.</em></li>
 </ul></li>
 </ul>
 
@@ -594,27 +669,52 @@ The input value is unchanged, and available for the next function in the chain t
 <li>double -&gt; Save(String: name) -&gt; double
 
 <ul>
-<li><em>ex:</em> <code>Save('foo')</code> - <em>save the current double value to the name &lsquo;foo&rsquo; in this thread</em></li>
+<li><em>ex:</em> <code>Save('foo')</code> - <em>for the current thread, save the current double value to the named variable.</em></li>
+</ul></li>
+<li>double -&gt; Save(java.util.function.Function<Object,Object>: nameFunc) -&gt; double
+
+<ul>
+<li><em>ex:</em> <code>Save(NumberNameToString())</code> - <em>for the current thread, save the current double value to the name &lsquo;foo&rsquo; in this thread, where the variable name is provided by a function.</em></li>
 </ul></li>
 <li>long -&gt; Save(String: name) -&gt; long
 
 <ul>
 <li><em>ex:</em> <code>Save('foo')</code> - <em>save the current long value to the name &lsquo;foo&rsquo; in this thread</em></li>
 </ul></li>
+<li>long -&gt; Save(java.util.function.Function<Object,Object>: nameFunc) -&gt; long
+
+<ul>
+<li><em>ex:</em> <code>Save(NumberNameToString())</code> - <em>save the current long value to the name generated by the function given.</em></li>
+</ul></li>
 <li>Object -&gt; Save(String: name) -&gt; Object
 
 <ul>
-<li><em>ex:</em> <code>Save('foo')</code> - <em>save the current input object value to the name &lsquo;foo&rsquo; in this thread</em></li>
+<li><em>ex:</em> <code>Save('foo')</code> - <em>for the current thread, save the input object value to the named variable</em></li>
+</ul></li>
+<li>Object -&gt; Save(java.util.function.Function<Object,Object>: nameFunc) -&gt; Object
+
+<ul>
+<li><em>ex:</em> <code>Save(NumberNameToString())</code> - <em>for the current thread, save the current input object value to the named variable,where the variable name is provided by a function.</em></li>
 </ul></li>
 <li>int -&gt; Save(String: name) -&gt; int
 
 <ul>
 <li><em>ex:</em> <code>Save('foo')</code> - <em>save the current int value to the name &lsquo;foo&rsquo; in this thread</em></li>
 </ul></li>
+<li>int -&gt; Save(java.util.function.Function<Object,Object>: nameFunc) -&gt; int
+
+<ul>
+<li><em>ex:</em> <code>Save(NumberNameToString())</code> - <em>save the current int value to a named variable in this thread,where the variable name is provided by a function.</em></li>
+</ul></li>
 <li>String -&gt; Save(String: name) -&gt; String
 
 <ul>
 <li><em>ex:</em> <code>Save('foo')</code> - <em>save the current String value to the name &lsquo;foo&rsquo; in this thread</em></li>
+</ul></li>
+<li>String -&gt; Save(java.util.function.Function<Object,Object>: nameFunc) -&gt; String
+
+<ul>
+<li><em>ex:</em> <code>Save(NumberNameToString())</code> - <em>save the current String value to a named variable in this thread, where the variable name is provided by a function</em></li>
 </ul></li>
 </ul>
 
@@ -633,6 +733,56 @@ The input value is unchanged, and available for the next function in the chain t
 <ul>
 <li><em>ex:</em> <code>Show('foo')</code> - <em>Show only the &lsquo;foo&rsquo; value in a json-like format</em></li>
 <li><em>ex:</em> <code>Show('foo','bar')</code> - <em>Show the &lsquo;foo&rsquo; and &lsquo;bar&rsquo; values in a json-like format</em></li>
+</ul></li>
+</ul>
+
+<h2 id="swap">Swap</h2>
+
+<p>Load a named value from the per-thread state map.
+The previous input value will be stored in the named value, and the previously
+stored value will be returned. A default value to return may be provided
+in case there was no previously stored value under the given name.</p>
+
+<ul>
+<li>long -&gt; Swap(String: name) -&gt; long
+
+<ul>
+<li><em>ex:</em> <code>Swap('foo')</code> - <em>for the current thread, swap the input value with the named variable and returned the named variable.</em></li>
+</ul></li>
+<li>long -&gt; Swap(String: name, long: defaultValue) -&gt; long
+
+<ul>
+<li><em>ex:</em> <code>Swap('foo',234L)</code> - <em>for the current thread, swap the input value with the named variable and returned the named variable,or the default value if the named variable is not defined.</em></li>
+</ul></li>
+<li>long -&gt; Swap(java.util.function.LongFunction<String>: nameFunc) -&gt; long
+
+<ul>
+<li><em>ex:</em> <code>Swap(NumberNameToString())</code> - <em>for the current thread, swap the input value with the named variable and returned the named variable, where the variable name is generated by the provided function.</em></li>
+</ul></li>
+<li>long -&gt; Swap(java.util.function.LongFunction<String>: nameFunc, long: defaultValue) -&gt; long
+
+<ul>
+<li><em>ex:</em> <code>Swap(NumberNameToString(), 234L)</code> - <em>for the current thread, swap the input value with the named variable and returned the named variable, where the variable name is generated by the provided function, or the default value if the named variable is not defined.</em></li>
+</ul></li>
+<li>Object -&gt; Swap(String: name) -&gt; Object
+
+<ul>
+<li><em>ex:</em> <code>Swap('foo')</code> - <em>for the current thread, swap the input value with the named variable and returned the named variable</em></li>
+</ul></li>
+<li>Object -&gt; Swap(String: name, Object: defaultValue) -&gt; Object
+
+<ul>
+<li><em>ex:</em> <code>Swap('foo','examplevalue')</code> - <em>for the current thread, swap the input value with the named variable and returned the named variable, or return the default value if the named value is not defined.</em></li>
+</ul></li>
+<li>Object -&gt; Swap(java.util.function.Function<Object,Object>: nameFunc) -&gt; Object
+
+<ul>
+<li><em>ex:</em> <code>Swap(NumberNameToString())</code> - <em>for the current thread, swap the input value with the named variable and returned the named variable, where the variable name is generated by the provided function.</em></li>
+</ul></li>
+<li>Object -&gt; Swap(java.util.function.Function<Object,Object>: nameFunc, Object: defaultValue) -&gt; Object
+
+<ul>
+<li><em>ex:</em> <code>Swap(NumberNameToString(),'examplevalue')</code> - <em>for the current thread, swap the input value with the named variable and returned the named variable, where the variable name is generated by the provided function, or the default value if the named value is not defined.</em></li>
 </ul></li>
 </ul>
 
