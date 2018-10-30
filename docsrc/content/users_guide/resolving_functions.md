@@ -84,17 +84,27 @@ When you see the the example function `Add(5)`, the single
 parameter `5` is an initializer parameter to the function.
 This means that it is part of the function definition.
 All functions in VirtData are intended to be pure functions
--- once they are initialized, they will return the same
-value for any specific input value, no matter how many times
-or in what order the values are applied to the function.
+-- once they are initialized, they will return the same output
+value for any specific input value no matter how many times
+or in what order the input values are applied to the function.
 
 The term *function initializer* is meant to emphasize that
 the values you use in function definitions are **not** the
 values applied to the function. You don't specify the values
-which will be applied to the function where you define them,
-only the functions, including the initializer values, 
-and function chains that are composed by stringing them
-together.
+which will be applied to the function where you define them.
+The functions are defined separately from where they are used,
+and all values that are provided in the function definitions are
+merely function *initializer* parameters.
+
+This is another way of saying, for example, that "add 5" is
+conceptually a function definition, while "add 5 to x" is the
+application of a function to an input _x_. The variable _x_ is
+never mentioned in the function definition, and the value _5_
+as a parameter ot the function's construction is an essential
+part of the function itself, not the variables that the function
+is applied to. This might seem obvious, but it is worth stating
+explicitly here, since any ambiguity on this topic could lead
+to confusion.
 
 ## Finding Functions
 
