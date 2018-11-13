@@ -26,6 +26,10 @@ time specifier. It wraps any overflow within this range as well.
 - long -> StartingEpochMillis(String: baseTimeSpec) -> long
   - *ex:* `StartingEpochMillis('2017-01-01 23:59:59')` - *add the millisecond epoch time of 2017-01-01 23:59:59 to all input values*
 
+## StringDateWrapper
+
+- long -> StringDateWrapper(String: format) -> String
+
 ## ToDate
 
 Convert the input value to a {@code Date}

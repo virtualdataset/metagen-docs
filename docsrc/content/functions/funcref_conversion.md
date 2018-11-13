@@ -56,6 +56,10 @@ Return a boolean value as the result of modulo division with the specified divis
 
 - long -> ModuloToShort(long: modulo) -> Short
 
+## StringDateWrapper
+
+- long -> StringDateWrapper(String: format) -> String
+
 ## ToBigInt
 
 Convert the input value to a {@code BigInteger}

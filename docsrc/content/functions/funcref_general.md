@@ -535,8 +535,8 @@ Save a value to a named thread-local variable, where the variable
 name is fixed or a generated variable name from a provided function.
 Note that the input type is not that suitable for constructing names,
 so this is more likely to be used in an indirect naming pattern like
-`SaveDouble(Load('id'))
-```
+`SaveDouble(Load('id'))`
+
 - double -> SaveDouble(String: name) -> double
   - *ex:* `Save('foo')` - *save the current double value to the name 'foo' in this thread*
 - double -> SaveDouble(java.util.function.Function<Object,Object>: nameFunc) -> double
@@ -548,8 +548,8 @@ Save a value to a named thread-local variable, where the variable
 name is fixed or a generated variable name from a provided function.
 Note that the input type is not that suitable for constructing names,
 so this is more likely to be used in an indirect naming pattern like
-`SaveDouble(Load('id'))
-```
+`SaveDouble(Load('id'))`
+
 - Float -> SaveFloat(String: name) -> Float
   - *ex:* `SaveFloat('foo')` - *save the current float value to a named variable in this thread.*
 - Float -> SaveFloat(java.util.function.Function<Object,Object>: nameFunc) -> Float
@@ -561,8 +561,8 @@ Save a value to a named thread-local variable, where the variable
 name is fixed or a generated variable name from a provided function.
 Note that the input type is not that suitable for constructing names,
 so this is more likely to be used in an indirect naming pattern like
-`SaveDouble(Load('id'))
-```
+`SaveDouble(Load('id'))`
+
 - int -> SaveInteger(String: name) -> int
   - *ex:* `SaveInteger('foo')` - *save the current integer value to a named variable in this thread.*
 - int -> SaveInteger(java.util.function.Function<Object,Object>: nameFunc) -> int
@@ -574,8 +574,8 @@ Save a value to a named thread-local variable, where the variable
 name is fixed or a generated variable name from a provided function.
 Note that the input type is not that suitable for constructing names,
 so this is more likely to be used in an indirect naming pattern like
-`SaveDouble(Load('id'))
-```
+`SaveDouble(Load('id'))`
+
 - long -> SaveLong(String: name) -> long
   - *ex:* `SaveLong('foo')` - *save the current long value to a named variable in this thread.*
 - long -> SaveLong(java.util.function.Function<Object,Object>: nameFunc) -> long
@@ -587,8 +587,8 @@ Save a value to a named thread-local variable, where the variable
 name is fixed or a generated variable name from a provided function.
 Note that the input type is not that suitable for constructing names,
 so this is more likely to be used in an indirect naming pattern like
-`SaveDouble(Load('id'))
-```
+`SaveDouble(Load('id'))`
+
 - String -> SaveString(String: name) -> String
   - *ex:* `SaveString('foo')` - *save the current String value to a named variable in this thread.*
 - String -> SaveString(java.util.function.Function<Object,Object>: nameFunc) -> String
@@ -640,10 +640,6 @@ as well as negative values.
 Return a static String value.
 
 - long -> StaticStringMapper(String: string) -> String
-
-## StringDateWrapper
-
-- long -> StringDateWrapper(String: format) -> String
 
 ## Suffix
 
@@ -708,11 +704,11 @@ a version 4 (Random) UUID.
 This function creates a non-random UUID in the type 4 version (Random).
 It always puts the same value in the MSB position of the UUID format.
 The input value is put in the LSB position.
-```
+`
 xxxxxxxx-xxxx-Mxxx-Nxxx-xxxxxxxxxxxx
 mmmmmmmm-mmmm-Mmmm-Llll-llllllllllll
               4    3
-```
+`
 As shown above, the LSB position does not have the complication of having
 a version identifier (position M) dividing the dynamic range of the data type.
 For this reason, only the LSB side is used for this mapper, which allows
