@@ -28,6 +28,10 @@ time specifier. It wraps any overflow within this range as well.
 
 ## StringDateWrapper
 
+This function wraps an epoch time in milliseconds into a String
+as specified in the format. The valid formatters are documented
+at See <a href="https://www.joda.org/joda-time/apidocs/org/joda/time/format/DateTimeFormat.html">DateTimeFormat API Docs</a>
+
 - long -> StringDateWrapper(String: format) -> String
 
 ## ToDate
