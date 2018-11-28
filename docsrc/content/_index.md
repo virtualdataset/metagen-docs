@@ -6,7 +6,7 @@ weight: 5
 layout: single
 ---
 
-[![Latest Release](https://maven-badges.herokuapp.com/maven-central/io.virtdata/metagen/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.virtdata/metagen/) [![Build Status](https://travis-ci.org/virtualdataset/virtdata-java.svg?branch=master)](https://travis-ci.org/virtualdataset/virtdata-java)
+[![Latest Release](https://maven-badges.herokuapp.com/maven-central/io.virtdata/virtdata/badge.svg)](https://maven-badges.herokuapp.com/maven-central/io.virtdata/virtdata/) [![Build Status](https://travis-ci.org/virtualdataset/virtdata-java.svg?branch=master)](https://travis-ci.org/virtualdataset/virtdata-java)
 
 
 **Please stand by while we bring the docs online...**
