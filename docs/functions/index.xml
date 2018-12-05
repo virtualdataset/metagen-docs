@@ -53,7 +53,7 @@ StartingEpochMillis This function sets the minimum long value to the equivalent 
       <guid>http://docs.virtdata.io/functions/funcref_diagnostics/</guid>
       <description>Diagnostic functions can be used to help you construct the right VirtData recipe.
 Show Show diagnostic values for the thread-local variable map.
- Object -&amp;gt; Show() -&amp;gt; String  ex: Show() - Show all values in a json-like format  Object -&amp;gt; Show(String&amp;hellip; names) -&amp;gt; String  ex: Show(&#39;foo&#39;) - Show only the &amp;lsquo;foo&amp;rsquo; value in a json-like format ex: Show(&#39;foo&#39;,&#39;bar&#39;) - Show the &amp;lsquo;foo&amp;rsquo; and &amp;lsquo;bar&amp;rsquo; values in a json-like format   ToLongFunction Adapts any compatible FunctionalInterface type to a LongFunction, for use with higher-order functions, when they require a LongFunction as an argument.</description>
+ Object -&amp;gt; Show() -&amp;gt; String  ex: Show() - Show all values in a json-like format  Object -&amp;gt; Show(String&amp;hellip; names) -&amp;gt; String  ex: Show(&#39;foo&#39;) - Show only the &amp;lsquo;foo&amp;rsquo; value in a json-like format ex: Show(&#39;foo&#39;,&#39;bar&#39;) - Show the &amp;lsquo;foo&amp;rsquo; and &amp;lsquo;bar&amp;rsquo; values in a json-like format  long -&amp;gt; Show() -&amp;gt; String  ex: Show() - Show all values in a json-like format  long -&amp;gt; Show(String&amp;hellip; names) -&amp;gt; String  ex: Show(&#39;foo&#39;) - Show only the &amp;lsquo;foo&amp;rsquo; value in a json-like format ex: Show(&#39;foo&#39;,&#39;bar&#39;) - Show the &amp;lsquo;foo&amp;rsquo; and &amp;lsquo;bar&amp;rsquo; values in a json-like format   ToLongFunction Adapts any compatible FunctionalInterface type to a LongFunction, for use with higher-order functions, when they require a LongFunction as an argument.</description>
     </item>
     
     <item>
@@ -97,7 +97,7 @@ FirstNames Return a pseudo-randomly sampled first name from the last US census d
       <guid>http://docs.virtdata.io/functions/funcref_state/</guid>
       <description>Functions in the state category allow you to do things with side-effects in the function flow. Specifically, they allow you to save or load values of named variables to thread-local registers.
 Clear Clears the per-thread map which is used by the Expr function.
- long -&amp;gt; Clear() -&amp;gt; long  notes: Clear all named entries from the per-thread map. ex: Clear() - clear all thread-local variables  long -&amp;gt; Clear(String&amp;hellip; names) -&amp;gt; long  notes: Clear the specified names from the per-thread map.</description>
+ Object -&amp;gt; Clear() -&amp;gt; Object  notes: Clear all named entries from the per-thread map. ex: Clear() - clear all thread-local variables  Object -&amp;gt; Clear(String&amp;hellip; names) -&amp;gt; Object  notes: Clear the specified names from the per-thread map.</description>
     </item>
     
   </channel>

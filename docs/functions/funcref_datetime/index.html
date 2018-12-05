@@ -775,6 +775,180 @@ more practical dispersion of values over reboots, etc.</p></li>
 <li>long -&gt; ToJodaDateTime() -&gt; org.joda.time.DateTime</li>
 </ul>
 
+<h2 id="tomillisatstartofday">ToMillisAtStartOfDay</h2>
+
+<p>Return the epoch milliseconds at the start of the day for the given
+epoch milliseconds.</p>
+
+<ul>
+<li>long -&gt; ToMillisAtStartOfDay() -&gt; long
+
+<ul>
+<li><em>ex:</em> <code>ToMillisAtStartOfDay()</code> - <em>return millisecond epoch time of the start of the day of the provided millisecond epoch time, assuming UTC</em></li>
+</ul></li>
+<li>long -&gt; ToMillisAtStartOfDay(String: timezoneId) -&gt; long
+
+<ul>
+<li><em>ex:</em> <code>ToMillisAtStartOfDay('America/Chicago')</code> - <em>return millisecond epoch time of the start of the day of the provided millisecond epoch time, using timezone America/Chicago</em></li>
+</ul></li>
+</ul>
+
+<h2 id="tomillisatstartofhour">ToMillisAtStartOfHour</h2>
+
+<p>Return the epoch milliseconds at the start of the hour for the given
+epoch milliseconds.</p>
+
+<ul>
+<li>long -&gt; ToMillisAtStartOfHour() -&gt; long
+
+<ul>
+<li><em>ex:</em> <code>ToMillisAtStartOfHour()</code> - <em>return millisecond epoch time of the start of the hour of the provided millisecond epoch time, assuming UTC</em></li>
+</ul></li>
+<li>long -&gt; ToMillisAtStartOfHour(String: timezoneId) -&gt; long
+
+<ul>
+<li><em>ex:</em> <code>ToMillisAtStartOfHour('America/Chicago')</code> - <em>return millisecond epoch time of the start of the hour of the provided millisecond epoch time, using timezone America/Chicago</em></li>
+</ul></li>
+</ul>
+
+<h2 id="tomillisatstartofminute">ToMillisAtStartOfMinute</h2>
+
+<p>Return the epoch milliseconds at the start of the minute for the given
+epoch milliseconds.</p>
+
+<ul>
+<li>long -&gt; ToMillisAtStartOfMinute() -&gt; long
+
+<ul>
+<li><em>ex:</em> <code>ToMillisAtStartOfMinute()</code> - <em>return millisecond epoch time of the start of the minute of the provided millisecond epoch time, assuming UTC</em></li>
+</ul></li>
+<li>long -&gt; ToMillisAtStartOfMinute(String: timezoneId) -&gt; long
+
+<ul>
+<li><em>ex:</em> <code>ToMillisAtStartOfMinute('America/Chicago')</code> - <em>return millisecond epoch time of the start of the minute of the provided millisecond epoch time, using timezone America/Chicago</em></li>
+</ul></li>
+</ul>
+
+<h2 id="tomillisatstartofmonth">ToMillisAtStartOfMonth</h2>
+
+<p>Return the epoch milliseconds at the start of the month for the given
+epoch milliseconds.</p>
+
+<ul>
+<li>long -&gt; ToMillisAtStartOfMonth() -&gt; long
+
+<ul>
+<li><em>ex:</em> <code>ToMillisAtStartOfMonth()</code> - <em>return millisecond epoch time of the start of the month of the provided millisecond epoch time, assuming UTC</em></li>
+</ul></li>
+<li>long -&gt; ToMillisAtStartOfMonth(String: timezoneId) -&gt; long
+
+<ul>
+<li><em>ex:</em> <code>ToMillisAtStartOfMonth('America/Chicago')</code> - <em>return millisecond epoch time of the start of the month of the provided millisecond epoch time, using timezone America/Chicago</em></li>
+</ul></li>
+</ul>
+
+<h2 id="tomillisatstartofnamedweekday">ToMillisAtStartOfNamedWeekDay</h2>
+
+<p>Return the epoch milliseconds at the start of the most recent day
+that falls on the given weekday for the given
+epoch milliseconds, including the current day if valid.</p>
+
+<ul>
+<li>long -&gt; ToMillisAtStartOfNamedWeekDay() -&gt; long
+
+<ul>
+<li><em>ex:</em> <code>ToMillisAtStartOfNamedWeekDay()</code> - <em>return millisecond epoch time of the start of the most recent Monday (possibly the day-of) of the provided millisecond epoch time, assuming UTC</em></li>
+</ul></li>
+<li>long -&gt; ToMillisAtStartOfNamedWeekDay(String: weekday) -&gt; long
+
+<ul>
+<li><em>ex:</em> <code>ToMillisAtStartOfNamedWeekDay('Wednesday')</code> - <em>return millisecond epoch time of the start of the most recent Wednesday (possibly the day-of) of the provided millisecond epoch time, assuming UTC</em></li>
+</ul></li>
+<li>long -&gt; ToMillisAtStartOfNamedWeekDay(String: weekday, String: timezoneId) -&gt; long
+
+<ul>
+<li><em>ex:</em> <code>ToMillisAtStartOfNamedWeekDay('Saturday','America/Chicago'')</code> - <em>return millisecond epoch time of the start of the most recent Saturday (possibly the day-of) of the provided millisecond epoch time, using timezone America/Chicago</em></li>
+</ul></li>
+</ul>
+
+<h2 id="tomillisatstartofnextday">ToMillisAtStartOfNextDay</h2>
+
+<p>Return the epoch milliseconds at the start of the day after the day for the given
+epoch milliseconds.</p>
+
+<ul>
+<li>long -&gt; ToMillisAtStartOfNextDay() -&gt; long
+
+<ul>
+<li><em>ex:</em> <code>ToMillisAtStartOfNextDay()</code> - <em>return millisecond epoch time of the start of next day (not including day-of) of the provided millisecond epoch time, assuming UTC</em></li>
+</ul></li>
+<li>long -&gt; ToMillisAtStartOfNextDay(String: timezoneId) -&gt; long
+
+<ul>
+<li><em>ex:</em> <code>ToMillisAtStartOfNextDay('America/Chicago')</code> - <em>return millisecond epoch time of the start of the next day (not including day-of) of the provided millisecond epoch time, using timezone America/Chicago</em></li>
+</ul></li>
+</ul>
+
+<h2 id="tomillisatstartofnextnamedweekday">ToMillisAtStartOfNextNamedWeekDay</h2>
+
+<p>Return the epoch milliseconds at the start of the next day
+that falls on the given weekday for the given
+epoch milliseconds, not including the current day.</p>
+
+<ul>
+<li>long -&gt; ToMillisAtStartOfNextNamedWeekDay() -&gt; long
+
+<ul>
+<li><em>ex:</em> <code>ToMillisAtStartOfNextNamedWeekDay()</code> - <em>return millisecond epoch time of the start of the next Monday (not the day-of) of the provided millisecond epoch time, assuming UTC</em></li>
+</ul></li>
+<li>long -&gt; ToMillisAtStartOfNextNamedWeekDay(String: weekday) -&gt; long
+
+<ul>
+<li><em>ex:</em> <code>ToMillisAtStartOfNextNamedWeekDay('Wednesday')</code> - <em>return millisecond epoch time of the start of the next Wednesday (not the day-of) of the provided millisecond epoch time, assuming UTC</em></li>
+</ul></li>
+<li>long -&gt; ToMillisAtStartOfNextNamedWeekDay(String: weekday, String: timezoneId) -&gt; long
+
+<ul>
+<li><em>ex:</em> <code>ToMillisAtStartOfNextNamedWeekDay('Saturday','America/Chicago'')</code> - <em>return millisecond epoch time of the start of the next Saturday (not the day-of) of the provided millisecond epoch time, using timezone America/Chicago</em></li>
+</ul></li>
+</ul>
+
+<h2 id="tomillisatstartofsecond">ToMillisAtStartOfSecond</h2>
+
+<p>Return the epoch milliseconds at the start of the second for the given
+epoch milliseconds.</p>
+
+<ul>
+<li>long -&gt; ToMillisAtStartOfSecond() -&gt; long
+
+<ul>
+<li><em>ex:</em> <code>ToMillisAtStartOfSecond()</code> - <em>return millisecond epoch time of the start of the second of the provided millisecond epoch time, assuming UTC</em></li>
+</ul></li>
+<li>long -&gt; ToMillisAtStartOfSecond(String: timezoneId) -&gt; long
+
+<ul>
+<li><em>ex:</em> <code>ToMillisAtStartOfSecond('America/Chicago')</code> - <em>return millisecond epoch time of the start of the second of the provided millisecond epoch time, using timezone America/Chicago</em></li>
+</ul></li>
+</ul>
+
+<h2 id="tomillisatstartofyear">ToMillisAtStartOfYear</h2>
+
+<p>Return the epoch milliseconds at the start of the year for the given
+epoch milliseconds.</p>
+
+<ul>
+<li>long -&gt; ToMillisAtStartOfYear() -&gt; long
+
+<ul>
+<li><em>ex:</em> <code>ToMillisAtStartOfYear()</code> - <em>return millisecond epoch time of the start of the year of the provided millisecond epoch time, assuming UTC</em></li>
+</ul></li>
+<li>long -&gt; ToMillisAtStartOfYear(String: timezoneId) -&gt; long
+
+<ul>
+<li><em>ex:</em> <code>ToMillisAtStartOfYear('America/Chicago')</code> - <em>return millisecond epoch time of the start of the year of the provided millisecond epoch time, using timezone America/Chicago</em></li>
+</ul></li>
+</ul>
+
 
 			<aside class="copyright" role="note">
 				
