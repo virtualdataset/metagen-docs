@@ -172,6 +172,7 @@ Convert the input value to a short.
 ## ToString
 
 - Object -> ToString() -> String
+- double -> ToString() -> String
 - Float -> ToString() -> String
 - int -> ToString() -> String
 - long -> ToString() -> String

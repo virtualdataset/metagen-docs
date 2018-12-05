@@ -364,6 +364,14 @@ If the named variable is not defined, then the default value is returned.
   - *ex:* `LoadDouble(NumberNameToString())` - *for the current thread, load a double value from the named variable, where the variable name is provided by a function.*
 - Object -> LoadDouble(java.util.function.Function<Object,Object>: nameFunc, double: defaultValue) -> Double
   - *ex:* `LoadDouble(NumberNameToString(),23D)` - *for the current thread, load a double value from the named variable,where the variable name is provided by a function, or the default value if the namedvariable is not defined.*
+- long -> LoadDouble(String: name) -> double
+  - *ex:* `LoadDouble('foo')` - *for the current thread, load a double value from the named variable.*
+- long -> LoadDouble(String: name, double: defaultValue) -> double
+  - *ex:* `LoadDouble('foo',23D)` - *for the current thread, load a double value from the named variable,or the default value if the named variable is not defined.*
+- long -> LoadDouble(java.util.function.LongFunction<Object>: nameFunc) -> double
+  - *ex:* `LoadDouble(NumberNameToString())` - *for the current thread, load a double value from the named variable, where the variable name is provided by a function.*
+- long -> LoadDouble(java.util.function.LongFunction<Object>: nameFunc, double: defaultValue) -> double
+  - *ex:* `LoadDouble(NumberNameToString(),23D)` - *for the current thread, load a double value from the named variable,where the variable name is provided by a function, or the default value if the namedvariable is not defined.*
 
 ## LoadFloat
 
@@ -378,6 +386,14 @@ If the named variable is not defined, then the default value is returned.
 - Object -> LoadFloat(java.util.function.Function<Object,Object>: nameFunc) -> Float
   - *ex:* `LoadFloat(NumberNameToString())` - *for the current thread, load a float value from the named variable,where the variable name is provided by a function.*
 - Object -> LoadFloat(java.util.function.Function<Object,Object>: nameFunc, float: defaultValue) -> Float
+  - *ex:* `LoadFloat(NumberNameToString(),23F)` - *for the current thread, load a float value from the named variable,where the variable name is provided by a function, or the default value if the namedvariable is not defined.*
+- long -> LoadFloat(String: name) -> Float
+  - *ex:* `LoadFloat('foo')` - *for the current thread, load a float value from the named variable.*
+- long -> LoadFloat(String: name, float: defaultValue) -> Float
+  - *ex:* `LoadFloat('foo',23F)` - *for the current thread, load a float value from the named variable,or the default value if the named variable is not defined.*
+- long -> LoadFloat(java.util.function.LongFunction<Object>: nameFunc) -> Float
+  - *ex:* `LoadFloat(NumberNameToString())` - *for the current thread, load a float value from the named variable,where the variable name is provided by a function.*
+- long -> LoadFloat(java.util.function.LongFunction<Object>: nameFunc, float: defaultValue) -> Float
   - *ex:* `LoadFloat(NumberNameToString(),23F)` - *for the current thread, load a float value from the named variable,where the variable name is provided by a function, or the default value if the namedvariable is not defined.*
 
 ## LoadInteger
@@ -394,6 +410,14 @@ If the named variable is not defined, then the default value is returned.
   - *ex:* `LoadInteger(NumberNameToString())` - *for the current thread, load an integer value from the named variable,where the variable name is provided by a function.*
 - Object -> LoadInteger(java.util.function.Function<Object,Object>: nameFunc, int: defaultValue) -> Integer
   - *ex:* `LoadInteger(NumberNameToString(),42)` - *for the current thread, load an integer value from the named variable,where the variable name is provided by a function, or the default value if the namedvariable is not defined.*
+- long -> LoadInteger(String: name) -> int
+  - *ex:* `LoadInteger('foo')` - *for the current thread, load an integer value from the named variable.*
+- long -> LoadInteger(String: name, int: defaultValue) -> int
+  - *ex:* `LoadInteger('foo',42)` - *for the current thread, load an integer value from the named variable, or the default value if the named variable is not defined.*
+- long -> LoadInteger(java.util.function.LongFunction<Object>: nameFunc) -> int
+  - *ex:* `LoadInteger(NumberNameToString())` - *for the current thread, load an integer value from the named variable,where the variable name is provided by a function.*
+- long -> LoadInteger(java.util.function.LongFunction<Object>: nameFunc, int: defaultValue) -> int
+  - *ex:* `LoadInteger(NumberNameToString(),42)` - *for the current thread, load an integer value from the named variable,where the variable name is provided by a function, or the default value if the namedvariable is not defined.*
 
 ## LoadLong
 
@@ -409,6 +433,14 @@ If the named variable is not defined, then the default value is returned.
   - *ex:* `LoadLong(NumberNameToString(),42L)` - *for the current thread, load a long value from the named variable,where the variable name is provided by a function.*
 - Object -> LoadLong(java.util.function.Function<Object,Object>: nameFunc, long: defaultValue) -> Long
   - *ex:* `LoadLong(NumberNameToString(),42L)` - *for the current thread, load a long value from the named variable,where the variable name is provided by a function, or the default value if the namedvariable is not defined.*
+- long -> LoadLong(String: name) -> long
+  - *ex:* `LoadLong('foo',42L)` - *for the current thread, load a long value from the named variable.*
+- long -> LoadLong(String: name, long: defaultValue) -> long
+  - *ex:* `LoadLong('foo',42L)` - *for the current thread, load a long value from the named variable, or the default value if the named variable is not defined.*
+- long -> LoadLong(java.util.function.LongFunction<Object>: nameFunc) -> long
+  - *ex:* `LoadLong(NumberNameToString(),42L)` - *for the current thread, load a long value from the named variable,where the variable name is provided by a function.*
+- long -> LoadLong(java.util.function.LongFunction<Object>: nameFunc, long: defaultValue) -> long
+  - *ex:* `LoadLong(NumberNameToString(),42L)` - *for the current thread, load a long value from the named variable,where the variable name is provided by a function, or the default value if the namedvariable is not defined.*
 
 ## LoadString
 
@@ -423,6 +455,14 @@ If the named variable is not defined, then the default value is returned.
 - Object -> LoadString(java.util.function.Function<Object,Object>: nameFunc) -> String
   - *ex:* `LoadString(NumberNameToString(),'examplevalue')` - *for the current thread, load a String value from the named variable, or the default value if the named variable is not defined.*
 - Object -> LoadString(java.util.function.Function<Object,Object>: nameFunc, String: defaultValue) -> String
+  - *ex:* `LoadString(NumberNameToString(),'examplevalue')` - *for the current thread, load a String value from the named variable,where the variable name is provided by a function, or the default value if the namedvariable is not defined.*
+- long -> LoadString(String: name) -> String
+  - *ex:* `LoadString('foo','examplevalue')` - *for the current thread, load a String value from the named variable.*
+- long -> LoadString(String: name, String: defaultValue) -> String
+  - *ex:* `LoadString('foo','examplevalue')` - *for the current thread, load a String value from the named variable, or the default value if the named variable is not defined.*
+- long -> LoadString(java.util.function.LongFunction<Object>: nameFunc) -> String
+  - *ex:* `LoadString(NumberNameToString(),'examplevalue')` - *for the current thread, load a String value from the named variable, or the default value if the named variable is not defined.*
+- long -> LoadString(java.util.function.LongFunction<Object>: nameFunc, String: defaultValue) -> String
   - *ex:* `LoadString(NumberNameToString(),'examplevalue')` - *for the current thread, load a String value from the named variable,where the variable name is provided by a function, or the default value if the namedvariable is not defined.*
 
 ## LongToString
@@ -541,6 +581,10 @@ so this is more likely to be used in an indirect naming pattern like
   - *ex:* `Save('foo')` - *save the current double value to the name 'foo' in this thread*
 - double -> SaveDouble(java.util.function.Function<Object,Object>: nameFunc) -> double
   - *ex:* `Save(NumberNameToString())` - *save a double value to a named variable in the current thread, where the variable name is provided by a function.*
+- long -> SaveDouble(String: name) -> double
+  - *ex:* `Save('foo')` - *save the current double value to the name 'foo' in this thread*
+- long -> SaveDouble(java.util.function.LongFunction<Object>: nameFunc) -> double
+  - *ex:* `Save(NumberNameToString())` - *save a double value to a named variable in the current thread, where the variable name is provided by a function.*
 
 ## SaveFloat
 
@@ -553,6 +597,10 @@ so this is more likely to be used in an indirect naming pattern like
 - Float -> SaveFloat(String: name) -> Float
   - *ex:* `SaveFloat('foo')` - *save the current float value to a named variable in this thread.*
 - Float -> SaveFloat(java.util.function.Function<Object,Object>: nameFunc) -> Float
+  - *ex:* `SaveFloat(NumberNameToString())` - *save the current float value to a named variable in this thread, where the variable name is provided by a function.*
+- long -> SaveFloat(String: name) -> Float
+  - *ex:* `SaveFloat('foo')` - *save the current float value to a named variable in this thread.*
+- long -> SaveFloat(java.util.function.LongFunction<Object>: nameFunc) -> Float
   - *ex:* `SaveFloat(NumberNameToString())` - *save the current float value to a named variable in this thread, where the variable name is provided by a function.*
 
 ## SaveInteger
@@ -567,6 +615,10 @@ so this is more likely to be used in an indirect naming pattern like
   - *ex:* `SaveInteger('foo')` - *save the current integer value to a named variable in this thread.*
 - int -> SaveInteger(java.util.function.Function<Object,Object>: nameFunc) -> int
   - *ex:* `SaveInteger(NumberNameToString())` - *save the current integer value to a named variable in this thread, where the variable name is provided by a function.*
+- long -> SaveInteger(String: name) -> int
+  - *ex:* `SaveInteger('foo')` - *save the current integer value to a named variable in this thread.*
+- long -> SaveInteger(java.util.function.LongFunction<Object>: nameFunc) -> int
+  - *ex:* `SaveInteger(NumberNameToString())` - *save the current integer value to a named variable in this thread, where the variable name is provided by a function.*
 
 ## SaveLong
 
@@ -576,6 +628,10 @@ Note that the input type is not that suitable for constructing names,
 so this is more likely to be used in an indirect naming pattern like
 `SaveDouble(Load('id'))`
 
+- long -> SaveLong(String: name) -> long
+  - *ex:* `SaveLong('foo')` - *save the current long value to a named variable in this thread.*
+- long -> SaveLong(java.util.function.Function<Object,Object>: nameFunc) -> long
+  - *ex:* `SaveLong(NumberNameToString())` - *save the current long value to a named variable in this thread, where the variable name is provided by a function.*
 - long -> SaveLong(String: name) -> long
   - *ex:* `SaveLong('foo')` - *save the current long value to a named variable in this thread.*
 - long -> SaveLong(java.util.function.Function<Object,Object>: nameFunc) -> long
@@ -592,6 +648,10 @@ so this is more likely to be used in an indirect naming pattern like
 - String -> SaveString(String: name) -> String
   - *ex:* `SaveString('foo')` - *save the current String value to a named variable in this thread.*
 - String -> SaveString(java.util.function.Function<Object,Object>: nameFunc) -> String
+  - *ex:* `SaveString(NumberNameToString())` - *save the current String value to a named variable in this thread, where the variable name is provided by a function.*
+- long -> SaveString(String: name) -> String
+  - *ex:* `SaveString('foo')` - *save the current String value to a named variable in this thread.*
+- long -> SaveString(java.util.function.LongFunction<Object>: nameFunc) -> String
   - *ex:* `SaveString(NumberNameToString())` - *save the current String value to a named variable in this thread, where the variable name is provided by a function.*
 
 ## Scale

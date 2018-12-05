@@ -20,6 +20,11 @@ Show diagnostic values for the thread-local variable map.
 - Object -> Show(String... names) -> String
   - *ex:* `Show('foo')` - *Show only the 'foo' value in a json-like format*
   - *ex:* `Show('foo','bar')` - *Show the 'foo' and 'bar' values in a json-like format*
+- long -> Show() -> String
+  - *ex:* `Show()` - *Show all values in a json-like format*
+- long -> Show(String... names) -> String
+  - *ex:* `Show('foo')` - *Show only the 'foo' value in a json-like format*
+  - *ex:* `Show('foo','bar')` - *Show the 'foo' and 'bar' values in a json-like format*
 
 ## ToLongFunction
 
